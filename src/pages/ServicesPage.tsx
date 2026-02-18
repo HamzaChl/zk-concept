@@ -1,0 +1,118 @@
+import { useEffect } from "react";
+import colisImage from "../assets/colis.jpg";
+import journauxImage from "../assets/journaux.jpg";
+import logisticsImage from "../assets/logistics.jpg";
+import { useLocation } from "react-router-dom";
+
+const services = [
+  {
+    id: "01",
+    anchor: "livraison-colis",
+    title: "Livraison de Colis",
+    image: colisImage,
+    description:
+      "ZK Concept assure la livraison rapide et fiable de colis a travers la Belgique. Forte de plusieurs annees d'experience aupres d'acteurs majeurs du secteur, l'entreprise garantit ponctualite, respect des procedures et qualite de service constante. Chaque tournee est optimisee afin d'assurer efficacite, tracabilite et satisfaction client.",
+    points: [
+      "Tournées optimisées selon les zones et contraintes horaires",
+      "Gestion rigoureuse des procedures et du suivi de livraison",
+      "Niveau de service stable sur des volumes variables",
+    ],
+  },
+  {
+    id: "02",
+    anchor: "distribution-presse",
+    title: "Distribution de Presse",
+    image: journauxImage,
+    description:
+      "L'entreprise assure la distribution matinale de journaux et magazines avec precision et regularite. Grace a une organisation structuree incluant le tri, la preparation et la gestion des tournees, ZK Concept garantit une execution ponctuelle et conforme aux exigences des distributeurs et editeurs.",
+    points: [
+      "Preparation en amont et tri des supports",
+      "Distribution matinale avec fenetres de livraison strictes",
+      "Regularite quotidienne et conformite editeur/distributeur",
+    ],
+  },
+  {
+    id: "03",
+    anchor: "gestion-logistique",
+    title: "Gestion Logistique et Coordination",
+    image: logisticsImage,
+    description:
+      "ZK Concept prend en charge la planification des tournees, la coordination des chauffeurs et le suivi operationnel complet. Sa structure independante permet d'assurer continuite, reactivite et stabilite dans l'execution des missions logistiques, meme dans des environnements exigeants.",
+    points: [
+      "Planification opérationnelle des tournées",
+      "Coordination terrain et adaptation en temps réel",
+      "Suivi global des performances et de la qualité de service",
+    ],
+  },
+];
+
+export default function ServicesPage() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (!location.hash) return;
+    const target = document.querySelector(location.hash);
+    if (!target) return;
+    setTimeout(() => {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 40);
+  }, [location.hash]);
+
+  return (
+    <div className="space-y-12">
+      <section className="space-y-4">
+        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gray-500">
+          Services
+        </p>
+        <h1 className="text-4xl font-bold text-gray-900 md:text-5xl">
+          Trois services, une execution claire et fiable.
+        </h1>
+        <p className="max-w-3xl text-base text-gray-600 md:text-lg">
+          Chaque mission est structuree autour d'une methode simple: preparer,
+          executer, suivre. Cette organisation permet d'assurer la regularite
+          des operations, la transparence et une qualite de service constante.
+        </p>
+      </section>
+
+      <section className="space-y-6">
+        {services.map((service, index) => (
+          <article
+            key={service.title}
+            id={service.anchor}
+            className="scroll-mt-28 grid gap-6 rounded-2xl border border-gray-200 p-5 md:p-6 lg:grid-cols-[1.1fr_1fr]"
+          >
+            <div className={`${index % 2 === 1 ? "lg:order-2" : ""}`}>
+              <img
+                src={service.image}
+                alt={service.title}
+                className="aspect-[5/3] w-full rounded-xl object-cover"
+              />
+            </div>
+
+            <div className={`space-y-4 ${index % 2 === 1 ? "lg:order-1" : ""}`}>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-red-600">
+                Service {service.id}
+              </p>
+              <h2 className="text-2xl font-semibold text-gray-900 md:text-3xl">
+                {service.title}
+              </h2>
+              <p className="text-sm leading-7 text-gray-600 md:text-base">
+                {service.description}
+              </p>
+              <ul className="space-y-2">
+                {service.points.map((point) => (
+                  <li
+                    key={point}
+                    className="rounded-lg bg-gray-50 px-4 py-3 text-sm text-gray-700"
+                  >
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </section>
+    </div>
+  );
+}
