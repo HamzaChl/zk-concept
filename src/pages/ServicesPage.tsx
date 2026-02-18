@@ -1,8 +1,8 @@
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import colisImage from "../assets/colis.jpg";
 import journauxImage from "../assets/journaux.jpg";
 import logisticsImage from "../assets/logistics.jpg";
-import { useLocation } from "react-router-dom";
 
 const services = [
   {
@@ -13,7 +13,7 @@ const services = [
     description:
       "ZK Concept assure la livraison rapide et fiable de colis a travers la Belgique. Forte de plusieurs annees d'experience aupres d'acteurs majeurs du secteur, l'entreprise garantit ponctualite, respect des procedures et qualite de service constante. Chaque tournee est optimisee afin d'assurer efficacite, tracabilite et satisfaction client.",
     points: [
-      "Tournées optimisées selon les zones et contraintes horaires",
+      "Tournees optimisees selon les zones et contraintes horaires",
       "Gestion rigoureuse des procedures et du suivi de livraison",
       "Niveau de service stable sur des volumes variables",
     ],
@@ -39,9 +39,9 @@ const services = [
     description:
       "ZK Concept prend en charge la planification des tournees, la coordination des chauffeurs et le suivi operationnel complet. Sa structure independante permet d'assurer continuite, reactivite et stabilite dans l'execution des missions logistiques, meme dans des environnements exigeants.",
     points: [
-      "Planification opérationnelle des tournées",
-      "Coordination terrain et adaptation en temps réel",
-      "Suivi global des performances et de la qualité de service",
+      "Planification operationnelle des tournees",
+      "Coordination terrain et adaptation en temps reel",
+      "Suivi global des performances et de la qualite de service",
     ],
   },
 ];
@@ -60,14 +60,11 @@ export default function ServicesPage() {
 
   return (
     <div className="space-y-12">
-      <section className="space-y-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gray-500">
-          Services
-        </p>
-        <h1 className="text-4xl font-bold text-gray-900 md:text-5xl">
+      <section className="space-y-4 pt-[40px] text-center">
+        <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
           Trois services, une execution claire et fiable.
-        </h1>
-        <p className="max-w-3xl text-base text-gray-600 md:text-lg">
+        </h2>
+        <p className="mx-auto max-w-3xl text-base text-gray-600 md:text-lg">
           Chaque mission est structuree autour d'une methode simple: preparer,
           executer, suivre. Cette organisation permet d'assurer la regularite
           des operations, la transparence et une qualite de service constante.
@@ -81,7 +78,7 @@ export default function ServicesPage() {
             id={service.anchor}
             className="scroll-mt-28 grid gap-6 rounded-2xl border border-gray-200 p-5 md:p-6 lg:grid-cols-[1.1fr_1fr]"
           >
-            <div className={`${index % 2 === 1 ? "lg:order-2" : ""}`}>
+            <div className={index % 2 === 1 ? "lg:order-2" : ""}>
               <img
                 src={service.image}
                 alt={service.title}
@@ -89,7 +86,7 @@ export default function ServicesPage() {
               />
             </div>
 
-            <div className={`space-y-4 ${index % 2 === 1 ? "lg:order-1" : ""}`}>
+            <div className={index % 2 === 1 ? "space-y-4 lg:order-1" : "space-y-4"}>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-red-600">
                 Service {service.id}
               </p>

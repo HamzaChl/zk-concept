@@ -66,7 +66,7 @@ export default function HomePage() {
                 type="button"
                 className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-100"
               >
-                Nous contacter
+                Travailler ensemble
               </button>
               <button
                 type="button"
