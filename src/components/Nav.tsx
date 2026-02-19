@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import { NavLink } from "react-router-dom";
 import logoZk from "../assets/logo-zk.png";
 
@@ -11,12 +12,22 @@ const links = [
 export default function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 12);
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!navRef.current) return;
+    gsap.fromTo(
+      navRef.current,
+      { y: -90, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.95, ease: "power3.out" },
+    );
   }, []);
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
@@ -26,6 +37,7 @@ export default function Nav() {
 
   return (
     <header
+      ref={navRef}
       className={`sticky top-0 z-50 border-b px-4 transition-all duration-300 md:px-[50px] ${
         isScrolled
           ? "border-gray-200/80 bg-white/70 backdrop-blur-xl"

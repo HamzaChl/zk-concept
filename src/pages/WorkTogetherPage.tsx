@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
-import homeHeroImage from "../assets/home001.jpg";
+import homeHeroImage from "../assets/work-together.jpg";
 
 type FormState = {
   fullName: string;

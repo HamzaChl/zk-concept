@@ -161,12 +161,12 @@ export default function HomePage() {
               >
                 Travailler ensemble
               </Link>
-              <button
-                type="button"
+              <Link
+                to="/devis"
                 className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-gray-900"
               >
                 Demander un devis
-              </button>
+              </Link>
             </div>
           </div>
         </div>

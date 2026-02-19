@@ -19,8 +19,10 @@ export default function Footer() {
             className="h-8 w-auto object-contain"
           />
           <div className="space-y-1 text-sm text-gray-300">
-            <p>contact@zkconcept.com</p>
-            <p>+33 6 00 00 00 00</p>
+            <p>zakaria@zkconcept.be</p>
+            <p>
+              +32 489 39 57 80 <br /> +32 486 92 31 82
+            </p>
           </div>
           <Link
             to="/travailler-ensemble"
