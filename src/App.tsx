@@ -5,6 +5,7 @@ import ContactPage from "./pages/ContactPage";
 import FleetPage from "./pages/FleetPage";
 import HomePage from "./pages/HomePage";
 import ServicesPage from "./pages/ServicesPage";
+import WorkTogetherPage from "./pages/WorkTogetherPage";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/flotte" element={<FleetPage />} />
+          <Route path="/travailler-ensemble" element={<WorkTogetherPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

@@ -1,4 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLocation } from "react-router-dom";
 import colisImage from "../assets/colis.jpg";
 import journauxImage from "../assets/journaux.jpg";
@@ -48,6 +50,7 @@ const services = [
 
 export default function ServicesPage() {
   const location = useLocation();
+  const rootRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!location.hash) return;
@@ -58,13 +61,91 @@ export default function ServicesPage() {
     }, 40);
   }, [location.hash]);
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".services-hero-anim",
+        { y: 24, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.1,
+        },
+      );
+
+      gsap.utils.toArray<HTMLElement>(".service-card").forEach((card) => {
+        const image = card.querySelector(".service-image");
+        const contentItems = card.querySelectorAll(".service-reveal");
+
+        gsap.fromTo(
+          card,
+          { y: 34, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.9,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 84%",
+              toggleActions: "play none none reverse",
+            },
+          },
+        );
+
+        if (image) {
+          gsap.fromTo(
+            image,
+            { scale: 1.06, opacity: 0 },
+            {
+              scale: 1,
+              opacity: 1,
+              duration: 1,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 82%",
+                toggleActions: "play none none reverse",
+              },
+            },
+          );
+        }
+
+        if (contentItems.length > 0) {
+          gsap.fromTo(
+            contentItems,
+            { y: 18, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.7,
+              stagger: 0.08,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 80%",
+                toggleActions: "play none none reverse",
+              },
+            },
+          );
+        }
+      });
+    }, rootRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="space-y-12">
+    <div ref={rootRef} className="space-y-12">
       <section className="space-y-4 pt-[40px] text-center">
-        <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+        <h2 className="services-hero-anim text-2xl font-bold text-gray-900 md:text-3xl">
           Trois services, une execution claire et fiable.
         </h2>
-        <p className="mx-auto max-w-3xl text-base text-gray-600 md:text-lg">
+        <p className="services-hero-anim mx-auto max-w-3xl text-base text-gray-600 md:text-lg">
           Chaque mission est structuree autour d'une methode simple: preparer,
           executer, suivre. Cette organisation permet d'assurer la regularite
           des operations, la transparence et une qualite de service constante.
@@ -76,31 +157,33 @@ export default function ServicesPage() {
           <article
             key={service.title}
             id={service.anchor}
-            className="scroll-mt-28 grid gap-6 rounded-2xl border border-gray-200 p-5 md:p-6 lg:grid-cols-[1.1fr_1fr]"
+            className="service-card scroll-mt-28 grid gap-6 rounded-2xl border border-gray-200 p-5 md:p-6 lg:grid-cols-[1.1fr_1fr]"
           >
             <div className={index % 2 === 1 ? "lg:order-2" : ""}>
               <img
                 src={service.image}
                 alt={service.title}
-                className="aspect-[5/3] w-full rounded-xl object-cover"
+                className="service-image aspect-[5/3] w-full rounded-xl object-cover"
               />
             </div>
 
-            <div className={index % 2 === 1 ? "space-y-4 lg:order-1" : "space-y-4"}>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-red-600">
+            <div
+              className={index % 2 === 1 ? "space-y-4 lg:order-1" : "space-y-4"}
+            >
+              <p className="service-reveal text-xs font-semibold uppercase tracking-[0.2em] text-[#4b5563]">
                 Service {service.id}
               </p>
-              <h2 className="text-2xl font-semibold text-gray-900 md:text-3xl">
+              <h2 className="service-reveal text-2xl font-semibold text-gray-900 md:text-3xl">
                 {service.title}
               </h2>
-              <p className="text-sm leading-7 text-gray-600 md:text-base">
+              <p className="service-reveal text-sm leading-7 text-gray-600 md:text-base">
                 {service.description}
               </p>
               <ul className="space-y-2">
                 {service.points.map((point) => (
                   <li
                     key={point}
-                    className="rounded-lg bg-gray-50 px-4 py-3 text-sm text-gray-700"
+                    className="service-reveal rounded-lg bg-gray-50 px-4 py-3 text-sm text-gray-700"
                   >
                     {point}
                   </li>

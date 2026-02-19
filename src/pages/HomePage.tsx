@@ -1,6 +1,15 @@
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import homeHeroImage from "../assets/home001.jpg";
 import bpostLogo from "../assets/Bpost.png";
 import colisPriveLogo from "../assets/Colis_Privé.svg.png";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../components/ui/accordion";
 import colisImage from "../assets/colis.jpg";
 import journauxImage from "../assets/journaux.jpg";
 import logisticsImage from "../assets/logistics.jpg";
@@ -34,9 +43,93 @@ const features = [
   },
 ];
 
+const whyItems = [
+  {
+    value: "item-1",
+    title: "Organisation operationnelle claire",
+    text: "Nos process sont structures pour reduire les frictions terrain, assurer des tournees fluides et maintenir un niveau de service constant, meme sur des pics d'activite.",
+  },
+  {
+    value: "item-2",
+    title: "Execution ponctuelle et fiable",
+    text: "Chaque mission est suivie avec rigueur, du depart a la livraison, afin de respecter les engagements horaires et les standards de qualite attendus.",
+  },
+  {
+    value: "item-3",
+    title: "Pilotage et suivi en continu",
+    text: "Nous analysons les performances, ajustons les plans et coordonnons les ressources pour garantir stabilite, controle et reactivite sur la duree.",
+  },
+  {
+    value: "item-4",
+    title: "Equipe experimentee",
+    text: "Notre equipe combine experience terrain et discipline operationnelle pour repondre aux exigences logistiques des entreprises les plus exigeantes.",
+  },
+];
+
 export default function HomePage() {
+  const rootRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".home-hero-anim",
+        { y: 28, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          ease: "power3.out",
+          stagger: 0.12,
+        },
+      );
+
+      gsap.utils.toArray<HTMLElement>(".reveal-section").forEach((section) => {
+        gsap.fromTo(
+          section,
+          { y: 36, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.85,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          },
+        );
+      });
+
+      gsap.utils.toArray<HTMLElement>(".reveal-stagger").forEach((container) => {
+        const items = container.querySelectorAll(".reveal-item");
+        if (items.length === 0) return;
+        gsap.fromTo(
+          items,
+          { y: 24, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: container,
+              start: "top 82%",
+              toggleActions: "play none none reverse",
+            },
+          },
+        );
+      });
+    }, rootRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="space-y-20">
+    <div ref={rootRef} className="space-y-20">
       <section className="relative overflow-hidden rounded-3xl bg-[#f0f4f8]">
         <div className="h-[520px] w-full md:h-[620px]">
           <img
@@ -50,24 +143,24 @@ export default function HomePage() {
 
         <div className="absolute inset-0 flex items-center px-6 md:px-12">
           <div className="max-w-2xl space-y-6">
-            <span className="inline-flex rounded-full border border-white/30 bg-white/15 px-4 py-2 text-xs font-semibold text-white backdrop-blur">
+            <span className="home-hero-anim inline-flex rounded-full border border-white/30 bg-white/15 px-4 py-2 text-xs font-semibold text-white backdrop-blur">
               Partenaire logistique indépendant
             </span>
-            <h1 className="text-4xl font-semibold leading-tight text-white md:text-6xl">
+            <h1 className="home-hero-anim text-4xl font-semibold leading-tight text-white md:text-6xl">
               Performance, ponctualité et efficacité au quotidien.
             </h1>
-            <p className="max-w-xl text-base text-white/85 md:text-lg">
+            <p className="home-hero-anim max-w-xl text-base text-white/85 md:text-lg">
               Spécialiste en livraison de colis et distribution de presse, ZK
               Concept assure des tournées optimisées, fiables et conformes aux
               exigences du secteur.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <button
-                type="button"
+            <div className="home-hero-anim flex flex-wrap gap-3">
+              <Link
+                to="/travailler-ensemble"
                 className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-100"
               >
                 Travailler ensemble
-              </button>
+              </Link>
               <button
                 type="button"
                 className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-gray-900"
@@ -79,18 +172,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-xl space-y-3 text-center">
+      <section className="reveal-section mx-auto max-w-xl space-y-3 text-center">
         <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-gray-500">
           A travaillé avec{" "}
         </p>
-        <div className="grid gap-2 sm:grid-cols-3">
+        <div className="reveal-stagger grid gap-2 sm:grid-cols-3">
           {partners.map((partner) => (
             <a
               key={partner.name}
               href={partner.href}
               target="_blank"
               rel="noreferrer"
-              className="group flex h-[90px] items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 transition-transform duration-300 hover:scale-[1.03]"
+              className="reveal-item group flex h-[90px] items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 transition-transform duration-300 hover:scale-[1.03]"
             >
               <img
                 src={partner.logo}
@@ -108,7 +201,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="space-y-6">
+      <section className="reveal-section space-y-6">
         <h2 className="text-3xl font-semibold text-gray-900 md:text-4xl">
           Nos services
         </h2>
@@ -117,11 +210,11 @@ export default function HomePage() {
           pensées pour garantir ponctualité, efficacité et continuité
           opérationnelle.
         </p>
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="reveal-stagger grid gap-4 md:grid-cols-3">
           {features.map((feature) => (
             <article
               key={feature.title}
-              className="space-y-4 rounded-2xl border border-gray-200 p-6"
+              className="reveal-item space-y-4 rounded-2xl border border-gray-200 p-6"
             >
               <div className="overflow-hidden rounded-xl">
                 <img
@@ -147,37 +240,40 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="grid gap-6 rounded-2xl border border-gray-200 p-8 md:grid-cols-2 md:items-center md:p-10">
+      <section className="reveal-section grid gap-6 rounded-2xl border border-gray-200 p-8 md:grid-cols-2 md:items-center md:p-10">
         <div className="space-y-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-red-600">
-            Why ZK Concept
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#4b5563]">
+            POURQUOI ZK CONCEPT
           </p>
           <h2 className="text-3xl font-semibold text-gray-900 md:text-4xl">
-            Built for teams that need speed, control and reliability.
+            Concu pour les entreprises qui exigent rapidite, controle et
+            fiabilite.
           </h2>
           <p className="text-base text-gray-600">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
-            odio praesent libero sed cursus ante dapibus diam.
+            Grace a une organisation maitrisee et une equipe experimentee, ZK
+            Concept garantit efficacite, ponctualite et stabilite
+            operationnelle.
           </p>
         </div>
-        <ul className="space-y-3 text-sm text-gray-700">
-          <li className="rounded-lg bg-gray-50 px-4 py-3">
-            Real-time trip tracking
-          </li>
-          <li className="rounded-lg bg-gray-50 px-4 py-3">
-            Automated client notifications
-          </li>
-          <li className="rounded-lg bg-gray-50 px-4 py-3">
-            Dedicated account support
-          </li>
-          <li className="rounded-lg bg-gray-50 px-4 py-3">
-            Transparent pricing engine
-          </li>
-        </ul>
+        <Accordion
+          type="single"
+          collapsible
+          defaultValue="item-1"
+          className="w-full max-w-lg md:justify-self-end"
+        >
+          {whyItems.map((item) => (
+            <AccordionItem key={item.value} value={item.value}>
+              <AccordionTrigger>{item.title}</AccordionTrigger>
+              <AccordionContent>
+                {item.text}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </section>
 
-      <section className="rounded-3xl bg-gray-900 p-8 text-white md:p-12">
-        <div className="space-y-5">
+      <section className="reveal-section rounded-3xl bg-gray-900 p-8 text-white md:p-12">
+        <div className="reveal-stagger space-y-5">
           <h2 className="text-3xl font-semibold md:text-5xl">
             Ready to launch your next transport project?
           </h2>
@@ -185,7 +281,7 @@ export default function HomePage() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="reveal-item flex flex-wrap gap-3">
             <button
               type="button"
               className="rounded-full bg-red-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-700"

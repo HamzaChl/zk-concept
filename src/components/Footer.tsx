@@ -22,12 +22,12 @@ export default function Footer() {
             <p>contact@zkconcept.com</p>
             <p>+33 6 00 00 00 00</p>
           </div>
-          <button
-            type="button"
-            className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-200"
+          <Link
+            to="/travailler-ensemble"
+            className="inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-200"
           >
             Travailler ensemble
-          </button>
+          </Link>
         </div>
 
         <div className="space-y-3 lg:justify-self-end">
