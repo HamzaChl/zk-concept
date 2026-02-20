@@ -21,6 +21,16 @@ const getErrorMessage = (error: unknown): string => {
   return "Unknown error";
 };
 
+const formatResendError = (value: unknown): string => {
+  if (!value) return "Unknown Resend error";
+  if (typeof value === "string") return value;
+  if (value instanceof Error) return value.message;
+  if (typeof value === "object" && "message" in value) {
+    return String((value as { message?: unknown }).message || "Resend error");
+  }
+  return "Resend error";
+};
+
 export default async function handler(req: ApiRequest, res: ApiResponse) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -48,7 +58,10 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
   }
 
   const from = process.env.CONTACT_FROM || "no-reply@zkconcept.be";
-  const internalRecipient = "zakaria@zkconcept.be";
+  const internalRecipient =
+    process.env.CONTACT_INTERNAL_TO ||
+    process.env.CONTACT_COMPANY_EMAIL ||
+    "zakaria@zkconcept.be";
   const logoUrl = process.env.CONTACT_LOGO_URL || "https://zkconcept.be/logo-zk.png";
   const privacyUrl = process.env.CONTACT_PRIVACY_URL || "https://zkconcept.be/privacy";
   const legalUrl = process.env.CONTACT_LEGAL_URL || "https://zkconcept.be/mentions-legales";
@@ -72,23 +85,40 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
       companyPhone,
     });
 
-    await Promise.all([
-      resend.emails.send({
-        from: `ZK Concept <${from}>`,
-        to: [internalRecipient],
-        replyTo: body.email,
-        subject: `Nouvelle demande - ${body.fullName}`,
-        html: internalHtml,
-      }),
-      resend.emails.send({
-        from: `ZK Concept <${from}>`,
-        to: [body.email as string],
-        subject: "Merci pour votre demande - ZK Concept",
-        html: clientHtml,
-      }),
-    ]);
+    const internalResult = await resend.emails.send({
+      from: `ZK Concept <${from}>`,
+      to: [internalRecipient],
+      replyTo: body.email,
+      subject: `Nouvelle demande - ${body.fullName}`,
+      html: internalHtml,
+    });
 
-    return res.status(200).json({ ok: true });
+    if (internalResult.error) {
+      return res.status(502).json({
+        error: "Internal email failed",
+        details: formatResendError(internalResult.error),
+      });
+    }
+
+    const clientResult = await resend.emails.send({
+      from: `ZK Concept <${from}>`,
+      to: [body.email as string],
+      subject: "Merci pour votre demande - ZK Concept",
+      html: clientHtml,
+    });
+
+    if (clientResult.error) {
+      return res.status(502).json({
+        error: "Client confirmation email failed",
+        details: formatResendError(clientResult.error),
+      });
+    }
+
+    return res.status(200).json({
+      ok: true,
+      internalId: internalResult.data?.id ?? null,
+      clientId: clientResult.data?.id ?? null,
+    });
   } catch (error: unknown) {
     return res.status(500).json({
       error: "Unable to send email",

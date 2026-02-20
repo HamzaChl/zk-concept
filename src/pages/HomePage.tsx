@@ -24,19 +24,19 @@ const partners = [
 
 const features = [
   {
-    anchor: "livraison-colis",
+    to: "/livraison-colis",
     title: "Livraison de Colis",
     text: "ZK Concept assure la livraison rapide et fiable de colis a travers la Belgique. Forte de plusieurs annees d'experience aupres d'acteurs majeurs du secteur, l'entreprise garantit ponctualite, respect des procedures et qualite de service constante. Chaque tournee est optimisee afin d'assurer efficacite, tracabilite et satisfaction client.",
     image: colisImage,
   },
   {
-    anchor: "distribution-presse",
+    to: "/distribution-presse",
     title: "Distribution de Presse",
     text: "L'entreprise assure la distribution matinale de journaux et magazines avec precision et regularite. Grace a une organisation structuree incluant le tri, la preparation et la gestion des tournees, ZK Concept garantit une execution ponctuelle et conforme aux exigences des distributeurs et editeurs.",
     image: journauxImage,
   },
   {
-    anchor: "gestion-logistique",
+    to: "/gestion-logistique",
     title: "Gestion Logistique et Coordination",
     text: "ZK Concept prend en charge la planification des tournees, la coordination des chauffeurs et le suivi operationnel complet. Sa structure independante permet d'assurer continuite, reactivite et stabilite dans l'execution des missions logistiques, meme dans des environnements exigeants.",
     image: logisticsImage,
@@ -103,26 +103,28 @@ export default function HomePage() {
         );
       });
 
-      gsap.utils.toArray<HTMLElement>(".reveal-stagger").forEach((container) => {
-        const items = container.querySelectorAll(".reveal-item");
-        if (items.length === 0) return;
-        gsap.fromTo(
-          items,
-          { y: 24, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.7,
-            stagger: 0.1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: container,
-              start: "top 82%",
-              toggleActions: "play none none reverse",
+      gsap.utils
+        .toArray<HTMLElement>(".reveal-stagger")
+        .forEach((container) => {
+          const items = container.querySelectorAll(".reveal-item");
+          if (items.length === 0) return;
+          gsap.fromTo(
+            items,
+            { y: 24, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.7,
+              stagger: 0.1,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: container,
+                start: "top 82%",
+                toggleActions: "play none none reverse",
+              },
             },
-          },
-        );
-      });
+          );
+        });
     }, rootRef);
 
     return () => ctx.revert();
@@ -230,7 +232,7 @@ export default function HomePage() {
                 {feature.text}
               </p>
               <Link
-                to={`/services#${feature.anchor}`}
+                to={feature.to}
                 className="inline-flex rounded-full bg-black px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-gray-800"
               >
                 + de details
@@ -264,9 +266,7 @@ export default function HomePage() {
           {whyItems.map((item) => (
             <AccordionItem key={item.value} value={item.value}>
               <AccordionTrigger>{item.title}</AccordionTrigger>
-              <AccordionContent>
-                {item.text}
-              </AccordionContent>
+              <AccordionContent>{item.text}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
@@ -275,25 +275,29 @@ export default function HomePage() {
       <section className="reveal-section rounded-3xl bg-gray-900 p-8 text-white md:p-12">
         <div className="reveal-stagger space-y-5">
           <h2 className="text-3xl font-semibold md:text-5xl">
-            Ready to launch your next transport project?
+            Prêt à optimiser vos opérations logistiques ?
           </h2>
           <p className="max-w-3xl text-sm text-gray-300 md:text-base">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            ZK Concept accompagne les entreprises dans la livraison de colis et
+            la distribution de presse avec fiabilité, ponctualité et efficacité.
+            Discutons de votre projet et mettons en place une solution adaptée à
+            vos besoins.
           </p>
           <div className="reveal-item flex flex-wrap gap-3">
-            <button
-              type="button"
-              className="rounded-full bg-red-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-700"
-            >
-              Start now
-            </button>
-            <button
-              type="button"
-              className="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-gray-900"
-            >
-              Request demo
-            </button>
+            <div className="home-hero-anim flex flex-wrap gap-3">
+              <Link
+                to="/travailler-ensemble"
+                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-100"
+              >
+                Travailler ensemble
+              </Link>
+              <Link
+                to="/devis"
+                className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-gray-900"
+              >
+                Demander un devis
+              </Link>
+            </div>
           </div>
         </div>
       </section>
