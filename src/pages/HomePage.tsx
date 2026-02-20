@@ -26,19 +26,19 @@ const features = [
   {
     to: "/livraison-colis",
     title: "Livraison de Colis",
-    text: "ZK Concept assure la livraison rapide et fiable de colis a travers la Belgique. Forte de plusieurs annees d'experience aupres d'acteurs majeurs du secteur, l'entreprise garantit ponctualite, respect des procedures et qualite de service constante. Chaque tournee est optimisee afin d'assurer efficacite, tracabilite et satisfaction client.",
+    text: "ZK Concept assure la livraison rapide et fiable de colis à travers la Belgique. Forte de plusieurs années d'expérience auprès d'acteurs majeurs du secteur, l'entreprise garantit ponctualité, respect des procedures et qualité de service constante. Chaque tournée est optimisee afin d'assurer efficacité, traçabilité et satisfaction client.",
     image: colisImage,
   },
   {
     to: "/distribution-presse",
     title: "Distribution de Presse",
-    text: "L'entreprise assure la distribution matinale de journaux et magazines avec precision et regularite. Grace a une organisation structuree incluant le tri, la preparation et la gestion des tournees, ZK Concept garantit une execution ponctuelle et conforme aux exigences des distributeurs et editeurs.",
+    text: "L'entreprise assure la distribution matinale de journaux et magazines avec précision et régularité. Grâce à une organisation structurée incluant le tri, la preparation et la gestion des tournées, ZK Concept garantit une exécution ponctuelle et conforme aux exigences des distributeurs et editeurs.",
     image: journauxImage,
   },
   {
     to: "/gestion-logistique",
     title: "Gestion Logistique et Coordination",
-    text: "ZK Concept prend en charge la planification des tournees, la coordination des chauffeurs et le suivi operationnel complet. Sa structure independante permet d'assurer continuite, reactivite et stabilite dans l'execution des missions logistiques, meme dans des environnements exigeants.",
+    text: "ZK Concept prend en charge la planification des tournées, la coordination des chauffeurs et le suivi opérationnel complet. Sa structure independante permet d'assurer continuité, réactivité et stabilité dans l'exécution des missions logistiques, même dans des environnements exigeants.",
     image: logisticsImage,
   },
 ];
@@ -46,23 +46,23 @@ const features = [
 const whyItems = [
   {
     value: "item-1",
-    title: "Organisation operationnelle claire",
-    text: "Nos process sont structures pour reduire les frictions terrain, assurer des tournees fluides et maintenir un niveau de service constant, meme sur des pics d'activite.",
+    title: "Organisation opérationnelle claire",
+    text: "Nos process sont structures pour reduire les frictions terrain, assurer des tournées fluides et maintenir un niveau de service constant, même sur des pics d'activite.",
   },
   {
     value: "item-2",
     title: "Execution ponctuelle et fiable",
-    text: "Chaque mission est suivie avec rigueur, du depart a la livraison, afin de respecter les engagements horaires et les standards de qualite attendus.",
+    text: "Chaque mission est suivie avec rigueur, du depart a la livraison, afin de respecter les engagements horaires et les standards de qualité attendus.",
   },
   {
     value: "item-3",
     title: "Pilotage et suivi en continu",
-    text: "Nous analysons les performances, ajustons les plans et coordonnons les ressources pour garantir stabilite, controle et reactivite sur la duree.",
+    text: "Nous analysons les performances, ajustons les plans et coordonnons les ressources pour garantir stabilité, contrôle et réactivité sur la duree.",
   },
   {
     value: "item-4",
-    title: "Equipe experimentee",
-    text: "Notre equipe combine experience terrain et discipline operationnelle pour repondre aux exigences logistiques des entreprises les plus exigeantes.",
+    title: "Equipe expérimentée",
+    text: "Notre équipe combine expérience terrain et discipline opérationnelle pour répondre aux exigences logistiques des entreprises les plus exigeantes.",
   },
 ];
 
@@ -248,13 +248,13 @@ export default function HomePage() {
             POURQUOI ZK CONCEPT
           </p>
           <h2 className="text-3xl font-semibold text-gray-900 md:text-4xl">
-            Concu pour les entreprises qui exigent rapidite, controle et
-            fiabilite.
+            Conçu pour les entreprises qui exigent rapidité, contrôle et
+            fiabilité.
           </h2>
           <p className="text-base text-gray-600">
-            Grace a une organisation maitrisee et une equipe experimentee, ZK
-            Concept garantit efficacite, ponctualite et stabilite
-            operationnelle.
+            Grâce à une organisation maîtrisée et une équipe expérimentée, ZK
+            Concept garantit efficacité, ponctualité et stabilité
+            opérationnelle.
           </p>
         </div>
         <Accordion
@@ -272,7 +272,7 @@ export default function HomePage() {
         </Accordion>
       </section>
 
-      <section className="reveal-section rounded-3xl bg-gray-900 p-8 text-white md:p-12">
+      <section className="reveal-section rounded-3xl bg-[#1f2937] p-8 text-white md:p-12">
         <div className="reveal-stagger space-y-5">
           <h2 className="text-3xl font-semibold md:text-5xl">
             Prêt à optimiser vos opérations logistiques ?

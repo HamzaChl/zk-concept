@@ -8,19 +8,19 @@ export default function LivraisonColisPage() {
       title="Livraison de Colis"
       image={colisImage}
       secondaryImage={colisImage2}
-      description="ZK Concept assure la livraison rapide et fiable de colis a travers la Belgique. Forte de plusieurs annees d'experience aupres d'acteurs majeurs du secteur, l'entreprise garantit ponctualite, respect des procedures et qualite de service constante. Chaque tournee est optimisee afin d'assurer efficacite, tracabilite et satisfaction client."
+      description="ZK Concept assure la livraison rapide et fiable de colis à travers la Belgique. Forte de plusieurs années d'expérience auprès d'acteurs majeurs du secteur, l'entreprise garantit ponctualité, respect des procedures et qualité de service constante. Chaque tournée est optimisee afin d'assurer efficacité, traçabilité et satisfaction client."
       details={[
         {
           title: "Tournees optimisees",
-          text: "Chaque tournee est preparee selon les zones, les horaires de livraison et les contraintes terrain pour reduire les temps morts et maintenir une cadence fiable.",
+          text: "Chaque tournée est preparee selon les zones, les horaires de livraison et les contraintes terrain pour reduire les temps morts et maintenir une cadence fiable.",
         },
         {
-          title: "Suivi et tracabilite",
-          text: "Nous appliquons un suivi rigoureux des colis, avec des procedures claires a chaque etape, afin d'assurer transparence, controle et qualite de service.",
+          title: "Suivi et traçabilité",
+          text: "Nous appliquons un suivi rigoureux des colis, avec des procedures claires a chaque etape, afin d'assurer transparence, contrôle et qualité de service.",
         },
         {
-          title: "Fiabilite operationnelle",
-          text: "Notre organisation permet d'absorber des volumes variables tout en conservant ponctualite, regularite et satisfaction client sur la duree.",
+          title: "Fiabilite opérationnelle",
+          text: "Notre organisation permet d'absorber des volumes variables tout en conservant ponctualité, régularité et satisfaction client sur la duree.",
         },
       ]}
     />

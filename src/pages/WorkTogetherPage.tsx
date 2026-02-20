@@ -49,24 +49,24 @@ export default function WorkTogetherPage() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, formType: "work_together" }),
       });
 
       if (!response.ok) {
         const raw = await response.text().catch(() => "");
-        let details = raw;
+        let détails = raw;
         try {
           const parsed = JSON.parse(raw) as {
             error?: string;
             details?: string;
           };
-          details =
+          détails =
             `${parsed.error || ""} ${parsed.details || ""}`.trim() || raw;
         } catch {
           // Keep raw text as details
         }
         throw new Error(
-          details || `Erreur lors de l'envoi (HTTP ${response.status})`,
+          détails || `Erreur lors de l'envoi (HTTP ${response.status})`,
         );
       }
 
@@ -99,8 +99,8 @@ export default function WorkTogetherPage() {
                   Construisons une collaboration fiable et durable.
                 </h2>
                 <p className="max-w-md text-sm leading-6 text-white/85">
-                  Performance terrain, execution rigoureuse et accompagnement
-                  operationnel pour vos activites logistiques.
+                  Performance terrain, exécution rigoureuse et accompagnement
+                  opérationnel pour vos activites logistiques.
                 </p>
               </div>
             </div>
@@ -112,14 +112,14 @@ export default function WorkTogetherPage() {
                 </h1>
                 <p className="max-w-2xl text-base text-gray-600">
                   Remplissez ce formulaire pour nous decrire votre besoin
-                  logistique. Notre equipe revient vers vous rapidement avec une
+                  logistique. Notre équipe revient vers vous rapidement avec une
                   proposition claire.
                 </p>
               </div>
 
               {submitted ? (
                 <div className="mb-6 rounded-xl bg-green-50 px-4 py-3 text-sm text-green-700">
-                  Merci, votre demande a bien ete envoyee.
+                  Merci, votre demande a bien ete envoyée.
                 </div>
               ) : null}
               {errorMessage ? (
@@ -147,7 +147,7 @@ export default function WorkTogetherPage() {
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Societe <span className="text-[#4b5563]">*</span>
+                      Société <span className="text-[#4b5563]">*</span>
                     </span>
                     <input
                       required
@@ -228,7 +228,7 @@ export default function WorkTogetherPage() {
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Date de demarrage
+                      Date de démarrage
                     </span>
                     <input
                       type="date"
@@ -257,7 +257,7 @@ export default function WorkTogetherPage() {
 
                 <label className="space-y-2">
                   <span className="text-sm font-semibold text-gray-800">
-                    Details de votre besoin{" "}
+                    Détails de votre besoin{" "}
                     <span className="text-[#4b5563]">*</span>
                   </span>
                   <textarea
@@ -268,7 +268,7 @@ export default function WorkTogetherPage() {
                       setForm({ ...form, message: e.target.value })
                     }
                     className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                    placeholder="Decrivez vos contraintes, vos delais et vos objectifs."
+                    placeholder="Decrivez vos contraintes, vos délais et vos objectifs."
                   />
                 </label>
 

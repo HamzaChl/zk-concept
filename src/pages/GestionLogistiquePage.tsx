@@ -8,19 +8,19 @@ export default function GestionLogistiquePage() {
       title="Gestion Logistique et Coordination"
       image={logisticsImage}
       secondaryImage={logisticsImage2}
-      description="ZK Concept prend en charge la planification des tournees, la coordination des chauffeurs et le suivi operationnel complet. Sa structure independante permet d'assurer continuite, reactivite et stabilite dans l'execution des missions logistiques, meme dans des environnements exigeants."
+      description="ZK Concept prend en charge la planification des tournées, la coordination des chauffeurs et le suivi opérationnel complet. Sa structure independante permet d'assurer continuité, réactivité et stabilité dans l'exécution des missions logistiques, même dans des environnements exigeants."
       details={[
         {
-          title: "Planification des tournees",
-          text: "Nous structurons les flux et les itineraires pour assurer une execution coherente, limiter les retards et optimiser les ressources.",
+          title: "Planification des tournées",
+          text: "Nous structurons les flux et les itineraires pour assurer une exécution cohérente, limiter les retards et optimiser les ressources.",
         },
         {
-          title: "Coordination des equipes",
-          text: "La coordination chauffeurs et terrain est suivie en continu pour s'adapter rapidement aux aleas et maintenir la continute operationnelle.",
+          title: "Coordination des équipes",
+          text: "La coordination chauffeurs et terrain est suivie en continu pour s'adapter rapidement aux aléas et maintenir la continuité opérationnelle.",
         },
         {
           title: "Suivi de performance",
-          text: "Un suivi global des operations permet d'identifier les axes d'amelioration, de fiabiliser les missions et de garantir la stabilite du service.",
+          text: "Un suivi global des operations permet d'identifier les axes d'amélioration, de fiabiliser les missions et de garantir la stabilité du service.",
         },
       ]}
     />

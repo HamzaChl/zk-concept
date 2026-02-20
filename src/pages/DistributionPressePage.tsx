@@ -8,11 +8,11 @@ export default function DistributionPressePage() {
       title="Distribution de Presse"
       image={journauxImage}
       secondaryImage={journauxImage2}
-      description="L'entreprise assure la distribution matinale de journaux et magazines avec precision et regularite. Grace a une organisation structuree incluant le tri, la preparation et la gestion des tournees, ZK Concept garantit une execution ponctuelle et conforme aux exigences des distributeurs et editeurs."
+      description="L'entreprise assure la distribution matinale de journaux et magazines avec précision et régularité. Grâce à une organisation structurée incluant le tri, la preparation et la gestion des tournées, ZK Concept garantit une exécution ponctuelle et conforme aux exigences des distributeurs et editeurs."
       details={[
         {
           title: "Preparation et tri",
-          text: "Les supports sont prepares et organises en amont pour garantir une mise en tournee efficace et limiter les erreurs de distribution.",
+          text: "Les supports sont prepares et organises en amont pour garantir une mise en tournée efficace et limiter les erreurs de distribution.",
         },
         {
           title: "Execution matinale",
@@ -20,7 +20,7 @@ export default function DistributionPressePage() {
         },
         {
           title: "Regularite quotidienne",
-          text: "Notre methode assure une distribution stable et conforme, jour apres jour, avec un niveau de qualite constant.",
+          text: "Notre methode assure une distribution stable et conforme, jour apres jour, avec un niveau de qualité constant.",
         },
       ]}
     />

@@ -49,20 +49,20 @@ export default function Footer() {
 
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-400">
-              Mentions legales
+              Mentions légales
             </p>
             <nav className="space-y-2">
               <Link
                 to="/politique-de-confidentialite"
                 className="block text-sm text-gray-200 transition-colors hover:text-white"
               >
-                Politique de confidentialite
+                Politique de confidentialité
               </Link>
               <Link
                 to="/mentions-legales"
                 className="block text-sm text-gray-200 transition-colors hover:text-white"
               >
-                Mentions legales
+                Mentions légales
               </Link>
               <Link
                 to="/imprint"

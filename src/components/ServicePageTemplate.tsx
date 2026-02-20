@@ -116,8 +116,8 @@ export default function ServicePageTemplate({
           {title}
         </h2>
         <p className="services-hero-anim mx-auto max-w-3xl text-base text-gray-600 md:text-lg">
-          Une execution claire, structuree et fiable, adaptee a vos exigences
-          operationnelles.
+          Une exécution claire, structurée et fiable, adaptée a vos exigences
+          opérationnelles.
         </p>
       </section>
 
@@ -158,12 +158,12 @@ export default function ServicePageTemplate({
       <section className="service-card grid gap-6 rounded-2xl border border-gray-200 p-5 md:p-6 lg:grid-cols-[1fr_1.1fr] lg:items-center">
         <div className="space-y-4">
           <h3 className="service-reveal text-2xl font-semibold text-gray-900 md:text-3xl">
-            Interesse ? Completez nos formulaires.
+            Intéressé ? Complétez nos formulaires.
           </h3>
           <p className="service-reveal text-sm leading-7 text-gray-600 md:text-base">
             Vous avez un besoin en livraison, distribution ou coordination
             logistique ? Envoyez votre demande via nos formulaires pour recevoir
-            une reponse rapide et une proposition adaptee a votre activite.
+            une reponse rapide et une proposition adaptée a votre activite.
           </p>
           <div className="service-reveal flex flex-wrap gap-3 pt-1">
             <Link
