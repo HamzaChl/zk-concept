@@ -76,7 +76,7 @@ export default function Footer() {
       </div>
 
       <div className="relative z-10 flex flex-col gap-2 pt-4 text-xs text-gray-400 md:flex-row md:items-center md:justify-between">
-        <p>© 2026 ZK Concept. Tous droits reserves.</p>
+        <p>© 2026 ZK Concept. Tous droits réservés.</p>
       </div>
 
       <svg
