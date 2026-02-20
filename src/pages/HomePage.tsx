@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import homeHeroImage from "../assets/home001.jpg";
 import bpostLogo from "../assets/Bpost.png";
-import colisPriveLogo from "../assets/Colis_Privé.svg.png";
+import colisPriveLogo from "../assets/colis-prive-logo.png";
 import {
   Accordion,
   AccordionContent,
