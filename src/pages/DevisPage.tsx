@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import homeHeroImage from "../assets/work-together.jpg";
 
 type FormState = {
@@ -53,10 +55,69 @@ const initialState: FormState = {
 };
 
 export default function DevisPage() {
+  const rootRef = useRef<HTMLDivElement | null>(null);
   const [form, setForm] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".devis-hero-anim",
+        { y: 24, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.85,
+          stagger: 0.1,
+          ease: "power3.out",
+        },
+      );
+
+      gsap.fromTo(
+        ".devis-reveal-card",
+        { y: 32, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".devis-reveal-card",
+            start: "top 88%",
+            toggleActions: "play none none reverse",
+          },
+        },
+      );
+
+      gsap.utils.toArray<HTMLElement>(".devis-reveal-group").forEach((group) => {
+        const items = group.querySelectorAll(".devis-reveal-item");
+        if (items.length === 0) return;
+
+        gsap.fromTo(
+          items,
+          { y: 18, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.65,
+            stagger: 0.08,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: group,
+              start: "top 84%",
+              toggleActions: "play none none reverse",
+            },
+          },
+        );
+      });
+    }, rootRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const getErrorMessage = (error: unknown): string => {
     if (error instanceof Error && error.message) return error.message;
@@ -104,9 +165,12 @@ export default function DevisPage() {
   };
 
   return (
-    <div className="mx-2 rounded-3xl bg-gray-50 py-10 md:mx-4 md:py-14">
+    <div
+      ref={rootRef}
+      className="mx-2 rounded-3xl bg-gray-50 py-10 md:mx-4 md:py-14"
+    >
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <section className="overflow-hidden rounded-3xl bg-white shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+        <section className="devis-reveal-card overflow-hidden rounded-3xl bg-white shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
           <div className="grid lg:grid-cols-2">
             <div className="order-1 relative min-h-[320px] overflow-hidden lg:min-h-[860px]">
               <img
@@ -115,14 +179,14 @@ export default function DevisPage() {
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-black/10" />
-              <div className="absolute left-6 top-6 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur">
+              <div className="devis-hero-anim absolute left-6 top-6 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur">
                 Demander un devis
               </div>
               <div className="absolute bottom-8 left-8 right-8 space-y-3">
-                <h2 className="text-2xl font-semibold leading-tight text-white md:text-3xl">
+                <h2 className="devis-hero-anim text-2xl font-semibold leading-tight text-white md:text-3xl">
                   Obtenez une estimation claire pour vos besoins logistiques.
                 </h2>
-                <p className="max-w-md text-sm leading-6 text-white/85">
+                <p className="devis-hero-anim max-w-md text-sm leading-6 text-white/85">
                   Performance terrain, exécution rigoureuse et accompagnement
                   opérationnel pour vos activites logistiques.
                 </p>
@@ -131,10 +195,10 @@ export default function DevisPage() {
 
             <div className="order-2 p-6 md:p-10 lg:p-12">
               <div className="space-y-4 pb-8">
-                <h1 className="text-3xl font-bold text-gray-900 md:text-4xl">
+                <h1 className="devis-hero-anim text-3xl font-bold text-gray-900 md:text-4xl">
                   Demander un devis
                 </h1>
-                <p className="max-w-2xl text-base text-gray-600">
+                <p className="devis-hero-anim max-w-2xl text-base text-gray-600">
                   Remplissez ce formulaire detaille pour recevoir une estimation
                   adaptée a vos volumes, vos zones et vos contraintes
                   opérationnelles.
@@ -142,24 +206,24 @@ export default function DevisPage() {
               </div>
 
               {submitted ? (
-                <div className="mb-6 rounded-xl bg-green-50 px-4 py-3 text-sm text-green-700">
+                <div className="devis-reveal-item mb-6 rounded-xl bg-green-50 px-4 py-3 text-sm text-green-700">
                   Merci, votre demande de devis a bien ete envoyée.
                 </div>
               ) : null}
               {errorMessage ? (
-                <div className="mb-6 rounded-xl bg-red-50 px-4 py-3 text-sm text-[#4b5563]">
+                <div className="devis-reveal-item mb-6 rounded-xl bg-red-50 px-4 py-3 text-sm text-[#4b5563]">
                   {errorMessage}
                 </div>
               ) : null}
 
-              <form className="space-y-8" onSubmit={onSubmit}>
-                <div className="space-y-4">
+              <form className="devis-reveal-group space-y-8" onSubmit={onSubmit}>
+                <div className="devis-reveal-item space-y-4">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
                     Informations entreprise
                   </p>
                 </div>
 
-                <div className="grid gap-5 md:grid-cols-2">
+                <div className="devis-reveal-item grid gap-5 md:grid-cols-2">
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
                       Nom complet <span className="text-[#4b5563]">*</span>
@@ -240,13 +304,13 @@ export default function DevisPage() {
                   </label>
                 </div>
 
-                <div className="space-y-4 pt-2">
+                <div className="devis-reveal-item space-y-4 pt-2">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
                     Besoin logistique
                   </p>
                 </div>
 
-                <div className="grid gap-5 md:grid-cols-2">
+                <div className="devis-reveal-item grid gap-5 md:grid-cols-2">
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
                       Service souhaite <span className="text-[#4b5563]">*</span>
@@ -309,13 +373,13 @@ export default function DevisPage() {
                   </label>
                 </div>
 
-                <div className="space-y-4 pt-2">
+                <div className="devis-reveal-item space-y-4 pt-2">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
                     Zone et planning
                   </p>
                 </div>
 
-                <div className="grid gap-5 md:grid-cols-2">
+                <div className="devis-reveal-item grid gap-5 md:grid-cols-2">
                   <label className="space-y-2 md:col-span-2">
                     <span className="text-sm font-semibold text-gray-800">
                       Adresse de collecte
@@ -431,13 +495,13 @@ export default function DevisPage() {
                   </label>
                 </div>
 
-                <div className="space-y-4 pt-2">
+                <div className="devis-reveal-item space-y-4 pt-2">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
                     Budget et details
                   </p>
                 </div>
 
-                <div className="grid gap-5 md:grid-cols-2">
+                <div className="devis-reveal-item grid gap-5 md:grid-cols-2">
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
                       Date de démarrage
@@ -465,7 +529,7 @@ export default function DevisPage() {
                   </label>
                 </div>
 
-                <label className="space-y-2">
+                <label className="devis-reveal-item space-y-2">
                   <span className="text-sm font-semibold text-gray-800">
                     Détails de votre besoin <span className="text-[#4b5563]">*</span>
                   </span>
@@ -479,7 +543,7 @@ export default function DevisPage() {
                   />
                 </label>
 
-                <label className="flex items-start gap-3 text-sm text-gray-700">
+                <label className="devis-reveal-item flex items-start gap-3 text-sm text-gray-700">
                   <input
                     required
                     type="checkbox"
@@ -494,7 +558,7 @@ export default function DevisPage() {
                   </span>
                 </label>
 
-                <div className="space-y-2">
+                <div className="devis-reveal-item space-y-2">
                   <button
                     type="submit"
                     disabled={isSending}

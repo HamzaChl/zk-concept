@@ -61,7 +61,7 @@ export default function Nav() {
   return (
     <header
       ref={navRef}
-      className={`sticky top-0 z-50 border-b px-4 transition-all duration-300 md:px-[50px] ${
+      className={`sticky top-0 z-50 border-b px-4 transition-all duration-300 min-[1070px]:px-[50px] ${
         isScrolled
           ? "border-gray-200/80 bg-white/70 backdrop-blur-xl"
           : "border-transparent bg-white/95"
@@ -76,7 +76,7 @@ export default function Nav() {
           />
         </NavLink>
 
-        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
+        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 min-[1070px]:flex">
           {links.map((link) => (
             <NavLink key={link.to} to={link.to} className={linkClass}>
               {link.label}
@@ -86,14 +86,14 @@ export default function Nav() {
 
         <NavLink
           to="/contact"
-          className="ml-auto hidden rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-gray-800 md:inline-flex"
+          className="ml-auto hidden rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-gray-800 min-[1070px]:inline-flex"
         >
           Contact
         </NavLink>
 
         <button
           type="button"
-          className="ml-auto rounded-full border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-900 md:hidden"
+          className="ml-auto rounded-full border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-900 min-[1070px]:hidden"
           onClick={() => setIsMenuOpen((prev) => !prev)}
         >
           Menu
@@ -103,7 +103,7 @@ export default function Nav() {
       {isMenuOpen ? (
         <div
           ref={mobileMenuRef}
-          className="mb-3 min-h-[70vh] rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:hidden"
+          className="mb-3 min-h-[70vh] rounded-2xl border border-gray-200 bg-white p-6 shadow-sm min-[1070px]:hidden"
         >
           <nav className="flex min-h-[calc(70vh-3rem)] flex-col justify-between">
             <div className="flex flex-col pt-4">
