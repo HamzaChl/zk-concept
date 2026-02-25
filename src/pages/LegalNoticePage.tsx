@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { useTranslation } from "react-i18next";
 
 export default function LegalNoticePage() {
+  const { t } = useTranslation();
   const rootRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -39,38 +41,31 @@ export default function LegalNoticePage() {
     <section ref={rootRef} className="mx-auto max-w-4xl space-y-8 py-12">
       <header className="space-y-3">
         <p className="legal-hero-anim text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-          Legal
+          {t("legal.kicker")}
         </p>
         <h1 className="legal-hero-anim text-3xl font-semibold text-gray-900 md:text-4xl">
-          Mentions légales
+          {t("legal.legalNotice.title")}
         </h1>
-        <p className="legal-hero-anim text-sm text-gray-600">
-          Dernière mise à jour: 20 février 2026
-        </p>
+        <p className="legal-hero-anim text-sm text-gray-600">{t("legal.updatedAt")}</p>
       </header>
 
       <div className="space-y-5 text-sm leading-7 text-gray-700">
         <p className="legal-reveal-item">
-          <strong>Editeur:</strong> ZK Concept
+          <strong>{t("legal.labels.publisher")}</strong> ZK Concept
         </p>
         <p className="legal-reveal-item">
-          <strong>Adresse:</strong> Romeinsesteenweg 200, 1800 Vilvoorde,
-          Belgique
+          <strong>{t("legal.labels.address")}</strong> Romeinsesteenweg 200,
+          1800 Vilvoorde, Belgique
         </p>
         <p className="legal-reveal-item">
-          <strong>Email:</strong> zakaria@zkconcept.be
+          <strong>{t("legal.labels.email")}</strong> zakaria@zkconcept.be
         </p>
         <p className="legal-reveal-item">
-          <strong>Telephone:</strong> +32 489 39 57 80 | +32 486 92 31 82
+          <strong>{t("legal.labels.phone")}</strong> +32 489 39 57 80 | +32 486
+          92 31 82
         </p>
-        <p className="legal-reveal-item">
-          Le site presente les activites de ZK Concept en livraison de colis,
-          distribution de presse et coordination logistique.
-        </p>
-        <p className="legal-reveal-item">
-          Les données personnelles traitees via ce site proviennent uniquement
-          des formulaires completes volontairement par les utilisateurs.
-        </p>
+        <p className="legal-reveal-item">{t("legal.legalNotice.description1")}</p>
+        <p className="legal-reveal-item">{t("legal.legalNotice.description2")}</p>
       </div>
     </section>
   );

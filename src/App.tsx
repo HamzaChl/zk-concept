@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Footer from "./components/Footer";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 import Nav from "./components/Nav";
 import ContactPage from "./pages/ContactPage";
 import DevisPage from "./pages/DevisPage";
@@ -55,6 +56,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <LanguageSwitcher />
     </div>
   );
 }

@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { useTranslation } from "react-i18next";
 
 export default function PrivacyPolicyPage() {
+  const { t } = useTranslation();
   const rootRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -39,40 +41,20 @@ export default function PrivacyPolicyPage() {
     <section ref={rootRef} className="mx-auto max-w-4xl space-y-8 py-12">
       <header className="space-y-3">
         <p className="legal-hero-anim text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-          Legal
+          {t("legal.kicker")}
         </p>
         <h1 className="legal-hero-anim text-3xl font-semibold text-gray-900 md:text-4xl">
-          Politique de confidentialité
+          {t("legal.privacy.title")}
         </h1>
-        <p className="legal-hero-anim text-sm text-gray-600">
-          Dernière mise à jour: 20 février 2026
-        </p>
+        <p className="legal-hero-anim text-sm text-gray-600">{t("legal.updatedAt")}</p>
       </header>
 
       <div className="space-y-6 text-sm leading-7 text-gray-700">
-        <p className="legal-reveal-item">
-          ZK Concept collecte uniquement les informations nécessaires au
-          traitement des demandes transmises via les formulaires du site: nom,
-          entreprise, email, téléphone et détails du besoin.
-        </p>
-        <p className="legal-reveal-item">
-          Ces données sont utilisees exclusivement pour répondre aux demandes,
-          etablir un contact commercial et assurer le suivi opérationnel. Elles
-          ne sont ni revendues ni louées à des tiers.
-        </p>
-        <p className="legal-reveal-item">
-          Le site n'utilise pas de collecte cachée de données personnelles à des
-          fins de profilage. Les informations sont fournies volontairement par
-          l'utilisateur lorsqu'il remplit un formulaire.
-        </p>
-        <p className="legal-reveal-item">
-          Vous pouvez demander l'accès, la rectification ou la suppression de
-          vos données à tout moment à l'adresse: zakaria@zkconcept.be.
-        </p>
-        <p className="legal-reveal-item">
-          En cas de mise à jour importante de cette politique, la date de
-          revision sera modifiée sur cette page.
-        </p>
+        <p className="legal-reveal-item">{t("legal.privacy.paragraph1")}</p>
+        <p className="legal-reveal-item">{t("legal.privacy.paragraph2")}</p>
+        <p className="legal-reveal-item">{t("legal.privacy.paragraph3")}</p>
+        <p className="legal-reveal-item">{t("legal.privacy.paragraph4")}</p>
+        <p className="legal-reveal-item">{t("legal.privacy.paragraph5")}</p>
       </div>
     </section>
   );

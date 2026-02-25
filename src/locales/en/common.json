@@ -1,0 +1,286 @@
+{
+  "common": {
+    "workTogether": "Work together",
+    "quote": "Request a quote",
+    "moreDetails": "More details"
+  },
+  "nav": {
+    "home": "Home",
+    "parcelDelivery": "Parcel delivery",
+    "pressDistribution": "Press distribution",
+    "logisticsManagement": "Logistics management",
+    "contact": "Contact",
+    "menu": "Menu",
+    "homeAriaLabel": "ZK Concept - Home"
+  },
+  "footer": {
+    "quickLinks": "Quick links",
+    "legalSection": "Legal",
+    "privacyPolicy": "Privacy policy",
+    "legalNotice": "Legal notice",
+    "imprint": "Imprint",
+    "copyright": "© 2026 ZK Concept. All rights reserved."
+  },
+  "language": {
+    "label": "Change language",
+    "fr": "Français",
+    "nl": "Nederlands",
+    "en": "English",
+    "de": "Deutsch"
+  },
+  "home": {
+    "hero": {
+      "imageAlt": "ZK Concept transport hero",
+      "badge": "Independent logistics partner",
+      "title": "Performance, punctuality and efficiency every day.",
+      "description": "Specialized in parcel delivery and press distribution, ZK Concept runs optimized, reliable routes that meet sector requirements."
+    },
+    "partners": {
+      "title": "Worked with"
+    },
+    "services": {
+      "title": "Our services",
+      "description": "High-performance, structured and reliable logistics solutions designed for punctuality, efficiency and operational continuity."
+    },
+    "why": {
+      "kicker": "WHY ZK CONCEPT",
+      "title": "Built for companies that require speed, control and reliability.",
+      "description": "With proven organization and an experienced team, ZK Concept delivers efficiency, punctuality and operational stability.",
+      "items": {
+        "item1": {
+          "title": "Clear operational organization",
+          "text": "Our processes reduce field friction, keep routes smooth and maintain consistent service quality, even during peak demand."
+        },
+        "item2": {
+          "title": "Reliable on-time execution",
+          "text": "Every mission is monitored with rigor, from departure to delivery, to meet schedule commitments and quality standards."
+        },
+        "item3": {
+          "title": "Continuous steering and monitoring",
+          "text": "We analyze performance, adjust plans and coordinate resources to ensure stability, control and responsiveness over time."
+        },
+        "item4": {
+          "title": "Experienced team",
+          "text": "Our team combines field experience and operational discipline to meet demanding logistics requirements."
+        }
+      }
+    },
+    "bottomCta": {
+      "title": "Ready to optimize your logistics operations?",
+      "description": "ZK Concept supports businesses in parcel delivery and press distribution with reliability, punctuality and efficiency. Let's discuss your project and set up the right solution for your needs."
+    }
+  },
+  "serviceTemplate": {
+    "heroDescription": "Clear, structured and reliable execution tailored to your operational requirements.",
+    "interestedTitle": "Interested? Complete our forms.",
+    "interestedDescription": "Need delivery, distribution or logistics coordination? Send your request through our forms for a fast response and a solution adapted to your activity."
+  },
+  "services": {
+    "parcel": {
+      "title": "Parcel delivery",
+      "description": "ZK Concept ensures fast and reliable parcel delivery across Belgium. Backed by years of experience with major players, we guarantee punctuality, process compliance and consistent service quality.",
+      "details": {
+        "optimizedRoutes": {
+          "title": "Optimized routes",
+          "text": "Each route is prepared according to zones, delivery windows and field constraints to reduce idle time and maintain a reliable pace."
+        },
+        "tracking": {
+          "title": "Tracking and traceability",
+          "text": "We apply rigorous parcel tracking with clear procedures at every step to ensure transparency, control and service quality."
+        },
+        "reliability": {
+          "title": "Operational reliability",
+          "text": "Our organization absorbs variable volumes while maintaining punctuality, consistency and customer satisfaction over time."
+        }
+      }
+    },
+    "press": {
+      "title": "Press distribution",
+      "description": "We handle early-morning newspaper and magazine distribution with precision and consistency. Structured organization including sorting, preparation and route management ensures punctual and compliant execution.",
+      "details": {
+        "preparation": {
+          "title": "Preparation and sorting",
+          "text": "Publications are prepared and organized upstream to ensure efficient routing and reduce distribution errors."
+        },
+        "morningExecution": {
+          "title": "Morning execution",
+          "text": "Deliveries are carried out within strict time windows, with precise control to meet distributor and publisher requirements."
+        },
+        "dailyConsistency": {
+          "title": "Daily consistency",
+          "text": "Our method ensures stable, compliant distribution day after day with consistent quality levels."
+        }
+      }
+    },
+    "logistics": {
+      "title": "Logistics management and coordination",
+      "description": "ZK Concept handles route planning, driver coordination and full operational follow-up. Our independent structure ensures continuity, responsiveness and stability, even in demanding environments.",
+      "details": {
+        "routePlanning": {
+          "title": "Route planning",
+          "text": "We structure flows and itineraries to ensure coherent execution, reduce delays and optimize resources."
+        },
+        "teamCoordination": {
+          "title": "Team coordination",
+          "text": "Driver and field coordination is monitored continuously to quickly adapt to changes and maintain operational continuity."
+        },
+        "performanceTracking": {
+          "title": "Performance monitoring",
+          "text": "Global operations monitoring helps identify improvements, strengthen mission reliability and ensure service stability."
+        }
+      }
+    }
+  },
+  "forms": {
+    "common": {
+      "sendError": "Error while sending",
+      "sending": "Sending...",
+      "requiredFields": "Required fields",
+      "fullName": "Full name",
+      "fullNamePlaceholder": "John Doe",
+      "company": "Company",
+      "companyPlaceholder": "ZK Logistics",
+      "email": "Email",
+      "emailPlaceholder": "contact@company.com",
+      "phone": "Phone",
+      "phonePlaceholder": "+32 ...",
+      "serviceDesired": "Desired service",
+      "chooseService": "Choose a service",
+      "monthlyVolume": "Estimated monthly volume",
+      "monthlyVolumePlaceholder": "Ex: 1000 deliveries",
+      "startDate": "Start date",
+      "budget": "Indicative budget",
+      "budgetPlaceholder": "Ex: 5,000 EUR / month",
+      "details": "Details of your needs",
+      "detailsPlaceholder": "Describe your constraints, timelines and objectives.",
+      "consent": "I agree to be contacted by ZK Concept regarding this request.",
+      "choose": "Choose"
+    },
+    "services": {
+      "colis": "Parcel delivery",
+      "presse": "Press distribution",
+      "logistique": "Logistics management and coordination"
+    }
+  },
+  "workTogether": {
+    "hero": {
+      "title": "Let's build a reliable, long-term collaboration.",
+      "description": "Field performance, rigorous execution and operational support for your logistics activities."
+    },
+    "form": {
+      "title": "Work together",
+      "description": "Fill out this form to describe your logistics needs. Our team will quickly come back with a clear proposal.",
+      "success": "Thank you, your request has been sent.",
+      "submit": "Send my request"
+    }
+  },
+  "devis": {
+    "hero": {
+      "title": "Get a clear estimate for your logistics needs.",
+      "description": "Field performance, rigorous execution and operational support for your logistics activities."
+    },
+    "form": {
+      "title": "Request a quote",
+      "description": "Fill out this detailed form to receive an estimate adapted to your volumes, areas and operational constraints.",
+      "success": "Thank you, your quote request has been sent.",
+      "submit": "Send my quote request",
+      "sections": {
+        "companyInfo": "Company information",
+        "logisticsNeed": "Logistics needs",
+        "zonePlanning": "Area and planning",
+        "budgetDetails": "Budget and details"
+      },
+      "role": "Role",
+      "rolePlaceholder": "Logistics manager",
+      "activitySector": "Business sector",
+      "activitySectorPlaceholder": "E-commerce, press, retail...",
+      "averageWeight": "Average parcel weight",
+      "averageWeightPlaceholder": "Ex: 2.5 kg",
+      "packageType": "Package type",
+      "packageTypePlaceholder": "Standard, fragile, pallet...",
+      "pickupAddress": "Pickup address",
+      "pickupAddressPlaceholder": "Street, number, city",
+      "deliveryArea": "Delivery area",
+      "deliveryAreaPlaceholder": "Belgium, Benelux, regional...",
+      "city": "City",
+      "cityPlaceholder": "Brussels",
+      "postalCode": "Postal code",
+      "postalCodePlaceholder": "1000",
+      "frequency": "Frequency",
+      "frequencyOptions": {
+        "daily": "Daily",
+        "weekly": "Weekly",
+        "occasional": "Occasional"
+      },
+      "urgency": "Urgency level",
+      "urgencyOptions": {
+        "standard": "Standard",
+        "priority": "Priority",
+        "urgent": "Urgent"
+      },
+      "pickupWindow": "Pickup window",
+      "pickupWindowPlaceholder": "Ex: 08:00 - 11:00",
+      "deliveryWindow": "Delivery window",
+      "deliveryWindowPlaceholder": "Ex: 13:00 - 18:00"
+    }
+  },
+  "contact": {
+    "hero": {
+      "imageAlt": "ZK Concept logistics",
+      "title": "Contact ZK Concept.",
+      "description": "Let's discuss your logistics project and find the best solution together."
+    },
+    "form": {
+      "description": "Send us your request and our team will reply quickly.",
+      "success": "Thank you, your message has been sent.",
+      "subject": "Subject",
+      "subjectPlaceholder": "Subject",
+      "message": "Message",
+      "messagePlaceholder": "Message",
+      "submit": "Send message",
+      "responseNote": "We will get back to you as soon as possible.",
+      "companyPlaceholder": "Request via Contact page"
+    },
+    "blocks": {
+      "generalRequests": "General requests",
+      "partnerships": "Partnerships",
+      "address": "Address"
+    }
+  },
+  "legal": {
+    "kicker": "Legal",
+    "updatedAt": "Last updated: February 20, 2026",
+    "labels": {
+      "company": "Company:",
+      "publisher": "Publisher:",
+      "address": "Address:",
+      "email": "Email:",
+      "phone": "Phone:"
+    },
+    "imprint": {
+      "title": "Imprint",
+      "description": "Information collected on this site is limited to data entered in contact, quote and collaboration forms."
+    },
+    "legalNotice": {
+      "title": "Legal notice",
+      "description1": "This website presents ZK Concept activities in parcel delivery, press distribution and logistics coordination.",
+      "description2": "Personal data processed through this site only comes from forms voluntarily completed by users."
+    },
+    "privacy": {
+      "title": "Privacy policy",
+      "paragraph1": "ZK Concept only collects information necessary to process requests sent through website forms: name, company, email, phone and need details.",
+      "paragraph2": "This data is used exclusively to respond to requests, establish commercial contact and ensure operational follow-up. It is never sold or rented to third parties.",
+      "paragraph3": "The website does not use hidden personal data collection for profiling purposes. Information is voluntarily provided by users when filling out a form.",
+      "paragraph4": "You can request access, correction or deletion of your data at any time at: zakaria@zkconcept.be.",
+      "paragraph5": "In case of major updates to this policy, the revision date on this page will be updated."
+    }
+  },
+  "tempMails": {
+    "title": "Temp Mails Preview",
+    "description": "This page displays the HTML templates currently used for email sending. Any visual update here also impacts real emails sent by /api/contact.",
+    "clientEmail": "Client email",
+    "internalWorkTogether": "Internal email - Work together",
+    "internalContact": "Internal email - Contact",
+    "internalQuote": "Internal email - Quote"
+  }
+}

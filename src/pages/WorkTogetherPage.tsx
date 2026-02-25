@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 import homeHeroImage from "../assets/work-together.jpg";
 
 type FormState = {
@@ -31,6 +32,7 @@ const initialState: FormState = {
 };
 
 export default function WorkTogetherPage() {
+  const { t } = useTranslation();
   const rootRef = useRef<HTMLDivElement | null>(null);
   const [form, setForm] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
@@ -97,7 +99,7 @@ export default function WorkTogetherPage() {
 
   const getErrorMessage = (error: unknown): string => {
     if (error instanceof Error && error.message) return error.message;
-    return "Erreur lors de l'envoi";
+    return t("forms.common.sendError");
   };
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -115,19 +117,19 @@ export default function WorkTogetherPage() {
 
       if (!response.ok) {
         const raw = await response.text().catch(() => "");
-        let détails = raw;
+        let details = raw;
         try {
           const parsed = JSON.parse(raw) as {
             error?: string;
             details?: string;
           };
-          détails =
+          details =
             `${parsed.error || ""} ${parsed.details || ""}`.trim() || raw;
         } catch {
           // Keep raw text as details
         }
         throw new Error(
-          détails || `Erreur lors de l'envoi (HTTP ${response.status})`,
+          details || `${t("forms.common.sendError")} (HTTP ${response.status})`,
         );
       }
 
@@ -156,15 +158,14 @@ export default function WorkTogetherPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-black/10" />
               <div className="work-hero-anim absolute left-6 top-6 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur">
-                Travailler ensemble
+                {t("common.workTogether")}
               </div>
               <div className="absolute bottom-8 left-8 right-8 space-y-3">
                 <h2 className="work-hero-anim text-2xl font-semibold leading-tight text-white md:text-3xl">
-                  Construisons une collaboration fiable et durable.
+                  {t("workTogether.hero.title")}
                 </h2>
                 <p className="work-hero-anim max-w-md text-sm leading-6 text-white/85">
-                  Performance terrain, exécution rigoureuse et accompagnement
-                  opérationnel pour vos activites logistiques.
+                  {t("workTogether.hero.description")}
                 </p>
               </div>
             </div>
@@ -172,18 +173,16 @@ export default function WorkTogetherPage() {
             <div className="order-2 p-6 md:p-10 lg:order-1 lg:p-12">
               <div className="space-y-4 pb-8">
                 <h1 className="work-hero-anim text-3xl font-bold text-gray-900 md:text-4xl">
-                  Travailler ensemble
+                  {t("workTogether.form.title")}
                 </h1>
                 <p className="work-hero-anim max-w-2xl text-base text-gray-600">
-                  Remplissez ce formulaire pour nous decrire votre besoin
-                  logistique. Notre équipe revient vers vous rapidement avec une
-                  proposition claire.
+                  {t("workTogether.form.description")}
                 </p>
               </div>
 
               {submitted ? (
                 <div className="work-reveal-item mb-6 rounded-xl bg-green-50 px-4 py-3 text-sm text-green-700">
-                  Merci, votre demande a bien ete envoyée.
+                  {t("workTogether.form.success")}
                 </div>
               ) : null}
               {errorMessage ? (
@@ -196,7 +195,7 @@ export default function WorkTogetherPage() {
                 <div className="work-reveal-item grid gap-5 md:grid-cols-2">
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Nom complet <span className="text-[#4b5563]">*</span>
+                      {t("forms.common.fullName")} <span className="text-[#4b5563]">*</span>
                     </span>
                     <input
                       required
@@ -205,13 +204,13 @@ export default function WorkTogetherPage() {
                         setForm({ ...form, fullName: e.target.value })
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="Jean Dupont"
+                      placeholder={t("forms.common.fullNamePlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Société <span className="text-[#4b5563]">*</span>
+                      {t("forms.common.company")} <span className="text-[#4b5563]">*</span>
                     </span>
                     <input
                       required
@@ -220,13 +219,13 @@ export default function WorkTogetherPage() {
                         setForm({ ...form, company: e.target.value })
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="ZK Logistics"
+                      placeholder={t("forms.common.companyPlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Email <span className="text-[#4b5563]">*</span>
+                      {t("forms.common.email")} <span className="text-[#4b5563]">*</span>
                     </span>
                     <input
                       required
@@ -236,13 +235,13 @@ export default function WorkTogetherPage() {
                         setForm({ ...form, email: e.target.value })
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="contact@societe.com"
+                      placeholder={t("forms.common.emailPlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Telephone <span className="text-[#4b5563]">*</span>
+                      {t("forms.common.phone")} <span className="text-[#4b5563]">*</span>
                     </span>
                     <input
                       required
@@ -251,13 +250,13 @@ export default function WorkTogetherPage() {
                         setForm({ ...form, phone: e.target.value })
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="+32 ..."
+                      placeholder={t("forms.common.phonePlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Service souhaite <span className="text-[#4b5563]">*</span>
+                      {t("forms.common.serviceDesired")} <span className="text-[#4b5563]">*</span>
                     </span>
                     <select
                       required
@@ -267,18 +266,16 @@ export default function WorkTogetherPage() {
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
                     >
-                      <option value="">Choisir un service</option>
-                      <option value="colis">Livraison de colis</option>
-                      <option value="presse">Distribution de presse</option>
-                      <option value="logistique">
-                        Gestion logistique et coordination
-                      </option>
+                      <option value="">{t("forms.common.chooseService")}</option>
+                      <option value="colis">{t("forms.services.colis")}</option>
+                      <option value="presse">{t("forms.services.presse")}</option>
+                      <option value="logistique">{t("forms.services.logistique")}</option>
                     </select>
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Volume mensuel estime
+                      {t("forms.common.monthlyVolume")}
                     </span>
                     <input
                       value={form.monthlyVolume}
@@ -286,13 +283,13 @@ export default function WorkTogetherPage() {
                         setForm({ ...form, monthlyVolume: e.target.value })
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="Ex: 1000 livraisons"
+                      placeholder={t("forms.common.monthlyVolumePlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Date de démarrage
+                      {t("forms.common.startDate")}
                     </span>
                     <input
                       type="date"
@@ -306,7 +303,7 @@ export default function WorkTogetherPage() {
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Budget indicatif
+                      {t("forms.common.budget")}
                     </span>
                     <input
                       value={form.budget}
@@ -314,15 +311,14 @@ export default function WorkTogetherPage() {
                         setForm({ ...form, budget: e.target.value })
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="Ex: 5 000 EUR / mois"
+                      placeholder={t("forms.common.budgetPlaceholder")}
                     />
                   </label>
                 </div>
 
                 <label className="work-reveal-item space-y-2">
                   <span className="text-sm font-semibold text-gray-800">
-                    Détails de votre besoin{" "}
-                    <span className="text-[#4b5563]">*</span>
+                    {t("forms.common.details")} <span className="text-[#4b5563]">*</span>
                   </span>
                   <textarea
                     required
@@ -332,7 +328,7 @@ export default function WorkTogetherPage() {
                       setForm({ ...form, message: e.target.value })
                     }
                     className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                    placeholder="Decrivez vos contraintes, vos délais et vos objectifs."
+                    placeholder={t("forms.common.detailsPlaceholder")}
                   />
                 </label>
 
@@ -347,8 +343,7 @@ export default function WorkTogetherPage() {
                     className="mt-1 h-4 w-4"
                   />
                   <span>
-                    J'accepte d'etre contacte par ZK Concept au sujet de cette
-                    demande.
+                    {t("forms.common.consent")}
                     <span className="ml-1 text-[#4b5563]">*</span>
                   </span>
                 </label>
@@ -359,11 +354,13 @@ export default function WorkTogetherPage() {
                     disabled={isSending}
                     className="inline-flex w-full items-center justify-center rounded-full bg-black px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-gray-800"
                   >
-                    {isSending ? "Envoi en cours..." : "Envoyer ma demande"}
+                    {isSending
+                      ? t("forms.common.sending")
+                      : t("workTogether.form.submit")}
                   </button>
                   <p className="text-xs text-gray-500">
                     <span className="font-semibold text-[#4b5563]">*</span>{" "}
-                    Champs obligatoires
+                    {t("forms.common.requiredFields")}
                   </p>
                 </div>
               </form>

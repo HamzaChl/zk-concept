@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import {
   buildClientEmailHtml,
   buildInternalEmailHtml,
@@ -84,20 +85,18 @@ const clientHtml = buildClientEmailHtml(sampleWorkTogether, {
 });
 
 export default function TempMailsPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="space-y-8 pt-6">
       <section className="space-y-3">
-        <h1 className="text-3xl font-bold text-gray-900">Temp Mails Preview</h1>
-        <p className="max-w-3xl text-sm text-gray-600">
-          Cette page affiche les templates HTML actuellement utilises pour
-          l&apos;envoi des emails. Toute modification visuelle ici impacte aussi
-          les emails reels envoyés par `/api/contact`.
-        </p>
+        <h1 className="text-3xl font-bold text-gray-900">{t("tempMails.title")}</h1>
+        <p className="max-w-3xl text-sm text-gray-600">{t("tempMails.description")}</p>
       </section>
 
       <section className="grid gap-6 xl:grid-cols-2">
         <article className="space-y-3 rounded-2xl border border-gray-200 bg-white p-4">
-          <h2 className="text-lg font-semibold text-gray-900">Email Client</h2>
+          <h2 className="text-lg font-semibold text-gray-900">{t("tempMails.clientEmail")}</h2>
           <iframe
             title="Preview email client"
             srcDoc={clientHtml}
@@ -107,7 +106,7 @@ export default function TempMailsPage() {
 
         <article className="space-y-3 rounded-2xl border border-gray-200 bg-white p-4">
           <h2 className="text-lg font-semibold text-gray-900">
-            Email Interne - Travailler ensemble
+            {t("tempMails.internalWorkTogether")}
           </h2>
           <iframe
             title="Preview email interne travailler ensemble"
@@ -117,9 +116,7 @@ export default function TempMailsPage() {
         </article>
 
         <article className="space-y-3 rounded-2xl border border-gray-200 bg-white p-4">
-          <h2 className="text-lg font-semibold text-gray-900">
-            Email Interne - Contact
-          </h2>
+          <h2 className="text-lg font-semibold text-gray-900">{t("tempMails.internalContact")}</h2>
           <iframe
             title="Preview email interne contact"
             srcDoc={internalContactHtml}
@@ -128,9 +125,7 @@ export default function TempMailsPage() {
         </article>
 
         <article className="space-y-3 rounded-2xl border border-gray-200 bg-white p-4">
-          <h2 className="text-lg font-semibold text-gray-900">
-            Email Interne - Devis
-          </h2>
+          <h2 className="text-lg font-semibold text-gray-900">{t("tempMails.internalQuote")}</h2>
           <iframe
             title="Preview email interne devis"
             srcDoc={internalDevisHtml}

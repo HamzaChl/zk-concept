@@ -1,73 +1,99 @@
-# React + TypeScript + Vite
+# ZK Concept Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site vitrine de **ZK Concept** (livraison de colis, distribution de presse, gestion logistique), développé avec React + TypeScript + Vite.
 
-Currently, two official plugins are available:
+## Live
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Production: **https://zkconcept.be/**
 
-## React Compiler
+## Stack Technique
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- TypeScript
+- Vite 7
+- React Router
+- Tailwind CSS 4
+- GSAP (animations)
+- i18next + react-i18next (internationalisation)
 
-## Expanding the ESLint configuration
+## Fonctionnalités
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Pages services et formulaires métier (`/devis`, `/travailler-ensemble`, `/contact`)
+- Animations d'interface (entrée + scroll reveal)
+- Sélecteur de langue flottant (FR / NL / EN / DE)
+- Traductions centralisées via fichiers JSON
+- Endpoint API pour l'envoi de formulaires (`/api/contact`)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Lancer Le Projet En Local
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Prérequis
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js **22.12+** recommandé
+- npm
+
+### Installation
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Développement
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### Build Production
+
+```bash
+npm run build
+```
+
+### Preview Build
+
+```bash
+npm run preview
+```
+
+## Scripts Disponibles
+
+- `npm run dev` : démarre le serveur de développement
+- `npm run build` : compile TypeScript puis build Vite
+- `npm run preview` : sert localement le build
+- `npm run lint` : lance ESLint
+
+## Internationalisation (i18n)
+
+Configuration i18n:
+
+- `src/i18n.ts`
+
+Fichiers de traduction:
+
+- `src/locales/fr/common.json`
+- `src/locales/nl/common.json`
+- `src/locales/en/common.json`
+- `src/locales/de/common.json`
+
+Le fallback est configuré sur le français (`fr`) et la langue est persistée en localStorage (`zk-language`).
+
+## Structure Principale
+
+```text
+src/
+  components/
+  pages/
+  locales/
+  lib/
+  i18n.ts
+api/
+  contact.ts
+```
+
+## Déploiement
+
+Le projet est configuré pour un déploiement web statique + fonctions serverless via Vercel (`vercel.json`).
+
+---
+
+Pour toute évolution (contenu, UX, traductions, formulaires), ouvrir une PR avec description claire des changements et captures d'écran si UI impactée.

@@ -1,20 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 import logoZk from "../assets/logo-zk.png";
 
-const links = [
-  { to: "/", label: "Accueil" },
-  { to: "/livraison-colis", label: "Livraison colis" },
-  { to: "/distribution-presse", label: "Distribution presse" },
-  { to: "/gestion-logistique", label: "Gestion logistique" },
-];
-
 export default function Nav() {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
+  const links = [
+    { to: "/", label: t("nav.home") },
+    { to: "/livraison-colis", label: t("nav.parcelDelivery") },
+    { to: "/distribution-presse", label: t("nav.pressDistribution") },
+    { to: "/gestion-logistique", label: t("nav.logisticsManagement") },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 12);
@@ -68,7 +69,7 @@ export default function Nav() {
       }`}
     >
       <div className="relative mx-auto flex h-20 w-full items-center">
-        <NavLink to="/" aria-label="ZK Concept - Accueil">
+        <NavLink to="/" aria-label={t("nav.homeAriaLabel")}>
           <img
             src={logoZk}
             alt="ZK Concept"
@@ -88,7 +89,7 @@ export default function Nav() {
           to="/contact"
           className="ml-auto hidden rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-gray-800 min-[1070px]:inline-flex"
         >
-          Contact
+          {t("nav.contact")}
         </NavLink>
 
         <button
@@ -96,7 +97,7 @@ export default function Nav() {
           className="ml-auto rounded-full border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-900 min-[1070px]:hidden"
           onClick={() => setIsMenuOpen((prev) => !prev)}
         >
-          Menu
+          {t("nav.menu")}
         </button>
       </div>
 
@@ -128,7 +129,7 @@ export default function Nav() {
                 className="inline-flex w-fit rounded-full bg-black px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-gray-800"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Contact
+                {t("nav.contact")}
               </NavLink>
             </div>
           </nav>

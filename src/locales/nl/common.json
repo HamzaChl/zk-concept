@@ -1,0 +1,286 @@
+{
+  "common": {
+    "workTogether": "Samenwerken",
+    "quote": "Offerte aanvragen",
+    "moreDetails": "Meer details"
+  },
+  "nav": {
+    "home": "Home",
+    "parcelDelivery": "Pakketlevering",
+    "pressDistribution": "Persdistributie",
+    "logisticsManagement": "Logistiek beheer",
+    "contact": "Contact",
+    "menu": "Menu",
+    "homeAriaLabel": "ZK Concept - Home"
+  },
+  "footer": {
+    "quickLinks": "Snelle links",
+    "legalSection": "Juridisch",
+    "privacyPolicy": "Privacybeleid",
+    "legalNotice": "Juridische vermeldingen",
+    "imprint": "Imprint",
+    "copyright": "© 2026 ZK Concept. Alle rechten voorbehouden."
+  },
+  "language": {
+    "label": "Taal wijzigen",
+    "fr": "Français",
+    "nl": "Nederlands",
+    "en": "English",
+    "de": "Deutsch"
+  },
+  "home": {
+    "hero": {
+      "imageAlt": "ZK Concept transport hero",
+      "badge": "Onafhankelijke logistieke partner",
+      "title": "Prestaties, stiptheid en efficiëntie elke dag.",
+      "description": "Gespecialiseerd in pakketlevering en persdistributie zorgt ZK Concept voor geoptimaliseerde en betrouwbare rondes volgens de vereisten van de sector."
+    },
+    "partners": {
+      "title": "Heeft samengewerkt met"
+    },
+    "services": {
+      "title": "Onze diensten",
+      "description": "Sterke, gestructureerde en betrouwbare logistieke oplossingen voor stiptheid, efficiëntie en operationele continuïteit."
+    },
+    "why": {
+      "kicker": "WAAROM ZK CONCEPT",
+      "title": "Ontworpen voor bedrijven die snelheid, controle en betrouwbaarheid eisen.",
+      "description": "Dankzij een sterke organisatie en een ervaren team garandeert ZK Concept efficiëntie, stiptheid en operationele stabiliteit.",
+      "items": {
+        "item1": {
+          "title": "Duidelijke operationele organisatie",
+          "text": "Onze processen verminderen frictie op het terrein, houden ritten vlot en garanderen constante service, ook tijdens pieken."
+        },
+        "item2": {
+          "title": "Betrouwbare en stipte uitvoering",
+          "text": "Elke opdracht wordt strikt opgevolgd, van vertrek tot levering, om timing en kwaliteitsnormen te respecteren."
+        },
+        "item3": {
+          "title": "Continue sturing en opvolging",
+          "text": "We analyseren prestaties, passen plannen aan en coördineren middelen voor stabiliteit, controle en reactiviteit."
+        },
+        "item4": {
+          "title": "Ervaren team",
+          "text": "Ons team combineert terreinervaring en operationele discipline om aan hoge logistieke eisen te voldoen."
+        }
+      }
+    },
+    "bottomCta": {
+      "title": "Klaar om uw logistieke operaties te optimaliseren?",
+      "description": "ZK Concept ondersteunt bedrijven in pakketlevering en persdistributie met betrouwbaarheid, stiptheid en efficiëntie. Laten we uw project bespreken en de juiste oplossing opzetten."
+    }
+  },
+  "serviceTemplate": {
+    "heroDescription": "Heldere, gestructureerde en betrouwbare uitvoering, aangepast aan uw operationele eisen.",
+    "interestedTitle": "Geïnteresseerd? Vul onze formulieren in.",
+    "interestedDescription": "Een behoefte aan levering, distributie of logistieke coördinatie? Stuur uw aanvraag via onze formulieren voor een snel antwoord en een passende oplossing."
+  },
+  "services": {
+    "parcel": {
+      "title": "Pakketlevering",
+      "description": "ZK Concept verzorgt snelle en betrouwbare pakketlevering in heel België. Met jaren ervaring bij grote spelers garanderen we stiptheid, naleving van processen en constante servicekwaliteit.",
+      "details": {
+        "optimizedRoutes": {
+          "title": "Geoptimaliseerde ritten",
+          "text": "Elke rit wordt voorbereid op basis van zones, tijdsvensters en terreinbeperkingen om stilstand te beperken en een betrouwbaar tempo te behouden."
+        },
+        "tracking": {
+          "title": "Opvolging en traceerbaarheid",
+          "text": "We hanteren strikte opvolging met duidelijke procedures in elke fase voor transparantie, controle en kwaliteit."
+        },
+        "reliability": {
+          "title": "Operationele betrouwbaarheid",
+          "text": "Onze organisatie vangt variabele volumes op en behoudt stiptheid, regelmaat en klanttevredenheid op lange termijn."
+        }
+      }
+    },
+    "press": {
+      "title": "Persdistributie",
+      "description": "We verzorgen de ochtenddistributie van kranten en magazines met precisie en regelmaat. Gestructureerde organisatie met sortering, voorbereiding en routebeheer garandeert stipte uitvoering.",
+      "details": {
+        "preparation": {
+          "title": "Voorbereiding en sortering",
+          "text": "Publicaties worden vooraf georganiseerd om efficiënte routes te garanderen en fouten te beperken."
+        },
+        "morningExecution": {
+          "title": "Ochtenduitvoering",
+          "text": "Leveringen gebeuren binnen strikte tijdsvensters, met nauwkeurige sturing om aan eisen van distributeurs en uitgevers te voldoen."
+        },
+        "dailyConsistency": {
+          "title": "Dagelijkse regelmaat",
+          "text": "Onze methode zorgt dag na dag voor stabiele en conforme distributie met constante kwaliteit."
+        }
+      }
+    },
+    "logistics": {
+      "title": "Logistiek beheer en coördinatie",
+      "description": "ZK Concept beheert routeplanning, chauffeurscoördinatie en volledige operationele opvolging. Onze onafhankelijke structuur garandeert continuïteit, reactiviteit en stabiliteit.",
+      "details": {
+        "routePlanning": {
+          "title": "Routeplanning",
+          "text": "We structureren stromen en trajecten om coherente uitvoering te garanderen, vertragingen te beperken en middelen te optimaliseren."
+        },
+        "teamCoordination": {
+          "title": "Teamcoördinatie",
+          "text": "Coördinatie van chauffeurs en terrein wordt continu opgevolgd om snel aan te passen en continuïteit te behouden."
+        },
+        "performanceTracking": {
+          "title": "Prestatieopvolging",
+          "text": "Globale opvolging van operaties helpt verbeteringen te identificeren en de stabiliteit van de dienst te garanderen."
+        }
+      }
+    }
+  },
+  "forms": {
+    "common": {
+      "sendError": "Fout bij verzenden",
+      "sending": "Verzenden...",
+      "requiredFields": "Verplichte velden",
+      "fullName": "Volledige naam",
+      "fullNamePlaceholder": "Jan Peeters",
+      "company": "Bedrijf",
+      "companyPlaceholder": "ZK Logistics",
+      "email": "E-mail",
+      "emailPlaceholder": "contact@bedrijf.com",
+      "phone": "Telefoon",
+      "phonePlaceholder": "+32 ...",
+      "serviceDesired": "Gewenste dienst",
+      "chooseService": "Kies een dienst",
+      "monthlyVolume": "Geschat maandelijks volume",
+      "monthlyVolumePlaceholder": "Bijv.: 1000 leveringen",
+      "startDate": "Startdatum",
+      "budget": "Indicatief budget",
+      "budgetPlaceholder": "Bijv.: 5.000 EUR / maand",
+      "details": "Details van uw behoefte",
+      "detailsPlaceholder": "Beschrijf uw beperkingen, deadlines en doelstellingen.",
+      "consent": "Ik ga ermee akkoord dat ZK Concept mij over deze aanvraag contacteert.",
+      "choose": "Kies"
+    },
+    "services": {
+      "colis": "Pakketlevering",
+      "presse": "Persdistributie",
+      "logistique": "Logistiek beheer en coördinatie"
+    }
+  },
+  "workTogether": {
+    "hero": {
+      "title": "Laten we een betrouwbare, duurzame samenwerking opbouwen.",
+      "description": "Terreinprestatie, strikte uitvoering en operationele ondersteuning voor uw logistieke activiteiten."
+    },
+    "form": {
+      "title": "Samenwerken",
+      "description": "Vul dit formulier in om uw logistieke behoefte te beschrijven. Ons team neemt snel contact op met een duidelijk voorstel.",
+      "success": "Bedankt, uw aanvraag is verzonden.",
+      "submit": "Mijn aanvraag verzenden"
+    }
+  },
+  "devis": {
+    "hero": {
+      "title": "Ontvang een duidelijke raming voor uw logistieke behoeften.",
+      "description": "Terreinprestatie, strikte uitvoering en operationele ondersteuning voor uw logistieke activiteiten."
+    },
+    "form": {
+      "title": "Offerte aanvragen",
+      "description": "Vul dit gedetailleerde formulier in om een raming te ontvangen aangepast aan uw volumes, zones en operationele beperkingen.",
+      "success": "Bedankt, uw offerteaanvraag is verzonden.",
+      "submit": "Mijn offerteaanvraag verzenden",
+      "sections": {
+        "companyInfo": "Bedrijfsinformatie",
+        "logisticsNeed": "Logistieke behoefte",
+        "zonePlanning": "Zone en planning",
+        "budgetDetails": "Budget en details"
+      },
+      "role": "Functie",
+      "rolePlaceholder": "Logistiek verantwoordelijke",
+      "activitySector": "Activiteitssector",
+      "activitySectorPlaceholder": "E-commerce, pers, retail...",
+      "averageWeight": "Gemiddeld gewicht per pakket",
+      "averageWeightPlaceholder": "Bijv.: 2,5 kg",
+      "packageType": "Type pakket",
+      "packageTypePlaceholder": "Standaard, fragiel, pallet...",
+      "pickupAddress": "Afhaaladres",
+      "pickupAddressPlaceholder": "Straat, nummer, stad",
+      "deliveryArea": "Leveringszone",
+      "deliveryAreaPlaceholder": "België, Benelux, regionaal...",
+      "city": "Stad",
+      "cityPlaceholder": "Brussel",
+      "postalCode": "Postcode",
+      "postalCodePlaceholder": "1000",
+      "frequency": "Frequentie",
+      "frequencyOptions": {
+        "daily": "Dagelijks",
+        "weekly": "Wekelijks",
+        "occasional": "Occasioneel"
+      },
+      "urgency": "Urgentieniveau",
+      "urgencyOptions": {
+        "standard": "Standaard",
+        "priority": "Prioritair",
+        "urgent": "Urgent"
+      },
+      "pickupWindow": "Afhaaltijdvenster",
+      "pickupWindowPlaceholder": "Bijv.: 08:00 - 11:00",
+      "deliveryWindow": "Leveringstijdvenster",
+      "deliveryWindowPlaceholder": "Bijv.: 13:00 - 18:00"
+    }
+  },
+  "contact": {
+    "hero": {
+      "imageAlt": "ZK Concept logistiek",
+      "title": "Neem contact op met ZK Concept.",
+      "description": "Laten we uw logistieke project bespreken en samen de beste oplossing vinden."
+    },
+    "form": {
+      "description": "Stuur ons uw aanvraag en ons team antwoordt snel.",
+      "success": "Bedankt, uw bericht is verzonden.",
+      "subject": "Onderwerp",
+      "subjectPlaceholder": "Onderwerp",
+      "message": "Bericht",
+      "messagePlaceholder": "Bericht",
+      "submit": "Bericht verzenden",
+      "responseNote": "We antwoorden zo snel mogelijk.",
+      "companyPlaceholder": "Aanvraag via contactpagina"
+    },
+    "blocks": {
+      "generalRequests": "Algemene aanvragen",
+      "partnerships": "Partnerschappen",
+      "address": "Adres"
+    }
+  },
+  "legal": {
+    "kicker": "Juridisch",
+    "updatedAt": "Laatst bijgewerkt: 20 februari 2026",
+    "labels": {
+      "company": "Bedrijf:",
+      "publisher": "Uitgever:",
+      "address": "Adres:",
+      "email": "E-mail:",
+      "phone": "Telefoon:"
+    },
+    "imprint": {
+      "title": "Imprint",
+      "description": "De informatie die op deze site wordt verzameld, is beperkt tot gegevens die worden ingevuld in contact-, offerte- en samenwerkingsformulieren."
+    },
+    "legalNotice": {
+      "title": "Juridische vermeldingen",
+      "description1": "Deze site presenteert de activiteiten van ZK Concept in pakketlevering, persdistributie en logistieke coördinatie.",
+      "description2": "Persoonsgegevens via deze site komen uitsluitend uit formulieren die vrijwillig door gebruikers worden ingevuld."
+    },
+    "privacy": {
+      "title": "Privacybeleid",
+      "paragraph1": "ZK Concept verzamelt enkel de informatie die nodig is om aanvragen via formulieren te verwerken: naam, bedrijf, e-mail, telefoon en details van de behoefte.",
+      "paragraph2": "Deze gegevens worden uitsluitend gebruikt om aanvragen te beantwoorden, commercieel contact te leggen en operationele opvolging te verzekeren. Ze worden niet verkocht of verhuurd aan derden.",
+      "paragraph3": "De site gebruikt geen verborgen gegevensverzameling voor profilering. Informatie wordt vrijwillig verstrekt door gebruikers.",
+      "paragraph4": "U kunt op elk moment toegang, correctie of verwijdering van uw gegevens aanvragen via: zakaria@zkconcept.be.",
+      "paragraph5": "Bij belangrijke updates van dit beleid wordt de revisiedatum op deze pagina aangepast."
+    }
+  },
+  "tempMails": {
+    "title": "Temp Mails Preview",
+    "description": "Deze pagina toont de HTML-templates die momenteel voor e-mails worden gebruikt. Elke visuele wijziging hier heeft ook impact op echte e-mails die via /api/contact worden verzonden.",
+    "clientEmail": "Klantenmail",
+    "internalWorkTogether": "Interne e-mail - Samenwerken",
+    "internalContact": "Interne e-mail - Contact",
+    "internalQuote": "Interne e-mail - Offerte"
+  }
+}

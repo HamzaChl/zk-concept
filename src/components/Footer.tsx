@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import logoZkWhite from "../assets/logo-zk-w.png";
 
-const quickLinks = [
-  { to: "/", label: "Accueil" },
-  { to: "/livraison-colis", label: "Livraison colis" },
-  { to: "/distribution-presse", label: "Distribution presse" },
-  { to: "/gestion-logistique", label: "Gestion logistique" },
-  { to: "/contact", label: "Contact" },
-];
-
 export default function Footer() {
+  const { t } = useTranslation();
+  const quickLinks = [
+    { to: "/", label: t("nav.home") },
+    { to: "/livraison-colis", label: t("nav.parcelDelivery") },
+    { to: "/distribution-presse", label: t("nav.pressDistribution") },
+    { to: "/gestion-logistique", label: t("nav.logisticsManagement") },
+    { to: "/contact", label: t("nav.contact") },
+  ];
+
   return (
     <footer className="relative mt-16 overflow-hidden bg-[#1f2937] px-4 pb-6 pt-10 text-white md:px-[50px]">
       <div className="relative z-10 border-b border-white/15 pb-8">
@@ -32,7 +34,7 @@ export default function Footer() {
 
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-400">
-              Liens rapides
+              {t("footer.quickLinks")}
             </p>
             <nav className="space-y-2">
               {quickLinks.map((link) => (
@@ -49,26 +51,26 @@ export default function Footer() {
 
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-400">
-              Mentions légales
+              {t("footer.legalSection")}
             </p>
             <nav className="space-y-2">
               <Link
                 to="/politique-de-confidentialite"
                 className="block text-sm text-gray-200 transition-colors hover:text-white"
               >
-                Politique de confidentialité
+                {t("footer.privacyPolicy")}
               </Link>
               <Link
                 to="/mentions-legales"
                 className="block text-sm text-gray-200 transition-colors hover:text-white"
               >
-                Mentions légales
+                {t("footer.legalNotice")}
               </Link>
               <Link
                 to="/imprint"
                 className="block text-sm text-gray-200 transition-colors hover:text-white"
               >
-                Imprint
+                {t("footer.imprint")}
               </Link>
             </nav>
           </div>
@@ -76,7 +78,7 @@ export default function Footer() {
       </div>
 
       <div className="relative z-10 flex flex-col gap-2 pt-4 text-xs text-gray-400 md:flex-row md:items-center md:justify-between">
-        <p>© 2026 ZK Concept. Tous droits réservés.</p>
+        <p>{t("footer.copyright")}</p>
       </div>
 
       <svg

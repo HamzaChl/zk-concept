@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 import homeHeroImage from "../assets/work-together.jpg";
 
 type FormState = {
@@ -55,6 +56,7 @@ const initialState: FormState = {
 };
 
 export default function DevisPage() {
+  const { t } = useTranslation();
   const rootRef = useRef<HTMLDivElement | null>(null);
   const [form, setForm] = useState<FormState>(initialState);
   const [submitted, setSubmitted] = useState(false);
@@ -121,7 +123,7 @@ export default function DevisPage() {
 
   const getErrorMessage = (error: unknown): string => {
     if (error instanceof Error && error.message) return error.message;
-    return "Erreur lors de l'envoi";
+    return t("forms.common.sendError");
   };
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -139,19 +141,19 @@ export default function DevisPage() {
 
       if (!response.ok) {
         const raw = await response.text().catch(() => "");
-        let détails = raw;
+        let details = raw;
         try {
           const parsed = JSON.parse(raw) as {
             error?: string;
             details?: string;
           };
-          détails =
+          details =
             `${parsed.error || ""} ${parsed.details || ""}`.trim() || raw;
         } catch {
           // Keep raw text as details
         }
         throw new Error(
-          détails || `Erreur lors de l'envoi (HTTP ${response.status})`,
+          details || `${t("forms.common.sendError")} (HTTP ${response.status})`,
         );
       }
 
@@ -180,15 +182,14 @@ export default function DevisPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-black/10" />
               <div className="devis-hero-anim absolute left-6 top-6 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur">
-                Demander un devis
+                {t("common.quote")}
               </div>
               <div className="absolute bottom-8 left-8 right-8 space-y-3">
                 <h2 className="devis-hero-anim text-2xl font-semibold leading-tight text-white md:text-3xl">
-                  Obtenez une estimation claire pour vos besoins logistiques.
+                  {t("devis.hero.title")}
                 </h2>
                 <p className="devis-hero-anim max-w-md text-sm leading-6 text-white/85">
-                  Performance terrain, exécution rigoureuse et accompagnement
-                  opérationnel pour vos activites logistiques.
+                  {t("devis.hero.description")}
                 </p>
               </div>
             </div>
@@ -196,18 +197,16 @@ export default function DevisPage() {
             <div className="order-2 p-6 md:p-10 lg:p-12">
               <div className="space-y-4 pb-8">
                 <h1 className="devis-hero-anim text-3xl font-bold text-gray-900 md:text-4xl">
-                  Demander un devis
+                  {t("devis.form.title")}
                 </h1>
                 <p className="devis-hero-anim max-w-2xl text-base text-gray-600">
-                  Remplissez ce formulaire detaille pour recevoir une estimation
-                  adaptée a vos volumes, vos zones et vos contraintes
-                  opérationnelles.
+                  {t("devis.form.description")}
                 </p>
               </div>
 
               {submitted ? (
                 <div className="devis-reveal-item mb-6 rounded-xl bg-green-50 px-4 py-3 text-sm text-green-700">
-                  Merci, votre demande de devis a bien ete envoyée.
+                  {t("devis.form.success")}
                 </div>
               ) : null}
               {errorMessage ? (
@@ -219,52 +218,52 @@ export default function DevisPage() {
               <form className="devis-reveal-group space-y-8" onSubmit={onSubmit}>
                 <div className="devis-reveal-item space-y-4">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-                    Informations entreprise
+                    {t("devis.form.sections.companyInfo")}
                   </p>
                 </div>
 
                 <div className="devis-reveal-item grid gap-5 md:grid-cols-2">
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Nom complet <span className="text-[#4b5563]">*</span>
+                      {t("forms.common.fullName")} <span className="text-[#4b5563]">*</span>
                     </span>
                     <input
                       required
                       value={form.fullName}
                       onChange={(e) => setForm({ ...form, fullName: e.target.value })}
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="Jean Dupont"
+                      placeholder={t("forms.common.fullNamePlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Société <span className="text-[#4b5563]">*</span>
+                      {t("forms.common.company")} <span className="text-[#4b5563]">*</span>
                     </span>
                     <input
                       required
                       value={form.company}
                       onChange={(e) => setForm({ ...form, company: e.target.value })}
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="ZK Logistics"
+                      placeholder={t("forms.common.companyPlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Fonction
+                      {t("devis.form.role")}
                     </span>
                     <input
                       value={form.role}
                       onChange={(e) => setForm({ ...form, role: e.target.value })}
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="Responsable logistique"
+                      placeholder={t("devis.form.rolePlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Secteur d'activite
+                      {t("devis.form.activitySector")}
                     </span>
                     <input
                       value={form.activitySector}
@@ -272,13 +271,13 @@ export default function DevisPage() {
                         setForm({ ...form, activitySector: e.target.value })
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="E-commerce, presse, retail..."
+                      placeholder={t("devis.form.activitySectorPlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Email <span className="text-[#4b5563]">*</span>
+                      {t("forms.common.email")} <span className="text-[#4b5563]">*</span>
                     </span>
                     <input
                       required
@@ -286,34 +285,34 @@ export default function DevisPage() {
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="contact@societe.com"
+                      placeholder={t("forms.common.emailPlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Telephone <span className="text-[#4b5563]">*</span>
+                      {t("forms.common.phone")} <span className="text-[#4b5563]">*</span>
                     </span>
                     <input
                       required
                       value={form.phone}
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="+32 ..."
+                      placeholder={t("forms.common.phonePlaceholder")}
                     />
                   </label>
                 </div>
 
                 <div className="devis-reveal-item space-y-4 pt-2">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-                    Besoin logistique
+                    {t("devis.form.sections.logisticsNeed")}
                   </p>
                 </div>
 
                 <div className="devis-reveal-item grid gap-5 md:grid-cols-2">
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Service souhaite <span className="text-[#4b5563]">*</span>
+                      {t("forms.common.serviceDesired")} <span className="text-[#4b5563]">*</span>
                     </span>
                     <select
                       required
@@ -321,18 +320,16 @@ export default function DevisPage() {
                       onChange={(e) => setForm({ ...form, service: e.target.value })}
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
                     >
-                      <option value="">Choisir un service</option>
-                      <option value="colis">Livraison de colis</option>
-                      <option value="presse">Distribution de presse</option>
-                      <option value="logistique">
-                        Gestion logistique et coordination
-                      </option>
+                      <option value="">{t("forms.common.chooseService")}</option>
+                      <option value="colis">{t("forms.services.colis")}</option>
+                      <option value="presse">{t("forms.services.presse")}</option>
+                      <option value="logistique">{t("forms.services.logistique")}</option>
                     </select>
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Volume mensuel estime
+                      {t("forms.common.monthlyVolume")}
                     </span>
                     <input
                       value={form.monthlyVolume}
@@ -340,13 +337,13 @@ export default function DevisPage() {
                         setForm({ ...form, monthlyVolume: e.target.value })
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="Ex: 1000 livraisons"
+                      placeholder={t("forms.common.monthlyVolumePlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Poids moyen par colis
+                      {t("devis.form.averageWeight")}
                     </span>
                     <input
                       value={form.averageWeight}
@@ -354,13 +351,13 @@ export default function DevisPage() {
                         setForm({ ...form, averageWeight: e.target.value })
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="Ex: 2.5 kg"
+                      placeholder={t("devis.form.averageWeightPlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Type de colis
+                      {t("devis.form.packageType")}
                     </span>
                     <input
                       value={form.packageType}
@@ -368,21 +365,21 @@ export default function DevisPage() {
                         setForm({ ...form, packageType: e.target.value })
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="Standard, fragile, palette..."
+                      placeholder={t("devis.form.packageTypePlaceholder")}
                     />
                   </label>
                 </div>
 
                 <div className="devis-reveal-item space-y-4 pt-2">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-                    Zone et planning
+                    {t("devis.form.sections.zonePlanning")}
                   </p>
                 </div>
 
                 <div className="devis-reveal-item grid gap-5 md:grid-cols-2">
                   <label className="space-y-2 md:col-span-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Adresse de collecte
+                      {t("devis.form.pickupAddress")}
                     </span>
                     <input
                       value={form.pickupAddress}
@@ -390,13 +387,13 @@ export default function DevisPage() {
                         setForm({ ...form, pickupAddress: e.target.value })
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="Rue, numero, ville"
+                      placeholder={t("devis.form.pickupAddressPlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Zone de livraison
+                      {t("devis.form.deliveryArea")}
                     </span>
                     <input
                       value={form.deliveryArea}
@@ -404,23 +401,23 @@ export default function DevisPage() {
                         setForm({ ...form, deliveryArea: e.target.value })
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="Belgique, Benelux, regional..."
+                      placeholder={t("devis.form.deliveryAreaPlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
-                    <span className="text-sm font-semibold text-gray-800">Ville</span>
+                    <span className="text-sm font-semibold text-gray-800">{t("devis.form.city")}</span>
                     <input
                       value={form.city}
                       onChange={(e) => setForm({ ...form, city: e.target.value })}
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="Bruxelles"
+                      placeholder={t("devis.form.cityPlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Code postal
+                      {t("devis.form.postalCode")}
                     </span>
                     <input
                       value={form.postalCode}
@@ -428,13 +425,13 @@ export default function DevisPage() {
                         setForm({ ...form, postalCode: e.target.value })
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="1000"
+                      placeholder={t("devis.form.postalCodePlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Frequence
+                      {t("devis.form.frequency")}
                     </span>
                     <select
                       value={form.frequency}
@@ -443,32 +440,32 @@ export default function DevisPage() {
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
                     >
-                      <option value="">Choisir</option>
-                      <option value="quotidien">Quotidien</option>
-                      <option value="hebdomadaire">Hebdomadaire</option>
-                      <option value="ponctuel">Ponctuel</option>
+                      <option value="">{t("forms.common.choose")}</option>
+                      <option value="quotidien">{t("devis.form.frequencyOptions.daily")}</option>
+                      <option value="hebdomadaire">{t("devis.form.frequencyOptions.weekly")}</option>
+                      <option value="ponctuel">{t("devis.form.frequencyOptions.occasional")}</option>
                     </select>
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Niveau d'urgence
+                      {t("devis.form.urgency")}
                     </span>
                     <select
                       value={form.urgency}
                       onChange={(e) => setForm({ ...form, urgency: e.target.value })}
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
                     >
-                      <option value="">Choisir</option>
-                      <option value="standard">Standard</option>
-                      <option value="prioritaire">Prioritaire</option>
-                      <option value="urgent">Urgent</option>
+                      <option value="">{t("forms.common.choose")}</option>
+                      <option value="standard">{t("devis.form.urgencyOptions.standard")}</option>
+                      <option value="prioritaire">{t("devis.form.urgencyOptions.priority")}</option>
+                      <option value="urgent">{t("devis.form.urgencyOptions.urgent")}</option>
                     </select>
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Creneau collecte
+                      {t("devis.form.pickupWindow")}
                     </span>
                     <input
                       value={form.pickupWindow}
@@ -476,13 +473,13 @@ export default function DevisPage() {
                         setForm({ ...form, pickupWindow: e.target.value })
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="Ex: 08:00 - 11:00"
+                      placeholder={t("devis.form.pickupWindowPlaceholder")}
                     />
                   </label>
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Creneau livraison
+                      {t("devis.form.deliveryWindow")}
                     </span>
                     <input
                       value={form.deliveryWindow}
@@ -490,21 +487,21 @@ export default function DevisPage() {
                         setForm({ ...form, deliveryWindow: e.target.value })
                       }
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="Ex: 13:00 - 18:00"
+                      placeholder={t("devis.form.deliveryWindowPlaceholder")}
                     />
                   </label>
                 </div>
 
                 <div className="devis-reveal-item space-y-4 pt-2">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
-                    Budget et details
+                    {t("devis.form.sections.budgetDetails")}
                   </p>
                 </div>
 
                 <div className="devis-reveal-item grid gap-5 md:grid-cols-2">
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Date de démarrage
+                      {t("forms.common.startDate")}
                     </span>
                     <input
                       type="date"
@@ -518,20 +515,20 @@ export default function DevisPage() {
 
                   <label className="space-y-2">
                     <span className="text-sm font-semibold text-gray-800">
-                      Budget indicatif
+                      {t("forms.common.budget")}
                     </span>
                     <input
                       value={form.budget}
                       onChange={(e) => setForm({ ...form, budget: e.target.value })}
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                      placeholder="Ex: 5 000 EUR / mois"
+                      placeholder={t("forms.common.budgetPlaceholder")}
                     />
                   </label>
                 </div>
 
                 <label className="devis-reveal-item space-y-2">
                   <span className="text-sm font-semibold text-gray-800">
-                    Détails de votre besoin <span className="text-[#4b5563]">*</span>
+                    {t("forms.common.details")} <span className="text-[#4b5563]">*</span>
                   </span>
                   <textarea
                     required
@@ -539,7 +536,7 @@ export default function DevisPage() {
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3.5 text-sm text-gray-900 outline-none transition focus:border-black focus:ring-0"
-                    placeholder="Decrivez vos contraintes, vos délais et vos objectifs."
+                    placeholder={t("forms.common.detailsPlaceholder")}
                   />
                 </label>
 
@@ -552,8 +549,7 @@ export default function DevisPage() {
                     className="mt-1 h-4 w-4"
                   />
                   <span>
-                    J'accepte d'etre contacte par ZK Concept au sujet de cette
-                    demande.
+                    {t("forms.common.consent")}
                     <span className="ml-1 text-[#4b5563]">*</span>
                   </span>
                 </label>
@@ -564,13 +560,11 @@ export default function DevisPage() {
                     disabled={isSending}
                     className="inline-flex w-full items-center justify-center rounded-full bg-black px-8 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-gray-800"
                   >
-                    {isSending
-                      ? "Envoi en cours..."
-                      : "Envoyer ma demande de devis"}
+                    {isSending ? t("forms.common.sending") : t("devis.form.submit")}
                   </button>
                   <p className="text-xs text-gray-500">
                     <span className="font-semibold text-[#4b5563]">*</span>{" "}
-                    Champs obligatoires
+                    {t("forms.common.requiredFields")}
                   </p>
                 </div>
               </form>

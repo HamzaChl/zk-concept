@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 import logisticsImage from "../assets/contact.jpg";
 
 type ContactFormState = {
@@ -19,6 +20,7 @@ const initialState: ContactFormState = {
 };
 
 export default function ContactPage() {
+  const { t } = useTranslation();
   const rootRef = useRef<HTMLElement | null>(null);
   const [form, setForm] = useState<ContactFormState>(initialState);
   const [isSending, setIsSending] = useState(false);
@@ -88,7 +90,7 @@ export default function ContactPage() {
 
   const getErrorMessage = (error: unknown): string => {
     if (error instanceof Error && error.message) return error.message;
-    return "Erreur lors de l'envoi";
+    return t("forms.common.sendError");
   };
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -96,63 +98,48 @@ export default function ContactPage() {
     setSubmitted(false);
     setErrorMessage("");
     setIsSending(true);
-    console.log("[CONTACT_DEBUG] submit:start", {
-      fullName: form.fullName,
-      email: form.email,
-      subject: form.subject,
-      messageLength: form.message.length,
-    });
 
     try {
       const payload = {
         formType: "contact" as const,
         fullName: form.fullName,
-        company: "Demande via page Contact",
+        company: t("contact.form.companyPlaceholder"),
         email: form.email,
         phone: "+32 489 39 57 80 | +32 486 92 31 82",
         subject: form.subject,
-        service: `Contact - ${form.subject}`,
+        service: `${t("nav.contact")} - ${form.subject}`,
         message: form.message,
       };
-      console.log("[CONTACT_DEBUG] submit:payload", payload);
 
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      console.log("[CONTACT_DEBUG] submit:response-status", response.status);
 
       if (!response.ok) {
         const raw = await response.text().catch(() => "");
-        console.log("[CONTACT_DEBUG] submit:error-raw-response", raw);
-        let détails = raw;
+        let details = raw;
         try {
           const parsed = JSON.parse(raw) as {
             error?: string;
             details?: string;
           };
-          détails =
+          details =
             `${parsed.error || ""} ${parsed.details || ""}`.trim() || raw;
         } catch {
           // Keep raw text as details
         }
         throw new Error(
-          détails || `Erreur lors de l'envoi (HTTP ${response.status})`,
+          details || `${t("forms.common.sendError")} (HTTP ${response.status})`,
         );
       }
 
-      const successBody = await response
-        .json()
-        .catch(() => ({ note: "No JSON body returned" }));
-      console.log("[CONTACT_DEBUG] submit:success-response", successBody);
       setSubmitted(true);
       setForm(initialState);
     } catch (error: unknown) {
-      console.error("[CONTACT_DEBUG] submit:catch", error);
       setErrorMessage(getErrorMessage(error));
     } finally {
-      console.log("[CONTACT_DEBUG] submit:end");
       setIsSending(false);
     }
   };
@@ -167,18 +154,17 @@ export default function ContactPage() {
           <div className="relative min-h-[320px] md:min-h-[700px]">
             <img
               src={logisticsImage}
-              alt="Logistique ZK Concept"
+              alt={t("contact.hero.imageAlt")}
               className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/55 to-black/75" />
             <div className="relative z-10 flex h-full items-start p-8 md:p-10">
               <div className="max-w-sm space-y-4">
                 <h1 className="contact-hero-anim text-3xl font-semibold leading-tight text-white md:text-4xl">
-                  Contactez ZK Concept.
+                  {t("contact.hero.title")}
                 </h1>
                 <p className="contact-hero-anim text-sm leading-7 text-white/80 md:text-base">
-                  Parlons de votre projet logistique et trouvons ensemble la
-                  meilleure solution.
+                  {t("contact.hero.description")}
                 </p>
               </div>
             </div>
@@ -187,11 +173,10 @@ export default function ContactPage() {
           <div className="p-8 md:p-10">
             <div className="mb-6 space-y-3">
               <h2 className="contact-reveal-item text-3xl font-semibold text-gray-900">
-                Contact
+                {t("nav.contact")}
               </h2>
               <p className="contact-reveal-item text-sm leading-7 text-gray-600">
-                Envoyez-nous votre demande et notre équipe vous répond
-                rapidement.
+                {t("contact.form.description")}
               </p>
             </div>
 
@@ -199,7 +184,7 @@ export default function ContactPage() {
 
             {submitted ? (
               <div className="contact-reveal-item mb-4 rounded-xl bg-green-50 px-4 py-3 text-sm text-green-700">
-                Merci, votre message a bien ete envoyé.
+                {t("contact.form.success")}
               </div>
             ) : null}
 
@@ -212,12 +197,12 @@ export default function ContactPage() {
             <form className="space-y-4" onSubmit={onSubmit}>
               <label className="block space-y-2">
                 <span className="contact-reveal-item text-sm font-semibold text-gray-800">
-                  Nom complet <span className="text-[#4b5563]">*</span>
+                  {t("forms.common.fullName")} <span className="text-[#4b5563]">*</span>
                 </span>
                 <input
                   required
                   type="text"
-                  placeholder="Nom complet"
+                  placeholder={t("forms.common.fullNamePlaceholder")}
                   value={form.fullName}
                   onChange={(event) =>
                     setForm({ ...form, fullName: event.target.value })
@@ -228,12 +213,12 @@ export default function ContactPage() {
 
               <label className="block space-y-2">
                 <span className="contact-reveal-item text-sm font-semibold text-gray-800">
-                  Email <span className="text-[#4b5563]">*</span>
+                  {t("forms.common.email")} <span className="text-[#4b5563]">*</span>
                 </span>
                 <input
                   required
                   type="email"
-                  placeholder="Email"
+                  placeholder={t("forms.common.emailPlaceholder")}
                   value={form.email}
                   onChange={(event) =>
                     setForm({ ...form, email: event.target.value })
@@ -244,12 +229,12 @@ export default function ContactPage() {
 
               <label className="block space-y-2">
                 <span className="contact-reveal-item text-sm font-semibold text-gray-800">
-                  Sujet <span className="text-[#4b5563]">*</span>
+                  {t("contact.form.subject")} <span className="text-[#4b5563]">*</span>
                 </span>
                 <input
                   required
                   type="text"
-                  placeholder="Sujet"
+                  placeholder={t("contact.form.subjectPlaceholder")}
                   value={form.subject}
                   onChange={(event) =>
                     setForm({ ...form, subject: event.target.value })
@@ -260,12 +245,12 @@ export default function ContactPage() {
 
               <label className="block space-y-2">
                 <span className="contact-reveal-item text-sm font-semibold text-gray-800">
-                  Message <span className="text-[#4b5563]">*</span>
+                  {t("contact.form.message")} <span className="text-[#4b5563]">*</span>
                 </span>
                 <textarea
                   required
                   rows={5}
-                  placeholder="Message"
+                  placeholder={t("contact.form.messagePlaceholder")}
                   value={form.message}
                   onChange={(event) =>
                     setForm({ ...form, message: event.target.value })
@@ -279,16 +264,15 @@ export default function ContactPage() {
                 disabled={isSending}
                 className="contact-reveal-item w-full rounded-xl bg-black py-3 text-sm font-semibold text-white transition hover:opacity-90"
               >
-                {isSending ? "Envoi en cours..." : "Envoyer le message"}
+                {isSending ? t("forms.common.sending") : t("contact.form.submit")}
               </button>
             </form>
 
             <p className="contact-reveal-item mt-4 text-xs text-gray-500">
-              Nous vous répondrons dans les plus brefs délais.
+              {t("contact.form.responseNote")}
             </p>
             <p className="contact-reveal-item mt-1 text-xs text-gray-500">
-              <span className="font-semibold text-[#4b5563]">*</span> Champs
-              obligatoires
+              <span className="font-semibold text-[#4b5563]">*</span> {t("forms.common.requiredFields")}
             </p>
           </div>
         </div>
@@ -297,31 +281,25 @@ export default function ContactPage() {
           <div className="grid gap-6 md:grid-cols-3">
             <div className="contact-reveal-item space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">
-                Demandes générales
+                {t("contact.blocks.generalRequests")}
               </p>
-              <p className="text-sm font-medium text-gray-900">
-                zakaria@zkconcept.be
-              </p>
+              <p className="text-sm font-medium text-gray-900">zakaria@zkconcept.be</p>
               <p className="text-sm text-gray-700">+32 489 39 57 80</p>
             </div>
 
             <div className="contact-reveal-item space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">
-                Partenariats
+                {t("contact.blocks.partnerships")}
               </p>
-              <p className="text-sm font-medium text-gray-900">
-                zakaria@zkconcept.be
-              </p>
+              <p className="text-sm font-medium text-gray-900">zakaria@zkconcept.be</p>
               <p className="text-sm text-gray-700">+32 486 92 31 82</p>
             </div>
 
             <div className="contact-reveal-item space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">
-                Adresse
+                {t("contact.blocks.address")}
               </p>
-              <p className="text-sm font-medium text-gray-900">
-                Romeinsesteenweg 200
-              </p>
+              <p className="text-sm font-medium text-gray-900">Romeinsesteenweg 200</p>
               <p className="text-sm text-gray-700">1800 Vilvoorde, Belgique</p>
             </div>
           </div>

@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
 } from "./ui/accordion";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 type ServiceDetail = {
   title: string;
@@ -29,6 +30,7 @@ export default function ServicePageTemplate({
   description,
   details,
 }: ServicePageTemplateProps) {
+  const { t } = useTranslation();
   const rootRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -116,8 +118,7 @@ export default function ServicePageTemplate({
           {title}
         </h2>
         <p className="services-hero-anim mx-auto max-w-3xl text-base text-gray-600 md:text-lg">
-          Une exécution claire, structurée et fiable, adaptée a vos exigences
-          opérationnelles.
+          {t("serviceTemplate.heroDescription")}
         </p>
       </section>
 
@@ -158,25 +159,23 @@ export default function ServicePageTemplate({
       <section className="service-card grid gap-6 rounded-2xl border border-gray-200 p-5 md:p-6 lg:grid-cols-[1fr_1.1fr] lg:items-center">
         <div className="space-y-4">
           <h3 className="service-reveal text-2xl font-semibold text-gray-900 md:text-3xl">
-            Intéressé ? Complétez nos formulaires.
+            {t("serviceTemplate.interestedTitle")}
           </h3>
           <p className="service-reveal text-sm leading-7 text-gray-600 md:text-base">
-            Vous avez un besoin en livraison, distribution ou coordination
-            logistique ? Envoyez votre demande via nos formulaires pour recevoir
-            une reponse rapide et une proposition adaptée a votre activite.
+            {t("serviceTemplate.interestedDescription")}
           </p>
           <div className="service-reveal flex flex-wrap gap-3 pt-1">
             <Link
               to="/devis"
               className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-gray-800"
             >
-              Demander un devis
+              {t("common.quote")}
             </Link>
             <Link
               to="/travailler-ensemble"
               className="rounded-full border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-100"
             >
-              Travailler ensemble
+              {t("common.workTogether")}
             </Link>
           </div>
         </div>

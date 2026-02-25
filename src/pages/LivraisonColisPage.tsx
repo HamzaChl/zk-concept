@@ -1,26 +1,29 @@
+import { useTranslation } from "react-i18next";
 import ServicePageTemplate from "../components/ServicePageTemplate";
 import colisImage from "../assets/colis.jpg";
 import colisImage2 from "../assets/colis2.jpg";
 
 export default function LivraisonColisPage() {
+  const { t } = useTranslation();
+
   return (
     <ServicePageTemplate
-      title="Livraison de Colis"
+      title={t("services.parcel.title")}
       image={colisImage}
       secondaryImage={colisImage2}
-      description="ZK Concept assure la livraison rapide et fiable de colis à travers la Belgique. Forte de plusieurs années d'expérience auprès d'acteurs majeurs du secteur, l'entreprise garantit ponctualité, respect des procedures et qualité de service constante. Chaque tournée est optimisee afin d'assurer efficacité, traçabilité et satisfaction client."
+      description={t("services.parcel.description")}
       details={[
         {
-          title: "Tournees optimisees",
-          text: "Chaque tournée est preparee selon les zones, les horaires de livraison et les contraintes terrain pour reduire les temps morts et maintenir une cadence fiable.",
+          title: t("services.parcel.details.optimizedRoutes.title"),
+          text: t("services.parcel.details.optimizedRoutes.text"),
         },
         {
-          title: "Suivi et traçabilité",
-          text: "Nous appliquons un suivi rigoureux des colis, avec des procedures claires a chaque etape, afin d'assurer transparence, contrôle et qualité de service.",
+          title: t("services.parcel.details.tracking.title"),
+          text: t("services.parcel.details.tracking.text"),
         },
         {
-          title: "Fiabilite opérationnelle",
-          text: "Notre organisation permet d'absorber des volumes variables tout en conservant ponctualité, régularité et satisfaction client sur la duree.",
+          title: t("services.parcel.details.reliability.title"),
+          text: t("services.parcel.details.reliability.text"),
         },
       ]}
     />
