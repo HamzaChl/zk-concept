@@ -7,6 +7,7 @@ import ContactPage from "./pages/ContactPage";
 import DevisPage from "./pages/DevisPage";
 import DistributionPressePage from "./pages/DistributionPressePage";
 import GestionLogistiquePage from "./pages/GestionLogistiquePage";
+import AmpPresentationPage from "./pages/AmpPresentationPage";
 import HomePage from "./pages/HomePage";
 import ImprintPage from "./pages/ImprintPage";
 import LegalNoticePage from "./pages/LegalNoticePage";
@@ -33,6 +34,7 @@ export default function App() {
       <main className="mx-auto w-full px-4 pb-16 pt-4 md:px-[50px]">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/amp-presentation" element={<AmpPresentationPage />} />
           <Route path="/livraison-colis" element={<LivraisonColisPage />} />
           <Route
             path="/distribution-presse"

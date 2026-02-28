@@ -70,6 +70,210 @@
       "description": "ZK Concept ondersteunt bedrijven in pakketlevering en persdistributie met betrouwbaarheid, stiptheid en efficiëntie. Laten we uw project bespreken en de juiste oplossing opzetten."
     }
   },
+  "ampPresentation": {
+    "hero": {
+      "badge": "AMP-aanbesteding — april / juni / september 2026",
+      "title": "Onze Organisatie",
+      "subtitle": "ZkConcept — B2B-distributiepartner",
+      "detail": "Teams-vergadering — maandag 2 maart 2026"
+    },
+    "background": {
+      "kicker": "Vorige ervaring",
+      "title": "Een logische stap naar persdistributie",
+      "description": "We hebben onze activiteit eerst uitgebouwd in pakketlevering, onder meer voor spelers zoals bpost en PostNL. Sinds kort zijn we ook gestart in de distributie van kranten, met de duidelijke ambitie om ons daarin verder te specialiseren.",
+      "items": {
+        "item1": {
+          "title": "Sterke logistieke basis",
+          "text": "Onze ervaring in pakketlevering heeft ons geholpen om routes, terreinreflexen en operationele discipline stevig te structureren."
+        },
+        "item2": {
+          "title": "Volledig team klaar",
+          "text": "We beschikken vandaag over een volledig team, met chauffeurs, backup chauffeurs, sortering en supervisie, klaar voor een betrouwbare uitvoering elke ochtend."
+        },
+        "item3": {
+          "title": "Weg van onderaanneming",
+          "text": "We hebben veel via onderaanneming gewerkt. Een rechtstreeks contract zou ons meer stabiliteit, meer zichtbaarheid en meer ruimte geven om in servicekwaliteit te investeren."
+        }
+      }
+    },
+    "experience": {
+      "title": "Terreinervaring",
+      "cards": {
+        "tienen": {
+          "title": "Tienen",
+          "badge": "Afgerond",
+          "text": "Actief van 8 december 2025 tot 17 januari 2026. Eerste rechtstreekse ervaring met AMP."
+        },
+        "rotselaar": {
+          "title": "Rotselaar",
+          "badge": "Lopend",
+          "text": "Actief sinds 21 januari 2026 in onderaanneming. Lage klachtenratio, bewezen kwaliteit."
+        },
+        "objectif": {
+          "title": "Doel 2026",
+          "badge": "Direct B2B",
+          "text": "Rechtstreekse AMP-partner worden, zonder onderaanneming, in de nieuw toegewezen regio's."
+        }
+      }
+    },
+    "team": {
+      "kicker": "Ons team",
+      "title": "Een gestructureerde organisatie op het terrein",
+      "description": "Elk depot wordt beheerd door een toegewijd team met duidelijke rollen, om elke ochtend betrouwbare en reactieve distributie te garanderen.",
+      "items": {
+        "item1": {
+          "title": "Gekwalificeerde chauffeurs",
+          "text": "Chauffeurs per zone beschikbaar en opgeleid volgens de AMP-vereisten (timing, klachten, routes)."
+        },
+        "item2": {
+          "title": "Sorteerteam",
+          "text": "Elke ochtend aanwezig in het depot om de kranten voor te bereiden en te sorteren voor distributie."
+        },
+        "item3": {
+          "title": "Verantwoordelijke opvolging",
+          "text": "Eén coördinator per depot verzekert de operationele opvolging, incidentbeheer en communicatie met AMP."
+        },
+        "item4": {
+          "title": "Depotinfrastructuur",
+          "text": "Uitgerust magazijn: printer, WiFi, transpallet. Beschikbaar voor elke beheerde zone."
+        }
+      }
+    },
+    "zones": {
+      "title": "Kandidaatzones",
+      "description": "Detail van ons ingediende aanbod voor de transities in 2026.",
+      "table": {
+        "headers": {
+          "goLive": "Go Live",
+          "region": "Regio",
+          "postalCode": "Postcode",
+          "routesPerDay": "Rondes/dag",
+          "pricePerDrop": "Prijs/drop",
+          "subhub": "SUBHUB",
+          "surface": "Oppervlakte",
+          "printer": "Printer",
+          "wifi": "WiFi",
+          "transpallet": "Transpallet",
+          "drivers": "Chauffeurs",
+          "experience": "Ervaring"
+        },
+        "rows": {
+          "row1": {
+            "goLive": "01/06/2026",
+            "region": "WEMMEL*",
+            "postalCode": "1780",
+            "routesPerDay": "3",
+            "pricePerDrop": "0,58 €/drop",
+            "subhub": "1860",
+            "surface": "198 m²",
+            "drivers": "5"
+          },
+          "row2": {
+            "goLive": "22/06/2026",
+            "region": "LEUVEN 2",
+            "postalCode": "3000",
+            "routesPerDay": "19",
+            "pricePerDrop": "0,58 €/drop",
+            "subhub": "3000",
+            "surface": "300 m²",
+            "drivers": "23"
+          },
+          "row3": {
+            "goLive": "29/06/2026",
+            "region": "MEISE*",
+            "postalCode": "1860",
+            "routesPerDay": "7",
+            "pricePerDrop": "0,58 €/drop",
+            "subhub": "1860",
+            "surface": "198 m²",
+            "drivers": "10"
+          }
+        }
+      },
+      "note": "* WEMMEL* en MEISE* delen dezelfde SUBHUB (1860) — logistieke synergie en schaalvoordeel."
+    },
+    "commitments": {
+      "title": "Onze engagementen",
+      "description": "Concreet operationeel kader om vanaf dag één een betrouwbare AMP-transitie te garanderen.",
+      "items": {
+        "item1": {
+          "title": "Stipte levering",
+          "text": "Voor 8u00 op weekdagen, voor 10u00 op zaterdag."
+        },
+        "item2": {
+          "title": "Lage klachtenratio",
+          "text": "< 0,5% op weekdagen, < 1% op zaterdag — conform de AMP-vereisten."
+        },
+        "item3": {
+          "title": "Uitgerust depot",
+          "text": "Printer, WiFi en transpallet beschikbaar in elke subhub."
+        },
+        "item4": {
+          "title": "Beschikbaar team",
+          "text": "Chauffeurs en sorteerteam operationeel, flexibel en reactief."
+        },
+        "item5": {
+          "title": "Snelle opstart",
+          "text": "Capaciteit om te starten zodra de Go Live-datum bevestigd is."
+        },
+        "item6": {
+          "title": "Rechtstreekse B2B-partner",
+          "text": "Rechtstreekse samenwerking met AMP, zonder tussenpersoon."
+        }
+      }
+    },
+    "flow": {
+      "kicker": "Operationele flow",
+      "title": "Organisatie van de ochtendflow",
+      "description": "Een eenvoudig schema met duidelijke rollen en een directe supervisielus voor een vlotte uitvoering elke ochtend.",
+      "steps": {
+        "step1": {
+          "label": "Stap 1",
+          "title": "Ophaalchauffeur",
+          "text": "De chauffeur vertrekt om de kranten op te halen en zorgt dat het volume binnen het geplande tijdslot in het depot aankomt."
+        },
+        "step2": {
+          "label": "Stap 2",
+          "title": "Sorteerteam",
+          "text": "Het sorteerteam ontvangt, bereidt en organiseert de kranten per ronde voor een snelle en vlotte start."
+        },
+        "step3": {
+          "label": "Stap 3",
+          "title": "Chauffeurs en backup",
+          "text": "De hoofdchauffeurs vertrekken voor distributie. Backup chauffeurs blijven beschikbaar om onverwachte situaties op te vangen."
+        },
+        "step4": {
+          "label": "Stap 4",
+          "title": "Supervisor en feedback",
+          "text": "De supervisor centraliseert feedback van het terrein, volgt incidenten op en geeft snel operationele feedback door."
+        }
+      }
+    },
+    "training": {
+      "kicker": "Training & onboarding",
+      "title": "Terreinkennis en integratie van chauffeurs",
+      "description": "We hebben al verschillende opleidingen gevolgd rond persdistributie. Daardoor kunnen we de sortering correct structureren, de weekend-specificiteiten anticiperen en nieuwe chauffeurs snel inwerken.",
+      "items": {
+        "item1": {
+          "title": "Kennis van kranten en sortering",
+          "text": "We weten welke kranten samenhoren en hoe de weekendpatronen georganiseerd moeten worden voor een propere en consistente voorbereiding."
+        },
+        "item2": {
+          "title": "Cubivue opleiding",
+          "text": "Wanneer een nieuwe chauffeur start, leggen we de operationele werking uit en tonen we hoe de Cubivue-applicatie gebruikt wordt tijdens de ronde."
+        },
+        "item3": {
+          "title": "Begeleiding op het terrein",
+          "text": "Een ervaren chauffeur rijdt een week mee met de nieuwe chauffeur. Indien nodig kan die begeleiding langer duren, al is dat zelden nodig."
+        }
+      }
+    },
+    "footer": {
+      "title": "ZkConcept",
+      "company": "BE 0753.804.519 — Römeinsesteenweg 200, 1800 Vilvoorde",
+      "contact": "Zakaria & Hamza Chtaibi — +32 486 92 31 82"
+    }
+  },
   "serviceTemplate": {
     "heroDescription": "Heldere, gestructureerde en betrouwbare uitvoering, aangepast aan uw operationele eisen.",
     "interestedTitle": "Geïnteresseerd? Vul onze formulieren in.",

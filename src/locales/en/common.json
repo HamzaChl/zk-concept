@@ -70,6 +70,210 @@
       "description": "ZK Concept supports businesses in parcel delivery and press distribution with reliability, punctuality and efficiency. Let's discuss your project and set up the right solution for your needs."
     }
   },
+  "ampPresentation": {
+    "hero": {
+      "badge": "AMP tender call — April / June / September 2026",
+      "title": "Our Organization",
+      "subtitle": "ZkConcept — B2B distribution partner",
+      "detail": "Teams meeting — Monday, March 2, 2026"
+    },
+    "background": {
+      "kicker": "Previous experience",
+      "title": "A natural move into press distribution",
+      "description": "We first developed our activity in parcel delivery, including work for companies such as bpost and PostNL. More recently, we started working in newspaper distribution, with a clear intention to specialize in this field over the long term.",
+      "items": {
+        "item1": {
+          "title": "Strong logistics foundation",
+          "text": "Our parcel background helped us structure routes, field reflexes and operational discipline on demanding assignments."
+        },
+        "item2": {
+          "title": "Complete team in place",
+          "text": "We now have a complete team, with drivers, backup drivers, sorting and supervision, able to deliver reliable execution every morning."
+        },
+        "item3": {
+          "title": "Moving beyond subcontracting",
+          "text": "We have worked extensively through subcontracting. A direct contract would give us more stability, more visibility and a stronger ability to invest in service quality."
+        }
+      }
+    },
+    "experience": {
+      "title": "Field experience",
+      "cards": {
+        "tienen": {
+          "title": "Tienen",
+          "badge": "Completed",
+          "text": "Active from December 8, 2025 to January 17, 2026. First direct experience with AMP."
+        },
+        "rotselaar": {
+          "title": "Rotselaar",
+          "badge": "Ongoing",
+          "text": "Active since January 21, 2026 as a subcontractor. Low complaint rate, proven quality."
+        },
+        "objectif": {
+          "title": "2026 Goal",
+          "badge": "Direct B2B",
+          "text": "Become a direct AMP partner, without subcontracting, in the newly assigned regions."
+        }
+      }
+    },
+    "team": {
+      "kicker": "Our team",
+      "title": "A structured field organization",
+      "description": "Each depot is run by a dedicated team with clear roles to ensure reliable, responsive distribution every morning.",
+      "items": {
+        "item1": {
+          "title": "Qualified drivers",
+          "text": "Drivers available by area, trained for AMP requirements (timelines, complaints, routes)."
+        },
+        "item2": {
+          "title": "Sorting team",
+          "text": "Present at the depot every morning to prepare and sort newspapers before distribution."
+        },
+        "item3": {
+          "title": "Operations lead",
+          "text": "One coordinator per depot manages operations follow-up, incident handling and communication with AMP."
+        },
+        "item4": {
+          "title": "Depot infrastructure",
+          "text": "Equipped warehouse: printer, WiFi, transpallet. Available for every operated zone."
+        }
+      }
+    },
+    "zones": {
+      "title": "Candidate zones",
+      "description": "Details of our submitted offer for the 2026 transitions.",
+      "table": {
+        "headers": {
+          "goLive": "Go Live",
+          "region": "Region",
+          "postalCode": "Postal Code",
+          "routesPerDay": "Routes/day",
+          "pricePerDrop": "Price/drop",
+          "subhub": "SUBHUB",
+          "surface": "Surface",
+          "printer": "Printer",
+          "wifi": "WiFi",
+          "transpallet": "Transpallet",
+          "drivers": "Drivers",
+          "experience": "Experience"
+        },
+        "rows": {
+          "row1": {
+            "goLive": "01/06/2026",
+            "region": "WEMMEL*",
+            "postalCode": "1780",
+            "routesPerDay": "3",
+            "pricePerDrop": "0,58 €/drop",
+            "subhub": "1860",
+            "surface": "198 m²",
+            "drivers": "5"
+          },
+          "row2": {
+            "goLive": "22/06/2026",
+            "region": "LEUVEN 2",
+            "postalCode": "3000",
+            "routesPerDay": "19",
+            "pricePerDrop": "0,58 €/drop",
+            "subhub": "3000",
+            "surface": "300 m²",
+            "drivers": "23"
+          },
+          "row3": {
+            "goLive": "29/06/2026",
+            "region": "MEISE*",
+            "postalCode": "1860",
+            "routesPerDay": "7",
+            "pricePerDrop": "0,58 €/drop",
+            "subhub": "1860",
+            "surface": "198 m²",
+            "drivers": "10"
+          }
+        }
+      },
+      "note": "* WEMMEL* and MEISE* share the same SUBHUB (1860) — logistics synergy and economies of scale."
+    },
+    "commitments": {
+      "title": "Our commitments",
+      "description": "Concrete operating standards to ensure a reliable AMP transition from day one.",
+      "items": {
+        "item1": {
+          "title": "On-time delivery",
+          "text": "Before 8:00 AM on weekdays, before 10:00 AM on Saturdays."
+        },
+        "item2": {
+          "title": "Low complaint rate",
+          "text": "< 0.5% on weekdays, < 1% on Saturdays — aligned with AMP requirements."
+        },
+        "item3": {
+          "title": "Equipped depot",
+          "text": "Printer, WiFi and transpallet available in every subhub."
+        },
+        "item4": {
+          "title": "Available team",
+          "text": "Drivers and sorting team operational, flexible and responsive."
+        },
+        "item5": {
+          "title": "Fast launch",
+          "text": "Capacity to start as soon as the Go Live date is confirmed."
+        },
+        "item6": {
+          "title": "Direct B2B partnership",
+          "text": "Direct collaboration with AMP, without intermediaries."
+        }
+      }
+    },
+    "flow": {
+      "kicker": "Operational flow",
+      "title": "Morning workflow organization",
+      "description": "A simple structure with clear roles and a direct supervision loop to ensure smooth execution every morning.",
+      "steps": {
+        "step1": {
+          "label": "Step 1",
+          "title": "Pickup driver",
+          "text": "The driver leaves to collect the newspapers and ensures the volume reaches the depot within the planned time slot."
+        },
+        "step2": {
+          "label": "Step 2",
+          "title": "Sorting team",
+          "text": "The sorting team receives, prepares and organizes the newspapers by route for a fast, frictionless departure."
+        },
+        "step3": {
+          "label": "Step 3",
+          "title": "Drivers and backup",
+          "text": "Primary drivers leave for distribution. Backup drivers remain available to absorb any unexpected issue."
+        },
+        "step4": {
+          "label": "Step 4",
+          "title": "Supervisor and feedback",
+          "text": "The supervisor centralizes field feedback, tracks incidents and provides fast operational feedback."
+        }
+      }
+    },
+    "training": {
+      "kicker": "Training & onboarding",
+      "title": "Field know-how and driver onboarding",
+      "description": "We have already attended several training sessions related to press distribution. This allows us to structure sorting properly, anticipate weekend specifics and onboard new drivers quickly.",
+      "items": {
+        "item1": {
+          "title": "Newspaper grouping and sorting",
+          "text": "We know which newspapers go together and how weekend patterns should be organized to ensure clean, consistent preparation."
+        },
+        "item2": {
+          "title": "Cubivue training",
+          "text": "When a new driver joins, we explain the operational workflow and how to use the Cubivue application as part of the route process."
+        },
+        "item3": {
+          "title": "On-route support",
+          "text": "An experienced driver completes the route with the new driver for one week. If needed, support can continue longer, although that is rarely necessary."
+        }
+      }
+    },
+    "footer": {
+      "title": "ZkConcept",
+      "company": "BE 0753.804.519 — Römeinsesteenweg 200, 1800 Vilvoorde",
+      "contact": "Zakaria & Hamza Chtaibi — +32 486 92 31 82"
+    }
+  },
   "serviceTemplate": {
     "heroDescription": "Clear, structured and reliable execution tailored to your operational requirements.",
     "interestedTitle": "Interested? Complete our forms.",

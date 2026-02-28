@@ -70,6 +70,210 @@
       "description": "ZK Concept accompagne les entreprises dans la livraison de colis et la distribution de presse avec fiabilité, ponctualité et efficacité. Discutons de votre projet et mettons en place une solution adaptée à vos besoins."
     }
   },
+  "ampPresentation": {
+    "hero": {
+      "badge": "Appel d'offres AMP — Avril / Juin / Septembre 2026",
+      "title": "Notre Organisation",
+      "subtitle": "ZkConcept — Partenaire de distribution B2B",
+      "detail": "Réunion Teams — Lundi 2 mars 2026"
+    },
+    "background": {
+      "kicker": "Expérience précédente",
+      "title": "Une évolution logique vers la distribution de presse",
+      "description": "Nous avons d'abord développé notre activité dans la livraison de colis, notamment pour des acteurs comme bpost et PostNL. Depuis peu, nous avons commencé à travailler dans la distribution de journaux, avec la volonté claire de nous spécialiser durablement dans cette activité.",
+      "items": {
+        "item1": {
+          "title": "Base logistique solide",
+          "text": "Notre expérience colis nous a permis de structurer nos tournées, nos réflexes terrain et notre discipline opérationnelle sur des missions exigeantes."
+        },
+        "item2": {
+          "title": "Équipe complète et prête",
+          "text": "Nous disposons aujourd'hui d'une équipe complète, avec chauffeurs, backup chauffeurs, tri et supervision, capable d'assurer une exécution fiable chaque matin."
+        },
+        "item3": {
+          "title": "Sortir de la sous-traitance",
+          "text": "Nous avons longtemps travaillé en sous-traitance. Obtenir un contrat direct représenterait pour nous plus de stabilité, plus de visibilité et une meilleure capacité d'investissement dans la qualité du service."
+        }
+      }
+    },
+    "experience": {
+      "title": "Expérience terrain",
+      "cards": {
+        "tienen": {
+          "title": "Tienen",
+          "badge": "Terminé",
+          "text": "Actif du 8 décembre 2025 au 17 janvier 2026. Première expérience directe avec AMP."
+        },
+        "rotselaar": {
+          "title": "Rotselaar",
+          "badge": "En cours",
+          "text": "Actif depuis le 21 janvier 2026 en sous-traitance. Faible taux de réclamations, qualité prouvée."
+        },
+        "objectif": {
+          "title": "Objectif 2026",
+          "badge": "B2B Direct",
+          "text": "Devenir partenaire direct AMP, sans sous-traitance, sur les nouvelles régions attribuées."
+        }
+      }
+    },
+    "team": {
+      "kicker": "Notre équipe",
+      "title": "Une organisation structurée sur le terrain",
+      "description": "Chaque dépôt est opéré par une équipe dédiée avec des rôles clairs, pour garantir une distribution fiable et réactive chaque matin.",
+      "items": {
+        "item1": {
+          "title": "Chauffeurs qualifiés",
+          "text": "Chauffeurs disponibles par zone, formés aux exigences AMP (délais, réclamations, itinéraires)."
+        },
+        "item2": {
+          "title": "Équipe de tri",
+          "text": "Présente au dépôt chaque matin pour préparer et trier les journaux avant distribution."
+        },
+        "item3": {
+          "title": "Responsable de suivi",
+          "text": "Un coordinateur par dépôt assure le suivi opérationnel, la gestion des incidents et la communication avec AMP."
+        },
+        "item4": {
+          "title": "Infrastructure dépôt",
+          "text": "Entrepôt équipé : imprimante, WiFi, transpallet. Disponible pour chaque zone opérée."
+        }
+      }
+    },
+    "zones": {
+      "title": "Zones candidates",
+      "description": "Détail de notre offre soumise pour les transitions 2026.",
+      "table": {
+        "headers": {
+          "goLive": "Go Live",
+          "region": "Région",
+          "postalCode": "Code Postal",
+          "routesPerDay": "Tournées/jour",
+          "pricePerDrop": "Prix/drop",
+          "subhub": "SUBHUB",
+          "surface": "Surface",
+          "printer": "Imprimante",
+          "wifi": "WiFi",
+          "transpallet": "Transpallet",
+          "drivers": "Chauffeurs",
+          "experience": "Expérience"
+        },
+        "rows": {
+          "row1": {
+            "goLive": "01/06/2026",
+            "region": "WEMMEL*",
+            "postalCode": "1780",
+            "routesPerDay": "3",
+            "pricePerDrop": "0,58 €/drop",
+            "subhub": "1860",
+            "surface": "198 m²",
+            "drivers": "5"
+          },
+          "row2": {
+            "goLive": "22/06/2026",
+            "region": "LEUVEN 2",
+            "postalCode": "3000",
+            "routesPerDay": "19",
+            "pricePerDrop": "0,58 €/drop",
+            "subhub": "3000",
+            "surface": "300 m²",
+            "drivers": "23"
+          },
+          "row3": {
+            "goLive": "29/06/2026",
+            "region": "MEISE*",
+            "postalCode": "1860",
+            "routesPerDay": "7",
+            "pricePerDrop": "0,58 €/drop",
+            "subhub": "1860",
+            "surface": "198 m²",
+            "drivers": "10"
+          }
+        }
+      },
+      "note": "* WEMMEL* et MEISE* partagent le même SUBHUB (1860) — synergie logistique et économie d'échelle."
+    },
+    "commitments": {
+      "title": "Nos engagements",
+      "description": "Des standards opérationnels concrets pour garantir une transition AMP fiable dès le premier jour.",
+      "items": {
+        "item1": {
+          "title": "Livraison ponctuelle",
+          "text": "Avant 8h00 en semaine, avant 10h00 le samedi."
+        },
+        "item2": {
+          "title": "Faible taux de réclamation",
+          "text": "< 0,5% en semaine, < 1% le samedi — conforme aux exigences AMP."
+        },
+        "item3": {
+          "title": "Dépôt équipé",
+          "text": "Imprimante, WiFi, transpallet disponibles dans chaque subhub."
+        },
+        "item4": {
+          "title": "Équipe disponible",
+          "text": "Chauffeurs et équipe de tri opérationnels, flexibles et réactifs."
+        },
+        "item5": {
+          "title": "Démarrage rapide",
+          "text": "Capacité à démarrer dès la date Go Live confirmée."
+        },
+        "item6": {
+          "title": "Partenariat direct B2B",
+          "text": "Collaboration directe avec AMP, sans intermédiaire."
+        }
+      }
+    },
+    "flow": {
+      "kicker": "Flow opérationnel",
+      "title": "Organisation du flux matinal",
+      "description": "Un schéma simple, avec des rôles clairs et un circuit de supervision direct pour garantir une exécution fluide chaque matin.",
+      "steps": {
+        "step1": {
+          "label": "Étape 1",
+          "title": "Chauffeur de collecte",
+          "text": "Le chauffeur part récupérer les journaux et assure l'arrivée du volume au dépôt dans le créneau prévu."
+        },
+        "step2": {
+          "label": "Étape 2",
+          "title": "Équipe de tri",
+          "text": "L'équipe de tri réceptionne, prépare et organise les journaux par tournée pour un départ rapide et sans friction."
+        },
+        "step3": {
+          "label": "Étape 3",
+          "title": "Chauffeurs et backup",
+          "text": "Les chauffeurs principaux partent en distribution. Des backup chauffeurs restent mobilisables pour absorber tout imprévu."
+        },
+        "step4": {
+          "label": "Étape 4",
+          "title": "Superviseur et feedback",
+          "text": "Le superviseur centralise les retours terrain, suit les incidents et transmet un feedback opérationnel rapide."
+        }
+      }
+    },
+    "training": {
+      "kicker": "Formation & intégration",
+      "title": "Savoir-faire terrain et onboarding chauffeurs",
+      "description": "Nous avons déjà suivi plusieurs formations liées à la distribution presse. Cela nous permet de structurer correctement le tri, d'anticiper les spécificités du week-end et d'intégrer rapidement de nouveaux chauffeurs.",
+      "items": {
+        "item1": {
+          "title": "Connaissance des journaux et du tri",
+          "text": "Nous savons quels journaux vont ensemble et comment organiser les patterns du week-end pour garantir une préparation propre et cohérente."
+        },
+        "item2": {
+          "title": "Formation Cubivue",
+          "text": "Lorsqu'un nouveau chauffeur arrive, nous lui expliquons le fonctionnement opérationnel et l'utilisation de l'application Cubivue dans le cadre de la tournée."
+        },
+        "item3": {
+          "title": "Accompagnement terrain",
+          "text": "Un chauffeur expérimenté effectue la tournée avec le nouveau chauffeur pendant une semaine. Si nécessaire, l'accompagnement peut durer plus longtemps, même si cela reste rare."
+        }
+      }
+    },
+    "footer": {
+      "title": "ZkConcept",
+      "company": "BE 0753.804.519 — Römeinsesteenweg 200, 1800 Vilvoorde",
+      "contact": "Zakaria & Hamza Chtaibi — +32 486 92 31 82"
+    }
+  },
   "serviceTemplate": {
     "heroDescription": "Une exécution claire, structurée et fiable, adaptée a vos exigences opérationnelles.",
     "interestedTitle": "Intéressé ? Complétez nos formulaires.",
