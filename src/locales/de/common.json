@@ -106,8 +106,8 @@
         },
         "rotselaar": {
           "title": "Rotselaar",
-          "badge": "Laufend",
-          "text": "Seit dem 21. Januar 2026 als Subunternehmer aktiv. Geringe Reklamationsquote, nachgewiesene Qualität."
+          "badge": "Abgeschlossen",
+          "text": "Vom 21. Januar 2026 bis 6. Februar 2026 als Subunternehmer aktiv. Geringe Reklamationsquote, nachgewiesene Qualität."
         },
         "objectif": {
           "title": "Ziel 2026",
@@ -190,7 +190,8 @@
           }
         }
       },
-      "note": "* WEMMEL* und MEISE* teilen denselben SUBHUB (1860) — logistische Synergie und Skaleneffekte."
+      "note": "* WEMMEL* und MEISE* teilen denselben SUBHUB (1860) — logistische Synergie und Skaleneffekte.",
+      "depotNote": "Zusätzlich zu den eingereichten Angeboten verfügen wir auch über ein Depot in Koningslo, das wir bei Bedarf problemlos übernehmen und reaktivieren können."
     },
     "commitments": {
       "title": "Unsere Zusagen",
@@ -265,6 +266,25 @@
         "item3": {
           "title": "Begleitung im Feld",
           "text": "Ein erfahrener Fahrer fährt eine Woche lang mit dem neuen Fahrer mit. Falls nötig, kann diese Begleitung länger dauern, was jedoch nur selten der Fall ist."
+        }
+      }
+    },
+    "evolution": {
+      "kicker": "AMP-Entwicklung",
+      "title": "Wie wir unsere Entwicklung mit AMP sehen",
+      "description": "Unser Ziel ist nicht nur ein guter Start, sondern der Aufbau einer stabilen, langfristigen und vertrauensvollen Beziehung mit AMP, während unser Umfang wächst.",
+      "items": {
+        "item1": {
+          "title": "Die zugewiesenen Zonen stabilisieren",
+          "text": "Zuerst wollen wir die zugewiesenen Zonen mit konstanter Qualität, geringer Reklamationsquote und einer starken Organisation vor Ort absichern."
+        },
+        "item2": {
+          "title": "Die Struktur schrittweise stärken",
+          "text": "Mit einem direkten Vertrag können wir sicherer in das Team, Backup-Kapazitäten, Material und die kontinuierliche Verbesserung der Abläufe investieren."
+        },
+        "item3": {
+          "title": "Langfristig mit AMP wachsen",
+          "text": "Wir möchten uns zu einem verlässlichen Partner entwickeln, der neue Zonen übernehmen, Wachstum auffangen und die AMP-Standards dauerhaft einhalten kann."
         }
       }
     },

@@ -106,8 +106,8 @@
         },
         "rotselaar": {
           "title": "Rotselaar",
-          "badge": "En cours",
-          "text": "Actif depuis le 21 janvier 2026 en sous-traitance. Faible taux de réclamations, qualité prouvée."
+          "badge": "Terminé",
+          "text": "Actif du 21 janvier 2026 au 6 février 2026 en sous-traitance. Faible taux de réclamations, qualité prouvée."
         },
         "objectif": {
           "title": "Objectif 2026",
@@ -190,7 +190,8 @@
           }
         }
       },
-      "note": "* WEMMEL* et MEISE* partagent le même SUBHUB (1860) — synergie logistique et économie d'échelle."
+      "note": "* WEMMEL* et MEISE* partagent le même SUBHUB (1860) — synergie logistique et économie d'échelle.",
+      "depotNote": "En complément des offres soumises, nous avons également un dépôt disponible à Koningslo, que nous pouvons reprendre et réactiver sans souci si nécessaire."
     },
     "commitments": {
       "title": "Nos engagements",
@@ -265,6 +266,25 @@
         "item3": {
           "title": "Accompagnement terrain",
           "text": "Un chauffeur expérimenté effectue la tournée avec le nouveau chauffeur pendant une semaine. Si nécessaire, l'accompagnement peut durer plus longtemps, même si cela reste rare."
+        }
+      }
+    },
+    "evolution": {
+      "kicker": "Projection AMP",
+      "title": "Comment nous voyons notre évolution avec AMP",
+      "description": "Notre objectif n'est pas seulement de bien exécuter dès le départ, mais de construire avec AMP une relation stable, durable et de confiance à mesure que notre périmètre grandit.",
+      "items": {
+        "item1": {
+          "title": "Stabiliser les zones confiées",
+          "text": "Nous voulons d'abord sécuriser les zones attribuées avec une qualité constante, un faible taux de réclamation et une organisation terrain solide."
+        },
+        "item2": {
+          "title": "Renforcer progressivement la structure",
+          "text": "Avec un contrat direct, nous pourrons investir plus sereinement dans l'équipe, les backups, le matériel et l'amélioration continue des opérations."
+        },
+        "item3": {
+          "title": "Grandir avec AMP sur le long terme",
+          "text": "Nous voulons évoluer comme un partenaire fiable, capable de reprendre de nouvelles zones, d'absorber la croissance et de suivre les standards AMP dans la durée."
         }
       }
     },

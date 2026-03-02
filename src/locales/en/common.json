@@ -106,8 +106,8 @@
         },
         "rotselaar": {
           "title": "Rotselaar",
-          "badge": "Ongoing",
-          "text": "Active since January 21, 2026 as a subcontractor. Low complaint rate, proven quality."
+          "badge": "Completed",
+          "text": "Active from January 21, 2026 to February 6, 2026 as a subcontractor. Low complaint rate, proven quality."
         },
         "objectif": {
           "title": "2026 Goal",
@@ -190,7 +190,8 @@
           }
         }
       },
-      "note": "* WEMMEL* and MEISE* share the same SUBHUB (1860) — logistics synergy and economies of scale."
+      "note": "* WEMMEL* and MEISE* share the same SUBHUB (1860) — logistics synergy and economies of scale.",
+      "depotNote": "In addition to the submitted offers, we also have a depot available in Koningslo that we can take over and reactivate without difficulty if needed."
     },
     "commitments": {
       "title": "Our commitments",
@@ -265,6 +266,25 @@
         "item3": {
           "title": "On-route support",
           "text": "An experienced driver completes the route with the new driver for one week. If needed, support can continue longer, although that is rarely necessary."
+        }
+      }
+    },
+    "evolution": {
+      "kicker": "AMP outlook",
+      "title": "How we see our evolution with AMP",
+      "description": "Our objective is not only to execute well from day one, but to build a stable, long-term and trusted relationship with AMP as our scope grows.",
+      "items": {
+        "item1": {
+          "title": "Stabilize the assigned zones",
+          "text": "We first want to secure the assigned zones with consistent quality, low complaint rates and a strong field organization."
+        },
+        "item2": {
+          "title": "Strengthen the structure progressively",
+          "text": "With a direct contract, we will be able to invest more confidently in the team, backups, equipment and continuous operational improvement."
+        },
+        "item3": {
+          "title": "Grow with AMP long term",
+          "text": "We want to evolve as a reliable partner, able to take over new zones, absorb growth and maintain AMP standards over time."
         }
       }
     },

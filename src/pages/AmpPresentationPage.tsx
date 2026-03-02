@@ -34,7 +34,7 @@ export default function AmpPresentationPage() {
   const experienceCards = [
     {
       key: "tienen",
-      badgeClass: "bg-gray-100 text-gray-700",
+      badgeClass: "bg-emerald-100 text-emerald-700",
     },
     {
       key: "rotselaar",
@@ -522,9 +522,16 @@ export default function AmpPresentationPage() {
             </tbody>
           </table>
         </div>
-        <p className="text-sm font-medium text-gray-600">
-          {t("ampPresentation.zones.note")}
-        </p>
+        <div className="space-y-3">
+          <p className="text-sm font-medium text-gray-600">
+            {t("ampPresentation.zones.note")}
+          </p>
+          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-5">
+            <p className="text-sm leading-6 text-gray-600">
+              {t("ampPresentation.zones.depotNote")}
+            </p>
+          </div>
+        </div>
       </section>
 
       <section className="reveal-section space-y-6">
@@ -559,6 +566,37 @@ export default function AmpPresentationPage() {
               </article>
             );
           })}
+        </div>
+      </section>
+
+      <section className="reveal-section grid gap-6 rounded-2xl border border-gray-200 p-8 md:grid-cols-2 md:items-center md:p-10">
+        <div className="space-y-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#4b5563]">
+            {t("ampPresentation.evolution.kicker")}
+          </p>
+          <h2 className="text-3xl font-semibold text-gray-900 md:text-4xl">
+            {t("ampPresentation.evolution.title")}
+          </h2>
+          <p className="text-base text-gray-600">
+            {t("ampPresentation.evolution.description")}
+          </p>
+        </div>
+        <div className="reveal-stagger grid gap-4">
+          {(["item1", "item2", "item3"] as const).map((item) => (
+            <article
+              key={item}
+              className="reveal-item rounded-2xl border border-gray-200 p-6"
+            >
+              <div className="space-y-2">
+                <h3 className="text-lg font-semibold text-gray-900">
+                  {t(`ampPresentation.evolution.items.${item}.title`)}
+                </h3>
+                <p className="text-sm leading-6 text-gray-600">
+                  {t(`ampPresentation.evolution.items.${item}.text`)}
+                </p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 

@@ -106,8 +106,8 @@
         },
         "rotselaar": {
           "title": "Rotselaar",
-          "badge": "Lopend",
-          "text": "Actief sinds 21 januari 2026 in onderaanneming. Lage klachtenratio, bewezen kwaliteit."
+          "badge": "Afgerond",
+          "text": "Actief van 21 januari 2026 tot 6 februari 2026 in onderaanneming. Lage klachtenratio, bewezen kwaliteit."
         },
         "objectif": {
           "title": "Doel 2026",
@@ -190,7 +190,8 @@
           }
         }
       },
-      "note": "* WEMMEL* en MEISE* delen dezelfde SUBHUB (1860) — logistieke synergie en schaalvoordeel."
+      "note": "* WEMMEL* en MEISE* delen dezelfde SUBHUB (1860) — logistieke synergie en schaalvoordeel.",
+      "depotNote": "Naast de ingediende offertes beschikken we ook over een depot in Koningslo dat we zonder problemen kunnen overnemen en opnieuw activeren indien nodig."
     },
     "commitments": {
       "title": "Onze engagementen",
@@ -265,6 +266,25 @@
         "item3": {
           "title": "Begeleiding op het terrein",
           "text": "Een ervaren chauffeur rijdt een week mee met de nieuwe chauffeur. Indien nodig kan die begeleiding langer duren, al is dat zelden nodig."
+        }
+      }
+    },
+    "evolution": {
+      "kicker": "AMP-visie",
+      "title": "Hoe wij onze evolutie met AMP zien",
+      "description": "Ons doel is niet alleen om vanaf dag één goed uit te voeren, maar ook om met AMP een stabiele, duurzame en betrouwbare relatie op te bouwen naarmate onze scope groeit.",
+      "items": {
+        "item1": {
+          "title": "De toegewezen zones stabiliseren",
+          "text": "We willen eerst de toegewezen zones veilig en stabiel draaien met constante kwaliteit, weinig klachten en een sterke terreinorganisatie."
+        },
+        "item2": {
+          "title": "De structuur geleidelijk versterken",
+          "text": "Met een rechtstreeks contract kunnen we met meer zekerheid investeren in het team, backups, materiaal en continue verbetering van de werking."
+        },
+        "item3": {
+          "title": "Op lange termijn meegroeien met AMP",
+          "text": "We willen uitgroeien tot een betrouwbare partner die nieuwe zones kan overnemen, groei kan opvangen en de AMP-standaarden duurzaam kan volgen."
         }
       }
     },
