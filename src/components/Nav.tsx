@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useTranslation } from "react-i18next";
 import { NavLink, useLocation } from "react-router-dom";
-import logoZkWhite from "../assets/logo-zk-w.png";
+import logoZk from "../assets/logo-zk.png";
 
 export default function Nav() {
   const { t } = useTranslation();
@@ -80,24 +80,25 @@ export default function Nav() {
   const linkClass = ({ isActive }: { isActive: boolean }) =>
     `relative inline-flex pb-1.5 text-sm font-medium transition-colors after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-left after:rounded-full after:transition-transform after:duration-300 ${
       isActive
-        ? "text-white after:scale-x-100 after:bg-white"
-        : "text-white/75 after:scale-x-0 after:bg-white hover:text-white hover:after:scale-x-100"
+        ? "text-gray-950 after:scale-x-100 after:bg-gray-950"
+        : "text-gray-700 after:scale-x-0 after:bg-gray-950 hover:text-gray-950 hover:after:scale-x-100"
     }`;
 
   return (
     <header
       ref={navRef}
-      className="fixed left-0 right-0 top-0 z-50 w-full overflow-hidden rounded-none px-0 shadow-none backdrop-blur-none isolate"
+      className="fixed left-0 right-0 top-0 z-50 w-full overflow-hidden border-none px-0 shadow-none isolate"
       style={{
-        backdropFilter: "blur(6px)",
-        background: "rgba(31, 41, 55, 1.0)",
+        backdropFilter: "blur(14px) saturate(165%)",
+        WebkitBackdropFilter: "blur(14px) saturate(165%)",
+        background: "rgba(255,255,255,0.55)",
         width: "100%",
         opacity: 1,
       }}
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/28 via-black/12 to-transparent"
+        className="pointer-events-none absolute inset-0 bg-transparent"
       />
       <div className="relative flex w-full flex-row items-center gap-6 overflow-hidden px-6 py-3 min-[1070px]:px-10">
         <NavLink
@@ -106,7 +107,7 @@ export default function Nav() {
           className="shrink-0"
         >
           <img
-            src={logoZkWhite}
+            src={logoZk}
             alt="ZK Concept"
             className="h-9 w-auto object-contain"
           />
@@ -122,14 +123,14 @@ export default function Nav() {
 
         <NavLink
           to="/contact"
-          className="hidden rounded-full border border-white/50 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20 min-[1070px]:inline-flex"
+          className="hidden rounded-full bg-gray-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-gray-800 min-[1070px]:inline-flex"
         >
           {t("nav.contact")}
         </NavLink>
 
         <button
           type="button"
-          className="ml-auto rounded-full border border-white/50 px-4 py-2 text-sm font-semibold text-white min-[1070px]:hidden"
+          className="ml-auto rounded-full px-4 py-2 text-sm font-semibold text-gray-900 min-[1070px]:hidden"
           onClick={() => setIsMenuOpen((prev) => !prev)}
         >
           {t("nav.menu")}

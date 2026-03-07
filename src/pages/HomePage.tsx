@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import homeHeroImage from "../assets/home001.jpg";
-import homeHeroImage2 from "../assets/home002.jpg";
-import homeHeroImage3 from "../assets/home003.jpg";
+import anim001 from "../assets/anim001.jpg";
+import anim002 from "../assets/anim002.jpg";
+import anim003 from "../assets/anim003.jpg";
 import logoZk from "../assets/logo-zk.png";
 import bpostLogo from "../assets/Bpost.png";
 import colisPriveLogo from "../assets/colis-prive-logo.png";
@@ -29,6 +30,10 @@ const partners = [
 declare global {
   interface Window {
     __zkHomeIntroPlayed?: boolean;
+    __zkLenis?: {
+      stop: () => void;
+      start: () => void;
+    };
   }
 }
 
@@ -40,8 +45,6 @@ export default function HomePage() {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const heroHeaderRef = useRef<HTMLElement | null>(null);
   const loaderRef = useRef<HTMLDivElement | null>(null);
-  const splitTopRef = useRef<HTMLDivElement | null>(null);
-  const splitBottomRef = useRef<HTMLDivElement | null>(null);
   const timerRef = useRef<number | null>(null);
   const [loaderValue, setLoaderValue] = useState(hasPlayedIntroInitially ? 100 : 0);
   const [isLoaderVisible, setIsLoaderVisible] = useState(!hasPlayedIntroInitially);
@@ -106,8 +109,6 @@ export default function HomePage() {
         ".home-hero-anim",
         heroHeaderRef.current,
       );
-      const splitTop = splitTopRef.current;
-      const splitBottom = splitBottomRef.current;
       const sideImage = heroHeaderRef.current.querySelector<HTMLElement>(
         ".hero-side-image",
       );
@@ -117,15 +118,52 @@ export default function HomePage() {
       const accentImage = heroHeaderRef.current.querySelector<HTMLElement>(
         ".hero-accent-image",
       );
+      const tertiaryImage = heroHeaderRef.current.querySelector<HTMLElement>(
+        ".hero-tertiary-image",
+      );
 
-      if (!mainImage || !sideImage || !accentImage || !splitTop || !splitBottom) {
+      if (
+        !mainImage ||
+        !sideImage ||
+        !accentImage ||
+        !tertiaryImage
+      ) {
         return;
       }
 
       gsap.set(heroHeaderRef.current, { opacity: 1 });
-      gsap.set(mainImage, { autoAlpha: 1 });
+      gsap.set(mainImage, { autoAlpha: 1, zIndex: 20 });
       gsap.set(heroContentItems, { autoAlpha: 0, y: 24 });
-      gsap.set([accentImage, sideImage], {
+      gsap.set(sideImage, {
+        zIndex: 47,
+        autoAlpha: 1,
+        display: "block",
+        xPercent: 0,
+        yPercent: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        borderRadius: 0,
+      });
+      gsap.set(accentImage, {
+        zIndex: 46,
+        autoAlpha: 1,
+        display: "block",
+        xPercent: 0,
+        yPercent: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        borderRadius: 0,
+      });
+      gsap.set(tertiaryImage, {
+        zIndex: 45,
         autoAlpha: 1,
         display: "block",
         xPercent: 0,
@@ -142,40 +180,24 @@ export default function HomePage() {
       const sweepTl = gsap.timeline();
 
       sweepTl
-        .to(
-          splitTop,
-          {
-            yPercent: -100,
-            duration: 0.9,
-            ease: "power3.inOut",
-          },
-          0,
-        )
-        .to(
-          splitBottom,
-          {
-            yPercent: 100,
-            duration: 0.9,
-            ease: "power3.inOut",
-          },
-          0,
-        )
-        .set([splitTop, splitBottom], { display: "none" })
-        .set(accentImage, { zIndex: 45 })
-        .set(sideImage, { zIndex: 44 })
-        .set(mainImage, { zIndex: 20 })
-        .to(accentImage, {
-          yPercent: 115,
-          duration: 0.8,
-          ease: "power3.inOut",
-        })
-        .set(accentImage, { display: "none" })
         .to(sideImage, {
           yPercent: 115,
           duration: 0.8,
           ease: "power3.inOut",
         })
         .set(sideImage, { display: "none" })
+        .to(accentImage, {
+          yPercent: 115,
+          duration: 0.8,
+          ease: "power3.inOut",
+        })
+        .set(accentImage, { display: "none" })
+        .to(tertiaryImage, {
+          yPercent: 115,
+          duration: 0.8,
+          ease: "power3.inOut",
+        })
+        .set(tertiaryImage, { display: "none" })
         .to(
           heroContentItems,
           {
@@ -213,8 +235,15 @@ export default function HomePage() {
       });
     };
 
+    const COUNTER_TICK_MS = 90;
+    const COUNTER_MIN_STEP = 1;
+    const COUNTER_MAX_STEP = 5;
+
     const tickCounter = (currentValue: number) => {
-      const increment = Math.floor(Math.random() * 10) + 1;
+      const increment =
+        Math.floor(
+          Math.random() * (COUNTER_MAX_STEP - COUNTER_MIN_STEP + 1),
+        ) + COUNTER_MIN_STEP;
       const nextValue = Math.min(100, currentValue + increment);
       setLoaderValue(nextValue);
 
@@ -223,34 +252,66 @@ export default function HomePage() {
         return;
       }
 
-      timerRef.current = window.setTimeout(() => tickCounter(nextValue), 40);
+      timerRef.current = window.setTimeout(
+        () => tickCounter(nextValue),
+        COUNTER_TICK_MS,
+      );
     };
 
     if (!hasPlayedIntro) {
-      timerRef.current = window.setTimeout(() => tickCounter(0), 40);
+      timerRef.current = window.setTimeout(() => tickCounter(0), COUNTER_TICK_MS);
     }
 
     const ctx = gsap.context(() => {
       if (hasPlayedIntro) {
         gsap.set(heroHeaderRef.current, { opacity: 1 });
         gsap.set(".hero-main-image", { autoAlpha: 1, display: "block" });
-        gsap.set([".hero-side-image", ".hero-accent-image"], {
-          autoAlpha: 0,
-          display: "none",
-        });
+        gsap.set(
+          [".hero-side-image", ".hero-accent-image", ".hero-tertiary-image"],
+          {
+            autoAlpha: 0,
+            display: "none",
+          },
+        );
         gsap.set(".home-hero-anim", { autoAlpha: 1, y: 0 });
-        gsap.set([splitTopRef.current, splitBottomRef.current], {
-          yPercent: 0,
-          autoAlpha: 0,
-          display: "none",
-        });
       } else {
         gsap.set(".hero-image-layer", { autoAlpha: 0 });
         gsap.set(".home-hero-anim", { autoAlpha: 0, y: 24 });
-        gsap.set([splitTopRef.current, splitBottomRef.current], {
-          yPercent: 0,
-          autoAlpha: 1,
-          display: "block",
+      }
+
+      const heroImages = gsap.utils.toArray<HTMLElement>(
+        ".hero-image-layer",
+        heroHeaderRef.current,
+      );
+      const heroContent = gsap.utils.toArray<HTMLElement>(
+        ".home-hero-anim",
+        heroHeaderRef.current,
+      );
+
+      if (heroHeaderRef.current && heroImages.length > 0) {
+        gsap.to(heroImages, {
+          yPercent: -10,
+          ease: "none",
+          scrollTrigger: {
+            trigger: heroHeaderRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 0.6,
+          },
+        });
+      }
+
+      if (heroHeaderRef.current && heroContent.length > 0) {
+        gsap.to(heroContent, {
+          yPercent: -22,
+          ease: "none",
+          stagger: 0.03,
+          scrollTrigger: {
+            trigger: heroHeaderRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 0.35,
+          },
         });
       }
 
@@ -294,6 +355,19 @@ export default function HomePage() {
             },
           );
         });
+
+      gsap.utils.toArray<HTMLElement>(".reveal-section").forEach((section) => {
+        gsap.to(section, {
+          yPercent: -6,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 85%",
+            end: "bottom 35%",
+            scrub: 0.45,
+          },
+        });
+      });
     }, rootRef);
 
     return () => {
@@ -306,14 +380,23 @@ export default function HomePage() {
 
   useEffect(() => {
     if (!isIntroComplete) {
+      window.__zkLenis?.stop();
+      document.documentElement.style.overflow = "hidden";
+      document.documentElement.style.touchAction = "none";
       document.body.style.overflow = "hidden";
       document.body.style.touchAction = "none";
       return () => {
+        window.__zkLenis?.start();
+        document.documentElement.style.overflow = "";
+        document.documentElement.style.touchAction = "";
         document.body.style.overflow = "";
         document.body.style.touchAction = "";
       };
     }
 
+    window.__zkLenis?.start();
+    document.documentElement.style.overflow = "";
+    document.documentElement.style.touchAction = "";
     document.body.style.overflow = "";
     document.body.style.touchAction = "";
 
@@ -345,9 +428,9 @@ export default function HomePage() {
 
       <section
         ref={heroHeaderRef}
-        className="hero-flip-container relative h-screen w-screen overflow-hidden bg-[#f0f4f8] opacity-0"
+        className="hero-flip-container relative h-screen w-screen overflow-hidden bg-white opacity-0"
       >
-        <div className="absolute inset-0 z-0 bg-[#f0f4f8]" />
+        <div className="absolute inset-0 z-0 bg-white" />
         <div className="hero-image-layer hero-main-image hero-flip-image absolute inset-0 z-20 h-full w-full">
           <img
             src={homeHeroImage}
@@ -359,7 +442,7 @@ export default function HomePage() {
         </div>
         <div className="hero-image-layer hero-side-image hero-flip-image absolute z-20 overflow-hidden rounded-2xl border border-white/30 shadow-[0_20px_45px_rgba(0,0,0,0.22)]">
           <img
-            src={homeHeroImage2}
+            src={anim001}
             alt={t("home.hero.imageAlt")}
             className="h-full w-full object-cover"
           />
@@ -367,21 +450,20 @@ export default function HomePage() {
         </div>
         <div className="hero-image-layer hero-accent-image hero-flip-image absolute z-20 overflow-hidden rounded-2xl border border-white/30 shadow-[0_20px_45px_rgba(0,0,0,0.24)]">
           <img
-            src={homeHeroImage3}
+            src={anim002}
             alt={t("home.hero.imageAlt")}
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-transparent to-black/35" />
         </div>
-        <div
-          ref={splitTopRef}
-          className="absolute inset-x-0 top-0 z-40 h-1/2 bg-[#f0f4f8]"
-        />
-        <div
-          ref={splitBottomRef}
-          className="absolute inset-x-0 bottom-0 z-40 h-1/2 bg-[#f0f4f8]"
-        />
-
+        <div className="hero-image-layer hero-tertiary-image hero-flip-image absolute z-20 overflow-hidden rounded-2xl border border-white/30 shadow-[0_20px_45px_rgba(0,0,0,0.24)]">
+          <img
+            src={anim003}
+            alt={t("home.hero.imageAlt")}
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-transparent to-black/35" />
+        </div>
         <div className="absolute inset-0 z-30 flex items-center px-6 pt-20 md:px-12 md:pt-28">
           <div className="max-w-2xl space-y-6">
             <span className="home-hero-anim inline-flex rounded-full border border-white/30 bg-white/15 px-4 py-2 text-xs font-semibold text-white backdrop-blur">
@@ -442,17 +524,17 @@ export default function HomePage() {
         </section>
 
         <section className="reveal-section space-y-6">
-        <h2 className="text-3xl font-semibold text-gray-900 md:text-4xl">
+        <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
           {t("home.services.title")}
         </h2>
-        <p className="max-w-3xl text-base text-gray-600 md:text-lg">
+        <p className="mb-6 max-w-3xl text-base text-gray-600 md:text-lg">
           {t("home.services.description")}
         </p>
-        <div className="reveal-stagger grid gap-4 md:grid-cols-3">
+        <div className="reveal-stagger grid gap-4 md:auto-rows-fr md:grid-cols-3">
           {features.map((feature) => (
             <article
               key={feature.key}
-              className="reveal-item space-y-4 rounded-2xl border border-gray-200 p-6"
+              className="reveal-item flex h-full flex-col"
             >
               <div className="overflow-hidden rounded-xl">
                 <img
@@ -461,15 +543,15 @@ export default function HomePage() {
                   className="aspect-[5/3] w-full object-cover"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900">
+              <h3 className="mt-4 text-xl font-semibold text-gray-900">
                 {t(`services.${feature.key}.title`)}
               </h3>
-              <p className="mt-3 text-sm leading-6 text-gray-600">
+              <p className="mt-3 mb-4 text-sm leading-6 text-gray-600">
                 {t(`services.${feature.key}.description`)}
               </p>
               <Link
                 to={feature.to}
-                className="inline-flex rounded-full bg-black px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-gray-800"
+                className="mt-auto inline-flex w-fit rounded-full bg-black px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-gray-800"
               >
                 {t("common.moreDetails")}
               </Link>

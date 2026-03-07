@@ -6,12 +6,22 @@ import App from "./App";
 import "./i18n";
 import "./index.css";
 
+declare global {
+  interface Window {
+    __zkLenis?: {
+      stop: () => void;
+      start: () => void;
+    };
+  }
+}
+
 function Root() {
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.1,
       smoothWheel: true,
     });
+    window.__zkLenis = lenis;
 
     let rafId = 0;
     const raf = (time: number) => {
@@ -24,6 +34,7 @@ function Root() {
     return () => {
       window.cancelAnimationFrame(rafId);
       lenis.destroy();
+      window.__zkLenis = undefined;
     };
   }, []);
 
