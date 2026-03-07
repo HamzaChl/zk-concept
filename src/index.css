@@ -1,9 +1,10 @@
+@import url("https://fonts.cdnfonts.com/css/satoshi");
 @import "tailwindcss";
 
 :root {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Satoshi", "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 300;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,4 +15,108 @@ body {
   margin: 0;
   min-width: 320px;
   background: #ffffff;
+  font-family: "Satoshi", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+
+* {
+  font-weight: 300 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700 !important;
+}
+
+.global-grid-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1200;
+  opacity: 0;
+  --grid-pad: 16px;
+}
+
+.global-grid-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--grid-pad);
+  right: var(--grid-pad);
+  background-image:
+    linear-gradient(rgba(107, 114, 128, 0.22), rgba(107, 114, 128, 0.22)),
+    linear-gradient(rgba(107, 114, 128, 0.22), rgba(107, 114, 128, 0.22)),
+    linear-gradient(rgba(107, 114, 128, 0.22), rgba(107, 114, 128, 0.22)),
+    linear-gradient(rgba(107, 114, 128, 0.22), rgba(107, 114, 128, 0.22)),
+    linear-gradient(rgba(107, 114, 128, 0.22), rgba(107, 114, 128, 0.22));
+  background-repeat: no-repeat;
+  background-size: 1px 100%, 1px 100%, 1px 100%, 1px 100%, 1px 100%;
+  background-position: 0 0, 25% 0, 50% 0, 75% 0, 100% 0;
+}
+
+@media (min-width: 768px) {
+  .global-grid-overlay {
+    --grid-pad: 50px;
+  }
+}
+
+.hero-flip-container.hero-flip-stacked .hero-flip-image {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: min(62vw, 860px);
+  height: min(62vh, 560px);
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.hero-flip-container.hero-flip-stacked .hero-main-image {
+  z-index: 22;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.hero-flip-container.hero-flip-stacked .hero-side-image {
+  z-index: 23;
+  transform: translate(-50%, -50%) rotate(-7deg);
+}
+
+.hero-flip-container.hero-flip-stacked .hero-accent-image {
+  z-index: 24;
+  transform: translate(-50%, -50%) rotate(7deg);
+}
+
+.hero-side-image {
+  top: 14%;
+  right: 4%;
+  width: min(32vw, 520px);
+  height: min(38vh, 360px);
+}
+
+.hero-accent-image {
+  right: 12%;
+  bottom: 8%;
+  width: min(24vw, 340px);
+  height: min(28vh, 250px);
+}
+
+@media (max-width: 900px) {
+  .hero-side-image {
+    top: 12%;
+    right: 3%;
+    width: min(44vw, 360px);
+    height: min(28vh, 230px);
+  }
+
+  .hero-accent-image {
+    right: 6%;
+    bottom: 8%;
+    width: min(38vw, 280px);
+    height: min(22vh, 180px);
+  }
 }

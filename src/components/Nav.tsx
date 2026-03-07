@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router-dom";
-import logoZk from "../assets/logo-zk.png";
+import { NavLink, useLocation } from "react-router-dom";
+import logoZkWhite from "../assets/logo-zk-w.png";
 
 export default function Nav() {
   const { t } = useTranslation();
-  const [isScrolled, setIsScrolled] = useState(false);
+  const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNavReady, setIsNavReady] = useState(pathname !== "/");
   const navRef = useRef<HTMLElement | null>(null);
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const links = [
@@ -18,20 +19,44 @@ export default function Nav() {
   ];
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 12);
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    if (pathname !== "/") {
+      setIsNavReady(true);
+      return;
+    }
+
+    setIsNavReady(false);
+    const handleHeroIntroDone = () => setIsNavReady(true);
+    window.addEventListener("hero-intro-complete", handleHeroIntroDone);
+    return () =>
+      window.removeEventListener("hero-intro-complete", handleHeroIntroDone);
+  }, [pathname]);
 
   useEffect(() => {
     if (!navRef.current) return;
+    if (!isNavReady) {
+      gsap.set(navRef.current, { y: -90, opacity: 0, autoAlpha: 0 });
+      return;
+    }
+
     gsap.fromTo(
       navRef.current,
-      { y: -90, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.95, ease: "power3.out" },
+      { y: -90, opacity: 0, autoAlpha: 1 },
+      { y: 0, opacity: 1, autoAlpha: 1, duration: 0.75, ease: "power3.out" },
     );
-  }, []);
+  }, [isNavReady]);
+
+  useEffect(() => {
+    if (!navRef.current || !isNavReady) return;
+
+    gsap.set(navRef.current, {
+      y: 0,
+      opacity: 1,
+      width: "100%",
+      maxWidth: "100%",
+      borderRadius: 0,
+      top: 0,
+    });
+  }, [isNavReady]);
 
   useEffect(() => {
     if (!isMenuOpen || !mobileMenuRef.current) return;
@@ -53,31 +78,41 @@ export default function Nav() {
   }, [isMenuOpen]);
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `relative inline-flex pb-1.5 text-sm font-medium transition-colors after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-left after:rounded-full after:bg-[#6b7280] after:transition-transform after:duration-300 ${
+    `relative inline-flex pb-1.5 text-sm font-medium transition-colors after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-left after:rounded-full after:transition-transform after:duration-300 ${
       isActive
-        ? "text-black after:scale-x-100"
-        : "text-gray-500 after:scale-x-0 hover:text-gray-900 hover:after:scale-x-100"
+        ? "text-white after:scale-x-100 after:bg-white"
+        : "text-white/75 after:scale-x-0 after:bg-white hover:text-white hover:after:scale-x-100"
     }`;
 
   return (
     <header
       ref={navRef}
-      className={`sticky top-0 z-50 border-b px-4 transition-all duration-300 min-[1070px]:px-[50px] ${
-        isScrolled
-          ? "border-gray-200/80 bg-white/70 backdrop-blur-xl"
-          : "border-transparent bg-white/95"
-      }`}
+      className="fixed left-0 right-0 top-0 z-50 w-full overflow-hidden rounded-none px-0 shadow-none backdrop-blur-none isolate"
+      style={{
+        backdropFilter: "blur(6px)",
+        background: "rgba(31, 41, 55, 1.0)",
+        width: "100%",
+        opacity: 1,
+      }}
     >
-      <div className="relative mx-auto flex h-20 w-full items-center">
-        <NavLink to="/" aria-label={t("nav.homeAriaLabel")}>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/28 via-black/12 to-transparent"
+      />
+      <div className="relative flex w-full flex-row items-center gap-6 overflow-hidden px-6 py-3 min-[1070px]:px-10">
+        <NavLink
+          to="/"
+          aria-label={t("nav.homeAriaLabel")}
+          className="shrink-0"
+        >
           <img
-            src={logoZk}
+            src={logoZkWhite}
             alt="ZK Concept"
             className="h-9 w-auto object-contain"
           />
         </NavLink>
 
-        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 min-[1070px]:flex">
+        <nav className="ml-auto hidden items-center gap-6 min-[1070px]:flex">
           {links.map((link) => (
             <NavLink key={link.to} to={link.to} className={linkClass}>
               {link.label}
@@ -87,14 +122,14 @@ export default function Nav() {
 
         <NavLink
           to="/contact"
-          className="ml-auto hidden rounded-full bg-black px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-gray-800 min-[1070px]:inline-flex"
+          className="hidden rounded-full border border-white/50 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20 min-[1070px]:inline-flex"
         >
           {t("nav.contact")}
         </NavLink>
 
         <button
           type="button"
-          className="ml-auto rounded-full border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-900 min-[1070px]:hidden"
+          className="ml-auto rounded-full border border-white/50 px-4 py-2 text-sm font-semibold text-white min-[1070px]:hidden"
           onClick={() => setIsMenuOpen((prev) => !prev)}
         >
           {t("nav.menu")}
