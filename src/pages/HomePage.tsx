@@ -27,7 +27,6 @@ const partners = [
   { name: "Colis Prive", logo: colisPriveLogo, href: "https://colisprive.be/" },
 ];
 const ENABLE_HERO_IMAGE_INTRO = false;
-const HOME_INTRO_STORAGE_KEY = "zk_home_intro_played";
 
 declare global {
   interface Window {
@@ -42,16 +41,20 @@ declare global {
 export default function HomePage() {
   const { t } = useTranslation();
   const hasPlayedIntroInitially =
-    typeof window !== "undefined" &&
-    (window.__zkHomeIntroPlayed === true ||
-      window.sessionStorage.getItem(HOME_INTRO_STORAGE_KEY) === "true");
+    typeof window !== "undefined" && window.__zkHomeIntroPlayed === true;
   const rootRef = useRef<HTMLDivElement | null>(null);
   const heroHeaderRef = useRef<HTMLElement | null>(null);
   const loaderRef = useRef<HTMLDivElement | null>(null);
   const timerRef = useRef<number | null>(null);
-  const [loaderValue, setLoaderValue] = useState(hasPlayedIntroInitially ? 100 : 0);
-  const [isLoaderVisible, setIsLoaderVisible] = useState(!hasPlayedIntroInitially);
-  const [isIntroComplete, setIsIntroComplete] = useState(hasPlayedIntroInitially);
+  const [loaderValue, setLoaderValue] = useState(
+    hasPlayedIntroInitially ? 100 : 0,
+  );
+  const [isLoaderVisible, setIsLoaderVisible] = useState(
+    !hasPlayedIntroInitially,
+  );
+  const [isIntroComplete, setIsIntroComplete] = useState(
+    hasPlayedIntroInitially,
+  );
 
   const features = [
     {
@@ -96,9 +99,7 @@ export default function HomePage() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    const hasPlayedIntro =
-      window.__zkHomeIntroPlayed === true ||
-      window.sessionStorage.getItem(HOME_INTRO_STORAGE_KEY) === "true";
+    const hasPlayedIntro = window.__zkHomeIntroPlayed === true;
 
     if (hasPlayedIntro) {
       setLoaderValue(100);
@@ -114,25 +115,17 @@ export default function HomePage() {
         ".home-hero-anim",
         heroHeaderRef.current,
       );
-      const sideImage = heroHeaderRef.current.querySelector<HTMLElement>(
-        ".hero-side-image",
-      );
-      const mainImage = heroHeaderRef.current.querySelector<HTMLElement>(
-        ".hero-main-image",
-      );
-      const accentImage = heroHeaderRef.current.querySelector<HTMLElement>(
-        ".hero-accent-image",
-      );
+      const sideImage =
+        heroHeaderRef.current.querySelector<HTMLElement>(".hero-side-image");
+      const mainImage =
+        heroHeaderRef.current.querySelector<HTMLElement>(".hero-main-image");
+      const accentImage =
+        heroHeaderRef.current.querySelector<HTMLElement>(".hero-accent-image");
       const tertiaryImage = heroHeaderRef.current.querySelector<HTMLElement>(
         ".hero-tertiary-image",
       );
 
-      if (
-        !mainImage ||
-        !sideImage ||
-        !accentImage ||
-        !tertiaryImage
-      ) {
+      if (!mainImage || !sideImage || !accentImage || !tertiaryImage) {
         return;
       }
 
@@ -190,7 +183,7 @@ export default function HomePage() {
         gsap.to(heroContentItems, {
           y: 0,
           autoAlpha: 1,
-          delay: 2,
+          delay: 0.5,
           duration: 0.9,
           ease: "power3.out",
           stagger: 0.1,
@@ -238,7 +231,6 @@ export default function HomePage() {
 
       sweepTl.eventCallback("onComplete", () => {
         window.__zkHomeIntroPlayed = true;
-        window.sessionStorage.setItem(HOME_INTRO_STORAGE_KEY, "true");
         setIsIntroComplete(true);
         window.dispatchEvent(new Event("hero-intro-complete"));
       });
@@ -246,7 +238,6 @@ export default function HomePage() {
 
     const fadeLoaderAndReveal = () => {
       window.__zkHomeIntroPlayed = true;
-      window.sessionStorage.setItem(HOME_INTRO_STORAGE_KEY, "true");
 
       if (!loaderRef.current) {
         setIsLoaderVisible(false);
@@ -271,9 +262,8 @@ export default function HomePage() {
 
     const tickCounter = (currentValue: number) => {
       const increment =
-        Math.floor(
-          Math.random() * (COUNTER_MAX_STEP - COUNTER_MIN_STEP + 1),
-        ) + COUNTER_MIN_STEP;
+        Math.floor(Math.random() * (COUNTER_MAX_STEP - COUNTER_MIN_STEP + 1)) +
+        COUNTER_MIN_STEP;
       const nextValue = Math.min(100, currentValue + increment);
       setLoaderValue(nextValue);
 
@@ -289,7 +279,10 @@ export default function HomePage() {
     };
 
     if (!hasPlayedIntro) {
-      timerRef.current = window.setTimeout(() => tickCounter(0), COUNTER_TICK_MS);
+      timerRef.current = window.setTimeout(
+        () => tickCounter(0),
+        COUNTER_TICK_MS,
+      );
     }
 
     const ctx = gsap.context(() => {
@@ -525,121 +518,123 @@ export default function HomePage() {
 
       <div className="mx-auto w-full space-y-20 px-4 pt-16 md:px-[50px]">
         <section className="reveal-section mx-auto max-w-xl space-y-3 text-center">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-gray-500">
-          {t("home.partners.title")}
-        </p>
-        <div className="reveal-stagger grid gap-2 sm:grid-cols-3">
-          {partners.map((partner) => (
-            <a
-              key={partner.name}
-              href={partner.href}
-              target="_blank"
-              rel="noreferrer"
-              className="reveal-item group flex h-[90px] items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 transition-transform duration-300 hover:scale-[1.03]"
-            >
-              <img
-                src={partner.logo}
-                alt={partner.name}
-                className={`mx-auto w-auto object-contain ${
-                  partner.name === "Bpost"
-                    ? "h-12 transition-transform duration-300 group-hover:scale-105"
-                    : partner.name === "Colis Prive"
-                      ? "h-[56px] transition-transform duration-300 group-hover:scale-105"
-                      : "h-8 transition-transform duration-300 group-hover:scale-105"
-                }`}
-              />
-            </a>
-          ))}
-        </div>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-gray-500">
+            {t("home.partners.title")}
+          </p>
+          <div className="reveal-stagger grid gap-2 sm:grid-cols-3">
+            {partners.map((partner) => (
+              <a
+                key={partner.name}
+                href={partner.href}
+                target="_blank"
+                rel="noreferrer"
+                className="reveal-item group flex h-[90px] items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 transition-transform duration-300 hover:scale-[1.03]"
+              >
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className={`mx-auto w-auto object-contain ${
+                    partner.name === "Bpost"
+                      ? "h-12 transition-transform duration-300 group-hover:scale-105"
+                      : partner.name === "Colis Prive"
+                        ? "h-[56px] transition-transform duration-300 group-hover:scale-105"
+                        : "h-8 transition-transform duration-300 group-hover:scale-105"
+                  }`}
+                />
+              </a>
+            ))}
+          </div>
         </section>
 
         <section className="reveal-section space-y-6">
-        <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
-          {t("home.services.title")}
-        </h2>
-        <p className="mb-6 max-w-3xl text-base text-gray-600 md:text-lg">
-          {t("home.services.description")}
-        </p>
-        <div className="reveal-stagger grid gap-4 md:auto-rows-fr md:grid-cols-3">
-          {features.map((feature) => (
-            <article
-              key={feature.key}
-              className="reveal-item flex h-full flex-col"
-            >
-              <div className="overflow-hidden rounded-xl">
-                <img
-                  src={feature.image}
-                  alt={t(`services.${feature.key}.title`)}
-                  className="aspect-[5/3] w-full object-cover"
-                />
-              </div>
-              <h3 className="mt-4 text-xl font-semibold text-gray-900">
-                {t(`services.${feature.key}.title`)}
-              </h3>
-              <p className="mt-3 mb-4 text-sm leading-6 text-gray-600">
-                {t(`services.${feature.key}.description`)}
-              </p>
-              <Link
-                to={feature.to}
-                className="mt-auto inline-flex w-fit rounded-full bg-black px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-gray-800"
+          <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+            {t("home.services.title")}
+          </h2>
+          <p className="mb-6 max-w-3xl text-base text-gray-600 md:text-lg">
+            {t("home.services.description")}
+          </p>
+          <div className="reveal-stagger grid gap-4 md:auto-rows-fr md:grid-cols-3">
+            {features.map((feature) => (
+              <article
+                key={feature.key}
+                className="reveal-item flex h-full flex-col"
               >
-                {t("common.moreDetails")}
-              </Link>
-            </article>
-          ))}
-        </div>
+                <div className="overflow-hidden rounded-xl">
+                  <img
+                    src={feature.image}
+                    alt={t(`services.${feature.key}.title`)}
+                    className="aspect-[5/3] w-full object-cover"
+                  />
+                </div>
+                <h3 className="mt-4 text-xl font-semibold text-gray-900">
+                  {t(`services.${feature.key}.title`)}
+                </h3>
+                <p className="mt-3 mb-4 text-sm leading-6 text-gray-600">
+                  {t(`services.${feature.key}.description`)}
+                </p>
+                <Link
+                  to={feature.to}
+                  className="mt-auto inline-flex w-fit rounded-full bg-black px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-gray-800"
+                >
+                  {t("common.moreDetails")}
+                </Link>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className="reveal-section grid gap-6 rounded-2xl border border-gray-200 p-8 md:grid-cols-2 md:items-center md:p-10">
-        <div className="space-y-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#4b5563]">
-            {t("home.why.kicker")}
-          </p>
-          <h2 className="text-3xl font-semibold text-gray-900 md:text-4xl">
-            {t("home.why.title")}
-          </h2>
-          <p className="text-base text-gray-600">{t("home.why.description")}</p>
-        </div>
-        <Accordion
-          type="single"
-          collapsible
-          defaultValue="item-1"
-          className="w-full max-w-lg md:justify-self-end"
-        >
-          {whyItems.map((item) => (
-            <AccordionItem key={item.value} value={item.value}>
-              <AccordionTrigger>{item.title}</AccordionTrigger>
-              <AccordionContent>{item.text}</AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+          <div className="space-y-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#4b5563]">
+              {t("home.why.kicker")}
+            </p>
+            <h2 className="text-3xl font-semibold text-gray-900 md:text-4xl">
+              {t("home.why.title")}
+            </h2>
+            <p className="text-base text-gray-600">
+              {t("home.why.description")}
+            </p>
+          </div>
+          <Accordion
+            type="single"
+            collapsible
+            defaultValue="item-1"
+            className="w-full max-w-lg md:justify-self-end"
+          >
+            {whyItems.map((item) => (
+              <AccordionItem key={item.value} value={item.value}>
+                <AccordionTrigger>{item.title}</AccordionTrigger>
+                <AccordionContent>{item.text}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </section>
 
         <section className="reveal-section rounded-3xl bg-[#1f2937] p-8 text-white md:p-12">
-        <div className="reveal-stagger space-y-5">
-          <h2 className="text-3xl font-semibold md:text-5xl">
-            {t("home.bottomCta.title")}
-          </h2>
-          <p className="max-w-3xl text-sm text-gray-300 md:text-base">
-            {t("home.bottomCta.description")}
-          </p>
-          <div className="reveal-item flex flex-wrap gap-3">
-            <div className="home-hero-anim flex flex-wrap gap-3">
-              <Link
-                to="/travailler-ensemble"
-                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-100"
-              >
-                {t("common.workTogether")}
-              </Link>
-              <Link
-                to="/devis"
-                className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-gray-900"
-              >
-                {t("common.quote")}
-              </Link>
+          <div className="reveal-stagger space-y-5">
+            <h2 className="text-3xl font-semibold md:text-5xl">
+              {t("home.bottomCta.title")}
+            </h2>
+            <p className="max-w-3xl text-sm text-gray-300 md:text-base">
+              {t("home.bottomCta.description")}
+            </p>
+            <div className="reveal-item flex flex-wrap gap-3">
+              <div className="home-hero-anim flex flex-wrap gap-3">
+                <Link
+                  to="/travailler-ensemble"
+                  className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-100"
+                >
+                  {t("common.workTogether")}
+                </Link>
+                <Link
+                  to="/devis"
+                  className="rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white hover:text-gray-900"
+                >
+                  {t("common.quote")}
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
         </section>
       </div>
     </div>

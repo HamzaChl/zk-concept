@@ -70,6 +70,18 @@ h6 {
   pointer-events: none;
 }
 
+.flair {
+  width: 20px;
+  height: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  border-radius: 9999px;
+  background: #1f293788;
+  z-index: 9999;
+}
+
 .global-grid-overlay {
   position: fixed;
   inset: 0;

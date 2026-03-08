@@ -23,6 +23,88 @@ const LOADING_ENABLED = false;
 type FlairCleanup = () => void;
 const flairRegistry = new Map<HTMLElement, FlairCleanup>();
 
+function initMagneticElement(element: HTMLElement) {
+  if (element.dataset.zkMagneticReady === "true") return null;
+  element.dataset.zkMagneticReady = "true";
+
+  const xTo = gsap.quickTo(element, "x", {
+    duration: 0.35,
+    ease: "power3.out",
+  });
+  const yTo = gsap.quickTo(element, "y", {
+    duration: 0.35,
+    ease: "power3.out",
+  });
+
+  const onMove = (event: MouseEvent) => {
+    const rect = element.getBoundingClientRect();
+    const relX = (event.clientX - rect.left) / rect.width - 0.5;
+    const relY = (event.clientY - rect.top) / rect.height - 0.5;
+    const maxOffset = 9;
+    xTo(relX * maxOffset * 2);
+    yTo(relY * maxOffset * 2);
+  };
+
+  const onLeave = () => {
+    xTo(0);
+    yTo(0);
+  };
+
+  element.addEventListener("mousemove", onMove);
+  element.addEventListener("mouseleave", onLeave);
+
+  return () => {
+    element.removeEventListener("mousemove", onMove);
+    element.removeEventListener("mouseleave", onLeave);
+    gsap.set(element, { x: 0, y: 0 });
+    delete element.dataset.zkMagneticReady;
+  };
+}
+
+function initTiltCard(element: HTMLElement) {
+  if (element.dataset.zkTiltReady === "true") return null;
+  element.dataset.zkTiltReady = "true";
+
+  gsap.set(element, { transformPerspective: 900, transformOrigin: "center" });
+  const xTo = gsap.quickTo(element, "rotateY", {
+    duration: 0.32,
+    ease: "power3.out",
+  });
+  const yTo = gsap.quickTo(element, "rotateX", {
+    duration: 0.32,
+    ease: "power3.out",
+  });
+  const zTo = gsap.quickTo(element, "y", {
+    duration: 0.32,
+    ease: "power3.out",
+  });
+
+  const onMove = (event: MouseEvent) => {
+    const rect = element.getBoundingClientRect();
+    const relX = (event.clientX - rect.left) / rect.width - 0.5;
+    const relY = (event.clientY - rect.top) / rect.height - 0.5;
+    xTo(relX * 6);
+    yTo(relY * -6);
+    zTo(-3);
+  };
+
+  const onLeave = () => {
+    xTo(0);
+    yTo(0);
+    zTo(0);
+  };
+
+  element.addEventListener("mousemove", onMove);
+  element.addEventListener("mouseleave", onLeave);
+
+  return () => {
+    element.removeEventListener("mousemove", onMove);
+    element.removeEventListener("mouseleave", onLeave);
+    gsap.set(element, { rotateX: 0, rotateY: 0, y: 0 });
+    delete element.dataset.zkTiltReady;
+  };
+}
+
 function parseRgb(color: string) {
   const match = color.match(/\d+(\.\d+)?/g);
   if (!match || match.length < 3) return null;
@@ -278,6 +360,23 @@ export default function App() {
         !el.closest(".mobile-menu-item"),
     );
 
+    const magneticButtons = buttons.filter(
+      (el) =>
+        !el.className.includes("zk-flair-button") &&
+        !el.className.includes("zk-button__label"),
+    );
+
+    const magneticCleanups = magneticButtons
+      .map((button) => initMagneticElement(button))
+      .filter((cleanup): cleanup is FlairCleanup => cleanup !== null);
+
+    const tiltCards = Array.from(
+      document.querySelectorAll<HTMLElement>(".reveal-item"),
+    );
+    const tiltCleanups = tiltCards
+      .map((card) => initTiltCard(card))
+      .filter((cleanup): cleanup is FlairCleanup => cleanup !== null);
+
     buttons.forEach((button) => {
       const cleanup = initFlairButton(button);
       if (cleanup) flairRegistry.set(button, cleanup);
@@ -286,8 +385,67 @@ export default function App() {
     return () => {
       flairRegistry.forEach((cleanup) => cleanup());
       flairRegistry.clear();
+      magneticCleanups.forEach((cleanup) => cleanup());
+      tiltCleanups.forEach((cleanup) => cleanup());
     };
   }, [pathname]);
+
+  useEffect(() => {
+    const supportsHover = window.matchMedia("(hover: hover) and (pointer: fine)");
+    if (!supportsHover.matches) return;
+
+    gsap.set(".flair", { xPercent: -50, yPercent: -50 });
+    const xSetter = gsap.quickSetter(".flair", "x", "px");
+    const ySetter = gsap.quickSetter(".flair", "y", "px");
+
+    const onMove = (event: MouseEvent) => {
+      xSetter(event.clientX);
+      ySetter(event.clientY);
+
+      const target = document.elementFromPoint(
+        event.clientX,
+        event.clientY,
+      ) as HTMLElement | null;
+
+      if (target?.closest("a[class*='rounded-full'], button[class*='rounded-full']")) {
+        gsap.to(".flair", {
+          scale: 2.4,
+          opacity: 0.9,
+          background: "rgba(31,41,55,0.82)",
+          duration: 0.18,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+        return;
+      }
+
+      if (target?.closest(".reveal-item")) {
+        gsap.to(".flair", {
+          scale: 1.6,
+          opacity: 0.7,
+          background: "rgba(31,41,55,0.62)",
+          duration: 0.2,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+        return;
+      }
+
+      gsap.to(".flair", {
+        scale: 1,
+        opacity: 0.55,
+        background: "rgba(31,41,55,0.53)",
+        duration: 0.2,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+    };
+
+    window.addEventListener("mousemove", onMove);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+    };
+  }, []);
 
   if (LOADING_ENABLED && isLoading) {
     return (
@@ -313,6 +471,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-white text-gray-900">
       <div aria-hidden className="global-grid-overlay" />
+      <div aria-hidden className="flair" />
       <div className="relative z-10">
         <ScrollToTop />
         <RouteTransitionVeil />
