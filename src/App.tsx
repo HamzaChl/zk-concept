@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import Footer from "./components/Footer";
@@ -16,6 +16,7 @@ import LivraisonColisPage from "./pages/LivraisonColisPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TempMailsPage from "./pages/TempMailsPage";
 import WorkTogetherPage from "./pages/WorkTogetherPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const LOADING_ENABLED = false;
 
@@ -345,7 +346,7 @@ export default function App() {
             />
             <Route path="/mentions-legales" element={<LegalNoticePage />} />
             <Route path="/imprint" element={<ImprintPage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
         <Footer />

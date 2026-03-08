@@ -26,6 +26,8 @@ const partners = [
   { name: "Bpost", logo: bpostLogo, href: "https://www.bpost.be/fr" },
   { name: "Colis Prive", logo: colisPriveLogo, href: "https://colisprive.be/" },
 ];
+const ENABLE_HERO_IMAGE_INTRO = false;
+const HOME_INTRO_STORAGE_KEY = "zk_home_intro_played";
 
 declare global {
   interface Window {
@@ -41,7 +43,8 @@ export default function HomePage() {
   const { t } = useTranslation();
   const hasPlayedIntroInitially =
     typeof window !== "undefined" &&
-    window.__zkHomeIntroPlayed === true;
+    (window.__zkHomeIntroPlayed === true ||
+      window.sessionStorage.getItem(HOME_INTRO_STORAGE_KEY) === "true");
   const rootRef = useRef<HTMLDivElement | null>(null);
   const heroHeaderRef = useRef<HTMLElement | null>(null);
   const loaderRef = useRef<HTMLDivElement | null>(null);
@@ -93,7 +96,9 @@ export default function HomePage() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    const hasPlayedIntro = window.__zkHomeIntroPlayed === true;
+    const hasPlayedIntro =
+      window.__zkHomeIntroPlayed === true ||
+      window.sessionStorage.getItem(HOME_INTRO_STORAGE_KEY) === "true";
 
     if (hasPlayedIntro) {
       setLoaderValue(100);
@@ -177,6 +182,27 @@ export default function HomePage() {
         borderRadius: 0,
       });
 
+      if (!ENABLE_HERO_IMAGE_INTRO) {
+        gsap.set([sideImage, accentImage, tertiaryImage], {
+          autoAlpha: 0,
+          display: "none",
+        });
+        gsap.to(heroContentItems, {
+          y: 0,
+          autoAlpha: 1,
+          delay: 2,
+          duration: 0.9,
+          ease: "power3.out",
+          stagger: 0.1,
+          onComplete: () => {
+            window.__zkHomeIntroPlayed = true;
+            setIsIntroComplete(true);
+            window.dispatchEvent(new Event("hero-intro-complete"));
+          },
+        });
+        return;
+      }
+
       const sweepTl = gsap.timeline();
 
       sweepTl
@@ -212,12 +238,16 @@ export default function HomePage() {
 
       sweepTl.eventCallback("onComplete", () => {
         window.__zkHomeIntroPlayed = true;
+        window.sessionStorage.setItem(HOME_INTRO_STORAGE_KEY, "true");
         setIsIntroComplete(true);
         window.dispatchEvent(new Event("hero-intro-complete"));
       });
     };
 
     const fadeLoaderAndReveal = () => {
+      window.__zkHomeIntroPlayed = true;
+      window.sessionStorage.setItem(HOME_INTRO_STORAGE_KEY, "true");
+
       if (!loaderRef.current) {
         setIsLoaderVisible(false);
         runHeroReveal();
