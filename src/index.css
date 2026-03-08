@@ -36,6 +36,40 @@ h6 {
   font-weight: 700 !important;
 }
 
+.zk-flair-button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.zk-button__label {
+  position: relative;
+  z-index: 2;
+}
+
+.zk-button__flair {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  transform: scale(0);
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.zk-button__flair::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 170%;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  border-radius: 9999px;
+  background: var(--zk-flair-bg, rgba(255, 255, 255, 0.3));
+  pointer-events: none;
+}
+
 .global-grid-overlay {
   position: fixed;
   inset: 0;
