@@ -19,8 +19,6 @@ interface ChecklistSection {
   tasks: Task[];
 }
 
-// ─── Static data (IDs only — labels come from i18n) ──────────────────────────
-
 const CHECKLIST_SECTIONS: ChecklistSection[] = [
   {
     id: "recherche",
@@ -53,14 +51,20 @@ const CHECKLIST_SECTIONS: ChecklistSection[] = [
   },
 ];
 
-const ALL_TASK_IDS = CHECKLIST_SECTIONS.flatMap((s) => s.tasks.map((t) => t.id));
+const ALL_TASK_IDS = CHECKLIST_SECTIONS.flatMap((s) =>
+  s.tasks.map((t) => t.id),
+);
 const STORAGE_KEY = "zk-compta-partners-brief";
 
 const RESOURCES = [
   { key: "dribbble", label: "Dribbble", url: "https://dribbble.com" },
   { key: "behance", label: "Behance", url: "https://behance.net" },
   { key: "awwwards", label: "Awwwards", url: "https://awwwards.com" },
-  { key: "googleFonts", label: "Google Fonts", url: "https://fonts.google.com" },
+  {
+    key: "googleFonts",
+    label: "Google Fonts",
+    url: "https://fonts.google.com",
+  },
   { key: "coolors", label: "Coolors.co", url: "https://coolors.co" },
 ];
 
@@ -91,7 +95,9 @@ export default function ComptaPartnersPage() {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const [checked, setChecked] = useState<Set<TaskId>>(() => loadChecked());
 
-  const done = Array.from(checked).filter((id) => ALL_TASK_IDS.includes(id)).length;
+  const done = Array.from(checked).filter((id) =>
+    ALL_TASK_IDS.includes(id),
+  ).length;
   const total = ALL_TASK_IDS.length;
   const progress = total > 0 ? Math.round((done / total) * 100) : 0;
 
