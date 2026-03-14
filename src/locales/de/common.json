@@ -506,5 +506,73 @@
     "internalWorkTogether": "Interne E-Mail - Zusammenarbeit",
     "internalContact": "Interne E-Mail - Kontakt",
     "internalQuote": "Interne E-Mail - Angebot"
+  },
+  "comptaPartners": {
+    "hero": {
+      "label": "Brief — Für deine Designerin",
+      "title": "Brief — Steuerberatungskanzlei",
+      "description": "Website-Redesign-Projekt. Hier ist alles, was du zum Starten brauchst."
+    },
+    "context": {
+      "sectionTitle": "Projektkontext",
+      "color": { "label": "Hauptfarbe", "subtitle": "Institutionelles Blau" },
+      "refs": { "label": "Referenz-Websites" },
+      "ambiance": {
+        "label": "Zielambiente",
+        "item1": "Modern & professionell",
+        "item2": "Vertrauen & Expertise",
+        "item3": "Volle kreative Freiheit"
+      }
+    },
+    "about": {
+      "title": "Über die Kanzlei",
+      "paragraph1": "Steuerberatungskanzlei, gegründet am <bold>21. November 2019</bold>, ansässig in der <bold>Av. Broustin 88, 1083 Ganshoren</bold>. Eine kleine Kanzlei, spezialisiert auf Buchhaltungs- und Steuerberatung für KMU in Belgien.",
+      "paragraph2": "Die Kanzlei hatte <bold>noch nie eine Online-Präsenz</bold> — keine Website, kein digitales Schaufenster. Dieses Projekt ist ihr erster Schritt zur Digitalisierung."
+    },
+    "objectives": {
+      "title": "Ziele der Website",
+      "item1": "Eine erste professionelle digitale Präsenz schaffen",
+      "item2": "Vertrauen bei neuen Kunden aufbauen",
+      "item3": "Die Dienstleistungen und Expertise der Kanzlei präsentieren",
+      "item4": "Online-Kontaktaufnahme erleichtern"
+    },
+    "checklist": {
+      "sectionTitle": "Checkliste",
+      "counter": "{{done}} / {{total}} Aufgaben",
+      "badgeEssentiel": "essenziell",
+      "badgeBonus": "Bonus",
+      "completionMessage": "Alle Aufgaben sind abgeschlossen — das Brief ist bereit zur Übergabe.",
+      "sections": {
+        "recherche": {
+          "title": "Recherche & Inspiration",
+          "r1": "Die 2 Referenz-Websites analysieren (taxconsult.be und bdo.be)",
+          "r2": "8–10 UI/UX-Referenzen auf Dribbble, Behance, Awwwards finden",
+          "r3": "Ein visuelles Moodboard erstellen"
+        },
+        "palette": {
+          "title": "Farbpalette",
+          "p1": "Die Palette rund um #25408f aufbauen",
+          "p2": "Eine Google Fonts Schriftart wählen"
+        },
+        "direction": {
+          "title": "Kreative Richtung",
+          "d1": "2 visuelle Richtungen mit Stimmung, Palette und Referenzen vorschlagen",
+          "d2": "Wireframe der Homepage"
+        },
+        "livrable": {
+          "title": "Endlieferung",
+          "l1": "Das Zusammenfassungsdokument in Illustrator oder PDF vorbereiten",
+          "l2": "Die Lieferung versenden"
+        }
+      }
+    },
+    "resources": {
+      "sectionTitle": "Nützliche Ressourcen",
+      "dribbble": "UI-Design-Inspiration",
+      "behance": "Portfolios & kreative Richtungen",
+      "awwwards": "Preisgekrönte Websites",
+      "googleFonts": "Kostenlose Schriftarten",
+      "coolors": "Farbpaletten-Generator"
+    }
   }
 }

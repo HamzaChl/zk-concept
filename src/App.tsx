@@ -16,6 +16,7 @@ import LivraisonColisPage from "./pages/LivraisonColisPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TempMailsPage from "./pages/TempMailsPage";
 import WorkTogetherPage from "./pages/WorkTogetherPage";
+import ComptaPartnersPage from "./pages/ComptaPartners";
 import NotFoundPage from "./pages/NotFoundPage";
 
 const LOADING_ENABLED = false;
@@ -505,6 +506,7 @@ export default function App() {
             />
             <Route path="/mentions-legales" element={<LegalNoticePage />} />
             <Route path="/imprint" element={<ImprintPage />} />
+            <Route path="/compta-partners" element={<ComptaPartnersPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>

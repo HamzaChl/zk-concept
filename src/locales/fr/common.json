@@ -506,5 +506,73 @@
     "internalWorkTogether": "Email Interne - Travailler ensemble",
     "internalContact": "Email Interne - Contact",
     "internalQuote": "Email Interne - Devis"
+  },
+  "comptaPartners": {
+    "hero": {
+      "label": "Brief — Pour ta designer",
+      "title": "Brief — Cabinet Expert Comptable",
+      "description": "Projet de redesign de site web. Voici tout ce dont tu as besoin pour commencer."
+    },
+    "context": {
+      "sectionTitle": "Contexte du projet",
+      "color": { "label": "Couleur principale", "subtitle": "Bleu institutionnel" },
+      "refs": { "label": "Sites de référence" },
+      "ambiance": {
+        "label": "Ambiance cible",
+        "item1": "Moderne & professionnel",
+        "item2": "Confiance & expertise",
+        "item3": "Carte blanche sur le design"
+      }
+    },
+    "about": {
+      "title": "À propos du cabinet",
+      "paragraph1": "Cabinet d'expertise comptable fondé le <bold>21 novembre 2019</bold>, situé au <bold>Av. Broustin 88, 1083 Ganshoren</bold>. Structure à taille humaine, spécialisée dans l'accompagnement comptable et fiscal de TPE/PME en Belgique.",
+      "paragraph2": "Le cabinet n'a <bold>jamais eu de présence en ligne</bold> — ni site web, ni vitrine digitale. Ce projet constitue leur première démarche de digitalisation."
+    },
+    "objectives": {
+      "title": "Objectif du site",
+      "item1": "Créer une première présence digitale professionnelle",
+      "item2": "Inspirer confiance auprès de nouveaux clients",
+      "item3": "Présenter les services et l'expertise du cabinet",
+      "item4": "Faciliter la prise de contact en ligne"
+    },
+    "checklist": {
+      "sectionTitle": "Checklist",
+      "counter": "{{done}} / {{total}} tâches",
+      "badgeEssentiel": "essentiel",
+      "badgeBonus": "bonus",
+      "completionMessage": "Toutes les tâches sont complètes — le brief est prêt à être livré.",
+      "sections": {
+        "recherche": {
+          "title": "Recherche & inspiration",
+          "r1": "Analyser les 2 sites de référence (taxconsult.be et bdo.be)",
+          "r2": "Trouver 8–10 références UI/UX sur Dribbble, Behance, Awwwards",
+          "r3": "Créer un moodboard visuel"
+        },
+        "palette": {
+          "title": "Palette de couleurs",
+          "p1": "Construire la palette autour du #25408f",
+          "p2": "Choisir une typographie Google Fonts"
+        },
+        "direction": {
+          "title": "Direction créative",
+          "d1": "Proposer 2 directions visuelles avec ambiance, palette et références",
+          "d2": "Wireframe de la homepage"
+        },
+        "livrable": {
+          "title": "Livrable final",
+          "l1": "Préparer le document de synthèse en Illustrator ou PDF",
+          "l2": "Envoyer le livrable"
+        }
+      }
+    },
+    "resources": {
+      "sectionTitle": "Ressources utiles",
+      "dribbble": "Inspirations UI design",
+      "behance": "Portfolios & directions créatives",
+      "awwwards": "Sites web primés",
+      "googleFonts": "Typographies libres",
+      "coolors": "Générateur de palettes"
+    }
   }
 }

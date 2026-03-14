@@ -506,5 +506,73 @@
     "internalWorkTogether": "Interne e-mail - Samenwerken",
     "internalContact": "Interne e-mail - Contact",
     "internalQuote": "Interne e-mail - Offerte"
+  },
+  "comptaPartners": {
+    "hero": {
+      "label": "Brief — Voor je designer",
+      "title": "Brief — Accountantskantoor",
+      "description": "Website redesign project. Hier is alles wat je nodig hebt om te beginnen."
+    },
+    "context": {
+      "sectionTitle": "Projectcontext",
+      "color": { "label": "Hoofdkleur", "subtitle": "Institutioneel blauw" },
+      "refs": { "label": "Referentiewebsites" },
+      "ambiance": {
+        "label": "Doelsfeer",
+        "item1": "Modern & professioneel",
+        "item2": "Vertrouwen & expertise",
+        "item3": "Volledige creatieve vrijheid"
+      }
+    },
+    "about": {
+      "title": "Over het kantoor",
+      "paragraph1": "Accountantskantoor opgericht op <bold>21 november 2019</bold>, gevestigd aan <bold>Av. Broustin 88, 1083 Ganshoren</bold>. Een kleinschalig kantoor gespecialiseerd in boekhoudkundige en fiscale begeleiding van kmo's in België.",
+      "paragraph2": "Het kantoor heeft <bold>nooit een online aanwezigheid gehad</bold> — geen website, geen digitale etalage. Dit project is hun eerste stap naar digitalisering."
+    },
+    "objectives": {
+      "title": "Doelstellingen website",
+      "item1": "Een eerste professionele digitale aanwezigheid creëren",
+      "item2": "Vertrouwen wekken bij nieuwe klanten",
+      "item3": "De diensten en expertise van het kantoor presenteren",
+      "item4": "Online contact opnemen eenvoudig maken"
+    },
+    "checklist": {
+      "sectionTitle": "Checklist",
+      "counter": "{{done}} / {{total}} taken",
+      "badgeEssentiel": "essentieel",
+      "badgeBonus": "bonus",
+      "completionMessage": "Alle taken zijn voltooid — de brief is klaar om te worden ingediend.",
+      "sections": {
+        "recherche": {
+          "title": "Onderzoek & inspiratie",
+          "r1": "De 2 referentiewebsites analyseren (taxconsult.be en bdo.be)",
+          "r2": "8–10 UI/UX-referenties vinden op Dribbble, Behance, Awwwards",
+          "r3": "Een visueel moodboard maken"
+        },
+        "palette": {
+          "title": "Kleurenpalet",
+          "p1": "Het palet opbouwen rond #25408f",
+          "p2": "Een Google Fonts lettertype kiezen"
+        },
+        "direction": {
+          "title": "Creatieve richting",
+          "d1": "2 visuele richtingen voorstellen met sfeer, palet en referenties",
+          "d2": "Wireframe van de homepage"
+        },
+        "livrable": {
+          "title": "Eindoplevering",
+          "l1": "Het samenvattingsdocument voorbereiden in Illustrator of PDF",
+          "l2": "De oplevering verzenden"
+        }
+      }
+    },
+    "resources": {
+      "sectionTitle": "Nuttige bronnen",
+      "dribbble": "UI design inspiratie",
+      "behance": "Portfolio's & creatieve richtingen",
+      "awwwards": "Bekroonde websites",
+      "googleFonts": "Gratis lettertypen",
+      "coolors": "Kleurenpaletgenerator"
+    }
   }
 }

@@ -506,5 +506,73 @@
     "internalWorkTogether": "Internal email - Work together",
     "internalContact": "Internal email - Contact",
     "internalQuote": "Internal email - Quote"
+  },
+  "comptaPartners": {
+    "hero": {
+      "label": "Brief — For your designer",
+      "title": "Brief — Accounting Firm",
+      "description": "Website redesign project. Here's everything you need to get started."
+    },
+    "context": {
+      "sectionTitle": "Project context",
+      "color": { "label": "Main color", "subtitle": "Institutional blue" },
+      "refs": { "label": "Reference websites" },
+      "ambiance": {
+        "label": "Target mood",
+        "item1": "Modern & professional",
+        "item2": "Trust & expertise",
+        "item3": "Full creative freedom"
+      }
+    },
+    "about": {
+      "title": "About the firm",
+      "paragraph1": "Accounting firm founded on <bold>November 21, 2019</bold>, located at <bold>Av. Broustin 88, 1083 Ganshoren</bold>. A human-scale practice specializing in accounting and tax advisory for SMEs in Belgium.",
+      "paragraph2": "The firm has <bold>never had an online presence</bold> — no website, no digital showcase. This project marks their first step toward digital transformation."
+    },
+    "objectives": {
+      "title": "Website goals",
+      "item1": "Create a first professional digital presence",
+      "item2": "Build trust with new clients",
+      "item3": "Showcase the firm's services and expertise",
+      "item4": "Make it easy to get in touch online"
+    },
+    "checklist": {
+      "sectionTitle": "Checklist",
+      "counter": "{{done}} / {{total}} tasks",
+      "badgeEssentiel": "essential",
+      "badgeBonus": "bonus",
+      "completionMessage": "All tasks are complete — the brief is ready to be delivered.",
+      "sections": {
+        "recherche": {
+          "title": "Research & inspiration",
+          "r1": "Analyze the 2 reference websites (taxconsult.be and bdo.be)",
+          "r2": "Find 8–10 UI/UX references on Dribbble, Behance, Awwwards",
+          "r3": "Create a visual moodboard"
+        },
+        "palette": {
+          "title": "Color palette",
+          "p1": "Build the palette around #25408f",
+          "p2": "Choose a Google Fonts typeface"
+        },
+        "direction": {
+          "title": "Creative direction",
+          "d1": "Propose 2 visual directions with mood, palette and references",
+          "d2": "Wireframe of the homepage"
+        },
+        "livrable": {
+          "title": "Final deliverable",
+          "l1": "Prepare the summary document in Illustrator or PDF",
+          "l2": "Send the deliverable"
+        }
+      }
+    },
+    "resources": {
+      "sectionTitle": "Useful resources",
+      "dribbble": "UI design inspiration",
+      "behance": "Portfolios & creative directions",
+      "awwwards": "Award-winning websites",
+      "googleFonts": "Free typefaces",
+      "coolors": "Color palette generator"
+    }
   }
 }
