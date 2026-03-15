@@ -508,6 +508,11 @@
     "internalQuote": "Internal email - Quote"
   },
   "comptaPartners": {
+    "status": {
+      "label": "Project in progress",
+      "deadline": "Deadline",
+      "date": "Thursday March 26"
+    },
     "hero": {
       "label": "Brief for the hobbit designer",
       "title": "Brief — Accounting Firm",
@@ -572,7 +577,12 @@
       "behance": "Portfolios & creative directions",
       "awwwards": "Award-winning websites",
       "googleFonts": "Free typefaces",
-      "coolors": "Color palette generator"
+      "coolors": "Color palette generator",
+      "pinterest": "Moodboards & visual inspiration",
+      "unsplash": "Free HD stock photos",
+      "pexels": "Free stock photos",
+      "mobbin": "UI patterns from real sites & apps",
+      "fontpair": "Google font pairing suggestions"
     }
   }
 }

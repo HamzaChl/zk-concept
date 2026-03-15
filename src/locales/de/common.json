@@ -508,6 +508,11 @@
     "internalQuote": "Interne E-Mail - Angebot"
   },
   "comptaPartners": {
+    "status": {
+      "label": "Projekt läuft",
+      "deadline": "Deadline",
+      "date": "Donnerstag, 26. März"
+    },
     "hero": {
       "label": "Brief für den Hobbit-Designer",
       "title": "Brief — Steuerberatungskanzlei",
@@ -572,7 +577,12 @@
       "behance": "Portfolios & kreative Richtungen",
       "awwwards": "Preisgekrönte Websites",
       "googleFonts": "Kostenlose Schriftarten",
-      "coolors": "Farbpaletten-Generator"
+      "coolors": "Farbpaletten-Generator",
+      "pinterest": "Moodboards & visuelle Inspiration",
+      "unsplash": "Kostenlose HD-Stockfotos",
+      "pexels": "Kostenlose Stockfotos",
+      "mobbin": "UI-Muster von echten Websites & Apps",
+      "fontpair": "Google-Schriftarten-Kombinationen"
     }
   }
 }

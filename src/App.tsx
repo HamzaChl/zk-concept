@@ -210,9 +210,13 @@ function initFlairButton(button: HTMLElement): FlairCleanup | null {
     button.removeEventListener("mouseenter", onEnter);
     button.removeEventListener("mouseleave", onLeave);
     button.removeEventListener("mousemove", onMove);
-    const flairNode = button.querySelector<HTMLElement>(":scope > .zk-button__flair");
+    const flairNode = button.querySelector<HTMLElement>(
+      ":scope > .zk-button__flair",
+    );
     if (flairNode) flairNode.remove();
-    const labelNode = button.querySelector<HTMLElement>(":scope > .zk-button__label");
+    const labelNode = button.querySelector<HTMLElement>(
+      ":scope > .zk-button__label",
+    );
     if (labelNode) {
       while (labelNode.firstChild) {
         button.insertBefore(labelNode.firstChild, labelNode);
@@ -344,7 +348,9 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const supportsHover = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const supportsHover = window.matchMedia(
+      "(hover: hover) and (pointer: fine)",
+    );
     if (!supportsHover.matches) return;
 
     flairRegistry.forEach((cleanup) => cleanup());
@@ -392,7 +398,9 @@ export default function App() {
   }, [pathname]);
 
   useEffect(() => {
-    const supportsHover = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const supportsHover = window.matchMedia(
+      "(hover: hover) and (pointer: fine)",
+    );
     if (!supportsHover.matches) return;
 
     gsap.set(".flair", { xPercent: -50, yPercent: -50 });
@@ -408,7 +416,11 @@ export default function App() {
         event.clientY,
       ) as HTMLElement | null;
 
-      if (target?.closest("a[class*='rounded-full'], button[class*='rounded-full']")) {
+      if (
+        target?.closest(
+          "a[class*='rounded-full'], button[class*='rounded-full']",
+        )
+      ) {
         gsap.to(".flair", {
           scale: 2.4,
           opacity: 0.9,

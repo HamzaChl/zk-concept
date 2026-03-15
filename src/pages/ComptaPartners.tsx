@@ -66,6 +66,11 @@ const RESOURCES = [
     url: "https://fonts.google.com",
   },
   { key: "coolors", label: "Coolors.co", url: "https://coolors.co" },
+  { key: "pinterest", label: "Pinterest", url: "https://pinterest.com" },
+  { key: "unsplash", label: "Unsplash", url: "https://unsplash.com" },
+  { key: "pexels", label: "Pexels", url: "https://pexels.com" },
+  { key: "mobbin", label: "Mobbin", url: "https://mobbin.com" },
+  { key: "fontpair", label: "Fontpair", url: "https://www.fontpair.co" },
 ];
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -93,6 +98,7 @@ function saveChecked(next: Set<TaskId>): void {
 export default function ComptaPartnersPage() {
   const { t } = useTranslation();
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const boundingRef = useRef<DOMRect | null>(null);
   const [checked, setChecked] = useState<Set<TaskId>>(() => loadChecked());
 
   const done = Array.from(checked).filter((id) =>
@@ -172,8 +178,30 @@ export default function ComptaPartnersPage() {
     return () => ctx.revert();
   }, []);
 
+
   return (
     <div ref={rootRef} className="space-y-4">
+      {/* ── STATUS BANNER ─────────────────────────────────────────────── */}
+      <div className="compta-hero-anim flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-gray-200 bg-white px-5 py-3.5 shadow-sm">
+        <div className="flex items-center gap-2.5">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+          </span>
+          <span className="text-sm font-semibold text-gray-900">
+            {t("comptaPartners.status.label")}
+          </span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <span className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
+            {t("comptaPartners.status.deadline")}
+          </span>
+          <span className="rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-semibold text-amber-700">
+            {t("comptaPartners.status.date")}
+          </span>
+        </div>
+      </div>
+
       {/* ── HERO ──────────────────────────────────────────────────────── */}
       <div className="relative overflow-hidden rounded-3xl bg-[#25408f] px-8 py-16 md:px-14 md:py-20">
         <div className="relative z-10 flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
@@ -190,13 +218,35 @@ export default function ComptaPartnersPage() {
             </p>
           </div>
 
-          {/* Logo card */}
-          <div className="compta-hero-anim reveal-item shrink-0 self-center rounded-2xl bg-white p-6 shadow-2xl md:p-8">
-            <img
-              src={cabinetLogo}
-              alt="Logo cabinet expert comptable"
-              className="h-20 w-auto object-contain md:h-28"
-            />
+          {/* Logo card — CSS perspective tilt */}
+          <div className="compta-hero-anim shrink-0 self-center [perspective:800px]">
+            <div
+              className="group relative rounded-2xl bg-white p-6 shadow-2xl transition-transform duration-300 ease-out hover:[transform:rotateX(var(--x-rotation))_rotateY(var(--y-rotation))_scale(1.06)] md:p-8"
+              onMouseEnter={(ev) => {
+                boundingRef.current = ev.currentTarget.getBoundingClientRect();
+              }}
+              onMouseLeave={() => {
+                boundingRef.current = null;
+              }}
+              onMouseMove={(ev) => {
+                if (!boundingRef.current) return;
+                const x = ev.clientX - boundingRef.current.left;
+                const y = ev.clientY - boundingRef.current.top;
+                const xPct = x / boundingRef.current.width;
+                const yPct = y / boundingRef.current.height;
+                ev.currentTarget.style.setProperty("--x-rotation", `${(0.5 - yPct) * 20}deg`);
+                ev.currentTarget.style.setProperty("--y-rotation", `${(xPct - 0.5) * 20}deg`);
+                ev.currentTarget.style.setProperty("--x", `${xPct * 100}%`);
+                ev.currentTarget.style.setProperty("--y", `${yPct * 100}%`);
+              }}
+            >
+              <img
+                src={cabinetLogo}
+                alt="Logo cabinet expert comptable"
+                className="h-20 w-auto object-contain md:h-28"
+              />
+              <div className="pointer-events-none absolute inset-0 rounded-2xl group-hover:bg-[radial-gradient(at_var(--x)_var(--y),rgba(37,64,143,0.08)_20%,transparent_80%)]" />
+            </div>
           </div>
         </div>
         {/* Decorative circles */}

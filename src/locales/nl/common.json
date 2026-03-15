@@ -508,6 +508,11 @@
     "internalQuote": "Interne e-mail - Offerte"
   },
   "comptaPartners": {
+    "status": {
+      "label": "Project bezig",
+      "deadline": "Deadline",
+      "date": "Donderdag 26 maart"
+    },
     "hero": {
       "label": "Brief voor de hobbit designer",
       "title": "Brief — Accountantskantoor",
@@ -572,7 +577,12 @@
       "behance": "Portfolio's & creatieve richtingen",
       "awwwards": "Bekroonde websites",
       "googleFonts": "Gratis lettertypen",
-      "coolors": "Kleurenpaletgenerator"
+      "coolors": "Kleurenpaletgenerator",
+      "pinterest": "Moodboards & visuele inspiratie",
+      "unsplash": "Gratis HD stockfoto's",
+      "pexels": "Gratis stockfoto's",
+      "mobbin": "UI-patronen van echte sites & apps",
+      "fontpair": "Google lettertypecombinaties"
     }
   }
 }

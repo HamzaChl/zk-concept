@@ -508,6 +508,11 @@
     "internalQuote": "Email Interne - Devis"
   },
   "comptaPartners": {
+    "status": {
+      "label": "Projet en cours",
+      "deadline": "Deadline",
+      "date": "Jeudi 26 mars"
+    },
     "hero": {
       "label": "Brief pour le hobbit designer",
       "title": "Brief — Cabinet Expert Comptable",
@@ -572,7 +577,12 @@
       "behance": "Portfolios & directions créatives",
       "awwwards": "Sites web primés",
       "googleFonts": "Typographies libres",
-      "coolors": "Générateur de palettes"
+      "coolors": "Générateur de palettes",
+      "pinterest": "Moodboards & inspirations visuelles",
+      "unsplash": "Photos libres de droits HD",
+      "pexels": "Stock photos gratuites",
+      "mobbin": "Patterns UI de vrais sites & apps",
+      "fontpair": "Associations de typographies Google"
     }
   }
 }
