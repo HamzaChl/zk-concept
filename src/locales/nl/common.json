@@ -513,6 +513,10 @@
       "deadline": "Deadline",
       "date": "Donderdag 26 maart"
     },
+    "cabinet": {
+      "name": "SRL COMPTA-PARTNERS",
+      "tagline": "Expert en comptabilité · fiscalité · gestion / boekhouding · fiscaliteit · beheer"
+    },
     "hero": {
       "label": "Brief voor de hobbit designer",
       "title": "Brief — Accountantskantoor",
@@ -527,6 +531,14 @@
         "item1": "Modern & professioneel",
         "item2": "Vertrouwen & expertise",
         "item3": "Volledige creatieve vrijheid"
+      },
+      "assets": {
+        "label": "Beschikbare assets",
+        "note": "Logo, basiskleur en artboards beschikbaar in de gedeelde Adobe cloud."
+      },
+      "langue": {
+        "label": "Taal van de website",
+        "note": "Uitsluitend Frans. Meertaligheid wordt beheerd via een plugin, buiten de scope van het design."
       }
     },
     "about": {
@@ -541,12 +553,21 @@
       "item3": "De diensten en expertise van het kantoor presenteren",
       "item4": "Online contact opnemen eenvoudig maken"
     },
+    "pages": {
+      "sectionTitle": "Paginastructuur",
+      "item1": "Startpagina",
+      "item2": "Diensten",
+      "item3": "Over ons",
+      "item4": "Contact",
+      "item5": "FAQ (optioneel)"
+    },
     "checklist": {
       "sectionTitle": "Checklist",
       "counter": "{{done}} / {{total}} taken",
       "badgeEssentiel": "essentieel",
       "badgeBonus": "bonus",
       "completionMessage": "Alle taken zijn voltooid — de brief is klaar om te worden ingediend.",
+      "livrableNote": "Uitsluitend Adobe Illustrator-bestanden (.ai) — geen Figma, geen mobiele versie.",
       "sections": {
         "recherche": {
           "title": "Onderzoek & inspiratie",
@@ -578,6 +599,7 @@
       "awwwards": "Bekroonde websites",
       "googleFonts": "Gratis lettertypen",
       "coolors": "Kleurenpaletgenerator",
+      "photosNote": "Uitsluitend stockfoto's — geen echte foto's beschikbaar (Unsplash / Pexels).",
       "pinterest": "Moodboards & visuele inspiratie",
       "unsplash": "Gratis HD stockfoto's",
       "pexels": "Gratis stockfoto's",

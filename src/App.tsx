@@ -16,7 +16,8 @@ import LivraisonColisPage from "./pages/LivraisonColisPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TempMailsPage from "./pages/TempMailsPage";
 import WorkTogetherPage from "./pages/WorkTogetherPage";
-import ComptaPartnersPage from "./pages/ComptaPartners";
+import ComptaPartnersPage from "./pages/design/ComptaPartners";
+import DesignIndexPage from "./pages/design/DesignIndex";
 import NotFoundPage from "./pages/NotFoundPage";
 
 const LOADING_ENABLED = false;
@@ -348,6 +349,12 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    if (pathname !== "/") {
+      (window as Window & { __zkHomeIntroPlayed?: boolean }).__zkHomeIntroPlayed = true;
+    }
+  }, [pathname]);
+
+  useEffect(() => {
     const supportsHover = window.matchMedia(
       "(hover: hover) and (pointer: fine)",
     );
@@ -518,7 +525,8 @@ export default function App() {
             />
             <Route path="/mentions-legales" element={<LegalNoticePage />} />
             <Route path="/imprint" element={<ImprintPage />} />
-            <Route path="/compta-partners" element={<ComptaPartnersPage />} />
+            <Route path="/design" element={<DesignIndexPage />} />
+            <Route path="/design/compta-partners" element={<ComptaPartnersPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>

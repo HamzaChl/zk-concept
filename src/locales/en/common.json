@@ -513,6 +513,10 @@
       "deadline": "Deadline",
       "date": "Thursday March 26"
     },
+    "cabinet": {
+      "name": "SRL COMPTA-PARTNERS",
+      "tagline": "Expert en comptabilité · fiscalité · gestion / boekhouding · fiscaliteit · beheer"
+    },
     "hero": {
       "label": "Brief for the hobbit designer",
       "title": "Brief — Accounting Firm",
@@ -527,6 +531,14 @@
         "item1": "Modern & professional",
         "item2": "Trust & expertise",
         "item3": "Full creative freedom"
+      },
+      "assets": {
+        "label": "Available assets",
+        "note": "Logo, base color and artboards available in the shared Adobe cloud."
+      },
+      "langue": {
+        "label": "Website language",
+        "note": "French only. Multilingual support will be handled by a plugin, out of design scope."
       }
     },
     "about": {
@@ -541,12 +553,21 @@
       "item3": "Showcase the firm's services and expertise",
       "item4": "Make it easy to get in touch online"
     },
+    "pages": {
+      "sectionTitle": "Page structure",
+      "item1": "Home",
+      "item2": "Services",
+      "item3": "About",
+      "item4": "Contact",
+      "item5": "FAQ (optional)"
+    },
     "checklist": {
       "sectionTitle": "Checklist",
       "counter": "{{done}} / {{total}} tasks",
       "badgeEssentiel": "essential",
       "badgeBonus": "bonus",
       "completionMessage": "All tasks are complete — the brief is ready to be delivered.",
+      "livrableNote": "Adobe Illustrator (.ai) files only — no Figma, no mobile version.",
       "sections": {
         "recherche": {
           "title": "Research & inspiration",
@@ -578,6 +599,7 @@
       "awwwards": "Award-winning websites",
       "googleFonts": "Free typefaces",
       "coolors": "Color palette generator",
+      "photosNote": "Stock photos only — no real photos available (Unsplash / Pexels).",
       "pinterest": "Moodboards & visual inspiration",
       "unsplash": "Free HD stock photos",
       "pexels": "Free stock photos",

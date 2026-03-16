@@ -513,6 +513,10 @@
       "deadline": "Deadline",
       "date": "Jeudi 26 mars"
     },
+    "cabinet": {
+      "name": "SRL COMPTA-PARTNERS",
+      "tagline": "Expert en comptabilité · fiscalité · gestion / boekhouding · fiscaliteit · beheer"
+    },
     "hero": {
       "label": "Brief pour le hobbit designer",
       "title": "Brief — Cabinet Expert Comptable",
@@ -527,6 +531,14 @@
         "item1": "Moderne & professionnel",
         "item2": "Confiance & expertise",
         "item3": "Carte blanche sur le design"
+      },
+      "assets": {
+        "label": "Assets disponibles",
+        "note": "Logo, couleur de base et artboards disponibles dans le cloud Adobe partagé."
+      },
+      "langue": {
+        "label": "Langue du site",
+        "note": "Français uniquement. Le multilingue sera géré par plugin, hors scope du design."
       }
     },
     "about": {
@@ -541,12 +553,21 @@
       "item3": "Présenter les services et l'expertise du cabinet",
       "item4": "Faciliter la prise de contact en ligne"
     },
+    "pages": {
+      "sectionTitle": "Structure des pages",
+      "item1": "Accueil",
+      "item2": "Services",
+      "item3": "À propos",
+      "item4": "Contact",
+      "item5": "FAQ (optionnelle)"
+    },
     "checklist": {
       "sectionTitle": "Checklist",
       "counter": "{{done}} / {{total}} tâches",
       "badgeEssentiel": "essentiel",
       "badgeBonus": "bonus",
       "completionMessage": "Toutes les tâches sont complètes — le brief est prêt à être livré.",
+      "livrableNote": "Fichiers Adobe Illustrator (.ai) uniquement — pas de Figma, pas de version mobile.",
       "sections": {
         "recherche": {
           "title": "Recherche & inspiration",
@@ -578,6 +599,7 @@
       "awwwards": "Sites web primés",
       "googleFonts": "Typographies libres",
       "coolors": "Générateur de palettes",
+      "photosNote": "Stock photos uniquement — pas de photos réelles disponibles (Unsplash / Pexels).",
       "pinterest": "Moodboards & inspirations visuelles",
       "unsplash": "Photos libres de droits HD",
       "pexels": "Stock photos gratuites",

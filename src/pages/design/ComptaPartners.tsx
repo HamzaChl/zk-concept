@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation, Trans } from "react-i18next";
-import cabinetLogo from "../assets/logo-partners/Outlook-qhbk4leg.png";
+import cabinetLogo from "../../assets/logo-partners/Outlook-qhbk4leg.png";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -221,7 +221,7 @@ export default function ComptaPartnersPage() {
           {/* Logo card — CSS perspective tilt */}
           <div className="compta-hero-anim shrink-0 self-center [perspective:800px]">
             <div
-              className="group relative rounded-2xl bg-white p-6 shadow-2xl transition-transform duration-300 ease-out hover:[transform:rotateX(var(--x-rotation))_rotateY(var(--y-rotation))_scale(1.06)] md:p-8"
+              className="group relative rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-transform duration-300 ease-out hover:[transform:rotateX(var(--x-rotation))_rotateY(var(--y-rotation))_scale(1.06)] md:p-8"
               onMouseEnter={(ev) => {
                 boundingRef.current = ev.currentTarget.getBoundingClientRect();
               }}
@@ -256,10 +256,19 @@ export default function ComptaPartnersPage() {
       </div>
 
       {/* ── CONTEXTE ──────────────────────────────────────────────────── */}
-      <div className="compta-reveal-card rounded-3xl bg-white p-8 shadow-2xl md:p-10">
+      <div className="compta-reveal-card rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
         <p className="compta-reveal-item mb-6 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
           {t("comptaPartners.context.sectionTitle")}
         </p>
+
+        <div className="compta-reveal-item mb-6 flex items-center gap-3">
+          <span className="inline-block rounded-md bg-[#25408f] px-2.5 py-1 font-mono text-xs font-semibold tracking-wide text-white">
+            {t("comptaPartners.cabinet.name")}
+          </span>
+          <p className="text-xs italic text-gray-400">
+            {t("comptaPartners.cabinet.tagline")}
+          </p>
+        </div>
 
         <div className="grid gap-6 md:grid-cols-3">
           {/* Couleur principale */}
@@ -341,6 +350,26 @@ export default function ComptaPartnersPage() {
           </div>
         </div>
 
+        {/* Assets + Langue */}
+        <div className="compta-reveal-item mt-6 grid gap-6 border-t border-gray-100 pt-6 md:grid-cols-2">
+          <div className="space-y-2">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
+              {t("comptaPartners.context.assets.label")}
+            </p>
+            <p className="text-sm leading-6 text-gray-700">
+              {t("comptaPartners.context.assets.note")}
+            </p>
+          </div>
+          <div className="space-y-2">
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
+              {t("comptaPartners.context.langue.label")}
+            </p>
+            <p className="text-sm leading-6 text-gray-700">
+              {t("comptaPartners.context.langue.note")}
+            </p>
+          </div>
+        </div>
+
         {/* Description cabinet */}
         <div className="compta-reveal-item mt-8 border-t border-gray-100 pt-8">
           <div className="grid gap-6 md:grid-cols-2">
@@ -387,8 +416,31 @@ export default function ComptaPartnersPage() {
         </div>
       </div>
 
+      {/* ── STRUCTURE DES PAGES ───────────────────────────────────────── */}
+      <div className="compta-reveal-card rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
+        <p className="compta-reveal-item mb-6 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
+          {t("comptaPartners.pages.sectionTitle")}
+        </p>
+        <div className="compta-reveal-item flex flex-wrap gap-3">
+          {(["item1", "item2", "item3", "item4", "item5"] as const).map((key) => (
+            <div
+              key={key}
+              className="flex items-center gap-2.5 rounded-xl border border-gray-200 px-4 py-2.5"
+            >
+              <div
+                className="h-1.5 w-1.5 shrink-0 rounded-full"
+                style={{ backgroundColor: key === "item5" ? "#9ca3af" : "#25408f" }}
+              />
+              <span className={`text-sm ${key === "item5" ? "text-gray-400" : "text-gray-800"}`}>
+                {t(`comptaPartners.pages.${key}`)}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* ── CHECKLIST ─────────────────────────────────────────────────── */}
-      <div className="compta-reveal-card rounded-3xl bg-white p-8 shadow-2xl md:p-10">
+      <div className="compta-reveal-card rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
         {/* Header + counter */}
         <div className="compta-reveal-item mb-2 flex items-center justify-between">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
@@ -494,6 +546,13 @@ export default function ComptaPartnersPage() {
           ))}
         </div>
 
+        {/* Livrable note */}
+        <div className="compta-reveal-item mt-6 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3">
+          <p className="text-xs leading-5 text-gray-500">
+            {t("comptaPartners.checklist.livrableNote")}
+          </p>
+        </div>
+
         {/* Completion message */}
         <AnimatePresence>
           {done === total && total > 0 && (
@@ -513,7 +572,7 @@ export default function ComptaPartnersPage() {
       </div>
 
       {/* ── RESSOURCES ────────────────────────────────────────────────── */}
-      <div className="compta-reveal-card rounded-3xl bg-white p-8 shadow-2xl md:p-10">
+      <div className="compta-reveal-card rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
         <p className="compta-reveal-item mb-6 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
           {t("comptaPartners.resources.sectionTitle")}
         </p>
@@ -538,6 +597,9 @@ export default function ComptaPartnersPage() {
             </a>
           ))}
         </div>
+        <p className="compta-reveal-item mt-4 text-xs text-gray-400">
+          {t("comptaPartners.resources.photosNote")}
+        </p>
       </div>
     </div>
   );

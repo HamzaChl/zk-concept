@@ -513,6 +513,10 @@
       "deadline": "Deadline",
       "date": "Donnerstag, 26. März"
     },
+    "cabinet": {
+      "name": "SRL COMPTA-PARTNERS",
+      "tagline": "Expert en comptabilité · fiscalité · gestion / boekhouding · fiscaliteit · beheer"
+    },
     "hero": {
       "label": "Brief für den Hobbit-Designer",
       "title": "Brief — Steuerberatungskanzlei",
@@ -527,6 +531,14 @@
         "item1": "Modern & professionell",
         "item2": "Vertrauen & Expertise",
         "item3": "Volle kreative Freiheit"
+      },
+      "assets": {
+        "label": "Verfügbare Assets",
+        "note": "Logo, Grundfarbe und Artboards in der geteilten Adobe Cloud verfügbar."
+      },
+      "langue": {
+        "label": "Website-Sprache",
+        "note": "Ausschließlich Französisch. Mehrsprachigkeit wird durch ein Plugin verwaltet, außerhalb des Design-Scopes."
       }
     },
     "about": {
@@ -541,12 +553,21 @@
       "item3": "Die Dienstleistungen und Expertise der Kanzlei präsentieren",
       "item4": "Online-Kontaktaufnahme erleichtern"
     },
+    "pages": {
+      "sectionTitle": "Seitenstruktur",
+      "item1": "Startseite",
+      "item2": "Dienstleistungen",
+      "item3": "Über uns",
+      "item4": "Kontakt",
+      "item5": "FAQ (optional)"
+    },
     "checklist": {
       "sectionTitle": "Checkliste",
       "counter": "{{done}} / {{total}} Aufgaben",
       "badgeEssentiel": "essenziell",
       "badgeBonus": "Bonus",
       "completionMessage": "Alle Aufgaben sind abgeschlossen — das Brief ist bereit zur Übergabe.",
+      "livrableNote": "Ausschließlich Adobe Illustrator-Dateien (.ai) — kein Figma, keine mobile Version.",
       "sections": {
         "recherche": {
           "title": "Recherche & Inspiration",
@@ -578,6 +599,7 @@
       "awwwards": "Preisgekrönte Websites",
       "googleFonts": "Kostenlose Schriftarten",
       "coolors": "Farbpaletten-Generator",
+      "photosNote": "Ausschließlich Stockfotos — keine echten Fotos verfügbar (Unsplash / Pexels).",
       "pinterest": "Moodboards & visuelle Inspiration",
       "unsplash": "Kostenlose HD-Stockfotos",
       "pexels": "Kostenlose Stockfotos",
