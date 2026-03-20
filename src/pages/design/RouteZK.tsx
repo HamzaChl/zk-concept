@@ -13,8 +13,6 @@ interface Task {
   id: TaskId;
   badge: "urgent" | "important" | "bonus";
   description?: string;
-  date?: string;
-  done?: boolean;
 }
 
 interface TodoSection {
@@ -31,14 +29,14 @@ const TODO_SECTIONS: TodoSection[] = [
     icon: "",
     tasks: [
       {
-        id: "bail",
+        id: "google-apis",
         badge: "urgent",
-        description: "Finaliser et signer le contrat de bail du dépôt",
+        description: "Maps JS API, Routes API, Geocoding API, Places API — billing activé",
       },
       {
-        id: "contrat",
+        id: "supabase-config",
         badge: "urgent",
-        description: "Signature du contrat de service / opérationnel",
+        description: "Projet Supabase créé, schéma BDD défini (tournées, stops, sessions)",
       },
     ],
   },
@@ -47,23 +45,14 @@ const TODO_SECTIONS: TodoSection[] = [
     icon: "",
     tasks: [
       {
-        id: "visite",
+        id: "drops-moyenne",
         badge: "important",
-        description: "Inspection complète des locaux, prise de mesures, état des lieux",
-        date: "20 mars 2025",
-        done: true,
+        description: "Nombre de stops cible par tournée défini avec l'équipe terrain",
       },
       {
-        id: "planning-semaine",
-        badge: "urgent",
-        description: "Attribution des rôles, zones et tournées pour les 21 employés",
-        date: "Semaine",
-      },
-      {
-        id: "planning-weekend",
-        badge: "urgent",
-        description: "Organisation spécifique weekend — 26 employés, flux renforcé",
-        date: "Week-end",
+        id: "csv-adresses",
+        badge: "important",
+        description: "Fichier CSV des adresses abonnés AMP Leuven prêt à importer",
       },
     ],
   },
@@ -72,40 +61,98 @@ const TODO_SECTIONS: TodoSection[] = [
     icon: "",
     tasks: [
       {
-        id: "app-route",
-        badge: "important",
-        description: "Développer une application interne pour calculer et optimiser les tournées de livraison en temps réel",
+        id: "scaffolding",
+        badge: "urgent",
+        description: "Vite + React + TypeScript + Tailwind CSS — structure de base",
       },
       {
-        id: "app-planning",
+        id: "autocomplete",
+        badge: "urgent",
+        description: "Saisie d'adresses avec autocomplétion Google Places intégrée",
+      },
+      {
+        id: "clustering",
+        badge: "urgent",
+        description: "Regroupement géographique des adresses en tournées (K-means / Turf.js)",
+      },
+      {
+        id: "routes-api",
+        badge: "urgent",
+        description: "Intégration Routes API — optimisation de l'ordre des stops + durée estimée",
+      },
+      {
+        id: "maps-display",
+        badge: "important",
+        description: "Carte Google Maps interactive avec tournées colorées par zone",
+      },
+      {
+        id: "stats-panel",
+        badge: "important",
+        description: "Panneau latéral — nb stops, durée, heure de fin estimée par tournée",
+      },
+      {
+        id: "pdf-export",
+        badge: "important",
+        description: "Export PDF feuille de route par tournée (impression chauffeur)",
+      },
+      {
+        id: "i18n",
+        badge: "important",
+        description: "Interface bilingue FR / NL — tous les labels traduits",
+      },
+      {
+        id: "historique",
         badge: "bonus",
-        description: "Module planning intégré — gestion des équipes, absences, remplacements",
+        description: "Sauvegarde et consultation des sessions de planification passées",
+      },
+      {
+        id: "planning",
+        badge: "bonus",
+        description: "Module planning chauffeurs — gestion des absences et remplacements",
       },
     ],
   },
 ];
 
 const TASK_LABELS: Record<TaskId, string> = {
-  bail: "Signer le bail",
-  contrat: "Signer le contrat",
-  visite: "Visite du dépôt",
-  "planning-semaine": "Répartition des tâches — Semaine (21 employés)",
-  "planning-weekend": "Répartition des tâches — Week-end (26 employés)",
-  "app-route": "App d'optimisation de route",
-  "app-planning": "Module planning & gestion d'équipe",
+  "google-apis": "Activer les APIs Google Cloud",
+  "supabase-config": "Configurer le projet Supabase + schéma BDD",
+  "drops-moyenne": "Définir le nombre de drops moyen par tournée",
+  "csv-adresses": "Préparer le fichier CSV des adresses abonnés AMP",
+  scaffolding: "Scaffolding du projet",
+  autocomplete: "Composant saisie d'adresses — autocomplétion Google Places",
+  clustering: "Algorithme de clustering géographique des tournées",
+  "routes-api": "Intégration Routes API → optimisation ordre des stops",
+  "maps-display": "Affichage carte Google Maps avec tournées colorées",
+  "stats-panel": "Panneau latéral stats par tournée",
+  "pdf-export": "Export PDF feuille de route par tournée",
+  i18n: "Interface bilingue FR / NL",
+  historique: "Historique et sauvegarde des sessions",
+  planning: "Module planning chauffeurs + gestion absences",
 };
 
 const SECTION_TITLES: Record<string, string> = {
-  legal: "Légal & Administratif",
+  legal: "Légal & Admin",
   operations: "Opérationnel",
   tech: "Tech & Digital",
 };
 
+const TECH_STACK = [
+  "React / TypeScript",
+  "Tailwind CSS",
+  "Google Maps API",
+  "Framer Motion",
+  "Supabase",
+];
+
+const METRICS = [
+  { label: "Tournées semaine", value: "16" },
+  { label: "Tournées samedi", value: "19" },
+  { label: "Deadline livraison", value: "08h – 10h" },
+];
+
 const ALL_TASK_IDS = TODO_SECTIONS.flatMap((s) => s.tasks.map((t) => t.id));
-const PRE_DONE_IDS = TODO_SECTIONS.flatMap((s) =>
-  s.tasks.filter((t) => t.done).map((t) => t.id),
-);
-const STORAGE_KEY = "zk-concept-internal-todo";
+const STORAGE_KEY = "routezk-internal-todo";
 const ACCENT = "#111827";
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -117,14 +164,7 @@ function loadChecked(): Set<TaskId> {
   } catch {
     // ignore
   }
-  // Pre-check tasks marked as done by default
-  const initial = new Set(PRE_DONE_IDS);
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(initial)));
-  } catch {
-    // ignore
-  }
-  return initial;
+  return new Set();
 }
 
 function saveChecked(next: Set<TaskId>): void {
@@ -137,7 +177,7 @@ function saveChecked(next: Set<TaskId>): void {
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
-export default function ZkConceptPage() {
+export default function RouteZKPage() {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const boundingRef = useRef<DOMRect | null>(null);
   const [checked, setChecked] = useState<Set<TaskId>>(() => loadChecked());
@@ -158,15 +198,14 @@ export default function ZkConceptPage() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        ".zk-hero-anim",
+        ".rzk-hero-anim",
         { y: 28, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.9, stagger: 0.12, ease: "power3.out", delay: 0.1 },
       );
 
-      gsap.utils.toArray<HTMLElement>(".zk-reveal-card").forEach((card) => {
+      gsap.utils.toArray<HTMLElement>(".rzk-reveal-card").forEach((card) => {
         gsap.fromTo(
           card,
           { y: 32, opacity: 0 },
@@ -178,8 +217,7 @@ export default function ZkConceptPage() {
             scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none reverse" },
           },
         );
-
-        const items = card.querySelectorAll(".zk-reveal-item");
+        const items = card.querySelectorAll(".rzk-reveal-item");
         if (items.length > 0) {
           gsap.fromTo(
             items,
@@ -204,19 +242,22 @@ export default function ZkConceptPage() {
     <div ref={rootRef} className="space-y-4">
       {/* ── BACK LINK ─────────────────────────────────────────────────── */}
       <div className="flex justify-start">
-        <Link to="/design" className="text-xs font-semibold text-gray-400 transition-colors hover:text-gray-700">
+        <Link
+          to="/design"
+          className="text-xs font-semibold text-gray-400 transition-colors hover:text-gray-700"
+        >
           ← Retour
         </Link>
       </div>
 
       {/* ── STATUS BANNER ─────────────────────────────────────────────── */}
-      <div className="zk-hero-anim flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-gray-200 bg-white px-5 py-3.5 shadow-sm">
+      <div className="rzk-hero-anim flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-gray-200 bg-white px-5 py-3.5 shadow-sm">
         <div className="flex items-center gap-2.5">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-500" />
           </span>
-          <span className="text-sm font-semibold text-gray-900">En cours de lancement</span>
+          <span className="text-sm font-semibold text-gray-900">En développement</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
@@ -236,19 +277,30 @@ export default function ZkConceptPage() {
         <div className="relative z-10 flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
           {/* Text */}
           <div className="max-w-xl space-y-5">
-            <p className="zk-hero-anim text-xs font-semibold uppercase tracking-[0.22em] text-white/50">
+            <p className="rzk-hero-anim text-xs font-semibold uppercase tracking-[0.22em] text-white/50">
               Interne · ZK Studio
             </p>
-            <h1 className="zk-hero-anim text-4xl leading-tight text-white md:text-5xl">
-              ZK Concept<br />To-Do & Lancement
+            <h1 className="rzk-hero-anim text-4xl leading-tight text-white md:text-5xl">
+              RouteZK<br />Optimisation de tournées
             </h1>
-            <p className="zk-hero-anim text-base leading-7 text-white/70 md:text-lg">
-              Suivi des tâches critiques pour le démarrage opérationnel de l'entreprise.
+            <p className="rzk-hero-anim text-base leading-7 text-white/70 md:text-lg">
+              Outil interne de planification et d'optimisation des livraisons de journaux pour le sub-hub Blanden (AMP, Leuven). Clustering géographique, ordre des stops et estimation des temps via Google Maps API.
             </p>
+            {/* Tech stack badges */}
+            <div className="rzk-hero-anim flex flex-wrap gap-2">
+              {TECH_STACK.map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-md border border-white/20 bg-white/10 px-2.5 py-1 font-mono text-xs font-semibold tracking-wide text-white/80"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
 
           {/* Logo card */}
-          <div className="zk-hero-anim shrink-0 self-center [perspective:800px]">
+          <div className="rzk-hero-anim shrink-0 self-center [perspective:800px]">
             <div
               className="group relative rounded-2xl border border-white/10 bg-white/10 p-6 backdrop-blur-sm transition-transform duration-300 ease-out hover:[transform:rotateX(var(--x-rotation))_rotateY(var(--y-rotation))_scale(1.06)] md:p-8"
               onMouseEnter={(ev) => {
@@ -281,19 +333,34 @@ export default function ZkConceptPage() {
         <div className="pointer-events-none absolute bottom-6 left-8 h-24 w-24 rounded-full bg-white/[0.02]" />
       </div>
 
+      {/* ── METRICS ───────────────────────────────────────────────────── */}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {METRICS.map((metric) => (
+          <div
+            key={metric.label}
+            className="rzk-reveal-card rounded-2xl border border-gray-100 bg-white p-6 shadow-sm"
+          >
+            <p className="mb-1 text-xs font-semibold uppercase tracking-[0.16em] text-gray-400">
+              {metric.label}
+            </p>
+            <p className="text-3xl font-semibold text-gray-900">{metric.value}</p>
+          </div>
+        ))}
+      </div>
+
       {/* ── TODO LIST ─────────────────────────────────────────────────── */}
-      <div className="zk-reveal-card rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
+      <div className="rzk-reveal-card rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
         {/* Header + progress */}
-        <div className="zk-reveal-item mb-2 flex items-center justify-between">
+        <div className="rzk-reveal-item mb-2 flex items-center justify-between">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
-            To-Do — Lancement
+            To-Do — Développement
           </p>
           <span className="text-xs font-semibold text-gray-400">
             {done} / {total} complétées
           </span>
         </div>
 
-        <div className="zk-reveal-item mb-10 h-1.5 overflow-hidden rounded-full bg-gray-100">
+        <div className="rzk-reveal-item mb-10 h-1.5 overflow-hidden rounded-full bg-gray-100">
           <motion.div
             className="h-full rounded-full"
             style={{ backgroundColor: ACCENT }}
@@ -306,8 +373,7 @@ export default function ZkConceptPage() {
         {/* Sections */}
         <div className="space-y-10">
           {TODO_SECTIONS.map((section) => (
-            <div key={section.id} className="zk-reveal-item space-y-3">
-              {/* Section title */}
+            <div key={section.id} className="rzk-reveal-item space-y-3">
               <div className="flex items-center gap-2.5">
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
                   {SECTION_TITLES[section.id]}
@@ -362,26 +428,13 @@ export default function ZkConceptPage() {
 
                       {/* Content */}
                       <div className="flex-1 space-y-1">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span
-                            className={`text-sm font-medium transition-all duration-200 ${
-                              isChecked ? "text-gray-400 line-through" : "text-gray-900"
-                            }`}
-                          >
-                            {TASK_LABELS[task.id]}
-                          </span>
-                          {task.date && (
-                            <span
-                              className={`rounded-md px-2 py-0.5 text-xs font-semibold ${
-                                isChecked
-                                  ? "bg-gray-100 text-gray-400 line-through"
-                                  : "bg-gray-100 text-gray-600"
-                              }`}
-                            >
-                              {task.date}
-                            </span>
-                          )}
-                        </div>
+                        <span
+                          className={`text-sm font-medium transition-all duration-200 ${
+                            isChecked ? "text-gray-400 line-through" : "text-gray-900"
+                          }`}
+                        >
+                          {TASK_LABELS[task.id]}
+                        </span>
                         {task.description && (
                           <p
                             className={`text-xs leading-5 transition-all duration-200 ${
@@ -394,17 +447,17 @@ export default function ZkConceptPage() {
                       </div>
 
                       {/* Badge */}
-                      {task.badge === "urgent" && !isChecked && (
+                      {!isChecked && task.badge === "urgent" && (
                         <span className="mt-0.5 shrink-0 rounded-full bg-red-50 px-2.5 py-0.5 text-xs font-semibold text-red-600">
                           Urgent
                         </span>
                       )}
-                      {task.badge === "important" && !isChecked && (
+                      {!isChecked && task.badge === "important" && (
                         <span className="mt-0.5 shrink-0 rounded-full bg-orange-50 px-2.5 py-0.5 text-xs font-semibold text-orange-600">
                           Important
                         </span>
                       )}
-                      {task.badge === "bonus" && !isChecked && (
+                      {!isChecked && task.badge === "bonus" && (
                         <span className="mt-0.5 shrink-0 rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-600">
                           Plus tard
                         </span>
@@ -433,7 +486,7 @@ export default function ZkConceptPage() {
               className="mt-8 rounded-xl border border-gray-200 bg-gray-900 px-5 py-4"
             >
               <p className="text-sm font-semibold text-white">
-                Tout est complété — ZK Concept est prêt au décollage.
+                Tout est complété — RouteZK est prêt à déployer.
               </p>
             </motion.div>
           )}

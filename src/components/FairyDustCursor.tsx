@@ -30,11 +30,13 @@ export default function FairyDustCursor({
   fadeSpeed = 0.97,
   initialVelocity = { min: 0.7, max: 2.0 },
 }: FairyDustCursorProps) {
+  const isMobile = window.matchMedia("(pointer: coarse)").matches;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const rafRef = useRef<number>(0);
 
   useEffect(() => {
+    if (isMobile) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -96,6 +98,8 @@ export default function FairyDustCursor({
       cancelAnimationFrame(rafRef.current);
     };
   }, [colors, characterSet, particleSize, particleCount, gravity, fadeSpeed, initialVelocity]);
+
+  if (isMobile) return null;
 
   return (
     <canvas

@@ -9,6 +9,7 @@ export default function Nav() {
   const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isNavReady, setIsNavReady] = useState(pathname !== "/");
+  const [scrolled, setScrolled] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const links = [
@@ -17,6 +18,13 @@ export default function Nav() {
     { to: "/distribution-presse", label: t("nav.pressDistribution") },
     { to: "/gestion-logistique", label: t("nav.logisticsManagement") },
   ];
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (pathname !== "/") {
@@ -91,7 +99,8 @@ export default function Nav() {
       style={{
         backdropFilter: "blur(14px) saturate(165%)",
         WebkitBackdropFilter: "blur(14px) saturate(165%)",
-        background: "rgba(255,255,255,0.55)",
+        background: scrolled ? "rgba(255,255,255,0.55)" : "#ffffff",
+        transition: "background 0.4s ease",
         width: "100%",
         opacity: 1,
       }}

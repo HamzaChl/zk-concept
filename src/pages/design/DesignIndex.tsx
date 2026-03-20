@@ -51,6 +51,17 @@ const PROJECTS = [
     logoSize: "h-6",
     done: false,
   },
+  {
+    slug: "route-zk",
+    client: "RouteZK",
+    type: "App web · Optimisation de tournées",
+    status: "En développement",
+    deadline: "—",
+    accent: "#1e3a5f",
+    logo: zkLogo,
+    logoSize: "h-6",
+    done: false,
+  },
 ];
 
 function StatusBadge({ status, done }: { status: string; done: boolean }) {

@@ -20,6 +20,7 @@ import ComptaPartnersPage from "./pages/design/ComptaPartners";
 import TigriestTradingPage from "./pages/design/TigriesTrading";
 import SnackHoekskenPage from "./pages/design/SnackHoeksken";
 import ZkConceptPage from "./pages/design/ZkConcept";
+import RouteZKPage from "./pages/design/RouteZK";
 import DesignIndexPage from "./pages/design/DesignIndex";
 import NotFoundPage from "./pages/NotFoundPage";
 
@@ -533,6 +534,7 @@ export default function App() {
             <Route path="/design/tigries-trading" element={<TigriestTradingPage />} />
             <Route path="/design/snack-hoeksken" element={<SnackHoekskenPage />} />
             <Route path="/design/zk-concept" element={<ZkConceptPage />} />
+            <Route path="/design/route-zk" element={<RouteZKPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
