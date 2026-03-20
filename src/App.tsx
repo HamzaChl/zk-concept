@@ -17,6 +17,8 @@ import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TempMailsPage from "./pages/TempMailsPage";
 import WorkTogetherPage from "./pages/WorkTogetherPage";
 import ComptaPartnersPage from "./pages/design/ComptaPartners";
+import TigriestTradingPage from "./pages/design/TigriesTrading";
+import SnackHoekskenPage from "./pages/design/SnackHoeksken";
 import DesignIndexPage from "./pages/design/DesignIndex";
 import NotFoundPage from "./pages/NotFoundPage";
 
@@ -527,6 +529,8 @@ export default function App() {
             <Route path="/imprint" element={<ImprintPage />} />
             <Route path="/design" element={<DesignIndexPage />} />
             <Route path="/design/compta-partners" element={<ComptaPartnersPage />} />
+            <Route path="/design/tigries-trading" element={<TigriestTradingPage />} />
+            <Route path="/design/snack-hoeksken" element={<SnackHoekskenPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>

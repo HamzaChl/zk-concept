@@ -2,7 +2,9 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import cabinetLogo from "../../assets/logo-partners/Outlook-qhbk4leg.png";
+import comptaLogo from "../../assets/logo-partners/Outlook-qhbk4leg.png";
+import tigrieLogo from "../../assets/logo-partners/logo-tigries.png";
+import snackLogo from "../../assets/logo-partners/logo-Snack-t-Hoeksken-1.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,14 +16,47 @@ const PROJECTS = [
     status: "En cours",
     deadline: "26 mars 2025",
     accent: "#25408f",
-    logo: cabinetLogo,
+    logo: comptaLogo,
+    done: false,
+  },
+  {
+    slug: "tigries-trading",
+    client: "Tigries Trading BV",
+    type: "Site web · Marché espagnol",
+    status: "En cours",
+    deadline: "23 mars 2025",
+    accent: "#f7af2f",
+    logo: tigrieLogo,
+    done: false,
+  },
+  {
+    slug: "snack-hoeksken",
+    client: "Snack Pitta 't Hoeksken",
+    type: "Site web · Fast-food",
+    status: "Livré",
+    deadline: "19 mars 2025",
+    accent: "#c0392b",
+    logo: snackLogo,
+    done: true,
   },
 ];
 
-function StatusBadge({ status }: { status: string }) {
+function StatusBadge({ status, done }: { status: string; done: boolean }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-green-200 bg-green-50 px-2.5 py-1 text-xs text-green-700">
-      <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+    <span
+      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs ${
+        done
+          ? "border-green-200 bg-green-50 text-green-700"
+          : "border-green-200 bg-green-50 text-green-700"
+      }`}
+    >
+      {done ? (
+        <svg viewBox="0 0 10 8" fill="none" className="h-2.5 w-2.5">
+          <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      ) : (
+        <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+      )}
       {status}
     </span>
   );
@@ -103,13 +138,15 @@ export default function DesignIndex() {
               <p className="mb-1 text-[11px] font-semibold uppercase tracking-widest text-gray-400">
                 {project.type}
               </p>
-              <h2 className="mb-3 text-base font-bold text-gray-900 leading-snug">
+              <h2 className="mb-3 text-base font-bold leading-snug text-gray-900">
                 {project.client}
               </h2>
 
               <div className="flex items-center justify-between">
-                <StatusBadge status={project.status} />
-                <span className="text-xs text-gray-400">{project.deadline}</span>
+                <StatusBadge status={project.status} done={project.done} />
+                <span className={`text-xs ${project.done ? "text-gray-400 line-through" : "text-gray-400"}`}>
+                  {project.deadline}
+                </span>
               </div>
             </div>
 
@@ -135,7 +172,7 @@ export default function DesignIndex() {
           </Link>
         ))}
 
-        {/* Placeholder for future projects */}
+        {/* Placeholder — prochain projet */}
         <div className="design-card flex min-h-[200px] items-center justify-center rounded-2xl border border-dashed border-gray-200 bg-gray-50/50 p-6">
           <div className="text-center">
             <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-dashed border-gray-300 text-gray-300">
