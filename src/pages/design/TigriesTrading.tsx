@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, AnimatePresence } from "framer-motion";
@@ -153,6 +154,13 @@ export default function TigriestTradingPage() {
 
   return (
     <div ref={rootRef} className="space-y-4">
+      {/* ── BACK LINK ─────────────────────────────────────────────────── */}
+      <div className="flex justify-start">
+        <Link to="/design" className="text-xs font-semibold text-gray-400 transition-colors hover:text-gray-700">
+          ← Retour
+        </Link>
+      </div>
+
       {/* ── STATUS BANNER ─────────────────────────────────────────────── */}
       <div className="tigries-hero-anim flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-gray-200 bg-white px-5 py-3.5 shadow-sm">
         <div className="flex items-center gap-2.5">

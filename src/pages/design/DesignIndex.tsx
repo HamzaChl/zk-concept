@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import comptaLogo from "../../assets/logo-partners/Outlook-qhbk4leg.png";
 import tigrieLogo from "../../assets/logo-partners/logo-tigries.png";
 import snackLogo from "../../assets/logo-partners/logo-Snack-t-Hoeksken-1.png";
+import zkLogo from "../../assets/logo-zk.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,24 +40,31 @@ const PROJECTS = [
     logo: snackLogo,
     done: true,
   },
+  {
+    slug: "zk-concept",
+    client: "ZK Concept",
+    type: "Interne · Lancement",
+    status: "En cours",
+    deadline: "—",
+    accent: "#111827",
+    logo: zkLogo,
+    logoSize: "h-6",
+    done: false,
+  },
 ];
 
 function StatusBadge({ status, done }: { status: string; done: boolean }) {
+  if (done) {
+    return (
+      <span className="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-gray-100 px-2.5 py-1 text-xs text-gray-400">
+        <span className="h-1.5 w-1.5 rounded-full bg-gray-300" />
+        {status}
+      </span>
+    );
+  }
   return (
-    <span
-      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs ${
-        done
-          ? "border-green-200 bg-green-50 text-green-700"
-          : "border-green-200 bg-green-50 text-green-700"
-      }`}
-    >
-      {done ? (
-        <svg viewBox="0 0 10 8" fill="none" className="h-2.5 w-2.5">
-          <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      ) : (
-        <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-      )}
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-green-200 bg-green-50 px-2.5 py-1 text-xs text-green-700">
+      <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
       {status}
     </span>
   );
@@ -130,7 +138,7 @@ export default function DesignIndex() {
                 <img
                   src={project.logo}
                   alt={project.client}
-                  className="h-10 max-w-full object-contain"
+                  className={`${(project as typeof project & { logoSize?: string }).logoSize ?? "h-10"} max-w-full object-contain`}
                 />
               </div>
 

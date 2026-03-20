@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation, Trans } from "react-i18next";
 import cabinetLogo from "../../assets/logo-partners/Outlook-qhbk4leg.png";
+import FairyDustCursor from "../../components/FairyDustCursor";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -178,9 +180,28 @@ export default function ComptaPartnersPage() {
     return () => ctx.revert();
   }, []);
 
-
   return (
     <div ref={rootRef} className="space-y-4">
+      <FairyDustCursor
+        colors={["#25408f", "#4a6fbe", "#7b9fd4"]}
+        characterSet={["✨", "⭐", "🧌", "💫"]}
+        particleSize={13}
+        particleCount={0.001}
+        gravity={0.015}
+        fadeSpeed={1.07}
+        initialVelocity={{ min: 0.7, max: 2.0 }}
+      />
+
+      {/* ── BACK LINK ─────────────────────────────────────────────────── */}
+      <div className="flex justify-start">
+        <Link
+          to="/design"
+          className="text-xs font-semibold text-gray-400 transition-colors hover:text-gray-700"
+        >
+          ← Retour
+        </Link>
+      </div>
+
       {/* ── STATUS BANNER ─────────────────────────────────────────────── */}
       <div className="compta-hero-anim flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-gray-200 bg-white px-5 py-3.5 shadow-sm">
         <div className="flex items-center gap-2.5">
@@ -234,8 +255,14 @@ export default function ComptaPartnersPage() {
                 const y = ev.clientY - boundingRef.current.top;
                 const xPct = x / boundingRef.current.width;
                 const yPct = y / boundingRef.current.height;
-                ev.currentTarget.style.setProperty("--x-rotation", `${(0.5 - yPct) * 20}deg`);
-                ev.currentTarget.style.setProperty("--y-rotation", `${(xPct - 0.5) * 20}deg`);
+                ev.currentTarget.style.setProperty(
+                  "--x-rotation",
+                  `${(0.5 - yPct) * 20}deg`,
+                );
+                ev.currentTarget.style.setProperty(
+                  "--y-rotation",
+                  `${(xPct - 0.5) * 20}deg`,
+                );
                 ev.currentTarget.style.setProperty("--x", `${xPct * 100}%`);
                 ev.currentTarget.style.setProperty("--y", `${yPct * 100}%`);
               }}
@@ -422,20 +449,26 @@ export default function ComptaPartnersPage() {
           {t("comptaPartners.pages.sectionTitle")}
         </p>
         <div className="compta-reveal-item flex flex-wrap gap-3">
-          {(["item1", "item2", "item3", "item4", "item5"] as const).map((key) => (
-            <div
-              key={key}
-              className="flex items-center gap-2.5 rounded-xl border border-gray-200 px-4 py-2.5"
-            >
+          {(["item1", "item2", "item3", "item4", "item5"] as const).map(
+            (key) => (
               <div
-                className="h-1.5 w-1.5 shrink-0 rounded-full"
-                style={{ backgroundColor: key === "item5" ? "#9ca3af" : "#25408f" }}
-              />
-              <span className={`text-sm ${key === "item5" ? "text-gray-400" : "text-gray-800"}`}>
-                {t(`comptaPartners.pages.${key}`)}
-              </span>
-            </div>
-          ))}
+                key={key}
+                className="flex items-center gap-2.5 rounded-xl border border-gray-200 px-4 py-2.5"
+              >
+                <div
+                  className="h-1.5 w-1.5 shrink-0 rounded-full"
+                  style={{
+                    backgroundColor: key === "item5" ? "#9ca3af" : "#25408f",
+                  }}
+                />
+                <span
+                  className={`text-sm ${key === "item5" ? "text-gray-400" : "text-gray-800"}`}
+                >
+                  {t(`comptaPartners.pages.${key}`)}
+                </span>
+              </div>
+            ),
+          )}
         </div>
       </div>
 
