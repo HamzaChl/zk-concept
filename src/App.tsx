@@ -22,6 +22,7 @@ import SnackHoekskenPage from "./pages/design/SnackHoeksken";
 import ZkConceptPage from "./pages/design/ZkConcept";
 import RouteZKPage from "./pages/design/RouteZK";
 import DesignIndexPage from "./pages/design/DesignIndex";
+import LotrPage from "./pages/LotrPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 const LOADING_ENABLED = false;
@@ -331,6 +332,10 @@ function RouteTransitionVeil() {
 
 export default function App() {
   const { pathname } = useLocation();
+
+  if (pathname === "/lotr") {
+    return <LotrPage />;
+  }
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(LOADING_ENABLED);
   const isHomePage = pathname === "/";

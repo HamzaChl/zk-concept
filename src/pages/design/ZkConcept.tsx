@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import zkLogo from "../../assets/logo-zk-w.png";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -12,8 +13,8 @@ type TaskId = string;
 interface Task {
   id: TaskId;
   badge: "urgent" | "important" | "bonus";
-  description?: string;
-  date?: string;
+  descKey?: string;
+  dateKey?: string;
   done?: boolean;
 }
 
@@ -30,16 +31,8 @@ const TODO_SECTIONS: TodoSection[] = [
     id: "legal",
     icon: "",
     tasks: [
-      {
-        id: "bail",
-        badge: "urgent",
-        description: "Finaliser et signer le contrat de bail du dépôt",
-      },
-      {
-        id: "contrat",
-        badge: "urgent",
-        description: "Signature du contrat de service / opérationnel",
-      },
+      { id: "bail", badge: "urgent", descKey: "zkConcept.todo.sections.legal.bail_desc" },
+      { id: "contrat", badge: "urgent", descKey: "zkConcept.todo.sections.legal.contrat_desc" },
     ],
   },
   {
@@ -49,21 +42,21 @@ const TODO_SECTIONS: TodoSection[] = [
       {
         id: "visite",
         badge: "important",
-        description: "Inspection complète des locaux, prise de mesures, état des lieux",
-        date: "20 mars 2025",
+        descKey: "zkConcept.todo.sections.operations.visite_desc",
+        dateKey: "20 mars 2025",
         done: true,
       },
       {
         id: "planning-semaine",
         badge: "urgent",
-        description: "Attribution des rôles, zones et tournées pour les 21 employés",
-        date: "Semaine",
+        descKey: "zkConcept.todo.sections.operations.planningWeek_desc",
+        dateKey: "Semaine",
       },
       {
         id: "planning-weekend",
         badge: "urgent",
-        description: "Organisation spécifique weekend — 26 employés, flux renforcé",
-        date: "Week-end",
+        descKey: "zkConcept.todo.sections.operations.planningWeekend_desc",
+        dateKey: "Week-end",
       },
     ],
   },
@@ -74,32 +67,16 @@ const TODO_SECTIONS: TodoSection[] = [
       {
         id: "app-route",
         badge: "important",
-        description: "Développer une application interne pour calculer et optimiser les tournées de livraison en temps réel",
+        descKey: "zkConcept.todo.sections.tech.appRoute_desc",
       },
       {
         id: "app-planning",
         badge: "bonus",
-        description: "Module planning intégré — gestion des équipes, absences, remplacements",
+        descKey: "zkConcept.todo.sections.tech.appPlanning_desc",
       },
     ],
   },
 ];
-
-const TASK_LABELS: Record<TaskId, string> = {
-  bail: "Signer le bail",
-  contrat: "Signer le contrat",
-  visite: "Visite du dépôt",
-  "planning-semaine": "Répartition des tâches — Semaine (21 employés)",
-  "planning-weekend": "Répartition des tâches — Week-end (26 employés)",
-  "app-route": "App d'optimisation de route",
-  "app-planning": "Module planning & gestion d'équipe",
-};
-
-const SECTION_TITLES: Record<string, string> = {
-  legal: "Légal & Administratif",
-  operations: "Opérationnel",
-  tech: "Tech & Digital",
-};
 
 const ALL_TASK_IDS = TODO_SECTIONS.flatMap((s) => s.tasks.map((t) => t.id));
 const PRE_DONE_IDS = TODO_SECTIONS.flatMap((s) =>
@@ -138,6 +115,7 @@ function saveChecked(next: Set<TaskId>): void {
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function ZkConceptPage() {
+  const { t } = useTranslation();
   const rootRef = useRef<HTMLDivElement | null>(null);
   const boundingRef = useRef<DOMRect | null>(null);
   const [checked, setChecked] = useState<Set<TaskId>>(() => loadChecked());
@@ -205,7 +183,7 @@ export default function ZkConceptPage() {
       {/* ── BACK LINK ─────────────────────────────────────────────────── */}
       <div className="flex justify-start">
         <Link to="/design" className="text-xs font-semibold text-gray-400 transition-colors hover:text-gray-700">
-          ← Retour
+          {t("design.common.back")}
         </Link>
       </div>
 
@@ -216,11 +194,11 @@ export default function ZkConceptPage() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-500" />
           </span>
-          <span className="text-sm font-semibold text-gray-900">En cours de lancement</span>
+          <span className="text-sm font-semibold text-gray-900">{t("zkConcept.status.label")}</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-            {done} / {total} tâches
+            {t("zkConcept.status.counter", { done, total })}
           </span>
           <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-semibold text-gray-600">
             {progress}%
@@ -237,13 +215,15 @@ export default function ZkConceptPage() {
           {/* Text */}
           <div className="max-w-xl space-y-5">
             <p className="zk-hero-anim text-xs font-semibold uppercase tracking-[0.22em] text-white/50">
-              Interne · ZK Studio
+              {t("zkConcept.hero.kicker")}
             </p>
             <h1 className="zk-hero-anim text-4xl leading-tight text-white md:text-5xl">
-              ZK Concept<br />To-Do & Lancement
+              {t("zkConcept.hero.title").split("\n").map((line, i) => (
+                <span key={i}>{line}{i === 0 && <br />}</span>
+              ))}
             </h1>
             <p className="zk-hero-anim text-base leading-7 text-white/70 md:text-lg">
-              Suivi des tâches critiques pour le démarrage opérationnel de l'entreprise.
+              {t("zkConcept.hero.description")}
             </p>
           </div>
 
@@ -286,10 +266,10 @@ export default function ZkConceptPage() {
         {/* Header + progress */}
         <div className="zk-reveal-item mb-2 flex items-center justify-between">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
-            To-Do — Lancement
+            {t("zkConcept.todo.sectionTitle")}
           </p>
           <span className="text-xs font-semibold text-gray-400">
-            {done} / {total} complétées
+            {t("zkConcept.todo.counter", { done, total })}
           </span>
         </div>
 
@@ -310,13 +290,20 @@ export default function ZkConceptPage() {
               {/* Section title */}
               <div className="flex items-center gap-2.5">
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-                  {SECTION_TITLES[section.id]}
+                  {t(`zkConcept.todo.sections.${section.id}.title`)}
                 </p>
               </div>
 
               <div className="space-y-2">
                 {section.tasks.map((task) => {
                   const isChecked = checked.has(task.id);
+                  const labelKey = `zkConcept.todo.sections.${section.id}.${
+                    task.id === "planning-semaine" ? "planningWeek" :
+                    task.id === "planning-weekend" ? "planningWeekend" :
+                    task.id === "app-route" ? "appRoute" :
+                    task.id === "app-planning" ? "appPlanning" :
+                    task.id
+                  }`;
                   return (
                     <button
                       key={task.id}
@@ -368,9 +355,9 @@ export default function ZkConceptPage() {
                               isChecked ? "text-gray-400 line-through" : "text-gray-900"
                             }`}
                           >
-                            {TASK_LABELS[task.id]}
+                            {t(labelKey)}
                           </span>
-                          {task.date && (
+                          {task.dateKey && (
                             <span
                               className={`rounded-md px-2 py-0.5 text-xs font-semibold ${
                                 isChecked
@@ -378,17 +365,17 @@ export default function ZkConceptPage() {
                                   : "bg-gray-100 text-gray-600"
                               }`}
                             >
-                              {task.date}
+                              {task.dateKey}
                             </span>
                           )}
                         </div>
-                        {task.description && (
+                        {task.descKey && (
                           <p
                             className={`text-xs leading-5 transition-all duration-200 ${
                               isChecked ? "text-gray-300" : "text-gray-500"
                             }`}
                           >
-                            {task.description}
+                            {t(task.descKey)}
                           </p>
                         )}
                       </div>
@@ -396,22 +383,22 @@ export default function ZkConceptPage() {
                       {/* Badge */}
                       {task.badge === "urgent" && !isChecked && (
                         <span className="mt-0.5 shrink-0 rounded-full bg-red-50 px-2.5 py-0.5 text-xs font-semibold text-red-600">
-                          Urgent
+                          {t("zkConcept.todo.badges.urgent")}
                         </span>
                       )}
                       {task.badge === "important" && !isChecked && (
                         <span className="mt-0.5 shrink-0 rounded-full bg-orange-50 px-2.5 py-0.5 text-xs font-semibold text-orange-600">
-                          Important
+                          {t("zkConcept.todo.badges.important")}
                         </span>
                       )}
                       {task.badge === "bonus" && !isChecked && (
                         <span className="mt-0.5 shrink-0 rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-600">
-                          Plus tard
+                          {t("zkConcept.todo.badges.bonus")}
                         </span>
                       )}
                       {isChecked && (
                         <span className="mt-0.5 shrink-0 rounded-full bg-green-50 px-2.5 py-0.5 text-xs font-semibold text-green-600">
-                          Fait ✓
+                          {t("zkConcept.todo.badges.done")}
                         </span>
                       )}
                     </button>
@@ -433,7 +420,7 @@ export default function ZkConceptPage() {
               className="mt-8 rounded-xl border border-gray-200 bg-gray-900 px-5 py-4"
             >
               <p className="text-sm font-semibold text-white">
-                Tout est complété — ZK Concept est prêt au décollage.
+                {t("zkConcept.todo.completionMessage")}
               </p>
             </motion.div>
           )}

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import zkLogo from "../../assets/logo-zk-w.png";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -12,7 +13,7 @@ type TaskId = string;
 interface Task {
   id: TaskId;
   badge: "urgent" | "important" | "bonus";
-  description?: string;
+  descKey: string;
 }
 
 interface TodoSection {
@@ -31,12 +32,12 @@ const TODO_SECTIONS: TodoSection[] = [
       {
         id: "google-apis",
         badge: "urgent",
-        description: "Maps JS API, Routes API, Geocoding API, Places API — billing activé",
+        descKey: "routeZk.todo.sections.legal.googleApis_desc",
       },
       {
         id: "supabase-config",
         badge: "urgent",
-        description: "Projet Supabase créé, schéma BDD défini (tournées, stops, sessions)",
+        descKey: "routeZk.todo.sections.legal.supabaseConfig_desc",
       },
     ],
   },
@@ -47,12 +48,12 @@ const TODO_SECTIONS: TodoSection[] = [
       {
         id: "drops-moyenne",
         badge: "important",
-        description: "Nombre de stops cible par tournée défini avec l'équipe terrain",
+        descKey: "routeZk.todo.sections.operations.dropsMoyenne_desc",
       },
       {
         id: "csv-adresses",
         badge: "important",
-        description: "Fichier CSV des adresses abonnés AMP Leuven prêt à importer",
+        descKey: "routeZk.todo.sections.operations.csvAdresses_desc",
       },
     ],
   },
@@ -60,82 +61,19 @@ const TODO_SECTIONS: TodoSection[] = [
     id: "tech",
     icon: "",
     tasks: [
-      {
-        id: "scaffolding",
-        badge: "urgent",
-        description: "Vite + React + TypeScript + Tailwind CSS — structure de base",
-      },
-      {
-        id: "autocomplete",
-        badge: "urgent",
-        description: "Saisie d'adresses avec autocomplétion Google Places intégrée",
-      },
-      {
-        id: "clustering",
-        badge: "urgent",
-        description: "Regroupement géographique des adresses en tournées (K-means / Turf.js)",
-      },
-      {
-        id: "routes-api",
-        badge: "urgent",
-        description: "Intégration Routes API — optimisation de l'ordre des stops + durée estimée",
-      },
-      {
-        id: "maps-display",
-        badge: "important",
-        description: "Carte Google Maps interactive avec tournées colorées par zone",
-      },
-      {
-        id: "stats-panel",
-        badge: "important",
-        description: "Panneau latéral — nb stops, durée, heure de fin estimée par tournée",
-      },
-      {
-        id: "pdf-export",
-        badge: "important",
-        description: "Export PDF feuille de route par tournée (impression chauffeur)",
-      },
-      {
-        id: "i18n",
-        badge: "important",
-        description: "Interface bilingue FR / NL — tous les labels traduits",
-      },
-      {
-        id: "historique",
-        badge: "bonus",
-        description: "Sauvegarde et consultation des sessions de planification passées",
-      },
-      {
-        id: "planning",
-        badge: "bonus",
-        description: "Module planning chauffeurs — gestion des absences et remplacements",
-      },
+      { id: "scaffolding", badge: "urgent", descKey: "routeZk.todo.sections.tech.scaffolding_desc" },
+      { id: "autocomplete", badge: "urgent", descKey: "routeZk.todo.sections.tech.autocomplete_desc" },
+      { id: "clustering", badge: "urgent", descKey: "routeZk.todo.sections.tech.clustering_desc" },
+      { id: "routes-api", badge: "urgent", descKey: "routeZk.todo.sections.tech.routesApi_desc" },
+      { id: "maps-display", badge: "important", descKey: "routeZk.todo.sections.tech.mapsDisplay_desc" },
+      { id: "stats-panel", badge: "important", descKey: "routeZk.todo.sections.tech.statsPanel_desc" },
+      { id: "pdf-export", badge: "important", descKey: "routeZk.todo.sections.tech.pdfExport_desc" },
+      { id: "i18n", badge: "important", descKey: "routeZk.todo.sections.tech.i18n_desc" },
+      { id: "historique", badge: "bonus", descKey: "routeZk.todo.sections.tech.historique_desc" },
+      { id: "planning", badge: "bonus", descKey: "routeZk.todo.sections.tech.planning_desc" },
     ],
   },
 ];
-
-const TASK_LABELS: Record<TaskId, string> = {
-  "google-apis": "Activer les APIs Google Cloud",
-  "supabase-config": "Configurer le projet Supabase + schéma BDD",
-  "drops-moyenne": "Définir le nombre de drops moyen par tournée",
-  "csv-adresses": "Préparer le fichier CSV des adresses abonnés AMP",
-  scaffolding: "Scaffolding du projet",
-  autocomplete: "Composant saisie d'adresses — autocomplétion Google Places",
-  clustering: "Algorithme de clustering géographique des tournées",
-  "routes-api": "Intégration Routes API → optimisation ordre des stops",
-  "maps-display": "Affichage carte Google Maps avec tournées colorées",
-  "stats-panel": "Panneau latéral stats par tournée",
-  "pdf-export": "Export PDF feuille de route par tournée",
-  i18n: "Interface bilingue FR / NL",
-  historique: "Historique et sauvegarde des sessions",
-  planning: "Module planning chauffeurs + gestion absences",
-};
-
-const SECTION_TITLES: Record<string, string> = {
-  legal: "Légal & Admin",
-  operations: "Opérationnel",
-  tech: "Tech & Digital",
-};
 
 const TECH_STACK = [
   "React / TypeScript",
@@ -145,10 +83,10 @@ const TECH_STACK = [
   "Supabase",
 ];
 
-const METRICS = [
-  { label: "Tournées semaine", value: "16" },
-  { label: "Tournées samedi", value: "19" },
-  { label: "Deadline livraison", value: "08h – 10h" },
+const METRIC_KEYS = [
+  { labelKey: "routeZk.metrics.weekRoutes", value: "16" },
+  { labelKey: "routeZk.metrics.saturdayRoutes", value: "19" },
+  { labelKey: "routeZk.metrics.deliveryDeadline", value: "08h – 10h" },
 ];
 
 const ALL_TASK_IDS = TODO_SECTIONS.flatMap((s) => s.tasks.map((t) => t.id));
@@ -178,6 +116,7 @@ function saveChecked(next: Set<TaskId>): void {
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function RouteZKPage() {
+  const { t } = useTranslation();
   const rootRef = useRef<HTMLDivElement | null>(null);
   const boundingRef = useRef<DOMRect | null>(null);
   const [checked, setChecked] = useState<Set<TaskId>>(() => loadChecked());
@@ -246,7 +185,7 @@ export default function RouteZKPage() {
           to="/design"
           className="text-xs font-semibold text-gray-400 transition-colors hover:text-gray-700"
         >
-          ← Retour
+          {t("design.common.back")}
         </Link>
       </div>
 
@@ -257,11 +196,11 @@ export default function RouteZKPage() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-500" />
           </span>
-          <span className="text-sm font-semibold text-gray-900">En développement</span>
+          <span className="text-sm font-semibold text-gray-900">{t("routeZk.status.label")}</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-            {done} / {total} tâches
+            {t("routeZk.status.counter", { done, total })}
           </span>
           <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-semibold text-gray-600">
             {progress}%
@@ -278,13 +217,15 @@ export default function RouteZKPage() {
           {/* Text */}
           <div className="max-w-xl space-y-5">
             <p className="rzk-hero-anim text-xs font-semibold uppercase tracking-[0.22em] text-white/50">
-              Interne · ZK Studio
+              {t("routeZk.hero.kicker")}
             </p>
             <h1 className="rzk-hero-anim text-4xl leading-tight text-white md:text-5xl">
-              RouteZK<br />Optimisation de tournées
+              {t("routeZk.hero.title").split("\n").map((line, i) => (
+                <span key={i}>{line}{i === 0 && <br />}</span>
+              ))}
             </h1>
             <p className="rzk-hero-anim text-base leading-7 text-white/70 md:text-lg">
-              Outil interne de planification et d'optimisation des livraisons de journaux pour le sub-hub Blanden (AMP, Leuven). Clustering géographique, ordre des stops et estimation des temps via Google Maps API.
+              {t("routeZk.hero.description")}
             </p>
             {/* Tech stack badges */}
             <div className="rzk-hero-anim flex flex-wrap gap-2">
@@ -335,13 +276,13 @@ export default function RouteZKPage() {
 
       {/* ── METRICS ───────────────────────────────────────────────────── */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        {METRICS.map((metric) => (
+        {METRIC_KEYS.map((metric) => (
           <div
-            key={metric.label}
+            key={metric.labelKey}
             className="rzk-reveal-card rounded-2xl border border-gray-100 bg-white p-6 shadow-sm"
           >
             <p className="mb-1 text-xs font-semibold uppercase tracking-[0.16em] text-gray-400">
-              {metric.label}
+              {t(metric.labelKey)}
             </p>
             <p className="text-3xl font-semibold text-gray-900">{metric.value}</p>
           </div>
@@ -353,10 +294,10 @@ export default function RouteZKPage() {
         {/* Header + progress */}
         <div className="rzk-reveal-item mb-2 flex items-center justify-between">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
-            To-Do — Développement
+            {t("routeZk.todo.sectionTitle")}
           </p>
           <span className="text-xs font-semibold text-gray-400">
-            {done} / {total} complétées
+            {t("routeZk.todo.counter", { done, total })}
           </span>
         </div>
 
@@ -376,13 +317,24 @@ export default function RouteZKPage() {
             <div key={section.id} className="rzk-reveal-item space-y-3">
               <div className="flex items-center gap-2.5">
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-                  {SECTION_TITLES[section.id]}
+                  {t(`routeZk.todo.sections.${section.id}.title`)}
                 </p>
               </div>
 
               <div className="space-y-2">
                 {section.tasks.map((task) => {
                   const isChecked = checked.has(task.id);
+                  const labelKey = `routeZk.todo.sections.${section.id}.${
+                    task.id === "google-apis" ? "googleApis" :
+                    task.id === "supabase-config" ? "supabaseConfig" :
+                    task.id === "drops-moyenne" ? "dropsMoyenne" :
+                    task.id === "csv-adresses" ? "csvAdresses" :
+                    task.id === "routes-api" ? "routesApi" :
+                    task.id === "maps-display" ? "mapsDisplay" :
+                    task.id === "stats-panel" ? "statsPanel" :
+                    task.id === "pdf-export" ? "pdfExport" :
+                    task.id
+                  }`;
                   return (
                     <button
                       key={task.id}
@@ -433,38 +385,36 @@ export default function RouteZKPage() {
                             isChecked ? "text-gray-400 line-through" : "text-gray-900"
                           }`}
                         >
-                          {TASK_LABELS[task.id]}
+                          {t(labelKey)}
                         </span>
-                        {task.description && (
-                          <p
-                            className={`text-xs leading-5 transition-all duration-200 ${
-                              isChecked ? "text-gray-300" : "text-gray-500"
-                            }`}
-                          >
-                            {task.description}
-                          </p>
-                        )}
+                        <p
+                          className={`text-xs leading-5 transition-all duration-200 ${
+                            isChecked ? "text-gray-300" : "text-gray-500"
+                          }`}
+                        >
+                          {t(task.descKey)}
+                        </p>
                       </div>
 
                       {/* Badge */}
                       {!isChecked && task.badge === "urgent" && (
                         <span className="mt-0.5 shrink-0 rounded-full bg-red-50 px-2.5 py-0.5 text-xs font-semibold text-red-600">
-                          Urgent
+                          {t("routeZk.todo.badges.urgent")}
                         </span>
                       )}
                       {!isChecked && task.badge === "important" && (
                         <span className="mt-0.5 shrink-0 rounded-full bg-orange-50 px-2.5 py-0.5 text-xs font-semibold text-orange-600">
-                          Important
+                          {t("routeZk.todo.badges.important")}
                         </span>
                       )}
                       {!isChecked && task.badge === "bonus" && (
                         <span className="mt-0.5 shrink-0 rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-600">
-                          Plus tard
+                          {t("routeZk.todo.badges.bonus")}
                         </span>
                       )}
                       {isChecked && (
                         <span className="mt-0.5 shrink-0 rounded-full bg-green-50 px-2.5 py-0.5 text-xs font-semibold text-green-600">
-                          Fait ✓
+                          {t("routeZk.todo.badges.done")}
                         </span>
                       )}
                     </button>
@@ -486,7 +436,7 @@ export default function RouteZKPage() {
               className="mt-8 rounded-xl border border-gray-200 bg-gray-900 px-5 py-4"
             >
               <p className="text-sm font-semibold text-white">
-                Tout est complété — RouteZK est prêt à déployer.
+                {t("routeZk.todo.completionMessage")}
               </p>
             </motion.div>
           )}

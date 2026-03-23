@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation, Trans } from "react-i18next";
 import tigrieLogo from "../../assets/logo-partners/logo-tigries.png";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -38,33 +39,19 @@ const CHECKLIST_SECTIONS: ChecklistSection[] = [
   },
 ];
 
-const TASK_LABELS: Record<TaskId, string> = {
-  d1: "Direction créative validée",
-  d2: "Palette de couleurs définie",
-  d3: "Logo finalisé (ou direction approuvée)",
-  l1: "Maquettes pages principales (.ai)",
-  l2: "Intégration WordPress — sans template, développement sur mesure",
-  l3: "Recette & ajustements finaux",
-};
-
-const SECTION_TITLES: Record<string, string> = {
-  direction: "Direction créative",
-  livrables: "Livrables",
-};
-
 const ALL_TASK_IDS = CHECKLIST_SECTIONS.flatMap((s) => s.tasks.map((t) => t.id));
 const STORAGE_KEY = "zk-tigries-trading-brief";
 const ACCENT = "#0f172a";
 const HERO_BG = "#f7af2f";
 
 const RESOURCES = [
-  { label: "Dribbble", url: "https://dribbble.com", desc: "Inspirations UI & design" },
-  { label: "Behance", url: "https://behance.net", desc: "Directions créatives" },
-  { label: "Awwwards", url: "https://awwwards.com", desc: "Sites primés" },
-  { label: "Google Fonts", url: "https://fonts.google.com", desc: "Typographies libres" },
-  { label: "Coolors.co", url: "https://coolors.co", desc: "Générateur de palettes" },
-  { label: "Unsplash", url: "https://unsplash.com", desc: "Stock photos libres" },
-  { label: "Pexels", url: "https://pexels.com", desc: "Stock photos libres" },
+  { key: "dribbble", url: "https://dribbble.com" },
+  { key: "behance", url: "https://behance.net" },
+  { key: "awwwards", url: "https://awwwards.com" },
+  { key: "googleFonts", url: "https://fonts.google.com" },
+  { key: "coolors", url: "https://coolors.co" },
+  { key: "unsplash", url: "https://unsplash.com" },
+  { key: "pexels", url: "https://pexels.com" },
 ];
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -90,6 +77,7 @@ function saveChecked(next: Set<TaskId>): void {
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function TigriestTradingPage() {
+  const { t } = useTranslation();
   const rootRef = useRef<HTMLDivElement | null>(null);
   const boundingRef = useRef<DOMRect | null>(null);
   const [checked, setChecked] = useState<Set<TaskId>>(() => loadChecked());
@@ -157,7 +145,7 @@ export default function TigriestTradingPage() {
       {/* ── BACK LINK ─────────────────────────────────────────────────── */}
       <div className="flex justify-start">
         <Link to="/design" className="text-xs font-semibold text-gray-400 transition-colors hover:text-gray-700">
-          ← Retour
+          {t("design.common.back")}
         </Link>
       </div>
 
@@ -168,12 +156,12 @@ export default function TigriestTradingPage() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
           </span>
-          <span className="text-sm font-semibold text-gray-900">Projet en cours</span>
+          <span className="text-sm font-semibold text-gray-900">{t("tigriesTrading.status.label")}</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">Deadline</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">{t("tigriesTrading.status.deadline")}</span>
           <span className="rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-semibold text-amber-700">
-            Dimanche 23 mars
+            {t("tigriesTrading.status.date")}
           </span>
         </div>
       </div>
@@ -187,10 +175,12 @@ export default function TigriestTradingPage() {
           {/* Text */}
           <div className="max-w-xl space-y-5">
             <h1 className="tigries-hero-anim text-4xl leading-tight text-white md:text-5xl">
-              Tigries Trading BV<br />Site web espagnol
+              {t("tigriesTrading.hero.title").split("\n").map((line, i) => (
+                <span key={i}>{line}{i === 0 && <br />}</span>
+              ))}
             </h1>
             <p className="tigries-hero-anim text-base leading-7 text-white/70 md:text-lg">
-              Projet de création de site web espagnol. Voici tout ce dont tu as besoin pour commencer.
+              {t("tigriesTrading.hero.description")}
             </p>
           </div>
 
@@ -231,7 +221,7 @@ export default function TigriestTradingPage() {
       {/* ── CONTEXTE ──────────────────────────────────────────────────── */}
       <div className="tigries-reveal-card rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
         <p className="tigries-reveal-item mb-6 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
-          Contexte du projet
+          {t("tigriesTrading.context.sectionTitle")}
         </p>
 
         <div className="tigries-reveal-item mb-6 flex items-center gap-3">
@@ -242,7 +232,7 @@ export default function TigriestTradingPage() {
             Tigries Trading BV
           </span>
           <p className="text-xs italic text-gray-400">
-            Vente d'articles électroniques · outillage électroportatif
+            {t("tigriesTrading.context.tagline")}
           </p>
         </div>
 
@@ -250,29 +240,27 @@ export default function TigriestTradingPage() {
           {/* Direction artistique */}
           <div className="tigries-reveal-item space-y-3">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-              Direction artistique
+              {t("tigriesTrading.context.direction.label")}
             </p>
             <ul className="space-y-2">
-              {(["Moderne & robuste", "Fiable & accessible", "Carte blanche sur le design"] as const).map(
-                (item, i) => (
-                  <li key={item} className="flex items-center gap-2.5">
-                    <div
-                      className="h-1.5 w-1.5 shrink-0 rounded-full"
-                      style={{ backgroundColor: i === 2 ? ACCENT : "#d1d5db" }}
-                    />
-                    <span className={`text-sm ${i === 2 ? "font-medium text-gray-900" : "text-gray-700"}`}>
-                      {item}
-                    </span>
-                  </li>
-                ),
-              )}
+              {(["item1", "item2", "item3"] as const).map((key, i) => (
+                <li key={key} className="flex items-center gap-2.5">
+                  <div
+                    className="h-1.5 w-1.5 shrink-0 rounded-full"
+                    style={{ backgroundColor: i === 2 ? ACCENT : "#d1d5db" }}
+                  />
+                  <span className={`text-sm ${i === 2 ? "font-medium text-gray-900" : "text-gray-700"}`}>
+                    {t(`tigriesTrading.context.direction.${key}`)}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Sites de référence */}
           <div className="tigries-reveal-item space-y-3">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-              Sites de référence
+              {t("tigriesTrading.context.refs.label")}
             </p>
             <div className="space-y-2">
               {[
@@ -297,15 +285,14 @@ export default function TigriestTradingPage() {
 
           {/* Cible */}
           <div className="tigries-reveal-item space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">Cible</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
+              {t("tigriesTrading.context.target.label")}
+            </p>
             <ul className="space-y-2">
-              {[
-                "Particuliers — bricoleurs, acheteurs occasionnels d'outillage",
-                "Professionnels — artisans, entreprises du bâtiment, revendeurs",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5">
+              {(["item1", "item2"] as const).map((key) => (
+                <li key={key} className="flex items-start gap-2.5">
                   <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-300" />
-                  <span className="text-sm text-gray-700">{item}</span>
+                  <span className="text-sm text-gray-700">{t(`tigriesTrading.context.target.${key}`)}</span>
                 </li>
               ))}
             </ul>
@@ -315,17 +302,18 @@ export default function TigriestTradingPage() {
         {/* Photos + Langue */}
         <div className="tigries-reveal-item mt-6 grid gap-6 border-t border-gray-100 pt-6 md:grid-cols-2">
           <div className="space-y-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">Photos</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
+              {t("tigriesTrading.context.photos.label")}
+            </p>
             <p className="text-sm leading-6 text-gray-700">
-              Stock photos uniquement — pas de photos produits réelles disponibles pour l'instant.
-              Unsplash, Pexels recommandés.
+              {t("tigriesTrading.context.photos.note")}
             </p>
           </div>
           <div className="space-y-2">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-              Langue du site
+              {t("tigriesTrading.context.langue.label")}
             </p>
-            <p className="text-sm leading-6 text-gray-700">Espagnol uniquement.</p>
+            <p className="text-sm leading-6 text-gray-700">{t("tigriesTrading.context.langue.note")}</p>
           </div>
         </div>
 
@@ -334,39 +322,33 @@ export default function TigriestTradingPage() {
           <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-3">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-                À propos du client
+                {t("tigriesTrading.about.title")}
               </p>
               <p className="text-sm leading-7 text-gray-700">
-                <strong className="font-semibold text-gray-900">Tigries Trading BV</strong> est une société
-                néerlandaise spécialisée dans la vente d'articles électroniques (visseuses, perceuses,
-                outillage électroportatif) à destination des particuliers et professionnels. La société
-                s'implante en Espagne et souhaite une présence digitale locale adaptée au marché espagnol.
+                <Trans
+                  i18nKey="tigriesTrading.about.paragraph1"
+                  components={{ bold: <strong className="font-semibold text-gray-900" /> }}
+                />
               </p>
               <p className="text-sm leading-7 text-gray-700">
-                Ce projet constitue leur{" "}
-                <strong className="font-semibold text-gray-900">
-                  première présence en ligne en Espagne
-                </strong>
-                .
+                <Trans
+                  i18nKey="tigriesTrading.about.paragraph2"
+                  components={{ bold: <strong className="font-semibold text-gray-900" /> }}
+                />
               </p>
             </div>
             <div className="space-y-3">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-                Objectifs du site
+                {t("tigriesTrading.objectives.title")}
               </p>
               <ul className="space-y-2.5">
-                {[
-                  "Créer une vitrine professionnelle pour le marché espagnol",
-                  "Présenter le catalogue produits de manière claire et attractive",
-                  "Permettre la prise de contact et les demandes de devis",
-                  "Inspirer confiance auprès d'une clientèle mixte (particuliers & professionnels)",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
+                {(["item1", "item2", "item3", "item4"] as const).map((key) => (
+                  <li key={key} className="flex items-start gap-2.5">
                     <div
                       className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
                       style={{ backgroundColor: ACCENT }}
                     />
-                    <span className="text-sm text-gray-700">{item}</span>
+                    <span className="text-sm text-gray-700">{t(`tigriesTrading.objectives.${key}`)}</span>
                   </li>
                 ))}
               </ul>
@@ -378,39 +360,38 @@ export default function TigriestTradingPage() {
       {/* ── STRUCTURE DES PAGES ───────────────────────────────────────── */}
       <div className="tigries-reveal-card rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
         <p className="tigries-reveal-item mb-6 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
-          Structure des pages
+          {t("tigriesTrading.pages.sectionTitle")}
         </p>
         <div className="tigries-reveal-item flex flex-wrap gap-3">
-          {[
-            { label: "Inicio", sub: "Accueil", optional: false },
-            { label: "Productos", sub: "Catalogue", optional: false },
-            { label: "Nosotros", sub: "À propos", optional: false },
-            { label: "Contacto / Presupuesto", sub: "Contact & Devis", optional: false },
-            { label: "FAQ", sub: "Optionnelle", optional: true },
-          ].map((page) => (
-            <div
-              key={page.label}
-              className="flex items-center gap-2.5 rounded-xl border border-gray-200 px-4 py-2.5"
-            >
+          {(["inicio", "productos", "nosotros", "contacto", "faq"] as const).map((key) => {
+            const optional = key === "faq";
+            return (
               <div
-                className="h-1.5 w-1.5 shrink-0 rounded-full"
-                style={{ backgroundColor: page.optional ? "#9ca3af" : ACCENT }}
-              />
-              <span className={`text-sm ${page.optional ? "text-gray-400" : "text-gray-800"}`}>
-                {page.label}
-              </span>
-              <span className="text-xs text-gray-400">{page.sub}</span>
-            </div>
-          ))}
+                key={key}
+                className="flex items-center gap-2.5 rounded-xl border border-gray-200 px-4 py-2.5"
+              >
+                <div
+                  className="h-1.5 w-1.5 shrink-0 rounded-full"
+                  style={{ backgroundColor: optional ? "#9ca3af" : ACCENT }}
+                />
+                <span className={`text-sm ${optional ? "text-gray-400" : "text-gray-800"}`}>
+                  {t(`tigriesTrading.pages.${key}.label`)}
+                </span>
+                <span className="text-xs text-gray-400">{t(`tigriesTrading.pages.${key}.sub`)}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
 
       {/* ── CHECKLIST ─────────────────────────────────────────────────── */}
       <div className="tigries-reveal-card rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
         <div className="tigries-reveal-item mb-2 flex items-center justify-between">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">Checklist</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
+            {t("tigriesTrading.checklist.sectionTitle")}
+          </p>
           <span className="text-xs font-semibold text-gray-400">
-            {done} / {total} tâches
+            {t("tigriesTrading.checklist.counter", { done, total })}
           </span>
         </div>
 
@@ -428,7 +409,7 @@ export default function TigriestTradingPage() {
           {CHECKLIST_SECTIONS.map((section) => (
             <div key={section.id} className="tigries-reveal-item space-y-3">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-                {SECTION_TITLES[section.id]}
+                {t(`tigriesTrading.checklist.sections.${section.id}.title`)}
               </p>
               <div className="space-y-2">
                 {section.tasks.map((task) => {
@@ -480,11 +461,11 @@ export default function TigriestTradingPage() {
                           isChecked ? "text-gray-400 line-through" : "text-gray-800"
                         }`}
                       >
-                        {TASK_LABELS[task.id]}
+                        {t(`tigriesTrading.checklist.sections.${section.id}.${task.id}`)}
                       </span>
 
                       <span className="shrink-0 rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-semibold text-blue-700">
-                        Essentiel
+                        {t("tigriesTrading.checklist.badgeEssentiel")}
                       </span>
                     </button>
                   );
@@ -497,9 +478,7 @@ export default function TigriestTradingPage() {
         {/* Livrable note */}
         <div className="tigries-reveal-item mt-6 rounded-xl border border-amber-200 bg-amber-50/60 px-4 py-3">
           <p className="text-xs leading-5 text-amber-800">
-            <strong className="font-semibold">⚠ Attention :</strong> Sans template WordPress + deadline
-            dimanche, c'est très serré. À clarifier avec le client : le livrable de dimanche, c'est les
-            maquettes .ai seulement (réaliste) ou maquettes + intégration WP (très ambitieux) ?
+            {t("tigriesTrading.checklist.livrableNote")}
           </p>
         </div>
 
@@ -513,7 +492,7 @@ export default function TigriestTradingPage() {
               className="mt-8 rounded-xl border border-gray-200 bg-gray-50 px-5 py-4"
             >
               <p className="text-sm font-semibold text-gray-900">
-                Tout est prêt — bon courage pour la suite !
+                {t("tigriesTrading.checklist.completionMessage")}
               </p>
             </motion.div>
           )}
@@ -523,22 +502,24 @@ export default function TigriestTradingPage() {
       {/* ── RESSOURCES ────────────────────────────────────────────────── */}
       <div className="tigries-reveal-card rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
         <p className="tigries-reveal-item mb-6 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
-          Ressources utiles
+          {t("tigriesTrading.resources.sectionTitle")}
         </p>
         <div className="tigries-reveal-item grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {RESOURCES.map((r) => (
             <a
-              key={r.label}
+              key={r.key}
               href={r.url}
               target="_blank"
               rel="noopener noreferrer"
               className="group flex flex-col gap-1.5 rounded-xl border border-gray-200 p-4 transition-all duration-200 hover:border-gray-300/60 hover:shadow-md"
             >
               <span className="text-sm font-semibold text-gray-900 transition-colors group-hover:text-gray-700">
-                {r.label}
+                {t(`tigriesTrading.resources.items.${r.key}.label`)}
                 <span className="ml-1 text-gray-400">↗</span>
               </span>
-              <span className="text-xs leading-5 text-gray-500">{r.desc}</span>
+              <span className="text-xs leading-5 text-gray-500">
+                {t(`tigriesTrading.resources.items.${r.key}.desc`)}
+              </span>
             </a>
           ))}
         </div>

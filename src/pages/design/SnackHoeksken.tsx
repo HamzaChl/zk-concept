@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation, Trans } from "react-i18next";
 import snackLogo from "../../assets/logo-partners/logo-Snack-t-Hoeksken-1.png";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -37,20 +38,6 @@ const CHECKLIST_SECTIONS: ChecklistSection[] = [
     ],
   },
 ];
-
-const TASK_LABELS: Record<TaskId, string> = {
-  d1: "Direction créative validée",
-  d2: "Palette de couleurs définie",
-  d3: "Logo & identité visuelle finalisés",
-  l1: "Maquettes pages principales",
-  l2: "Intégration WordPress — sans template, développement sur mesure",
-  l3: "Recette, tests & ajustements finaux",
-};
-
-const SECTION_TITLES: Record<string, string> = {
-  direction: "Direction créative",
-  livrables: "Livrables",
-};
 
 const ALL_TASK_IDS = CHECKLIST_SECTIONS.flatMap((s) => s.tasks.map((t) => t.id));
 const STORAGE_KEY = "zk-snack-hoeksken-brief";
@@ -87,6 +74,7 @@ function saveChecked(next: Set<TaskId>): void {
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function SnackHoekskenPage() {
+  const { t } = useTranslation();
   const rootRef = useRef<HTMLDivElement | null>(null);
   const boundingRef = useRef<DOMRect | null>(null);
   const [checked, setChecked] = useState<Set<TaskId>>(() => loadChecked());
@@ -154,7 +142,7 @@ export default function SnackHoekskenPage() {
       {/* ── BACK LINK ─────────────────────────────────────────────────── */}
       <div className="flex justify-start">
         <Link to="/design" className="text-xs font-semibold text-gray-400 transition-colors hover:text-gray-700">
-          ← Retour
+          {t("design.common.back")}
         </Link>
       </div>
 
@@ -166,15 +154,17 @@ export default function SnackHoekskenPage() {
               <path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
-          <span className="text-sm font-semibold text-green-800">Projet terminé — Livré ✓</span>
+          <span className="text-sm font-semibold text-green-800">{t("snackHoeksken.status.label")}</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="text-xs font-semibold uppercase tracking-[0.14em] text-green-600">Deadline</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.14em] text-green-600">
+            {t("snackHoeksken.status.deadline")}
+          </span>
           <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-700 line-through decoration-green-500">
-            Hier, 19 mars
+            {t("snackHoeksken.status.deadlineDate")}
           </span>
           <span className="rounded-full bg-green-500 px-2.5 py-0.5 text-xs font-semibold text-white">
-            Respectée ✓
+            {t("snackHoeksken.status.respected")}
           </span>
         </div>
       </div>
@@ -188,19 +178,19 @@ export default function SnackHoekskenPage() {
           {/* Text */}
           <div className="max-w-xl space-y-5">
             <p className="snack-hero-anim text-xs font-semibold uppercase tracking-[0.22em] text-white/50">
-              Brief — Pour ta designer
+              {t("snackHoeksken.hero.kicker")}
             </p>
             <h1 className="snack-hero-anim text-4xl leading-tight text-white line-through decoration-white/40 md:text-5xl">
               Snack 't Hoeksken
             </h1>
             <div className="snack-hero-anim flex items-center gap-2">
               <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
-                Livré ✓
+                {t("snackHoeksken.hero.deliveredBadge")}
               </span>
-              <span className="text-sm text-white/60">snack-thoeksen.be</span>
+              <span className="text-sm text-white/60">{t("snackHoeksken.hero.url")}</span>
             </div>
             <p className="snack-hero-anim text-base leading-7 text-white/70 md:text-lg">
-              Création du site web pour Snack Pitta 't Hoeksken à Londerzeel. Site livré et en ligne.
+              {t("snackHoeksken.hero.description")}
             </p>
           </div>
 
@@ -241,7 +231,7 @@ export default function SnackHoekskenPage() {
       {/* ── CONTEXTE ──────────────────────────────────────────────────── */}
       <div className="snack-reveal-card rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
         <p className="snack-reveal-item mb-6 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
-          Contexte du projet
+          {t("snackHoeksken.context.sectionTitle")}
         </p>
 
         <div className="snack-reveal-item mb-6 flex items-center gap-3">
@@ -252,7 +242,7 @@ export default function SnackHoekskenPage() {
             Snack Pitta 't Hoeksken
           </span>
           <p className="text-xs italic text-gray-400">
-            Fast-food · Snack bar · Londerzeel, Belgique
+            {t("snackHoeksken.context.tagline")}
           </p>
         </div>
 
@@ -260,44 +250,41 @@ export default function SnackHoekskenPage() {
           {/* Direction artistique */}
           <div className="snack-reveal-item space-y-3">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-              Direction artistique
+              {t("snackHoeksken.context.direction.label")}
             </p>
             <ul className="space-y-2">
-              {(["Bold & high contrast", "Fast-food inspiré Five Guys", "Mobile-first"] as const).map(
-                (item, i) => (
-                  <li key={item} className="flex items-center gap-2.5">
-                    <div
-                      className="h-1.5 w-1.5 shrink-0 rounded-full"
-                      style={{ backgroundColor: i === 2 ? ACCENT : "#d1d5db" }}
-                    />
-                    <span className={`text-sm ${i === 2 ? "font-medium text-gray-900" : "text-gray-700"}`}>
-                      {item}
-                    </span>
-                  </li>
-                ),
-              )}
+              {(["item1", "item2", "item3"] as const).map((key, i) => (
+                <li key={key} className="flex items-center gap-2.5">
+                  <div
+                    className="h-1.5 w-1.5 shrink-0 rounded-full"
+                    style={{ backgroundColor: i === 2 ? ACCENT : "#d1d5db" }}
+                  />
+                  <span className={`text-sm ${i === 2 ? "font-medium text-gray-900" : "text-gray-700"}`}>
+                    {t(`snackHoeksken.context.direction.${key}`)}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Langue */}
           <div className="snack-reveal-item space-y-3">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-              Langue du site
+              {t("snackHoeksken.context.langue.label")}
             </p>
-            <p className="text-sm leading-6 text-gray-700">Néerlandais (NL) — marché local Londerzeel.</p>
+            <p className="text-sm leading-6 text-gray-700">{t("snackHoeksken.context.langue.note")}</p>
           </div>
 
           {/* Cible */}
           <div className="snack-reveal-item space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">Cible</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
+              {t("snackHoeksken.context.target.label")}
+            </p>
             <ul className="space-y-2">
-              {[
-                "Habitants de Londerzeel & alentours",
-                "Commandes à emporter (takeaway)",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5">
+              {(["item1", "item2"] as const).map((key) => (
+                <li key={key} className="flex items-start gap-2.5">
                   <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gray-300" />
-                  <span className="text-sm text-gray-700">{item}</span>
+                  <span className="text-sm text-gray-700">{t(`snackHoeksken.context.target.${key}`)}</span>
                 </li>
               ))}
             </ul>
@@ -309,36 +296,33 @@ export default function SnackHoekskenPage() {
           <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-3">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-                À propos du client
+                {t("snackHoeksken.about.title")}
               </p>
               <p className="text-sm leading-7 text-gray-700">
-                <strong className="font-semibold text-gray-900">Snack Pitta 't Hoeksken</strong> est un snack
-                bar situé à Kerkstraat 2, 1840 Londerzeel. Spécialisé dans les mitraillettes, dürüm, schotels
-                et autres classiques de la street food belge.
+                <Trans
+                  i18nKey="snackHoeksken.about.paragraph1"
+                  components={{ bold: <strong className="font-semibold text-gray-900" /> }}
+                />
               </p>
               <p className="text-sm leading-7 text-gray-700">
-                Premier site web — objectif de{" "}
-                <strong className="font-semibold text-gray-900">digitaliser la présence locale</strong> et
-                faciliter les commandes à emporter.
+                <Trans
+                  i18nKey="snackHoeksken.about.paragraph2"
+                  components={{ bold: <strong className="font-semibold text-gray-900" /> }}
+                />
               </p>
             </div>
             <div className="space-y-3">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-                Objectifs du site
+                {t("snackHoeksken.objectives.title")}
               </p>
               <ul className="space-y-2.5">
-                {[
-                  "Présenter le menu avec photos et prix",
-                  "Faciliter les commandes takeaway",
-                  "Afficher les horaires et informations de contact",
-                  "Inspirer confiance et appétit visuellement",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
+                {(["item1", "item2", "item3", "item4"] as const).map((key) => (
+                  <li key={key} className="flex items-start gap-2.5">
                     <div
                       className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
                       style={{ backgroundColor: ACCENT }}
                     />
-                    <span className="text-sm text-gray-700">{item}</span>
+                    <span className="text-sm text-gray-700">{t(`snackHoeksken.objectives.${key}`)}</span>
                   </li>
                 ))}
               </ul>
@@ -350,25 +334,20 @@ export default function SnackHoekskenPage() {
       {/* ── STRUCTURE DES PAGES ───────────────────────────────────────── */}
       <div className="snack-reveal-card rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
         <p className="snack-reveal-item mb-6 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
-          Structure des pages
+          {t("snackHoeksken.pages.sectionTitle")}
         </p>
         <div className="snack-reveal-item flex flex-wrap gap-3">
-          {[
-            { label: "Hero / Accueil", sub: "Headline + CTA", optional: false },
-            { label: "Menu", sub: "Grille produits", optional: false },
-            { label: "À propos", sub: "Façade + services", optional: false },
-            { label: "Footer", sub: "Infos & horaires", optional: false },
-          ].map((page) => (
+          {(["hero", "menu", "about", "footer"] as const).map((key) => (
             <div
-              key={page.label}
+              key={key}
               className="flex items-center gap-2.5 rounded-xl border border-gray-200 px-4 py-2.5"
             >
               <div
                 className="h-1.5 w-1.5 shrink-0 rounded-full"
                 style={{ backgroundColor: ACCENT }}
               />
-              <span className="text-sm text-gray-800">{page.label}</span>
-              <span className="text-xs text-gray-400">{page.sub}</span>
+              <span className="text-sm text-gray-800">{t(`snackHoeksken.pages.${key}.label`)}</span>
+              <span className="text-xs text-gray-400">{t(`snackHoeksken.pages.${key}.sub`)}</span>
             </div>
           ))}
         </div>
@@ -377,9 +356,11 @@ export default function SnackHoekskenPage() {
       {/* ── CHECKLIST ─────────────────────────────────────────────────── */}
       <div className="snack-reveal-card rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
         <div className="snack-reveal-item mb-2 flex items-center justify-between">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">Checklist</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
+            {t("snackHoeksken.checklist.sectionTitle")}
+          </p>
           <span className="text-xs font-semibold text-green-600">
-            {done} / {total} tâches — Terminé ✓
+            {t("snackHoeksken.checklist.counter", { done, total })}
           </span>
         </div>
 
@@ -396,7 +377,7 @@ export default function SnackHoekskenPage() {
           {CHECKLIST_SECTIONS.map((section) => (
             <div key={section.id} className="snack-reveal-item space-y-3">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-                {SECTION_TITLES[section.id]}
+                {t(`snackHoeksken.checklist.sections.${section.id}.title`)}
               </p>
               <div className="space-y-2">
                 {section.tasks.map((task) => {
@@ -434,11 +415,11 @@ export default function SnackHoekskenPage() {
                       </div>
 
                       <span className="flex-1 text-sm text-gray-400 line-through">
-                        {TASK_LABELS[task.id]}
+                        {t(`snackHoeksken.checklist.sections.${section.id}.${task.id}`)}
                       </span>
 
                       <span className="shrink-0 rounded-full bg-green-50 px-2.5 py-0.5 text-xs font-semibold text-green-700">
-                        Fait ✓
+                        {t("snackHoeksken.checklist.badgeDone")}
                       </span>
                     </button>
                   );
@@ -458,7 +439,7 @@ export default function SnackHoekskenPage() {
               className="mt-6 rounded-xl border border-green-200 bg-green-50 px-5 py-4"
             >
               <p className="text-sm font-semibold text-green-800">
-                Tout livré — excellent travail ! 🎉
+                {t("snackHoeksken.checklist.completionMessage")}
               </p>
             </motion.div>
           )}
@@ -468,7 +449,7 @@ export default function SnackHoekskenPage() {
       {/* ── DIRECTION ARTISTIQUE & RÉSULTAT FINAL ─────────────────────── */}
       <div className="snack-reveal-card rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
         <p className="snack-reveal-item mb-6 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
-          Direction artistique & Résultat final
+          {t("snackHoeksken.result.sectionTitle")}
         </p>
 
         <div className="grid gap-8 md:grid-cols-2">
@@ -476,20 +457,16 @@ export default function SnackHoekskenPage() {
           <div className="snack-reveal-item space-y-6">
             <div className="space-y-3">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-                Style appliqué
+                {t("snackHoeksken.result.styleLabel")}
               </p>
               <ul className="space-y-2">
-                {[
-                  "Bold fast-food — inspiré Five Guys",
-                  "Design high contrast, mobile-first",
-                  "Grands visuels food photography plein écran",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5">
+                {(["style1", "style2", "style3"] as const).map((key) => (
+                  <li key={key} className="flex items-start gap-2.5">
                     <div
                       className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
                       style={{ backgroundColor: ACCENT }}
                     />
-                    <span className="text-sm text-gray-700">{item}</span>
+                    <span className="text-sm text-gray-700">{t(`snackHoeksken.result.${key}`)}</span>
                   </li>
                 ))}
               </ul>
@@ -497,26 +474,26 @@ export default function SnackHoekskenPage() {
 
             <div className="space-y-3">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-                Palette de couleurs
+                {t("snackHoeksken.result.paletteLabel")}
               </p>
               <div className="flex items-center gap-3">
                 <div className="h-8 w-8 rounded-lg shadow-sm" style={{ backgroundColor: "#c0392b" }} />
                 <div className="h-8 w-8 rounded-lg border border-gray-200 shadow-sm" style={{ backgroundColor: "#ffffff" }} />
                 <div className="h-8 w-8 rounded-lg shadow-sm" style={{ backgroundColor: "#1a1a1a" }} />
               </div>
-              <p className="text-xs text-gray-400">Rouge logo · Blanc · Noir/gris foncé</p>
+              <p className="text-xs text-gray-400">{t("snackHoeksken.result.paletteNote")}</p>
             </div>
 
             <div className="space-y-3">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-                Typographie
+                {t("snackHoeksken.result.typoLabel")}
               </p>
               <div className="space-y-1.5">
                 <p className="text-sm text-gray-700">
-                  <span className="font-semibold text-gray-900">Titres :</span> Bebas Neue / Anton
+                  <span className="font-semibold text-gray-900">{t("snackHoeksken.result.typoHeadings")}</span> Bebas Neue / Anton
                 </p>
                 <p className="text-sm text-gray-700">
-                  <span className="font-semibold text-gray-900">Corps :</span> Inter / Open Sans
+                  <span className="font-semibold text-gray-900">{t("snackHoeksken.result.typoBody")}</span> Inter / Open Sans
                 </p>
               </div>
             </div>
@@ -525,33 +502,20 @@ export default function SnackHoekskenPage() {
           {/* Structure livrée */}
           <div className="snack-reveal-item space-y-4">
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-              Structure livrée
+              {t("snackHoeksken.result.structureLabel")}
             </p>
             <div className="space-y-3">
-              {[
-                {
-                  section: "Hero",
-                  detail: "\"Het lekkerste eten vindt u bij Snackbar 't Hoeksken!\" + CTA \"Nu Bestellen\" & \"Takeaway\"",
-                },
-                {
-                  section: "Menu",
-                  detail: "Grille produits — photo, nom, prix (Menu Mitraillette, Menu Dürüm, Menu Schotel…)",
-                },
-                {
-                  section: "À propos",
-                  detail: "Photo de la façade + description des services",
-                },
-                {
-                  section: "Footer",
-                  detail: "Kerkstraat 2, 1840 Londerzeel · 0475 82 90 41 · BTW BE0507672561 · openingsuren · Betaling & afhalen · Algemene voorwaarden",
-                },
-              ].map((item) => (
+              {(["structureHero", "structureMenu", "structureAbout", "structureFooter"] as const).map((key) => (
                 <div
-                  key={item.section}
+                  key={key}
                   className="rounded-xl border border-gray-100 bg-gray-50 px-4 py-3"
                 >
-                  <p className="mb-1 text-xs font-semibold text-gray-900">{item.section}</p>
-                  <p className="text-xs leading-5 text-gray-500">{item.detail}</p>
+                  <p className="mb-1 text-xs font-semibold text-gray-900">
+                    {t(`snackHoeksken.result.${key}.section`)}
+                  </p>
+                  <p className="text-xs leading-5 text-gray-500">
+                    {t(`snackHoeksken.result.${key}.detail`)}
+                  </p>
                 </div>
               ))}
             </div>
@@ -563,10 +527,10 @@ export default function SnackHoekskenPage() {
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="space-y-1">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
-                Intégration
+                {t("snackHoeksken.result.integrationLabel")}
               </p>
               <p className="text-sm text-gray-700">
-                WordPress · sans template · développement sur mesure
+                {t("snackHoeksken.result.integrationNote")}
               </p>
             </div>
             <a
@@ -576,7 +540,7 @@ export default function SnackHoekskenPage() {
               className="inline-flex items-center gap-2 rounded-xl border px-5 py-3 text-sm font-semibold transition-all hover:shadow-md"
               style={{ borderColor: ACCENT, color: ACCENT }}
             >
-              Voir le site live
+              {t("snackHoeksken.result.viewSite")}
               <span>↗</span>
             </a>
           </div>
@@ -597,9 +561,9 @@ export default function SnackHoekskenPage() {
               </svg>
             </div>
             <div className="space-y-1">
-              <p className="text-sm font-semibold text-gray-700">Screenshot du site final</p>
+              <p className="text-sm font-semibold text-gray-700">{t("snackHoeksken.result.screenshotTitle")}</p>
               <p className="text-xs text-gray-400">
-                Ajouter une capture d'écran dans{" "}
+                {t("snackHoeksken.result.screenshotNote")}{" "}
                 <code className="rounded bg-gray-100 px-1 py-0.5 font-mono text-xs">
                   src/assets/logo-partners/
                 </code>
@@ -612,7 +576,7 @@ export default function SnackHoekskenPage() {
               className="text-xs font-semibold underline underline-offset-2"
               style={{ color: ACCENT }}
             >
-              Visiter snack-thoeksen.be →
+              {t("snackHoeksken.result.visitSite")}
             </a>
           </div>
         </div>

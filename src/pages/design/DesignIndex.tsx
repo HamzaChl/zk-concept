@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 import comptaLogo from "../../assets/logo-partners/Outlook-qhbk4leg.png";
 import tigrieLogo from "../../assets/logo-partners/logo-tigries.png";
 import snackLogo from "../../assets/logo-partners/logo-Snack-t-Hoeksken-1.png";
@@ -13,9 +14,9 @@ const PROJECTS = [
   {
     slug: "compta-partners",
     client: "SRL COMPTA-PARTNERS",
-    type: "Site web · Identité digitale",
-    status: "En cours",
-    deadline: "26 mars 2025",
+    typeKey: "designIndex.projects.comptaPartners.type",
+    statusKey: "design.common.status.inProgress",
+    deadlineKey: "designIndex.projects.comptaPartners.deadline",
     accent: "#25408f",
     logo: comptaLogo,
     done: false,
@@ -23,9 +24,9 @@ const PROJECTS = [
   {
     slug: "tigries-trading",
     client: "Tigries Trading BV",
-    type: "Site web · Marché espagnol",
-    status: "En cours",
-    deadline: "23 mars 2025",
+    typeKey: "designIndex.projects.tigriesTrading.type",
+    statusKey: "design.common.status.inProgress",
+    deadlineKey: "designIndex.projects.tigriesTrading.deadline",
     accent: "#f7af2f",
     logo: tigrieLogo,
     done: false,
@@ -33,9 +34,9 @@ const PROJECTS = [
   {
     slug: "snack-hoeksken",
     client: "Snack Pitta 't Hoeksken",
-    type: "Site web · Fast-food",
-    status: "Livré",
-    deadline: "19 mars 2025",
+    typeKey: "designIndex.projects.snackHoeksken.type",
+    statusKey: "design.common.status.delivered",
+    deadlineKey: "designIndex.projects.snackHoeksken.deadline",
     accent: "#c0392b",
     logo: snackLogo,
     done: true,
@@ -43,9 +44,9 @@ const PROJECTS = [
   {
     slug: "zk-concept",
     client: "ZK Concept",
-    type: "Interne · Lancement",
-    status: "En cours",
-    deadline: "—",
+    typeKey: "designIndex.projects.zkConcept.type",
+    statusKey: "design.common.status.inProgress",
+    deadlineKey: "designIndex.projects.zkConcept.deadline",
     accent: "#111827",
     logo: zkLogo,
     logoSize: "h-6",
@@ -54,9 +55,9 @@ const PROJECTS = [
   {
     slug: "route-zk",
     client: "RouteZK",
-    type: "App web · Optimisation de tournées",
-    status: "En développement",
-    deadline: "—",
+    typeKey: "designIndex.projects.routeZk.type",
+    statusKey: "design.common.status.inDevelopment",
+    deadlineKey: "designIndex.projects.routeZk.deadline",
     accent: "#1e3a5f",
     logo: zkLogo,
     logoSize: "h-6",
@@ -82,6 +83,7 @@ function StatusBadge({ status, done }: { status: string; done: boolean }) {
 }
 
 export default function DesignIndex() {
+  const { t } = useTranslation();
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -116,13 +118,13 @@ export default function DesignIndex() {
       {/* Header */}
       <div className="mb-12">
         <p className="design-hero-anim mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
-          ZK Studio · Design
+          {t("designIndex.kicker")}
         </p>
         <h1 className="design-hero-anim text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-          Projets
+          {t("designIndex.title")}
         </h1>
         <p className="design-hero-anim mt-3 max-w-xl text-base text-gray-500">
-          Briefs interactifs et suivis de conception pour chaque client.
+          {t("designIndex.description")}
         </p>
       </div>
 
@@ -155,16 +157,16 @@ export default function DesignIndex() {
 
               {/* Info */}
               <p className="mb-1 text-[11px] font-semibold uppercase tracking-widest text-gray-400">
-                {project.type}
+                {t(project.typeKey)}
               </p>
               <h2 className="mb-3 text-base font-bold leading-snug text-gray-900">
                 {project.client}
               </h2>
 
               <div className="flex items-center justify-between">
-                <StatusBadge status={project.status} done={project.done} />
+                <StatusBadge status={t(project.statusKey)} done={project.done} />
                 <span className={`text-xs ${project.done ? "text-gray-400 line-through" : "text-gray-400"}`}>
-                  {project.deadline}
+                  {t(project.deadlineKey)}
                 </span>
               </div>
             </div>
@@ -172,7 +174,7 @@ export default function DesignIndex() {
             {/* Arrow */}
             <div className="flex items-center justify-end border-t border-gray-100 px-6 py-3">
               <span className="text-xs font-medium text-gray-400 transition-colors duration-150 group-hover:text-gray-700">
-                Voir le brief
+                {t("design.common.viewBrief")}
               </span>
               <svg
                 viewBox="0 0 16 16"
@@ -191,7 +193,7 @@ export default function DesignIndex() {
           </Link>
         ))}
 
-        {/* Placeholder — prochain projet */}
+        {/* Placeholder — next project */}
         <div className="design-card flex min-h-[200px] items-center justify-center rounded-2xl border border-dashed border-gray-200 bg-gray-50/50 p-6">
           <div className="text-center">
             <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-dashed border-gray-300 text-gray-300">
@@ -204,7 +206,7 @@ export default function DesignIndex() {
                 />
               </svg>
             </div>
-            <p className="text-xs text-gray-400">Prochain projet</p>
+            <p className="text-xs text-gray-400">{t("design.common.nextProject")}</p>
           </div>
         </div>
       </div>

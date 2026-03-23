@@ -604,6 +604,72 @@ export default function ComptaPartnersPage() {
         </AnimatePresence>
       </div>
 
+      {/* ── INTÉGRATION & LIVE ────────────────────────────────────────── */}
+      <div className="compta-reveal-card rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
+        <p className="compta-reveal-item mb-6 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">
+          {t("comptaPartners.integration.sectionTitle")}
+        </p>
+
+        {/* Intégration + site live */}
+        <div className="compta-reveal-item border-b border-gray-100 pb-6">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div className="space-y-1">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-gray-400">
+                {t("comptaPartners.integration.label")}
+              </p>
+              <p className="text-sm text-gray-700">
+                {t("comptaPartners.integration.note")}
+              </p>
+            </div>
+            <a
+              href="https://comptapartners.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border px-5 py-3 text-sm font-semibold transition-all hover:shadow-md"
+              style={{ borderColor: "#25408f", color: "#25408f" }}
+            >
+              {t("comptaPartners.integration.viewLive")}
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Screenshot placeholder */}
+        <div className="compta-reveal-item mt-6 overflow-hidden rounded-2xl border border-dashed border-gray-200 bg-gray-50">
+          <div className="flex flex-col items-center justify-center gap-3 px-6 py-12 text-center">
+            <div
+              className="flex h-10 w-10 items-center justify-center rounded-full"
+              style={{ backgroundColor: "#25408f15" }}
+            >
+              <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" style={{ color: "#25408f" }}>
+                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M3 9h18" stroke="currentColor" strokeWidth="1.5" />
+                <circle cx="7" cy="6" r="1" fill="currentColor" />
+                <circle cx="10" cy="6" r="1" fill="currentColor" />
+              </svg>
+            </div>
+            <div className="space-y-1">
+              <p className="text-sm font-semibold text-gray-700">{t("comptaPartners.integration.screenshotTitle")}</p>
+              <p className="text-xs text-gray-400">
+                {t("comptaPartners.integration.screenshotNote")}{" "}
+                <code className="rounded bg-gray-100 px-1 py-0.5 font-mono text-xs">
+                  src/assets/logo-partners/
+                </code>
+              </p>
+            </div>
+            <a
+              href="https://comptapartners.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-semibold underline underline-offset-2"
+              style={{ color: "#25408f" }}
+            >
+              {t("comptaPartners.integration.visitSite")}
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* ── RESSOURCES ────────────────────────────────────────────────── */}
       <div className="compta-reveal-card rounded-3xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
         <p className="compta-reveal-item mb-6 text-xs font-semibold uppercase tracking-[0.18em] text-gray-500">

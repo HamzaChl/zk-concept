@@ -507,6 +507,356 @@
     "internalContact": "Internal email - Contact",
     "internalQuote": "Internal email - Quote"
   },
+  "design": {
+    "common": {
+      "back": "← Back",
+      "viewBrief": "View brief",
+      "nextProject": "Next project",
+      "status": {
+        "inProgress": "In progress",
+        "delivered": "Delivered",
+        "inDevelopment": "In development",
+        "launching": "Launching"
+      }
+    }
+  },
+  "designIndex": {
+    "kicker": "ZK Studio · Design",
+    "title": "Projects",
+    "description": "Interactive briefs and design tracking for every client.",
+    "projects": {
+      "comptaPartners": {
+        "type": "Website · Digital identity",
+        "deadline": "March 26, 2025"
+      },
+      "tigriesTrading": {
+        "type": "Website · Spanish market",
+        "deadline": "March 23, 2025"
+      },
+      "snackHoeksken": {
+        "type": "Website · Fast-food",
+        "deadline": "March 19, 2025"
+      },
+      "zkConcept": {
+        "type": "Internal · Launch",
+        "deadline": "—"
+      },
+      "routeZk": {
+        "type": "Web app · Route optimization",
+        "deadline": "—"
+      }
+    }
+  },
+  "tigriesTrading": {
+    "status": {
+      "label": "Project in progress",
+      "deadline": "Deadline",
+      "date": "Sunday March 23"
+    },
+    "hero": {
+      "title": "Tigries Trading BV\nSpanish website",
+      "description": "Spanish website creation project. Here's everything you need to get started."
+    },
+    "context": {
+      "sectionTitle": "Project context",
+      "tagline": "Electronics sales · power tools",
+      "direction": {
+        "label": "Artistic direction",
+        "item1": "Modern & robust",
+        "item2": "Reliable & accessible",
+        "item3": "Full creative freedom"
+      },
+      "refs": {
+        "label": "Reference websites"
+      },
+      "target": {
+        "label": "Target audience",
+        "item1": "Individuals — DIY enthusiasts, occasional tool buyers",
+        "item2": "Professionals — craftsmen, construction companies, resellers"
+      },
+      "photos": {
+        "label": "Photos",
+        "note": "Stock photos only — no real product photos currently available. Unsplash, Pexels recommended."
+      },
+      "langue": {
+        "label": "Website language",
+        "note": "Spanish only."
+      }
+    },
+    "about": {
+      "title": "About the client",
+      "paragraph1": "<bold>Tigries Trading BV</bold> is a Dutch company specializing in the sale of electronics (drills, impact drivers, power tools) to both individuals and professionals. The company is expanding into Spain and wants a local digital presence tailored to the Spanish market.",
+      "paragraph2": "This project is their <bold>first online presence in Spain</bold>."
+    },
+    "objectives": {
+      "title": "Website goals",
+      "item1": "Create a professional showcase for the Spanish market",
+      "item2": "Present the product catalogue clearly and attractively",
+      "item3": "Enable contact and quote requests",
+      "item4": "Build trust with a mixed audience (individuals & professionals)"
+    },
+    "pages": {
+      "sectionTitle": "Page structure",
+      "inicio": { "label": "Inicio", "sub": "Home" },
+      "productos": { "label": "Productos", "sub": "Catalogue" },
+      "nosotros": { "label": "Nosotros", "sub": "About" },
+      "contacto": { "label": "Contacto / Presupuesto", "sub": "Contact & Quote" },
+      "faq": { "label": "FAQ", "sub": "Optional" }
+    },
+    "checklist": {
+      "sectionTitle": "Checklist",
+      "counter": "{{done}} / {{total}} tasks",
+      "badgeEssentiel": "Essential",
+      "livrableNote": "⚠ Note: No WordPress template + Sunday deadline is very tight. To clarify with the client: is Sunday's deliverable the .ai mockups only (realistic) or mockups + WP integration (very ambitious)?",
+      "completionMessage": "All set — good luck with the rest!",
+      "sections": {
+        "direction": {
+          "title": "Creative direction",
+          "d1": "Creative direction validated",
+          "d2": "Color palette defined",
+          "d3": "Logo finalized (or direction approved)"
+        },
+        "livrables": {
+          "title": "Deliverables",
+          "l1": "Main page mockups (.ai)",
+          "l2": "WordPress integration — no template, custom development",
+          "l3": "Review & final adjustments"
+        }
+      }
+    },
+    "resources": {
+      "sectionTitle": "Useful resources",
+      "items": {
+        "dribbble": { "label": "Dribbble", "desc": "UI & design inspiration" },
+        "behance": { "label": "Behance", "desc": "Creative directions" },
+        "awwwards": { "label": "Awwwards", "desc": "Award-winning sites" },
+        "googleFonts": { "label": "Google Fonts", "desc": "Free typefaces" },
+        "coolors": { "label": "Coolors.co", "desc": "Palette generator" },
+        "unsplash": { "label": "Unsplash", "desc": "Free stock photos" },
+        "pexels": { "label": "Pexels", "desc": "Free stock photos" }
+      }
+    }
+  },
+  "snackHoeksken": {
+    "status": {
+      "label": "Project completed — Delivered ✓",
+      "deadline": "Deadline",
+      "deadlineDate": "Yesterday, March 19",
+      "respected": "Met ✓"
+    },
+    "hero": {
+      "kicker": "Brief — For your designer",
+      "deliveredBadge": "Delivered ✓",
+      "url": "snack-thoeksen.be",
+      "description": "Website creation for Snack Pitta 't Hoeksken in Londerzeel. Site delivered and live."
+    },
+    "context": {
+      "sectionTitle": "Project context",
+      "tagline": "Fast-food · Snack bar · Londerzeel, Belgium",
+      "direction": {
+        "label": "Artistic direction",
+        "item1": "Bold & high contrast",
+        "item2": "Fast-food inspired by Five Guys",
+        "item3": "Mobile-first"
+      },
+      "langue": {
+        "label": "Website language",
+        "note": "Dutch (NL) — local Londerzeel market."
+      },
+      "target": {
+        "label": "Target audience",
+        "item1": "Residents of Londerzeel & surroundings",
+        "item2": "Takeaway orders"
+      }
+    },
+    "about": {
+      "title": "About the client",
+      "paragraph1": "<bold>Snack Pitta 't Hoeksken</bold> is a snack bar located at Kerkstraat 2, 1840 Londerzeel. Specializing in mitraillettes, dürüm, schotels and other Belgian street food classics.",
+      "paragraph2": "First website — goal of <bold>digitalizing the local presence</bold> and facilitating takeaway orders."
+    },
+    "objectives": {
+      "title": "Website goals",
+      "item1": "Present the menu with photos and prices",
+      "item2": "Facilitate takeaway orders",
+      "item3": "Display opening hours and contact information",
+      "item4": "Visually inspire trust and appetite"
+    },
+    "pages": {
+      "sectionTitle": "Page structure",
+      "hero": { "label": "Hero / Home", "sub": "Headline + CTA" },
+      "menu": { "label": "Menu", "sub": "Product grid" },
+      "about": { "label": "About", "sub": "Facade + services" },
+      "footer": { "label": "Footer", "sub": "Info & hours" }
+    },
+    "checklist": {
+      "sectionTitle": "Checklist",
+      "counter": "{{done}} / {{total}} tasks — Completed ✓",
+      "badgeDone": "Done ✓",
+      "completionMessage": "All delivered — excellent work!",
+      "sections": {
+        "direction": {
+          "title": "Creative direction",
+          "d1": "Creative direction validated",
+          "d2": "Color palette defined",
+          "d3": "Logo & visual identity finalized"
+        },
+        "livrables": {
+          "title": "Deliverables",
+          "l1": "Main page mockups",
+          "l2": "WordPress integration — no template, custom development",
+          "l3": "Review, tests & final adjustments"
+        }
+      }
+    },
+    "result": {
+      "sectionTitle": "Artistic direction & Final result",
+      "styleLabel": "Applied style",
+      "style1": "Bold fast-food — inspired by Five Guys",
+      "style2": "High contrast design, mobile-first",
+      "style3": "Large full-screen food photography visuals",
+      "paletteLabel": "Color palette",
+      "paletteNote": "Logo red · White · Black/dark gray",
+      "typoLabel": "Typography",
+      "typoHeadings": "Headings:",
+      "typoBody": "Body:",
+      "structureLabel": "Delivered structure",
+      "structureHero": {
+        "section": "Hero",
+        "detail": "\"Het lekkerste eten vindt u bij Snackbar 't Hoeksken!\" + CTA \"Nu Bestellen\" & \"Takeaway\""
+      },
+      "structureMenu": {
+        "section": "Menu",
+        "detail": "Product grid — photo, name, price (Menu Mitraillette, Menu Dürüm, Menu Schotel…)"
+      },
+      "structureAbout": {
+        "section": "About",
+        "detail": "Facade photo + service description"
+      },
+      "structureFooter": {
+        "section": "Footer",
+        "detail": "Kerkstraat 2, 1840 Londerzeel · 0475 82 90 41 · BTW BE0507672561 · openingsuren · Betaling & afhalen · Algemene voorwaarden"
+      },
+      "integrationLabel": "Integration",
+      "integrationNote": "WordPress · no template · custom development",
+      "viewSite": "View live site",
+      "screenshotTitle": "Final site screenshot",
+      "screenshotNote": "Add a screenshot in",
+      "visitSite": "Visit snack-thoeksen.be →"
+    }
+  },
+  "zkConcept": {
+    "status": {
+      "label": "Launching",
+      "counter": "{{done}} / {{total}} tasks"
+    },
+    "hero": {
+      "kicker": "Internal · ZK Studio",
+      "title": "ZK Concept\nTo-Do & Launch",
+      "description": "Tracking critical tasks for the company's operational launch."
+    },
+    "todo": {
+      "sectionTitle": "To-Do — Launch",
+      "counter": "{{done}} / {{total}} completed",
+      "completionMessage": "All done — ZK Concept is ready for takeoff.",
+      "badges": {
+        "urgent": "Urgent",
+        "important": "Important",
+        "bonus": "Later",
+        "done": "Done ✓"
+      },
+      "sections": {
+        "legal": {
+          "title": "Legal & Administrative",
+          "bail": "Sign the lease",
+          "bail_desc": "Finalize and sign the depot lease agreement",
+          "contrat": "Sign the contract",
+          "contrat_desc": "Sign the service / operational contract"
+        },
+        "operations": {
+          "title": "Operational",
+          "visite": "Depot visit",
+          "visite_desc": "Full premises inspection, measurements, condition report",
+          "planningWeek": "Task assignment — Week (21 employees)",
+          "planningWeek_desc": "Role, zone and route assignment for 21 employees",
+          "planningWeekend": "Task assignment — Weekend (26 employees)",
+          "planningWeekend_desc": "Specific weekend organization — 26 employees, reinforced flow"
+        },
+        "tech": {
+          "title": "Tech & Digital",
+          "appRoute": "Route optimization app",
+          "appRoute_desc": "Develop an internal application to calculate and optimize delivery routes in real time",
+          "appPlanning": "Planning & team management module",
+          "appPlanning_desc": "Integrated planning module — team management, absences, replacements"
+        }
+      }
+    }
+  },
+  "routeZk": {
+    "status": {
+      "label": "In development",
+      "counter": "{{done}} / {{total}} tasks"
+    },
+    "hero": {
+      "kicker": "Internal · ZK Studio",
+      "title": "RouteZK\nRoute optimization",
+      "description": "Internal tool for planning and optimizing newspaper deliveries for the Blanden sub-hub (AMP, Leuven). Geographic clustering, stop ordering and time estimation via Google Maps API."
+    },
+    "metrics": {
+      "weekRoutes": "Weekday routes",
+      "saturdayRoutes": "Saturday routes",
+      "deliveryDeadline": "Delivery deadline"
+    },
+    "todo": {
+      "sectionTitle": "To-Do — Development",
+      "counter": "{{done}} / {{total}} completed",
+      "completionMessage": "All done — RouteZK is ready to deploy.",
+      "badges": {
+        "urgent": "Urgent",
+        "important": "Important",
+        "bonus": "Later",
+        "done": "Done ✓"
+      },
+      "sections": {
+        "legal": {
+          "title": "Legal & Admin",
+          "googleApis": "Enable Google Cloud APIs",
+          "googleApis_desc": "Maps JS API, Routes API, Geocoding API, Places API — billing enabled",
+          "supabaseConfig": "Set up Supabase project + DB schema",
+          "supabaseConfig_desc": "Supabase project created, DB schema defined (routes, stops, sessions)"
+        },
+        "operations": {
+          "title": "Operational",
+          "dropsMoyenne": "Define average number of drops per route",
+          "dropsMoyenne_desc": "Target stop count per route defined with field team",
+          "csvAdresses": "Prepare AMP subscriber address CSV file",
+          "csvAdresses_desc": "AMP Leuven subscriber address CSV file ready to import"
+        },
+        "tech": {
+          "title": "Tech & Digital",
+          "scaffolding": "Project scaffolding",
+          "scaffolding_desc": "Vite + React + TypeScript + Tailwind CSS — base structure",
+          "autocomplete": "Address input component — Google Places autocomplete",
+          "autocomplete_desc": "Address input with integrated Google Places autocomplete",
+          "clustering": "Geographic clustering algorithm for routes",
+          "clustering_desc": "Geographic grouping of addresses into routes (K-means / Turf.js)",
+          "routesApi": "Routes API integration → stop order optimization",
+          "routesApi_desc": "Routes API integration — stop order optimization + estimated duration",
+          "mapsDisplay": "Google Maps display with colored routes",
+          "mapsDisplay_desc": "Interactive Google Maps with color-coded routes by zone",
+          "statsPanel": "Per-route stats side panel",
+          "statsPanel_desc": "Side panel — stop count, duration, estimated end time per route",
+          "pdfExport": "PDF route sheet export per route",
+          "pdfExport_desc": "PDF route sheet export per route (driver printout)",
+          "i18n": "Bilingual FR / NL interface",
+          "i18n_desc": "Bilingual FR / NL interface — all labels translated",
+          "historique": "Session history and saving",
+          "historique_desc": "Save and consult past planning sessions",
+          "planning": "Driver planning module + absence management",
+          "planning_desc": "Driver planning module — absence and replacement management"
+        }
+      }
+    }
+  },
   "comptaPartners": {
     "status": {
       "label": "Project in progress",
@@ -605,6 +955,15 @@
       "pexels": "Free stock photos",
       "mobbin": "UI patterns from real sites & apps",
       "fontpair": "Google font pairing suggestions"
+    },
+    "integration": {
+      "sectionTitle": "Integration & Result",
+      "label": "Integration",
+      "note": "WordPress · no template · custom development",
+      "viewLive": "View live site",
+      "screenshotTitle": "Final site screenshot",
+      "screenshotNote": "Add a screenshot in",
+      "visitSite": "Visit comptapartners.com →"
     }
   }
 }
