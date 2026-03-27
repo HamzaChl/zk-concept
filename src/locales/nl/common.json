@@ -550,91 +550,133 @@
   "tigriesTrading": {
     "status": {
       "label": "Project bezig",
-      "deadline": "Deadline",
-      "date": "Zondag 23 maart"
+      "deadline": "Opgericht",
+      "date": "17 maart 2026"
     },
     "hero": {
-      "title": "Tigries Trading BV\nSpaanse website",
-      "description": "Project voor de aanmaak van een Spaanse website. Dit is alles wat je nodig hebt om te beginnen."
+      "title": "Tigries Global Trading\nEuropese website",
+      "description": "Volledig websitebrief — alle pagina's, inhoud en globale elementen. Alles wat je nodig hebt om het project te starten."
     },
     "context": {
       "sectionTitle": "Projectcontext",
-      "tagline": "Verkoop van elektronica · elektrisch gereedschap",
-      "direction": {
-        "label": "Artistieke richting",
-        "item1": "Modern & robuust",
-        "item2": "Betrouwbaar & toegankelijk",
-        "item3": "Volledige creatieve vrijheid"
-      },
+      "tagline": "Distributie van machinetools & industriële uitrusting · Europa",
       "refs": {
         "label": "Referentiewebsites"
       },
       "target": {
         "label": "Doelgroep",
-        "item1": "Particulieren — doe-het-zelvers, occasionele gereedschapkopers",
-        "item2": "Professionals — ambachtslieden, bouwbedrijven, wederverkopers"
-      },
-      "photos": {
-        "label": "Foto's",
-        "note": "Alleen stockfoto's — momenteel geen echte productfoto's beschikbaar. Unsplash, Pexels aanbevolen."
+        "item1": "Ambachtslieden, kmo's — bouw- en industrieprofessionals",
+        "item2": "Grote accounts — industriële groepen, inkoopteams"
       },
       "langue": {
-        "label": "Taal van de website",
-        "note": "Uitsluitend Spaans."
+        "label": "Talen van de website",
+        "note": "Frans · Spaans · Nederlands · Engels"
       }
     },
     "about": {
       "title": "Over de klant",
-      "paragraph1": "<bold>Tigries Trading BV</bold> is een Nederlands bedrijf gespecialiseerd in de verkoop van elektronica (boormachines, schroevendraaiers, elektrisch gereedschap) aan particulieren en professionals. Het bedrijf breidt uit naar Spanje en wil een lokale digitale aanwezigheid op de Spaanse markt.",
-      "paragraph2": "Dit project is hun <bold>eerste online aanwezigheid in Spanje</bold>."
+      "paragraph1": "Tigries Global Trading, S.L. is een Spaans bedrijf gespecialiseerd in de handel van machinetools en industriële uitrusting, opgericht op 17 maart 2026 in Vélez-Málaga. Het distribueert elektrisch gereedschap en industriële machines (DeWalt, Bosch, Makita, Hilti…) in Spanje, Frankrijk en Nederland.",
+      "paragraph2": "Naast verkoop bouwt het bedrijf een SaaS-abonnement-ecosysteem: wagenpark­beheer, automatische verbruiksartikelen, opleidingen en prioritaire ondersteuning."
     },
     "objectives": {
       "title": "Doelstellingen website",
-      "item1": "Een professionele etalage creëren voor de Spaanse markt",
-      "item2": "De productcatalogus duidelijk en aantrekkelijk presenteren",
-      "item3": "Contact en offerteaanvragen mogelijk maken",
-      "item4": "Vertrouwen wekken bij een gemengd publiek (particulieren & professionals)"
+      "item1": "De 6 diensten en 3 abonnementsformules presenteren",
+      "item2": "Bezoekers omzetten in leads via een offerteformulier",
+      "item3": "Merkgeloofwaardigheid opbouwen op 3 Europese markten",
+      "item4": "Dienen als digitale hub: catalogus, SaaS-platform, ondersteuning"
     },
     "pages": {
       "sectionTitle": "Paginastructuur",
-      "inicio": { "label": "Inicio", "sub": "Startpagina" },
-      "productos": { "label": "Productos", "sub": "Catalogus" },
-      "nosotros": { "label": "Nosotros", "sub": "Over ons" },
-      "contacto": { "label": "Contacto / Presupuesto", "sub": "Contact & Offerte" },
-      "faq": { "label": "FAQ", "sub": "Optioneel" }
+      "accueil": {
+        "label": "Startpagina",
+        "sub": "Hero · Stats · Merken"
+      },
+      "services": {
+        "label": "Diensten",
+        "sub": "6 diensten"
+      },
+      "abonnements": {
+        "label": "Abonnementen",
+        "sub": "Starter · Pro · Enterprise"
+      },
+      "apropos": {
+        "label": "Over ons",
+        "sub": "Bedrijf & Juridisch"
+      },
+      "contact": {
+        "label": "Contact",
+        "sub": "Formulier & Info"
+      },
+      "faq": {
+        "label": "FAQ",
+        "sub": "8 vragen"
+      },
+      "mentions": {
+        "label": "Juridische vermeldingen",
+        "sub": "Juridisch"
+      }
     },
     "checklist": {
       "sectionTitle": "Checklist",
       "counter": "{{done}} / {{total}} taken",
       "badgeEssentiel": "Essentieel",
-      "livrableNote": "⚠ Let op: Zonder WordPress-template + deadline zondag is het zeer krap. Te verduidelijken met de klant: is de oplevering van zondag enkel de .ai-mockups (realistisch) of mockups + WP-integratie (zeer ambitieus)?",
+      "livrableNote": "Inhoud goedgekeurd door de klant — klaar om te integreren.",
       "completionMessage": "Alles klaar — veel succes met de rest!",
       "sections": {
-        "direction": {
-          "title": "Creatieve richting",
-          "d1": "Creatieve richting goedgekeurd",
-          "d2": "Kleurenpalet bepaald",
-          "d3": "Logo afgerond (of richting goedgekeurd)"
+        "pages": {
+          "title": "Te bouwen pagina's",
+          "p1": "Startpagina — Hero, stats, merken, CTA abonnementen",
+          "p2": "Diensten — 6 diensten gepresenteerd",
+          "p3": "Abonnementen — 3 formules Starter / Pro / Enterprise",
+          "p4": "Over ons — Bedrijf, oprichter, juridische informatie",
+          "p5": "Contact — Formulier + contactgegevens",
+          "p6": "FAQ — 8 vragen / antwoorden",
+          "p7": "Juridische vermeldingen"
         },
-        "livrables": {
-          "title": "Opleveringen",
-          "l1": "Mockups hoofdpagina's (.ai)",
-          "l2": "WordPress-integratie — geen template, maatwerkontwikkeling",
-          "l3": "Recette & laatste aanpassingen"
+        "transversal": {
+          "title": "Globale elementen",
+          "t1": "Navigatie — Menu + knop 'Offerte aanvragen'",
+          "t2": "Footer — Links · NIF B26980672 · © 2026 Tigries Global Trading",
+          "t3": "Contactformulier — 7 velden + onderwerpenlijst",
+          "t4": "Mobiel responsief — alle pagina's"
         }
       }
     },
     "resources": {
       "sectionTitle": "Nuttige bronnen",
       "items": {
-        "dribbble": { "label": "Dribbble", "desc": "UI & design inspiratie" },
-        "behance": { "label": "Behance", "desc": "Creatieve richtingen" },
-        "awwwards": { "label": "Awwwards", "desc": "Bekroonde sites" },
-        "googleFonts": { "label": "Google Fonts", "desc": "Gratis lettertypen" },
-        "coolors": { "label": "Coolors.co", "desc": "Paletgenerator" },
-        "unsplash": { "label": "Unsplash", "desc": "Gratis stockfoto's" },
-        "pexels": { "label": "Pexels", "desc": "Gratis stockfoto's" }
+        "dribbble": {
+          "label": "Dribbble",
+          "desc": "UI & design inspiratie"
+        },
+        "behance": {
+          "label": "Behance",
+          "desc": "Creatieve richtingen"
+        },
+        "awwwards": {
+          "label": "Awwwards",
+          "desc": "Bekroonde sites"
+        },
+        "googleFonts": {
+          "label": "Google Fonts",
+          "desc": "Gratis lettertypen"
+        },
+        "coolors": {
+          "label": "Coolors.co",
+          "desc": "Paletgenerator"
+        },
+        "unsplash": {
+          "label": "Unsplash",
+          "desc": "Gratis stockfoto's"
+        },
+        "pexels": {
+          "label": "Pexels",
+          "desc": "Gratis stockfoto's"
+        }
       }
+    },
+    "content": {
+      "sectionTitle": "Pagina-inhoud"
     }
   },
   "snackHoeksken": {
@@ -683,10 +725,22 @@
     },
     "pages": {
       "sectionTitle": "Paginastructuur",
-      "hero": { "label": "Hero / Startpagina", "sub": "Headline + CTA" },
-      "menu": { "label": "Menu", "sub": "Productraster" },
-      "about": { "label": "Over ons", "sub": "Gevel + diensten" },
-      "footer": { "label": "Footer", "sub": "Info & openingsuren" }
+      "hero": {
+        "label": "Hero / Startpagina",
+        "sub": "Headline + CTA"
+      },
+      "menu": {
+        "label": "Menu",
+        "sub": "Productraster"
+      },
+      "about": {
+        "label": "Over ons",
+        "sub": "Gevel + diensten"
+      },
+      "footer": {
+        "label": "Footer",
+        "sub": "Info & openingsuren"
+      }
     },
     "checklist": {
       "sectionTitle": "Checklist",
@@ -874,8 +928,13 @@
     },
     "context": {
       "sectionTitle": "Projectcontext",
-      "color": { "label": "Hoofdkleur", "subtitle": "Institutioneel blauw" },
-      "refs": { "label": "Referentiewebsites" },
+      "color": {
+        "label": "Hoofdkleur",
+        "subtitle": "Institutioneel blauw"
+      },
+      "refs": {
+        "label": "Referentiewebsites"
+      },
       "ambiance": {
         "label": "Doelsfeer",
         "item1": "Modern & professioneel",

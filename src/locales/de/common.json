@@ -550,91 +550,133 @@
   "tigriesTrading": {
     "status": {
       "label": "Projekt läuft",
-      "deadline": "Deadline",
-      "date": "Sonntag, 23. März"
+      "deadline": "Gegründet",
+      "date": "17. März 2026"
     },
     "hero": {
-      "title": "Tigries Trading BV\nSpanische Website",
-      "description": "Projekt zur Erstellung einer spanischen Website. Hier ist alles, was du zum Starten brauchst."
+      "title": "Tigries Global Trading\nEuropäische Website",
+      "description": "Vollständiges Website-Brief — alle Seiten, Inhalte und globale Elemente. Alles, was du brauchst, um das Projekt zu starten."
     },
     "context": {
       "sectionTitle": "Projektkontext",
-      "tagline": "Elektronikverkauf · Elektrowerkzeuge",
-      "direction": {
-        "label": "Künstlerische Richtung",
-        "item1": "Modern & robust",
-        "item2": "Zuverlässig & zugänglich",
-        "item3": "Volle kreative Freiheit"
-      },
+      "tagline": "Vertrieb von Werkzeugmaschinen & Industrieausrüstung · Europa",
       "refs": {
         "label": "Referenz-Websites"
       },
       "target": {
         "label": "Zielgruppe",
-        "item1": "Privatpersonen — Heimwerker, gelegentliche Werkzeugkäufer",
-        "item2": "Profis — Handwerker, Bauunternehmen, Wiederverkäufer"
-      },
-      "photos": {
-        "label": "Fotos",
-        "note": "Nur Stockfotos — derzeit keine echten Produktfotos verfügbar. Unsplash, Pexels empfohlen."
+        "item1": "Handwerker, KMU — Bau- und Industrieprofis",
+        "item2": "Großkunden — Industriekonzerne, Einkaufsteams"
       },
       "langue": {
-        "label": "Website-Sprache",
-        "note": "Ausschließlich Spanisch."
+        "label": "Website-Sprachen",
+        "note": "Französisch · Spanisch · Niederländisch · Englisch"
       }
     },
     "about": {
       "title": "Über den Kunden",
-      "paragraph1": "<bold>Tigries Trading BV</bold> ist ein niederländisches Unternehmen, das auf den Verkauf von Elektronik (Bohrmaschinen, Schrauber, Elektrowerkzeuge) an Privatpersonen und Gewerbetreibende spezialisiert ist. Das Unternehmen expandiert nach Spanien und möchte eine lokale digitale Präsenz für den spanischen Markt.",
-      "paragraph2": "Dieses Projekt ist ihre <bold>erste Online-Präsenz in Spanien</bold>."
+      "paragraph1": "Tigries Global Trading, S.L. ist ein spanisches Unternehmen, das auf den Handel mit Werkzeugmaschinen und Industrieausrüstung spezialisiert ist. Gegründet am 17. März 2026 in Vélez-Málaga. Vertrieb von Elektrowerkzeug und Industriemaschinen (DeWalt, Bosch, Makita, Hilti…) in Spanien, Frankreich und den Niederlanden.",
+      "paragraph2": "Neben dem Verkauf entwickelt das Unternehmen ein SaaS-Abonnement-Ökosystem: Maschinenpark-Management, automatische Verbrauchsmaterialien, Schulungen und vorrangiger Support."
     },
     "objectives": {
-      "title": "Ziele der Website",
-      "item1": "Einen professionellen Auftritt für den spanischen Markt schaffen",
-      "item2": "Den Produktkatalog klar und attraktiv präsentieren",
-      "item3": "Kontakt und Angebotsanfragen ermöglichen",
-      "item4": "Vertrauen bei einem gemischten Publikum aufbauen (Privat & Gewerbe)"
+      "title": "Website-Ziele",
+      "item1": "Die 6 Dienstleistungen und 3 Abonnementpläne präsentieren",
+      "item2": "Besucher über ein Angebotsformular in Leads umwandeln",
+      "item3": "Markenglaubwürdigkeit auf 3 europäischen Märkten aufbauen",
+      "item4": "Als digitaler Hub dienen: Katalog, SaaS-Plattform, Support"
     },
     "pages": {
       "sectionTitle": "Seitenstruktur",
-      "inicio": { "label": "Inicio", "sub": "Startseite" },
-      "productos": { "label": "Productos", "sub": "Katalog" },
-      "nosotros": { "label": "Nosotros", "sub": "Über uns" },
-      "contacto": { "label": "Contacto / Presupuesto", "sub": "Kontakt & Angebot" },
-      "faq": { "label": "FAQ", "sub": "Optional" }
+      "accueil": {
+        "label": "Startseite",
+        "sub": "Hero · Stats · Marken"
+      },
+      "services": {
+        "label": "Dienstleistungen",
+        "sub": "6 Dienste"
+      },
+      "abonnements": {
+        "label": "Abonnements",
+        "sub": "Starter · Pro · Enterprise"
+      },
+      "apropos": {
+        "label": "Über uns",
+        "sub": "Unternehmen & Recht"
+      },
+      "contact": {
+        "label": "Kontakt",
+        "sub": "Formular & Infos"
+      },
+      "faq": {
+        "label": "FAQ",
+        "sub": "8 Fragen"
+      },
+      "mentions": {
+        "label": "Impressum",
+        "sub": "Rechtliches"
+      }
     },
     "checklist": {
       "sectionTitle": "Checkliste",
       "counter": "{{done}} / {{total}} Aufgaben",
       "badgeEssentiel": "Essenziell",
-      "livrableNote": "⚠ Hinweis: Kein WordPress-Template + Deadline Sonntag ist sehr eng. Mit dem Kunden klären: Ist die Lieferung am Sonntag nur die .ai-Mockups (realistisch) oder Mockups + WP-Integration (sehr ambitioniert)?",
+      "livrableNote": "Inhalt vom Kunden bestätigt — bereit zur Integration.",
       "completionMessage": "Alles bereit — viel Erfolg für den Rest!",
       "sections": {
-        "direction": {
-          "title": "Kreative Richtung",
-          "d1": "Kreative Richtung bestätigt",
-          "d2": "Farbpalette definiert",
-          "d3": "Logo abgeschlossen (oder Richtung genehmigt)"
+        "pages": {
+          "title": "Zu erstellende Seiten",
+          "p1": "Startseite — Hero, Stats, Marken, CTA Abonnements",
+          "p2": "Dienstleistungen — 6 Dienste präsentiert",
+          "p3": "Abonnements — 3 Pläne Starter / Pro / Enterprise",
+          "p4": "Über uns — Unternehmen, Gründer, rechtliche Informationen",
+          "p5": "Kontakt — Formular + Kontaktdaten",
+          "p6": "FAQ — 8 Fragen / Antworten",
+          "p7": "Impressum"
         },
-        "livrables": {
-          "title": "Lieferungen",
-          "l1": "Hauptseiten-Mockups (.ai)",
-          "l2": "WordPress-Integration — kein Template, individuelle Entwicklung",
-          "l3": "Abnahme & finale Anpassungen"
+        "transversal": {
+          "title": "Globale Elemente",
+          "t1": "Navigation — Menü + Schaltfläche 'Angebot anfragen'",
+          "t2": "Footer — Links · NIF B26980672 · © 2026 Tigries Global Trading",
+          "t3": "Kontaktformular — 7 Felder + Betreffsliste",
+          "t4": "Mobile Responsive — alle Seiten"
         }
       }
     },
     "resources": {
       "sectionTitle": "Nützliche Ressourcen",
       "items": {
-        "dribbble": { "label": "Dribbble", "desc": "UI & Design-Inspiration" },
-        "behance": { "label": "Behance", "desc": "Kreative Richtungen" },
-        "awwwards": { "label": "Awwwards", "desc": "Preisgekrönte Sites" },
-        "googleFonts": { "label": "Google Fonts", "desc": "Kostenlose Schriftarten" },
-        "coolors": { "label": "Coolors.co", "desc": "Paletten-Generator" },
-        "unsplash": { "label": "Unsplash", "desc": "Kostenlose Stockfotos" },
-        "pexels": { "label": "Pexels", "desc": "Kostenlose Stockfotos" }
+        "dribbble": {
+          "label": "Dribbble",
+          "desc": "UI & Design-Inspiration"
+        },
+        "behance": {
+          "label": "Behance",
+          "desc": "Kreative Richtungen"
+        },
+        "awwwards": {
+          "label": "Awwwards",
+          "desc": "Preisgekrönte Sites"
+        },
+        "googleFonts": {
+          "label": "Google Fonts",
+          "desc": "Kostenlose Schriftarten"
+        },
+        "coolors": {
+          "label": "Coolors.co",
+          "desc": "Paletten-Generator"
+        },
+        "unsplash": {
+          "label": "Unsplash",
+          "desc": "Kostenlose Stockfotos"
+        },
+        "pexels": {
+          "label": "Pexels",
+          "desc": "Kostenlose Stockfotos"
+        }
       }
+    },
+    "content": {
+      "sectionTitle": "Seiteninhalt"
     }
   },
   "snackHoeksken": {
@@ -683,10 +725,22 @@
     },
     "pages": {
       "sectionTitle": "Seitenstruktur",
-      "hero": { "label": "Hero / Startseite", "sub": "Headline + CTA" },
-      "menu": { "label": "Menü", "sub": "Produktraster" },
-      "about": { "label": "Über uns", "sub": "Fassade + Dienste" },
-      "footer": { "label": "Footer", "sub": "Infos & Öffnungszeiten" }
+      "hero": {
+        "label": "Hero / Startseite",
+        "sub": "Headline + CTA"
+      },
+      "menu": {
+        "label": "Menü",
+        "sub": "Produktraster"
+      },
+      "about": {
+        "label": "Über uns",
+        "sub": "Fassade + Dienste"
+      },
+      "footer": {
+        "label": "Footer",
+        "sub": "Infos & Öffnungszeiten"
+      }
     },
     "checklist": {
       "sectionTitle": "Checkliste",
@@ -874,8 +928,13 @@
     },
     "context": {
       "sectionTitle": "Projektkontext",
-      "color": { "label": "Hauptfarbe", "subtitle": "Institutionelles Blau" },
-      "refs": { "label": "Referenz-Websites" },
+      "color": {
+        "label": "Hauptfarbe",
+        "subtitle": "Institutionelles Blau"
+      },
+      "refs": {
+        "label": "Referenz-Websites"
+      },
       "ambiance": {
         "label": "Zielambiente",
         "item1": "Modern & professionell",

@@ -550,91 +550,133 @@
   "tigriesTrading": {
     "status": {
       "label": "Project in progress",
-      "deadline": "Deadline",
-      "date": "Sunday March 23"
+      "deadline": "Founded",
+      "date": "17 March 2026"
     },
     "hero": {
-      "title": "Tigries Trading BV\nSpanish website",
-      "description": "Spanish website creation project. Here's everything you need to get started."
+      "title": "Tigries Global Trading\nEuropean website",
+      "description": "Full website brief — all pages, content and global elements. Everything you need to start the project."
     },
     "context": {
       "sectionTitle": "Project context",
-      "tagline": "Electronics sales · power tools",
-      "direction": {
-        "label": "Artistic direction",
-        "item1": "Modern & robust",
-        "item2": "Reliable & accessible",
-        "item3": "Full creative freedom"
-      },
+      "tagline": "Machine tools & industrial equipment distribution · Europe",
       "refs": {
         "label": "Reference websites"
       },
       "target": {
         "label": "Target audience",
-        "item1": "Individuals — DIY enthusiasts, occasional tool buyers",
-        "item2": "Professionals — craftsmen, construction companies, resellers"
-      },
-      "photos": {
-        "label": "Photos",
-        "note": "Stock photos only — no real product photos currently available. Unsplash, Pexels recommended."
+        "item1": "Craftsmen, SMEs — construction and industrial professionals",
+        "item2": "Enterprise — industrial groups, procurement teams"
       },
       "langue": {
-        "label": "Website language",
-        "note": "Spanish only."
+        "label": "Website languages",
+        "note": "French · Spanish · Dutch · English"
       }
     },
     "about": {
       "title": "About the client",
-      "paragraph1": "<bold>Tigries Trading BV</bold> is a Dutch company specializing in the sale of electronics (drills, impact drivers, power tools) to both individuals and professionals. The company is expanding into Spain and wants a local digital presence tailored to the Spanish market.",
-      "paragraph2": "This project is their <bold>first online presence in Spain</bold>."
+      "paragraph1": "Tigries Global Trading, S.L. is a Spanish company specialising in the trade of machine tools and industrial equipment, incorporated on 17 March 2026 in Vélez-Málaga. It distributes power tools and industrial machinery (DeWalt, Bosch, Makita, Hilti…) across Spain, France and the Netherlands.",
+      "paragraph2": "Beyond sales, the company is building a SaaS subscription ecosystem: fleet management, automatic consumables, training and priority support."
     },
     "objectives": {
       "title": "Website goals",
-      "item1": "Create a professional showcase for the Spanish market",
-      "item2": "Present the product catalogue clearly and attractively",
-      "item3": "Enable contact and quote requests",
-      "item4": "Build trust with a mixed audience (individuals & professionals)"
+      "item1": "Present the 6 services and 3 subscription plans",
+      "item2": "Convert visitors into leads via a quote request form",
+      "item3": "Build brand credibility across 3 European markets",
+      "item4": "Serve as a digital hub: catalogue, SaaS platform, support"
     },
     "pages": {
       "sectionTitle": "Page structure",
-      "inicio": { "label": "Inicio", "sub": "Home" },
-      "productos": { "label": "Productos", "sub": "Catalogue" },
-      "nosotros": { "label": "Nosotros", "sub": "About" },
-      "contacto": { "label": "Contacto / Presupuesto", "sub": "Contact & Quote" },
-      "faq": { "label": "FAQ", "sub": "Optional" }
+      "accueil": {
+        "label": "Home",
+        "sub": "Hero · Stats · Brands"
+      },
+      "services": {
+        "label": "Services",
+        "sub": "6 services"
+      },
+      "abonnements": {
+        "label": "Subscriptions",
+        "sub": "Starter · Pro · Enterprise"
+      },
+      "apropos": {
+        "label": "About",
+        "sub": "Company & Legal"
+      },
+      "contact": {
+        "label": "Contact",
+        "sub": "Form & Info"
+      },
+      "faq": {
+        "label": "FAQ",
+        "sub": "8 questions"
+      },
+      "mentions": {
+        "label": "Legal Notice",
+        "sub": "Legal"
+      }
     },
     "checklist": {
       "sectionTitle": "Checklist",
       "counter": "{{done}} / {{total}} tasks",
       "badgeEssentiel": "Essential",
-      "livrableNote": "⚠ Note: No WordPress template + Sunday deadline is very tight. To clarify with the client: is Sunday's deliverable the .ai mockups only (realistic) or mockups + WP integration (very ambitious)?",
+      "livrableNote": "Content validated by the client — ready to integrate.",
       "completionMessage": "All set — good luck with the rest!",
       "sections": {
-        "direction": {
-          "title": "Creative direction",
-          "d1": "Creative direction validated",
-          "d2": "Color palette defined",
-          "d3": "Logo finalized (or direction approved)"
+        "pages": {
+          "title": "Pages to build",
+          "p1": "Home — Hero, stats, brands, subscription CTA",
+          "p2": "Services — 6 services presented",
+          "p3": "Subscriptions — 3 plans Starter / Pro / Enterprise",
+          "p4": "About — Company, founder, legal information",
+          "p5": "Contact — Form + contact details",
+          "p6": "FAQ — 8 questions / answers",
+          "p7": "Legal Notice"
         },
-        "livrables": {
-          "title": "Deliverables",
-          "l1": "Main page mockups (.ai)",
-          "l2": "WordPress integration — no template, custom development",
-          "l3": "Review & final adjustments"
+        "transversal": {
+          "title": "Global elements",
+          "t1": "Navigation — Menu + 'Request a quote' button",
+          "t2": "Footer — Links · NIF B26980672 · © 2026 Tigries Global Trading",
+          "t3": "Contact form — 7 fields + subject list",
+          "t4": "Mobile responsive — all pages"
         }
       }
     },
     "resources": {
       "sectionTitle": "Useful resources",
       "items": {
-        "dribbble": { "label": "Dribbble", "desc": "UI & design inspiration" },
-        "behance": { "label": "Behance", "desc": "Creative directions" },
-        "awwwards": { "label": "Awwwards", "desc": "Award-winning sites" },
-        "googleFonts": { "label": "Google Fonts", "desc": "Free typefaces" },
-        "coolors": { "label": "Coolors.co", "desc": "Palette generator" },
-        "unsplash": { "label": "Unsplash", "desc": "Free stock photos" },
-        "pexels": { "label": "Pexels", "desc": "Free stock photos" }
+        "dribbble": {
+          "label": "Dribbble",
+          "desc": "UI & design inspiration"
+        },
+        "behance": {
+          "label": "Behance",
+          "desc": "Creative directions"
+        },
+        "awwwards": {
+          "label": "Awwwards",
+          "desc": "Award-winning sites"
+        },
+        "googleFonts": {
+          "label": "Google Fonts",
+          "desc": "Free typefaces"
+        },
+        "coolors": {
+          "label": "Coolors.co",
+          "desc": "Palette generator"
+        },
+        "unsplash": {
+          "label": "Unsplash",
+          "desc": "Free stock photos"
+        },
+        "pexels": {
+          "label": "Pexels",
+          "desc": "Free stock photos"
+        }
       }
+    },
+    "content": {
+      "sectionTitle": "Page content"
     }
   },
   "snackHoeksken": {
@@ -683,10 +725,22 @@
     },
     "pages": {
       "sectionTitle": "Page structure",
-      "hero": { "label": "Hero / Home", "sub": "Headline + CTA" },
-      "menu": { "label": "Menu", "sub": "Product grid" },
-      "about": { "label": "About", "sub": "Facade + services" },
-      "footer": { "label": "Footer", "sub": "Info & hours" }
+      "hero": {
+        "label": "Hero / Home",
+        "sub": "Headline + CTA"
+      },
+      "menu": {
+        "label": "Menu",
+        "sub": "Product grid"
+      },
+      "about": {
+        "label": "About",
+        "sub": "Facade + services"
+      },
+      "footer": {
+        "label": "Footer",
+        "sub": "Info & hours"
+      }
     },
     "checklist": {
       "sectionTitle": "Checklist",
@@ -874,8 +928,13 @@
     },
     "context": {
       "sectionTitle": "Project context",
-      "color": { "label": "Main color", "subtitle": "Institutional blue" },
-      "refs": { "label": "Reference websites" },
+      "color": {
+        "label": "Main color",
+        "subtitle": "Institutional blue"
+      },
+      "refs": {
+        "label": "Reference websites"
+      },
       "ambiance": {
         "label": "Target mood",
         "item1": "Modern & professional",
