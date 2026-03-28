@@ -291,7 +291,7 @@ export default function ContactPage() {
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">
                 {t("contact.blocks.partnerships")}
               </p>
-              <p className="text-sm font-medium text-gray-900">zakaria@zkconcept.be</p>
+              <p className="text-sm font-medium text-gray-900">hamza@zkconcept.be</p>
               <p className="text-sm text-gray-700">+32 486 92 31 82</p>
             </div>
 
@@ -299,8 +299,8 @@ export default function ContactPage() {
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500">
                 {t("contact.blocks.address")}
               </p>
-              <p className="text-sm font-medium text-gray-900">Romeinsesteenweg 200</p>
-              <p className="text-sm text-gray-700">1800 Vilvoorde, Belgique</p>
+              <p className="text-sm font-medium text-gray-900">Ambachtenlaan 33</p>
+              <p className="text-sm text-gray-700">3001 Heverlee, Belgique</p>
             </div>
           </div>
         </div>

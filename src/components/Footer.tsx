@@ -90,6 +90,12 @@ export default function Footer() {
 
           <div className="space-y-2">
             <a
+              href="mailto:hamza@zkconcept.be"
+              className={subtleUnderlineClass}
+            >
+              hamza@zkconcept.be
+            </a>
+            <a
               href="mailto:zakaria@zkconcept.be"
               className={subtleUnderlineClass}
             >

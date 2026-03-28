@@ -54,11 +54,11 @@ export default function LegalNoticePage() {
           <strong>{t("legal.labels.publisher")}</strong> ZK Concept
         </p>
         <p className="legal-reveal-item">
-          <strong>{t("legal.labels.address")}</strong> Romeinsesteenweg 200,
-          1800 Vilvoorde, Belgique
+          <strong>{t("legal.labels.address")}</strong> Ambachtenlaan 33,
+          3001 Heverlee, Belgique
         </p>
         <p className="legal-reveal-item">
-          <strong>{t("legal.labels.email")}</strong> zakaria@zkconcept.be
+          <strong>{t("legal.labels.email")}</strong> hamza@zkconcept.be | zakaria@zkconcept.be
         </p>
         <p className="legal-reveal-item">
           <strong>{t("legal.labels.phone")}</strong> +32 489 39 57 80 | +32 486
