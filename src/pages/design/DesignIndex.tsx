@@ -12,36 +12,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const PROJECTS = [
   {
-    slug: "compta-partners",
-    client: "SRL COMPTA-PARTNERS",
-    typeKey: "designIndex.projects.comptaPartners.type",
-    statusKey: "design.common.status.inProgress",
-    deadlineKey: "designIndex.projects.comptaPartners.deadline",
-    accent: "#25408f",
-    logo: comptaLogo,
-    done: false,
-  },
-  {
-    slug: "tigries-trading",
-    client: "Tigries Trading BV",
-    typeKey: "designIndex.projects.tigriesTrading.type",
-    statusKey: "design.common.status.inProgress",
-    deadlineKey: "designIndex.projects.tigriesTrading.deadline",
-    accent: "#f7af2f",
-    logo: tigrieLogo,
-    done: false,
-  },
-  {
-    slug: "snack-hoeksken",
-    client: "Snack Pitta 't Hoeksken",
-    typeKey: "designIndex.projects.snackHoeksken.type",
-    statusKey: "design.common.status.delivered",
-    deadlineKey: "designIndex.projects.snackHoeksken.deadline",
-    accent: "#c0392b",
-    logo: snackLogo,
-    done: true,
-  },
-  {
     slug: "zk-concept",
     client: "ZK Concept",
     typeKey: "designIndex.projects.zkConcept.type",
@@ -62,6 +32,39 @@ const PROJECTS = [
     logo: zkLogo,
     logoSize: "h-6",
     done: false,
+  },
+  {
+    slug: "tigries-trading",
+    client: "Tigries Global Trading, S.L.",
+    typeKey: "designIndex.projects.tigriesTrading.type",
+    statusKey: "design.common.status.delivered",
+    deadlineKey: "designIndex.projects.tigriesTrading.deadline",
+    accent: "#f7af2f",
+    logo: tigrieLogo,
+    done: true,
+    url: "https://www.tigriesglobaltrading.com/",
+  },
+  {
+    slug: "compta-partners",
+    client: "SRL COMPTA-PARTNERS",
+    typeKey: "designIndex.projects.comptaPartners.type",
+    statusKey: "design.common.status.delivered",
+    deadlineKey: "designIndex.projects.comptaPartners.deadline",
+    accent: "#25408f",
+    logo: comptaLogo,
+    done: true,
+    url: "https://comptapartners.com/",
+  },
+  {
+    slug: "snack-hoeksken",
+    client: "Snack Pitta 't Hoeksken",
+    typeKey: "designIndex.projects.snackHoeksken.type",
+    statusKey: "design.common.status.delivered",
+    deadlineKey: "designIndex.projects.snackHoeksken.deadline",
+    accent: "#c0392b",
+    logo: snackLogo,
+    done: true,
+    url: "https://www.snack-thoeksen.be/",
   },
 ];
 
@@ -139,19 +142,19 @@ export default function DesignIndex() {
             {/* Accent bar */}
             <div
               className="h-1.5 w-full rounded-t-2xl"
-              style={{ backgroundColor: project.accent }}
+              style={{ backgroundColor: project.done ? "#d1d5db" : project.accent }}
             />
 
             <div className="p-6">
               {/* Logo area */}
               <div
                 className="mb-5 flex h-16 w-full items-center justify-center rounded-xl px-4"
-                style={{ backgroundColor: project.accent + "12" }}
+                style={{ backgroundColor: project.done ? "#f3f4f6" : project.accent + "12" }}
               >
                 <img
                   src={project.logo}
                   alt={project.client}
-                  className={`${(project as typeof project & { logoSize?: string }).logoSize ?? "h-10"} max-w-full object-contain`}
+                  className={`${(project as typeof project & { logoSize?: string }).logoSize ?? "h-10"} max-w-full object-contain transition-all duration-300 ${project.done ? "grayscale opacity-40" : ""}`}
                 />
               </div>
 
@@ -169,6 +172,21 @@ export default function DesignIndex() {
                   {t(project.deadlineKey)}
                 </span>
               </div>
+
+              {(project as typeof project & { url?: string }).url && (
+                <a
+                  href={(project as typeof project & { url?: string }).url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="mt-3 inline-flex items-center gap-1 text-xs text-gray-400 transition-colors hover:text-gray-700"
+                >
+                  <svg viewBox="0 0 14 14" fill="none" className="h-3 w-3">
+                    <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {(project as typeof project & { url?: string }).url!.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                </a>
+              )}
             </div>
 
             {/* Arrow */}

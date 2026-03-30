@@ -80,6 +80,13 @@ h6 {
   border-radius: 9999px;
   background: #1f293788;
   z-index: 9999;
+  opacity: 0;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .flair {
+    display: none;
+  }
 }
 
 .global-grid-overlay {
