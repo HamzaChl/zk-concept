@@ -126,10 +126,27 @@ export default function RecrutementPage() {
     setIsSending(true);
 
     try {
+      const payload = {
+        fullName: `${form.firstName} ${form.lastName}`.trim(),
+        company: form.city,
+        email: form.email,
+        phone: form.phone,
+        service: "recrutement",
+        message: [
+          `Véhicule : ${form.vehicle}`,
+          `Disponibilité : ${form.availability}`,
+          `Expérience livraison : ${form.experience || "Non précisé"}`,
+          form.message ? `\nMotivation : ${form.message}` : "",
+        ]
+          .filter(Boolean)
+          .join("\n"),
+        formType: "recrutement",
+      };
+
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, formType: "recrutement" }),
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
