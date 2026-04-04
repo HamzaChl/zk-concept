@@ -17,6 +17,7 @@ export default function Nav() {
     { to: "/livraison-colis", label: t("nav.parcelDelivery") },
     { to: "/distribution-presse", label: t("nav.pressDistribution") },
     { to: "/gestion-logistique", label: t("nav.logisticsManagement") },
+    { to: "/recrutement", label: t("nav.recruitment") },
   ];
 
   useEffect(() => {

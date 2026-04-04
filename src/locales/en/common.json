@@ -11,7 +11,8 @@
     "logisticsManagement": "Logistics management",
     "contact": "Contact",
     "menu": "Menu",
-    "homeAriaLabel": "ZK Concept - Home"
+    "homeAriaLabel": "ZK Concept - Home",
+    "recruitment": "Recruitment"
   },
   "footer": {
     "quickLinks": "Quick links",
@@ -1023,6 +1024,57 @@
       "screenshotTitle": "Final site screenshot",
       "screenshotNote": "Add a screenshot in",
       "visitSite": "Visit comptapartners.com →"
+    }
+  },
+  "recrutement": {
+    "kicker": "We're hiring",
+    "hero": {
+      "title": "Become a newspaper\ndelivery driver",
+      "description": "Join the ZK Concept team for fixed morning routes, with great autonomy and the possibility of finishing early once your round is done."
+    },
+    "sidebar": {
+      "conditionsTitle": "Job conditions"
+    },
+    "highlights": {
+      "weekdays": "Weekdays",
+      "weekdaysValue": "Mon–Fri · 04:30–08:00",
+      "saturday": "Saturday",
+      "saturdayValue": "04:30–10:00",
+      "route": "Fixed route",
+      "routeValue": "Same addresses every day",
+      "early": "Early finish",
+      "earlyValue": "Possible once route is done"
+    },
+    "form": {
+      "title": "Apply now",
+      "description": "Fill in the form below — we'll get back to you quickly.",
+      "success": "Your application has been sent. We will get back to you as soon as possible.",
+      "firstName": "First name",
+      "firstNamePlaceholder": "John",
+      "lastName": "Last name",
+      "lastNamePlaceholder": "Doe",
+      "city": "City of residence",
+      "cityPlaceholder": "Brussels, Vilvoorde…",
+      "driverLicense": "I hold a valid driver's licence",
+      "vehicle": "Available vehicle",
+      "vehicleCar": "Car",
+      "vehicleMoto": "Motorcycle / Scooter",
+      "vehicleBike": "Bicycle",
+      "vehicleOther": "Other",
+      "availability": "Availability",
+      "availWeekdays": "Weekdays only (Mon–Fri)",
+      "availSaturday": "Saturday only",
+      "availBoth": "Weekdays + Saturday",
+      "experience": "Delivery experience",
+      "expYes": "Yes, I've delivered before",
+      "expNo": "No, first time",
+      "message": "Message / Motivation (optional)",
+      "messagePlaceholder": "Tell us about yourself, your motivations or specific availability…",
+      "submit": "Send my application",
+      "choose": "Choose…",
+      "yes": "Yes",
+      "no": "No",
+      "required": "Required"
     }
   }
 }

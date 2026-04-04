@@ -11,7 +11,8 @@
     "logisticsManagement": "Gestion logistique",
     "contact": "Contact",
     "menu": "Menu",
-    "homeAriaLabel": "ZK Concept - Accueil"
+    "homeAriaLabel": "ZK Concept - Accueil",
+    "recruitment": "Recrutement"
   },
   "footer": {
     "quickLinks": "Liens rapides",
@@ -1023,6 +1024,57 @@
       "screenshotTitle": "Screenshot du site final",
       "screenshotNote": "Ajouter une capture d'écran dans",
       "visitSite": "Visiter comptapartners.com →"
+    }
+  },
+  "recrutement": {
+    "kicker": "On recrute",
+    "hero": {
+      "title": "Devenez livreur\nde journaux",
+      "description": "Rejoignez l'équipe ZK Concept pour des tournées matinales fixes, avec une grande autonomie et la possibilité de finir tôt dès que votre tournée est terminée."
+    },
+    "sidebar": {
+      "conditionsTitle": "Conditions du poste"
+    },
+    "highlights": {
+      "weekdays": "Semaine",
+      "weekdaysValue": "Lun–Ven · 04h30–08h00",
+      "saturday": "Samedi",
+      "saturdayValue": "04h30–10h00",
+      "route": "Tournée fixe",
+      "routeValue": "Mêmes adresses chaque jour",
+      "early": "Fin anticipée",
+      "earlyValue": "Possible dès la fin de tournée"
+    },
+    "form": {
+      "title": "Postulez maintenant",
+      "description": "Remplissez le formulaire ci-dessous — nous vous recontactons rapidement.",
+      "success": "Votre candidature a bien été envoyée. Nous vous recontacterons dans les plus brefs délais.",
+      "firstName": "Prénom",
+      "firstNamePlaceholder": "Jean",
+      "lastName": "Nom",
+      "lastNamePlaceholder": "Dupont",
+      "city": "Ville de résidence",
+      "cityPlaceholder": "Bruxelles, Vilvoorde…",
+      "driverLicense": "Je possède un permis de conduire valide",
+      "vehicle": "Véhicule disponible",
+      "vehicleCar": "Voiture",
+      "vehicleMoto": "Moto / Scooter",
+      "vehicleBike": "Vélo",
+      "vehicleOther": "Autre",
+      "availability": "Disponibilité",
+      "availWeekdays": "En semaine uniquement (lun–ven)",
+      "availSaturday": "Le samedi uniquement",
+      "availBoth": "Semaine + Samedi",
+      "experience": "Expérience en livraison",
+      "expYes": "Oui, j'ai déjà livré",
+      "expNo": "Non, c'est une première",
+      "message": "Message / Motivation (facultatif)",
+      "messagePlaceholder": "Parlez-nous de vous, de vos motivations ou de vos disponibilités spécifiques…",
+      "submit": "Envoyer ma candidature",
+      "choose": "Choisir…",
+      "yes": "Oui",
+      "no": "Non",
+      "required": "Obligatoire"
     }
   }
 }

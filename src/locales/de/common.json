@@ -11,7 +11,8 @@
     "logisticsManagement": "Logistikmanagement",
     "contact": "Kontakt",
     "menu": "Menü",
-    "homeAriaLabel": "ZK Concept - Startseite"
+    "homeAriaLabel": "ZK Concept - Startseite",
+    "recruitment": "Stellenangebote"
   },
   "footer": {
     "quickLinks": "Schnellzugriff",
@@ -1023,6 +1024,57 @@
       "screenshotTitle": "Screenshot der finalen Website",
       "screenshotNote": "Screenshot hinzufügen in",
       "visitSite": "comptapartners.com besuchen →"
+    }
+  },
+  "recrutement": {
+    "kicker": "Wir stellen ein",
+    "hero": {
+      "title": "Werden Sie Zeitungsausträger",
+      "description": "Werden Sie Teil des ZK Concept Teams für feste Morgentouren, mit viel Eigenständigkeit und der Möglichkeit, früher zu enden, sobald Ihre Tour abgeschlossen ist."
+    },
+    "sidebar": {
+      "conditionsTitle": "Stellenbedingungen"
+    },
+    "highlights": {
+      "weekdays": "Wochentage",
+      "weekdaysValue": "Mo–Fr · 04:30–08:00",
+      "saturday": "Samstag",
+      "saturdayValue": "04:30–10:00",
+      "route": "Feste Route",
+      "routeValue": "Gleiche Adressen jeden Tag",
+      "early": "Frühzeitiges Ende",
+      "earlyValue": "Möglich sobald Tour beendet"
+    },
+    "form": {
+      "title": "Jetzt bewerben",
+      "description": "Füllen Sie das Formular aus — wir melden uns schnell bei Ihnen.",
+      "success": "Ihre Bewerbung wurde gesendet. Wir werden uns so bald wie möglich bei Ihnen melden.",
+      "firstName": "Vorname",
+      "firstNamePlaceholder": "Hans",
+      "lastName": "Nachname",
+      "lastNamePlaceholder": "Müller",
+      "city": "Wohnort",
+      "cityPlaceholder": "Brüssel, Vilvoorde…",
+      "driverLicense": "Ich besitze einen gültigen Führerschein",
+      "vehicle": "Verfügbares Fahrzeug",
+      "vehicleCar": "Auto",
+      "vehicleMoto": "Motorrad / Roller",
+      "vehicleBike": "Fahrrad",
+      "vehicleOther": "Sonstiges",
+      "availability": "Verfügbarkeit",
+      "availWeekdays": "Nur Wochentage (Mo–Fr)",
+      "availSaturday": "Nur Samstag",
+      "availBoth": "Wochentage + Samstag",
+      "experience": "Liefererfahrung",
+      "expYes": "Ja, ich habe bereits geliefert",
+      "expNo": "Nein, zum ersten Mal",
+      "message": "Nachricht / Motivation (optional)",
+      "messagePlaceholder": "Erzählen Sie uns von sich, Ihrer Motivation oder Ihrer spezifischen Verfügbarkeit…",
+      "submit": "Bewerbung senden",
+      "choose": "Wählen…",
+      "yes": "Ja",
+      "no": "Nein",
+      "required": "Pflichtfeld"
     }
   }
 }

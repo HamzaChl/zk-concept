@@ -22,6 +22,7 @@ import SnackHoekskenPage from "./pages/design/SnackHoeksken";
 import ZkConceptPage from "./pages/design/ZkConcept";
 import RouteZKPage from "./pages/design/RouteZK";
 import DesignIndexPage from "./pages/design/DesignIndex";
+import RecrutementPage from "./pages/RecrutementPage";
 import LotrPage from "./pages/LotrPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
@@ -534,6 +535,7 @@ export default function App() {
             />
             <Route path="/mentions-legales" element={<LegalNoticePage />} />
             <Route path="/imprint" element={<ImprintPage />} />
+            <Route path="/recrutement" element={<RecrutementPage />} />
             <Route path="/design" element={<DesignIndexPage />} />
             <Route path="/design/compta-partners" element={<ComptaPartnersPage />} />
             <Route path="/design/tigries-trading" element={<TigriestTradingPage />} />

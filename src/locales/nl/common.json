@@ -11,7 +11,8 @@
     "logisticsManagement": "Logistiek beheer",
     "contact": "Contact",
     "menu": "Menu",
-    "homeAriaLabel": "ZK Concept - Home"
+    "homeAriaLabel": "ZK Concept - Home",
+    "recruitment": "Vacatures"
   },
   "footer": {
     "quickLinks": "Snelle links",
@@ -1023,6 +1024,57 @@
       "screenshotTitle": "Screenshot van de definitieve site",
       "screenshotNote": "Voeg een screenshot toe in",
       "visitSite": "Bezoek comptapartners.com →"
+    }
+  },
+  "recrutement": {
+    "kicker": "We zoeken mensen",
+    "hero": {
+      "title": "Word krantenbesteller",
+      "description": "Sluit je aan bij het ZK Concept team voor vaste ochtendrondes, met veel autonomie en de mogelijkheid om vroeg te eindigen zodra je ronde klaar is."
+    },
+    "sidebar": {
+      "conditionsTitle": "Arbeidsvoorwaarden"
+    },
+    "highlights": {
+      "weekdays": "Weekdagen",
+      "weekdaysValue": "Ma–Vrij · 04:30–08:00",
+      "saturday": "Zaterdag",
+      "saturdayValue": "04:30–10:00",
+      "route": "Vaste ronde",
+      "routeValue": "Zelfde adressen elke dag",
+      "early": "Vroeg klaar",
+      "earlyValue": "Mogelijk zodra ronde afgerond is"
+    },
+    "form": {
+      "title": "Solliciteer nu",
+      "description": "Vul het onderstaande formulier in — we nemen snel contact met je op.",
+      "success": "Je sollicitatie is verzonden. We nemen zo snel mogelijk contact met je op.",
+      "firstName": "Voornaam",
+      "firstNamePlaceholder": "Jan",
+      "lastName": "Achternaam",
+      "lastNamePlaceholder": "Janssen",
+      "city": "Woonplaats",
+      "cityPlaceholder": "Brussel, Vilvoorde…",
+      "driverLicense": "Ik heb een geldig rijbewijs",
+      "vehicle": "Beschikbaar voertuig",
+      "vehicleCar": "Auto",
+      "vehicleMoto": "Motor / Scooter",
+      "vehicleBike": "Fiets",
+      "vehicleOther": "Anders",
+      "availability": "Beschikbaarheid",
+      "availWeekdays": "Alleen weekdagen (ma–vr)",
+      "availSaturday": "Alleen zaterdag",
+      "availBoth": "Weekdagen + Zaterdag",
+      "experience": "Bezorgervaring",
+      "expYes": "Ja, ik heb eerder bezorgd",
+      "expNo": "Nee, eerste keer",
+      "message": "Bericht / Motivatie (optioneel)",
+      "messagePlaceholder": "Vertel ons over jezelf, je motivatie of specifieke beschikbaarheid…",
+      "submit": "Stuur mijn sollicitatie",
+      "choose": "Kies…",
+      "yes": "Ja",
+      "no": "Nee",
+      "required": "Verplicht"
     }
   }
 }
