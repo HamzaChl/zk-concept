@@ -69,6 +69,12 @@
     "bottomCta": {
       "title": "Ready to optimize your logistics operations?",
       "description": "ZK Concept supports businesses in parcel delivery and press distribution with reliability, punctuality and efficiency. Let's discuss your project and set up the right solution for your needs."
+    },
+    "recruitment": {
+      "kicker": "We're hiring",
+      "title": "Join the ZK Concept team",
+      "description": "We are looking for newspaper delivery drivers for fixed morning routes. Flexible hours — done with your round, done for the day.",
+      "cta": "See the position"
     }
   },
   "ampPresentation": {

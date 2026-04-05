@@ -69,6 +69,12 @@
     "bottomCta": {
       "title": "Bereit, Ihre Logistikprozesse zu optimieren?",
       "description": "ZK Concept unterstützt Unternehmen bei Paketzustellung und Presseverteilung mit Zuverlässigkeit, Pünktlichkeit und Effizienz. Lassen Sie uns Ihr Projekt besprechen und die passende Lösung aufsetzen."
+    },
+    "recruitment": {
+      "kicker": "Wir stellen ein",
+      "title": "Werden Sie Teil des ZK Concept Teams",
+      "description": "Wir suchen Zeitungsausträger für feste Morgentouren. Flexible Arbeitszeiten — Tour beendet, Tag beendet.",
+      "cta": "Stelle ansehen"
     }
   },
   "ampPresentation": {

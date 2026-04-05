@@ -583,6 +583,33 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="reveal-section">
+          <div className="flex flex-col gap-5 overflow-hidden rounded-2xl bg-gray-900 px-8 py-10 md:flex-row md:items-center md:justify-between md:px-12 md:py-12">
+            <div className="space-y-2">
+              <span className="inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
+                {t("home.recruitment.kicker")}
+              </span>
+              <h2 className="text-2xl font-bold text-white md:text-3xl">
+                {t("home.recruitment.title")}
+              </h2>
+              <p className="max-w-xl text-sm leading-6 text-white/60">
+                {t("home.recruitment.description")}
+              </p>
+            </div>
+            <Link
+              to="/recrutement"
+              className="inline-flex shrink-0 rounded-full bg-white px-6 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-100"
+            >
+              <span className="inline-flex items-center gap-2">
+                {t("home.recruitment.cta")}
+                <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+            </Link>
+          </div>
+        </section>
+
         <section className="reveal-section grid gap-6 rounded-2xl border border-gray-200 p-8 md:grid-cols-2 md:items-center md:p-10">
           <div className="space-y-4">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#4b5563]">

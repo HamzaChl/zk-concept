@@ -69,6 +69,12 @@
     "bottomCta": {
       "title": "Prêt à optimiser vos opérations logistiques ?",
       "description": "ZK Concept accompagne les entreprises dans la livraison de colis et la distribution de presse avec fiabilité, ponctualité et efficacité. Discutons de votre projet et mettons en place une solution adaptée à vos besoins."
+    },
+    "recruitment": {
+      "kicker": "On recrute",
+      "title": "Rejoignez l'équipe ZK Concept",
+      "description": "Nous recherchons des livreurs de journaux pour des tournées matinales fixes. Horaires aménageables, tournée terminée = journée terminée.",
+      "cta": "Voir le poste"
     }
   },
   "ampPresentation": {
